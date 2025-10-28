@@ -44,3 +44,17 @@ CREATE TABLE projetos (
         ON DELETE CASCADE
         ON UPDATE CASCADE
 );
+
+CREATE TABLE fotoProjeto (
+    id_foto INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    fk_projeto INT UNSIGNED NOT NULL,
+    nome VARCHAR(255) NOT NULL,
+    legenda VARCHAR(255),
+    alternativo VARCHAR(255),
+    data_upload DATETIME DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT fk_foto_projeto FOREIGN KEY (fk_projeto)
+        REFERENCES projetos(id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
+);
