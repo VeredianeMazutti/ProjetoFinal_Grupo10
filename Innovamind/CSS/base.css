@@ -137,6 +137,7 @@ main {
     display: flex;
     align-items: center;
     gap: 15px;
+    margin-left: 40px;
 }
 
 .nav-actions a {
@@ -176,7 +177,7 @@ main {
     text-decoration: none;
     position: static;
     font-weight: bold;
-    margin-left: 20px;
+    margin-left: 15px;
 }
 
 .nav-actions .btn::after {
