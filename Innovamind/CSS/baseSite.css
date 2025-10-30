@@ -1,0 +1,153 @@
+@import url('base.css');
+@import url('https://fonts.googleapis.com/css2?family=Caprasimo&family=Domine:wght@400..700&display=swap');
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.12.1/font/bootstrap-icons.min.css");
+
+.secao-inicial {
+    width: 100%;
+    min-height: 75vh;
+}
+
+.titulo-principal {
+    font-size: 52px;
+    font-weight: 900px;
+    color: #fff;
+    font-weight: bold;
+    line-height: 1.3;
+}
+
+.roxo {
+    color: #9b5de5;
+}
+
+.subtitulo {
+    font-size: 20px;
+    margin-top: 1rem;
+    color: #b0b0b0;
+}
+
+.secao-inicial img {
+    max-width: 700px;
+}
+
+.pilares {
+    background: linear-gradient(90deg, #683990 19%, #251435 100%);
+    padding: 5rem 0;
+    width: 99vw;
+    margin: 0;
+    left: 50%;
+    right: 50%;
+    position: relative;
+    transform: translateX(-50%);
+    box-sizing: border-box;
+}
+
+.titulo-linhas {
+    position: relative;
+    display: inline-block;
+    color: #fff;
+    font-size: 35px;
+    font-weight: 700;
+    text-align: center;
+    padding: 0 2rem;
+}
+
+.titulo-linhas::before,
+.titulo-linhas::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 350px;
+    height: 2px;
+    background-color: #fff;
+    transform: translateY(-50%);
+}
+
+.titulo-linhas::before {
+    right: 100%;
+    margin-right: 20px;
+}
+
+.titulo-linhas::after {
+    left: 100%;
+    margin-left: 20px;
+}
+
+.pilares h2 {
+    margin-bottom: 4rem;
+}
+
+.pillar-card {
+    background: #1f1f1f;
+    border-radius: 15px;
+    padding: 2rem;
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-align: center;
+    position: relative;
+    width: 80%;
+    margin: 0 auto 2rem;
+}
+
+.pillar-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 20px rgba(156, 126, 255, 0.7);
+}
+
+.pillar-card i {
+    color: #c69eff;
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    text-shadow:
+        0 0 5px #896bb3,
+        0 0 10px #a885da,
+        0 0 20px #c69eff,
+        0 0 40px #b784f4,
+        0 0 80px #3d2855;
+    transition: transform 0.3s ease, text-shadow 0.3s ease;
+}
+
+.pillar-card i:hover {
+    transform: scale(1.1);
+    text-shadow:
+        0 0 10px #aa87d5,
+        0 0 20px #d3aaff,
+        0 0 40px #c69eff,
+        0 0 80px #b784f4,
+        0 0 120px #9b5de5;
+}
+
+.pillar-card p {
+    font-size: 1rem;
+    color: #ccc;
+}
+
+.passos h2 {
+    font-size: 35px;
+    font-weight: 700;
+    color: #d0adf7;
+}
+
+.passos ol {
+    list-style: decimal;
+    padding-left: 1.5rem;
+    font-size: 1.1rem;
+    color: #fff;
+    line-height: 1.8;
+}
+
+.passos li {
+    margin-bottom: 0.5rem;
+}
+
+.passos img {
+    max-width: 500px;
+}
+
+@media (max-width: 992px) {
+    .titulo-principal {
+        font-size: 2rem;
+    }
+
+    .pillar-card {
+        padding: 1.5rem;
+    }
+}
