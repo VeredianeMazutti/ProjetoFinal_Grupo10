@@ -74,13 +74,67 @@
                             <i class="bi bi-people fs-1 mb-3"></i>
                             <h5>Força Coletiva</h5>
                             <p>Empresas, profissionais e comunidade apoiam iniciativas
-                                e recebem reconhecimento. Juntos, criamos soluções
+                                e recebem reconhecimento.Juntos, criamos soluções
                                 criativas e sustentáveis para o futuro.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+
+        <section class="projetos-destaque text-light py-5">
+            <div class="container">
+                <h2 class="titulo-linhas mb-4">Projetos e Ideias em Destaque</h2>
+
+                <div class="row g-4">
+                    <?php
+                    require_once "Classes/Projeto.class.php";
+                    require_once "Classes/FotoProjeto.class.php";
+
+                    $Projeto = new Projeto();
+                    $FotoProjeto = new FotoProjeto();
+
+                    // Busca os projetos mais recentes 
+                    $projetosRecentes = $Projeto->listarRecentes(9);
+
+                    foreach ($projetosRecentes as $proj):
+                        $idProj = intval($proj->id);
+                        $fotos = $FotoProjeto->fotosProjeto($idProj);
+                        ?>
+                        <div class="col-md-4">
+                            <div class="card h-100 shadow-sm bg-dark rounded-4 overflow-hidden">
+                                <div id="carouselProjeto<?php echo $idProj; ?>" class="carousel slide"
+                                    data-bs-ride="carousel">
+                                    <div class="carousel-inner">
+                                        <?php
+                                        $isFirst = true;
+                                        foreach ($fotos as $f): ?>
+                                            <div class="carousel-item <?php echo $isFirst ? 'active' : ''; ?>"
+                                                data-bs-interval="4000">
+                                                <img src="uploads/projetos/<?php echo $f->nome; ?>" class="d-block w-100"
+                                                    alt="<?php echo htmlspecialchars($f->alternativo); ?>">
+                                            </div>
+                                            <?php $isFirst = false; endforeach; ?>
+                                    </div>
+                                </div>
+
+                                <div class="card-body text-center p-3">
+                                    <h5 class="card-title text-uppercase roxo">
+                                        <?php echo htmlspecialchars($proj->nomeProjeto); ?>
+                                    </h5>
+                                    <p class="card-text text-light small">
+                                        <?php echo htmlspecialchars(substr($proj->breveDescricao, 0, 300)); ?>
+                                    </p>
+                                    <a href="projeto.php?id=<?php echo $idProj; ?>" class="btn btn-produto mt-2">Saiba mais
+                                        e Colabore</a>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+        </section>
+
 
         <section class="passos text-light py-5">
             <div class="container d-flex align-items-center justify-content-between flex-wrap">

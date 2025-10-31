@@ -120,6 +120,26 @@
     color: #ccc;
 }
 
+.btn-produto {
+    background-color: #6f42c1;
+    color: #fff;
+    border: none;
+    transition: 0.3s;
+}
+
+.btn-produto:hover {
+    background-color: #593196;
+}
+
+.roxo {
+    color: #9b59b6;
+}
+
+.card-text {
+    min-height: 100px;
+}
+
+
 .passos h2 {
     font-size: 35px;
     font-weight: 700;

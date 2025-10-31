@@ -14,7 +14,6 @@ class Projeto extends CRUD
     private $faseDesenvolvimento;
     private $descricaoDetalhada;
 
-    // Getters e Setters
     public function setId($id)
     {
         $this->id = $id;
@@ -154,5 +153,49 @@ class Projeto extends CRUD
     public function lastInsertId()
     {
         return $this->db->lastInsertId();
+    }
+    public function searchAll()
+    {
+        $sql = "SELECT * FROM {$this->table}";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
+    }
+
+    public function listarRecentes($limite = 6)
+    {
+        $sql = "SELECT * FROM projetos ORDER BY id DESC LIMIT :limite";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindValue(":limite", (int) $limite, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
+    }
+    public function searchByFilters(?string $categoria, ?string $fase)
+    {
+        $conditions = [];
+        $params = [];
+
+        if ($categoria && $categoria != 'todas') {
+            $conditions[] = 'categoria = :categoria';
+            $params[':categoria'] = $categoria;
+        }
+
+        if ($fase && $fase != 'todas') {
+            $conditions[] = 'faseDesenvolvimento = :fase';
+            $params[':fase'] = $fase;
+        }
+
+        $sql = "SELECT * FROM {$this->table}";
+        if (count($conditions) > 0) {
+            $sql .= " WHERE " . implode(' AND ', $conditions);
+        }
+        $sql .= " ORDER BY id DESC";
+
+        $stmt = $this->db->prepare($sql);
+        foreach ($params as $key => $val) {
+            $stmt->bindValue($key, $val, PDO::PARAM_STR);
+        }
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
 }

@@ -5,8 +5,8 @@ if (session_status() === PHP_SESSION_NONE)
 <nav class="navbar">
     <a class="logo" href="index.php">InnovaMind</a>
     <ul class="main-nav">
-        <li><a href="index.php">Home</a></li>
-        <li><a href="projeto.php">Projetos</a></li>
+        <li><a href="home.php">Home</a></li>
+        <li><a href="projetos.php">Projetos</a></li>
         <li><a href="categorias.php">Categorias</a></li>
         <li><a href="impactos.php">Impactos</a></li>
     </ul>

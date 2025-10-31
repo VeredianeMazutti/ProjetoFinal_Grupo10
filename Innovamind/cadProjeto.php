@@ -57,25 +57,34 @@
 
             <div class="col-12">
                 <label for="categoria" class="form-label">Categoria do projeto</label>
-                <select name="categoria" class="form-select" id="categoria">
-                    <option selected>Selecione a Categoria</option>
-                    <option value="sustentabilidade" <?php echo ($projeto->categoria ?? '') == 'Sustentabilidade e Meio Ambiente' ? 'selected' : ''; ?>>Sustentabilidade e Meio Ambiente</option>
-                    <option value="educacao" <?php echo ($projeto->categoria ?? '') == 'Educação e Capacitação' ? 'selected' : ''; ?>>Educação e Capacitação</option>
-                    <option value="tecnologia" <?php echo ($projeto->categoria ?? '') == 'Tecnologia e Inovação' ? 'selected' : ''; ?>>Tecnologia e Inovação</option>
-                    <option value="impacto_social" <?php echo ($projeto->categoria ?? '') == 'Impacto Social e Comunidade' ? 'selected' : ''; ?>>Impacto Social e Comunidade</option>
-                    <option value="saude" <?php echo ($projeto->categoria ?? '') == 'Saúde e Bem-Estar' ? 'selected' : ''; ?>>Saúde e Bem-Estar</option>
-                    <option value="cultura" <?php echo ($projeto->categoria ?? '') == 'Cultura e Artes' ? 'selected' : ''; ?>>Cultura e Artes</option>
-                    <option value="empreendedorismo" <?php echo ($projeto->categoria ?? '') == 'Empreendedorismo e Negócios' ? 'selected' : ''; ?>>Empreendedorismo e Negócios</option>
-                    <option value="cidadania" <?php echo ($projeto->categoria ?? '') == 'Cidadania Global e Futuro' ? 'selected' : ''; ?>>Cidadania Global e Futuro</option>
-                    <option value="comunicacao" <?php echo ($projeto->categoria ?? '') == 'Comunicação e Mídia' ? 'selected' : ''; ?>>Comunicação e Mídia</option>
-                    <option value="economia" <?php echo ($projeto->categoria ?? '') == 'Economia e Mercado' ? 'selected' : ''; ?>>Economia e Mercado</option>
-                    <option value="ciencias" <?php echo ($projeto->categoria ?? '') == 'Ciências e Pesquisa' ? 'selected' : ''; ?>>Ciências e Pesquisa</option>
-                    <option value="entretenimento" <?php echo ($projeto->categoria ?? '') == 'Entretenimento e Experiências' ? 'selected' : ''; ?>>Entretenimento e Experiências</option>
-                    <option value="sociedade" <?php echo ($projeto->categoria ?? '') == 'Sociedade e Políticas' ? 'selected' : ''; ?>>Sociedade e Políticas</option>
-                    <option value="outras" <?php echo ($projeto->categoria ?? '') == 'Outras' ? 'selected' : ''; ?>>Outras
+                <select name="categoria" class="form-select" id="categoria" required>
+                    <option value="" disabled selected>Selecione a Categoria</option>
+                    <option value="sustentabilidade" <?= ($projeto->categoria ?? '') == 'sustentabilidade' ? 'selected' : '' ?>>Sustentabilidade e Meio Ambiente</option>
+                    <option value="educacao" <?= ($projeto->categoria ?? '') == 'educacao' ? 'selected' : '' ?>>Educação e
+                        Capacitação</option>
+                    <option value="tecnologia" <?= ($projeto->categoria ?? '') == 'tecnologia' ? 'selected' : '' ?>>
+                        Tecnologia e Inovação</option>
+                    <option value="impacto_social" <?= ($projeto->categoria ?? '') == 'impacto_social' ? 'selected' : '' ?>>Impacto Social e Comunidade</option>
+                    <option value="saude" <?= ($projeto->categoria ?? '') == 'saude' ? 'selected' : '' ?>>Saúde e Bem-Estar
                     </option>
+                    <option value="cultura" <?= ($projeto->categoria ?? '') == 'cultura' ? 'selected' : '' ?>>Cultura e
+                        Artes</option>
+                    <option value="empreendedorismo" <?= ($projeto->categoria ?? '') == 'empreendedorismo' ? 'selected' : '' ?>>Empreendedorismo e Negócios</option>
+                    <option value="cidadania" <?= ($projeto->categoria ?? '') == 'cidadania' ? 'selected' : '' ?>>Cidadania
+                        Global e Futuro</option>
+                    <option value="comunicacao" <?= ($projeto->categoria ?? '') == 'comunicacao' ? 'selected' : '' ?>>
+                        Comunicação e Mídia</option>
+                    <option value="economia" <?= ($projeto->categoria ?? '') == 'economia' ? 'selected' : '' ?>>Economia e
+                        Mercado</option>
+                    <option value="ciencias" <?= ($projeto->categoria ?? '') == 'ciencias' ? 'selected' : '' ?>>Ciências e
+                        Pesquisa</option>
+                    <option value="entretenimento" <?= ($projeto->categoria ?? '') == 'entretenimento' ? 'selected' : '' ?>>Entretenimento e Experiências</option>
+                    <option value="sociedade" <?= ($projeto->categoria ?? '') == 'sociedade' ? 'selected' : '' ?>>Sociedade
+                        e Políticas</option>
+                    <option value="outras" <?= ($projeto->categoria ?? '') == 'outras' ? 'selected' : '' ?>>Outras</option>
                 </select>
             </div>
+
 
             <div class="col-12">
                 <label for="breveDescricao" class="form-label">Breve Descrição do Projeto</label>
@@ -86,13 +95,16 @@
 
 
             <div class="col-12">
-                <label for="fase" class="form-label">Fase de Desenvolvimento</label>
-                <select name="faseDesenvolvimento" class="form-select" id="fase">
-                    <option selected>Selecione a Fase de Desenvolvimento</option>
-                    <option value="inicial" <?php echo ($projeto->faseDesenvolvimento ?? '') == 'Inicial' ? 'selected' : ''; ?>>Inicial</option>
-                    <option value="execucao" <?php echo ($projeto->faseDesenvolvimento ?? '') == 'Em execução' ? 'selected' : ''; ?>>Em execução</option>
+                <label for="faseDesenvolvimento" class="form-label">Fase de Desenvolvimento</label>
+                <select name="faseDesenvolvimento" class="form-select" id="faseDesenvolvimento" required>
+                    <option value="" disabled selected>Selecione a Fase de Desenvolvimento</option>
+                    <option value="ideia" <?= ($projeto->faseDesenvolvimento ?? '') == 'ideia' ? 'selected' : '' ?>>Ideia</option>
+                    <option value="planejamento" <?= ($projeto->faseDesenvolvimento ?? '') == 'planejamento' ? 'selected' : '' ?>>Planejamento</option>
+                    <option value="em_andamento" <?= ($projeto->faseDesenvolvimento ?? '') == 'em_andamento' ? 'selected' : '' ?>>Em andamento</option>
+                    <option value="concluido" <?= ($projeto->faseDesenvolvimento ?? '') == 'concluido' ? 'selected' : '' ?>>Concluído</option>
                 </select>
             </div>
+
 
             <div class="col-12">
                 <label for="contribuicao" class="form-label">Qual contribuição é necessária?</label>
