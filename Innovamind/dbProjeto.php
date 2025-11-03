@@ -1,8 +1,8 @@
 <?php
-session_start(); 
+session_start();
 
 spl_autoload_register(function ($class) {
- require_once __DIR__ . "/Classes/{$class}.class.php";
+    require_once __DIR__ . "/Classes/{$class}.class.php";
 });
 
 $Projeto = new Projeto();
@@ -21,7 +21,7 @@ if (filter_has_var(INPUT_POST, "btnGravar")):
 
     $Projeto->setFkUsuario($_SESSION['idUsuario']);
 
-    if (empty($id)): 
+    if (empty($id)):
         if ($Projeto->add()) {
             $idNovoProjeto = $Projeto->lastInsertId();
             echo "<script>
@@ -34,7 +34,7 @@ if (filter_has_var(INPUT_POST, "btnGravar")):
                 window.open(document.referrer,'_self');
             </script>";
         }
-    else: 
+    else:
         if ($Projeto->update('id', $id)) {
             echo "<script>
                 alert('Projeto alterado com sucesso.');

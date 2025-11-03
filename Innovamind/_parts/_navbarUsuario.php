@@ -7,7 +7,7 @@ if (session_status() === PHP_SESSION_NONE)
     <ul class="main-nav">
         <li><a href="home.php">Home</a></li>
         <li><a href="projetos.php">Projetos</a></li>
-        <li><a href="categorias.php">Categorias</a></li>
+        <li><a href="educaCoop.php">EducaCoop</a></li>
         <li><a href="impactos.php">Impactos</a></li>
     </ul>
     <div class="nav-actions">

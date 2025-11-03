@@ -9,7 +9,7 @@ final class Database
     {
 
         try {
-$config = parse_ini_file(dirname(__DIR__) . '/config.ini', true)['database'];
+            $config = parse_ini_file(dirname(__DIR__) . '/config.ini', true)['database'];
 
             $dsn = '';
             if ($config['driver'] === 'mysql') {

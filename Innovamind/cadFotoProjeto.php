@@ -10,7 +10,7 @@ if ($idProjeto) {
     $resultado = $p->search("id", $idProjeto);
 
     if ($resultado && count($resultado) > 0) {
-        $projeto = $resultado[0]; 
+        $projeto = $resultado[0];
     } else {
         echo "<script>alert('Projeto não encontrado');window.location.href='meusProjetos.php';</script>";
         exit;
@@ -51,7 +51,7 @@ if ($idFoto) {
 </head>
 
 <body>
-     <navbar>
+    <navbar>
         <?php require_once "_parts/_navbarUsuario.php"; ?>
     </navbar>
 
@@ -86,7 +86,7 @@ if ($idFoto) {
             <a href="fotoProjeto.php?idProjeto=<?= $projeto->id ?>" class="btn btn-secondary">Voltar</a>
         </form>
     </main>
-     <footer>
+    <footer>
         <?php require_once "_parts/_footer.php"; ?>
     </footer>
 </body>

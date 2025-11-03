@@ -9,7 +9,7 @@ abstract class CRUD
     {
         $this->db = Database::getInstance()->getConnection();
     }
-
+    
     abstract public function add();
     abstract public function update(string $campo, int $id);
     public function all()

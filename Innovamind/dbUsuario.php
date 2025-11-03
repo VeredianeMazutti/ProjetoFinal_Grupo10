@@ -24,11 +24,11 @@ if (filter_has_var(INPUT_POST, 'btnLogar')) {
             session_regenerate_id(true);
 
             if ($u->perfil === 'admin') {
-                header("Location: projetos.php"); 
+                header("Location: projetos.php");
             } elseif ($u->perfil === 'usuario') {
-                header("Location: meusProjetos.php"); 
+                header("Location: meusProjetos.php");
             } else {
-                header("Location: index.php"); 
+                header("Location: index.php");
             }
             exit;
         }

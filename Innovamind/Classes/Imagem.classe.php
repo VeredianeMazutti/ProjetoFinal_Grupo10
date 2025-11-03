@@ -1,22 +1,25 @@
 <?php
-class Imagem {
+class Imagem
+{
     private $prefixo;
     private $uploadDir;
     private $maxSize;
     private $allowed;
 
-    public function __construct($prefixo = 'img_') {
+    public function __construct($prefixo = 'img_')
+    {
         $this->prefixo = $prefixo;
         $this->uploadDir = __DIR__ . 'uploads';
         $this->maxSize = 2 * 1024 * 1024; // 2MB
-        $this->allowed = ['image/jpeg','image/png','image/gif','image/webp'];
+        $this->allowed = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
 
         if (!is_dir($this->uploadDir)) {
             mkdir($this->uploadDir, 0755, true);
         }
     }
 
-    public function upload(array $file) {
+    public function upload(array $file)
+    {
         if ($file['error'] !== UPLOAD_ERR_OK) {
             throw new Exception('Erro no upload: ' . $file['error']);
         }

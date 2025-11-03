@@ -162,6 +162,115 @@
     max-width: 500px;
 }
 
+
+.timeline {
+    position: relative;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+.linha-central {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(to bottom, #c6aae0, #a98ac2);
+    border-radius: 2px;
+    z-index: 0;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 60px;
+    min-height: 120px;
+    z-index: 1;
+}
+
+.timeline-texto {
+    padding: 25px;
+}
+
+.bolinha {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30px;
+    height: 30px;
+    background: #a855f7;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 2;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.8);
+}
+
+.bolinha:hover {
+    transform: translate(-50%, -50%) scale(1.2);
+    box-shadow: 0 0 15px rgba(168, 85, 247, 0.7);
+}
+
+.bolinha::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 50px;
+    height: 50px;
+    border: 2px solid #a855f7;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 15px rgba(168, 85, 247, 0.6);
+    z-index: 1;
+}
+
+.linha-central {
+    width: 6px;
+    background: linear-gradient(to bottom, #c084fc, #7e22ce);
+    box-shadow: 0 0 12px rgba(192, 132, 252, 0.5);
+}
+
+
+.nav-tabs .nav-link.active {
+    background-color: #7c3aed;
+    color: white !important;
+    font-weight: 500;
+}
+
+.nav-tabs .nav-link {
+    color: #7c3aed;
+    border-radius: 0.25rem 0.25rem 0 0;
+}
+
+
+.btn-outline-purple {
+    color: #7c3aed;
+    border: 1px solid #7c3aed;
+}
+
+.btn-outline-purple:hover {
+    background-color: #7c3aed;
+    color: white;
+}
+
+.text-purple {
+    color: #7c3aed;
+}
+
+@media (max-width: 768px) {
+    .timeline-item {
+        margin-bottom: 40px;
+    }
+
+    .bolinha {
+        width: 25px;
+        height: 25px;
+    }
+}
+
 @media (max-width: 992px) {
     .titulo-principal {
         font-size: 2rem;

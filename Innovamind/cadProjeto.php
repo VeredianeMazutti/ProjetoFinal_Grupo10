@@ -98,7 +98,8 @@
                 <label for="faseDesenvolvimento" class="form-label">Fase de Desenvolvimento</label>
                 <select name="faseDesenvolvimento" class="form-select" id="faseDesenvolvimento" required>
                     <option value="" disabled selected>Selecione a Fase de Desenvolvimento</option>
-                    <option value="ideia" <?= ($projeto->faseDesenvolvimento ?? '') == 'ideia' ? 'selected' : '' ?>>Ideia</option>
+                    <option value="ideia" <?= ($projeto->faseDesenvolvimento ?? '') == 'ideia' ? 'selected' : '' ?>>Ideia
+                    </option>
                     <option value="planejamento" <?= ($projeto->faseDesenvolvimento ?? '') == 'planejamento' ? 'selected' : '' ?>>Planejamento</option>
                     <option value="em_andamento" <?= ($projeto->faseDesenvolvimento ?? '') == 'em_andamento' ? 'selected' : '' ?>>Em andamento</option>
                     <option value="concluido" <?= ($projeto->faseDesenvolvimento ?? '') == 'concluido' ? 'selected' : '' ?>>Concluído</option>
