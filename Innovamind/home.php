@@ -13,7 +13,7 @@
 
 <body>
     <nav>
-        <?php require_once "_parts/_navbarVisitante.php"; ?>
+        <?php require_once "_parts/_navbar.php"; ?>
     </nav>
 
     <main class="container my-5">
@@ -84,7 +84,7 @@
 
         <section class="projetos-destaque text-light py-5">
             <div class="container">
-                <h2 class="titulo-linhas mb-4">Projetos e Ideias em Destaque</h2>
+                <h2 class="titulo-linhas mb-4">Projetos e Ideias Recentes</h2>
 
                 <div class="row g-4">
                     <?php
@@ -125,8 +125,7 @@
                                     <p class="card-text text-light small">
                                         <?php echo htmlspecialchars(substr($proj->breveDescricao, 0, 300)); ?>
                                     </p>
-                                    <a href="projeto.php?id=<?php echo $idProj; ?>" class="btn btn-produto mt-2">Saiba mais
-                                        e Colabore</a>
+                                    <a href="projetoDetalhes.php?id=<?php echo $idProj; ?>" class="btn btn-produto mt-2">Saiba mais e Colabore</a>
                                 </div>
                             </div>
                         </div>

@@ -26,7 +26,7 @@ $fotos = $f->fotosProjeto($projeto->id);
 
 <body>
     <navbar>
-        <?php require_once "_parts/_navbarUsuario.php"; ?>
+        <?php require_once "_parts/_navbar.php"; ?>
     </navbar>
 
     <main class="container my-5">

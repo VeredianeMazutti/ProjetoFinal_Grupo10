@@ -66,7 +66,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 <body>
     <navbar>
-        <?php require_once "_parts/_navbarAdmin.php"; ?>
+        <?php require_once "_parts/_navbar.php"; ?>
     </navbar>
 
     <main class="container mt-3">

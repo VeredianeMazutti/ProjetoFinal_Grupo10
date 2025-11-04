@@ -1,5 +1,4 @@
 <?php require_once __DIR__ . "/verifica_acesso.php"; ?>
-<?php require_once "_parts/_navbarAdmin.php"; ?>
 
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -17,7 +16,7 @@
 
 <body>
     <navbar>
-        <?php require_once "_parts/_navbarAdmin.php"; ?>
+        <?php require_once "_parts/_navbar.php"; ?>
     </navbar>
 
     <main class="container mt-3">

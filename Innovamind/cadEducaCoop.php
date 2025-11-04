@@ -11,7 +11,7 @@
 
 <body>
     <nav>
-        <?php require_once "_parts/_navbarAdmin.php"; ?>
+        <?php require_once "_parts/_navbar.php"; ?>
     </nav>
 
     <main class="container my-5">

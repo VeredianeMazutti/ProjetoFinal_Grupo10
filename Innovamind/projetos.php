@@ -30,7 +30,7 @@ if (($categoriaSelecionada && $categoriaSelecionada != 'todas') || ($faseSelecio
 
 <body>
     <nav>
-        <?php require_once "_parts/_navbarVisitante.php"; ?>
+        <?php require_once "_parts/_navbar.php"; ?>
     </nav>
 
     <main class="container my-5">

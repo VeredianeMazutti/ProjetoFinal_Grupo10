@@ -1,6 +1,4 @@
 <?php require_once __DIR__ . "/verifica_acesso.php"; ?>
-<?php require_once "_parts/_navbarUsuario.php"; ?>
-
 
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -15,6 +13,10 @@
 </head>
 
 <body>
+    <navbar>
+        <?php require_once "_parts/_navbar.php"; ?>
+    </navbar>
+
     <main class="container mt-4">
         <?php
         spl_autoload_register(function ($class) {

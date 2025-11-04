@@ -5,7 +5,6 @@ spl_autoload_register(function ($class) {
     require_once __DIR__ . "/Classes/{$class}.class.php";
 });
 
-// ==== Validações básicas ====
 $idTrilha = filter_input(INPUT_GET, 'id_trilha', FILTER_VALIDATE_INT);
 $nota = filter_input(INPUT_GET, 'nota', FILTER_VALIDATE_INT);
 $usuario = $_SESSION['nomeUsuario'] ?? null;

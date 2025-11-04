@@ -41,7 +41,7 @@ $fotos = $FotoProjeto->fotosProjeto($id);
 
 <body class="text-light">
     <nav>
-        <?php require_once "_parts/_navbarVisitante.php"; ?>
+        <?php require_once "_parts/_navbar.php"; ?>
     </nav>
 
     <main class="container py-5">

@@ -13,7 +13,7 @@
 
 <body class="text-light">
     <nav>
-        <?php require_once "_parts/_navbarUsuario.php"; ?>
+        <?php require_once "_parts/_navbar.php"; ?>
     </nav>
 
     <main class="container my-5">

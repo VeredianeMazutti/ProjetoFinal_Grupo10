@@ -8,10 +8,7 @@ $Usuario = new Usuario();
 if (filter_has_var(INPUT_POST, 'btnLogar')) {
     $login = trim(filter_input(INPUT_POST, 'email', FILTER_SANITIZE_STRING));
     $senha = filter_input(INPUT_POST, 'senha', FILTER_SANITIZE_STRING);
-
-    $resultado = $Usuario->search('nomeExibicao', $login);
-    if (empty($resultado))
-        $resultado = $Usuario->search('email', $login);
+    $resultado = $Usuario->search('email', $login);
 
     if (!empty($resultado)) {
         $u = $resultado[0];

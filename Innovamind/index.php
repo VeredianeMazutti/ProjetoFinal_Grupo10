@@ -38,7 +38,7 @@ session_start();
 
             <h1>Bem-vindo, visitante!</h1>
             <p>Faça login para acessar funcionalidades.</p>
-            <a href="cadLogin.php" class="btn btn-primary">Login / Cadastro</a>
+            <a href="login.php" class="btn btn-primary">Login / Cadastro</a>
 
         <?php endif; ?>
 

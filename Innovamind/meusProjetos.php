@@ -1,6 +1,5 @@
 <?php
 require_once __DIR__ . "/verifica_acesso.php";
-require_once "_parts/_navbarUsuario.php";
 
 spl_autoload_register(function ($class) {
     require_once __DIR__ . "/Classes/{$class}.class.php";
@@ -24,6 +23,10 @@ $meusProjetos = $p->search("fk_usuario", $idUsuario);
 </head>
 
 <body>
+    <navbar>
+        <?php require_once "_parts/_navbar.php"; ?>
+    </navbar>
+    
     <main class="container mt-3">
         <div class="mt-5">
             <h3>Meus Projetos</h3>

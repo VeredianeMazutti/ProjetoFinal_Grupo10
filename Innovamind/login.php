@@ -12,7 +12,7 @@
 
 <body>
      <navbar>
-        <?php require_once "_parts/_navbarVisitante.php"; ?>
+        <?php require_once "_parts/_navbar.php"; ?>
     </navbar>
 
     <div class="flex-grow-1 d-flex justify-content-center align-items-center my-5">

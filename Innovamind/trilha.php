@@ -23,12 +23,11 @@ if (!$trilha) {
     <title><?= htmlspecialchars($trilha->titulo); ?> - Trilha de Aprendizado</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="CSS/baseSite.css">
-    <link rel="stylesheet" href="CSS/trilha.css">
 </head>
 
 <body>
     <nav>
-        <?php require_once "_parts/_navbarVisitante.php"; ?>
+        <?php require_once "_parts/_navbar.php"; ?>
     </nav>
 
     <main class="container my-5">

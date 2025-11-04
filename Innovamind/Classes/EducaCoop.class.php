@@ -294,7 +294,7 @@ class EducaCoop extends CRUD
         return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
 
-    public function gerarCertificadoManual($nomeAluno)
+    public function gerarCertificadoAutomatico($nomeAluno)
     {
         require_once __DIR__ . '/fpdf.php';
 
@@ -323,14 +323,7 @@ class EducaCoop extends CRUD
         $pdf->Output('F', $arquivoFisico);
         return 'certificados/' . $arquivoNome;
     }
-    public function gerarCertificadoAutomatico($nomeAluno)
-    {
-        if ($this->gerarCertificado) {
-            return $this->gerarCertificadoManual($nomeAluno);
-        }
 
-        return false;
-    }
     public function listAll($condicao = null)
     {
         $sql = "SELECT * FROM {$this->table}";

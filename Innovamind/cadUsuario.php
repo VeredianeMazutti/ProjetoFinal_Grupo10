@@ -12,7 +12,7 @@
 
 <body>
     <navbar>
-        <?php require_once "_parts/_navbarVisitante.php"; ?>
+        <?php require_once "_parts/_navbar.php"; ?>
     </navbar>
 
     <main class="container my-5">
