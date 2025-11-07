@@ -51,7 +51,7 @@ if (filter_has_var(INPUT_POST, "btnGravar")):
 elseif (filter_has_var(INPUT_POST, "btnDeletar")):
     $id = intval(filter_input(INPUT_POST, "id"));
     if ($Projeto->delete("id", $id)) {
-        header("location: projeto.php");
+        header("location: meusProjetos.php");
     } else {
         echo "<script>
             alert('Erro ao excluir');

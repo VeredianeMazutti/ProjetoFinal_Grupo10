@@ -35,11 +35,11 @@
                         </h1>
 
                         <p class="subtitulo">
-                            Compartilhe seus projetos, ajude projetos e ajude a construir o futuro com a gente.
+                            Compartilhe seus projetos, colabore com projetos e ajude a construir o futuro com a gente.
                         </p>
                     </div>
                     <div class="col-lg-6 text-center">
-                        <img src="images/Innovamind.png" class="img-fluid" alt="Inovação">
+                        <img src="images/InnovamindInicial.png" class="img-fluid" alt="Inovação">
                     </div>
                 </div>
             </div>
@@ -47,14 +47,14 @@
 
         <section class="pilares text-light py-5">
             <div class="container text-center">
-                <h2 class="titulo-linhas">Três pilares que fazem a diferença</h2>
+                <h2 class="titulo-pilares">Três pilares que fazem a diferença</h2>
 
                 <div class="row g-4">
                     <div class="col-md-4">
                         <div class="pillar-card p-4 h-100">
                             <i class="bi bi-globe fs-1 mb-3"></i>
-                            <h5>Conexão de Ideias</h5>
-                            <p>A InnovaMind une pessoas, instituições e empresas
+                            <h5 class="titulo-pilar">Conexão de Ideias</h5>
+                            <p class="texto-pilar">A InnovaMind une pessoas, instituições e empresas
                                 em uma rede global de inovação colaborativa.
                                 Aqui, cada ideia tem espaço para crescer com apoio coletivo.</p>
                         </div>
@@ -62,8 +62,8 @@
                     <div class="col-md-4">
                         <div class="pillar-card p-4 h-100">
                             <i class="bi bi-lightbulb fs-1 mb-3"></i>
-                            <h5>Transformar Projetos</h5>
-                            <p>De simples conceitos a soluções aplicáveis:
+                            <h5 class="titulo-pilar">Transformar Projetos</h5>
+                            <p class="texto-pilar">De simples conceitos a soluções aplicáveis:
                                 projetos ganham visibilidade,
                                 recebem suporte técnico e financeiro,
                                 e tornam-se realidade com impacto social.</p>
@@ -72,9 +72,9 @@
                     <div class="col-md-4">
                         <div class="pillar-card p-4 h-100">
                             <i class="bi bi-people fs-1 mb-3"></i>
-                            <h5>Força Coletiva</h5>
-                            <p>Empresas, profissionais e comunidade apoiam iniciativas
-                                e recebem reconhecimento.Juntos, criamos soluções
+                            <h5 class="titulo-pilar">Força Coletiva</h5>
+                            <p class="texto-pilar">Empresas, profissionais e comunidade apoiam iniciativas
+                                e recebem reconhecimento. Juntos, criamos soluções
                                 criativas e sustentáveis para o futuro.</p>
                         </div>
                     </div>
@@ -82,9 +82,9 @@
             </div>
         </section>
 
-        <section class="projetos-destaque text-light py-5">
+        <section class="projetos-destaque text-light">
             <div class="container">
-                <h2 class="titulo-linhas mb-4">Projetos e Ideias Recentes</h2>
+                <h2 class="titulo-projetosrecentes my-5">Projetos e Ideias Recentes</h2>
 
                 <div class="row g-4">
                     <?php
@@ -94,9 +94,7 @@
                     $Projeto = new Projeto();
                     $FotoProjeto = new FotoProjeto();
 
-                    // Busca os projetos mais recentes 
                     $projetosRecentes = $Projeto->listarRecentes(9);
-
                     foreach ($projetosRecentes as $proj):
                         $idProj = intval($proj->id);
                         $fotos = $FotoProjeto->fotosProjeto($idProj);
@@ -119,13 +117,13 @@
                                 </div>
 
                                 <div class="card-body text-center p-3">
-                                    <h5 class="card-title text-uppercase roxo">
+                                    <h5 class="titulo-projeto">
                                         <?php echo htmlspecialchars($proj->nomeProjeto); ?>
                                     </h5>
-                                    <p class="card-text text-light small">
-                                        <?php echo htmlspecialchars(substr($proj->breveDescricao, 0, 300)); ?>
+                                    <p class="descricao-projeto">
+                                        <?php echo htmlspecialchars(substr($proj->breveDescricao, 0, 250)); ?>
                                     </p>
-                                    <a href="projetoDetalhes.php?id=<?php echo $idProj; ?>" class="btn btn-produto mt-2">Saiba mais e Colabore</a>
+                                    <a href="projetoDetalhes.php?id=<?php echo $idProj; ?>" class="btn btn-projeto mt-2">Saiba mais e Colabore</a>
                                 </div>
                             </div>
                         </div>
@@ -133,7 +131,6 @@
                 </div>
             </div>
         </section>
-
 
         <section class="passos text-light py-5">
             <div class="container d-flex align-items-center justify-content-between flex-wrap">
