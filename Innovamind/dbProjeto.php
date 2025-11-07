@@ -12,12 +12,16 @@ if (filter_has_var(INPUT_POST, "btnGravar")):
 
     $Projeto->setNomeProjeto(filter_input(INPUT_POST, "nomeProjeto", FILTER_SANITIZE_STRING));
     $Projeto->setNomeResponsavel(filter_input(INPUT_POST, "nomeResponsavel", FILTER_SANITIZE_STRING));
-    $Projeto->setContato(filter_input(INPUT_POST, "contato", FILTER_SANITIZE_STRING));
+    $Projeto->setNomeColaboradores(filter_input(INPUT_POST, "nomeColaboradores", FILTER_SANITIZE_STRING));
+    $Projeto->setNomeInstituicao(filter_input(INPUT_POST, "nomeInstituicao", FILTER_SANITIZE_STRING));
+    $Projeto->setEmailProjeto(filter_input(INPUT_POST, "emailProjeto", FILTER_SANITIZE_STRING));
+    $Projeto->setLocalizacaoEstado(filter_input(INPUT_POST, "localizacaoEstado", FILTER_SANITIZE_STRING));
     $Projeto->setCategoria(filter_input(INPUT_POST, "categoria", FILTER_SANITIZE_STRING));
     $Projeto->setBreveDescricao(filter_input(INPUT_POST, "breveDescricao", FILTER_SANITIZE_STRING));
-    $Projeto->setContribuicao(filter_input(INPUT_POST, "contribuicao", FILTER_SANITIZE_STRING));
     $Projeto->setFaseDesenvolvimento(filter_input(INPUT_POST, "faseDesenvolvimento", FILTER_SANITIZE_STRING));
+    $Projeto->setContribuicao(filter_input(INPUT_POST, "contribuicao", FILTER_SANITIZE_STRING));
     $Projeto->setDescricaoDetalhada(filter_input(INPUT_POST, "descricaoDetalhada", FILTER_SANITIZE_STRING));
+    $Projeto->setlinksProjeto(filter_input(INPUT_POST, "linksProjeto", FILTER_SANITIZE_STRING));
 
     $Projeto->setFkUsuario($_SESSION['idUsuario']);
 
@@ -38,7 +42,7 @@ if (filter_has_var(INPUT_POST, "btnGravar")):
         if ($Projeto->update('id', $id)) {
             echo "<script>
                 alert('Projeto alterado com sucesso.');
-                window.location.href='projeto.php';
+                window.location.href='meusProjetos.php';
             </script>";
         } else {
             echo "<script>

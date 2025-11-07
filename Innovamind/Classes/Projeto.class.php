@@ -7,12 +7,16 @@ class Projeto extends CRUD
     private $fk_usuario;
     private $nomeProjeto;
     private $nomeResponsavel;
-    private $contato;
+    private $nomeColaboradores;
+    private $nomeInstituicao;
+    private $emailProjeto;
+    private $localizacaoEstado;
     private $categoria;
     private $breveDescricao;
-    private $contribuicao;
     private $faseDesenvolvimento;
+    private $contribuicao;
     private $descricaoDetalhada;
+    private $linksProjeto;
 
     public function setId($id)
     {
@@ -48,14 +52,39 @@ class Projeto extends CRUD
     {
         return $this->nomeResponsavel;
     }
-
-    public function setContato($contato)
+      public function setNomeColaboradores($nomeColaboradores)
     {
-        $this->contato = $contato;
+        $this->nomeColaboradores = $nomeColaboradores;
     }
-    public function getContato()
+    public function getNomeColaboradores()
     {
-        return $this->contato;
+        return $this->nomeColaboradores;
+    }
+
+       public function setNomeInstituicao($nomeInstituicao)
+    {
+        $this->nomeInstituicao = $nomeInstituicao;
+    }
+    public function getNomeInstituicao()
+    {
+        return $this->nomeInstituicao;
+    }
+
+    public function setEmailProjeto($emailProjeto)
+    {
+        $this->emailProjeto = $emailProjeto;
+    }
+    public function getEmailProjeto()
+    {
+        return $this->emailProjeto;
+    }
+     public function setLocalizacaoEstado($localizacaoEstado)
+    {
+        $this->localizacaoEstado = $localizacaoEstado;
+    }
+    public function getLocalizacaoEstado()
+    {
+        return $this->localizacaoEstado;
     }
 
     public function setCategoria($categoria)
@@ -76,15 +105,6 @@ class Projeto extends CRUD
         return $this->breveDescricao;
     }
 
-    public function setContribuicao($contribuicao)
-    {
-        $this->contribuicao = $contribuicao;
-    }
-    public function getContribuicao()
-    {
-        return $this->contribuicao;
-    }
-
     public function setFaseDesenvolvimento($faseDesenvolvimento)
     {
         $this->faseDesenvolvimento = $faseDesenvolvimento;
@@ -92,6 +112,15 @@ class Projeto extends CRUD
     public function getFaseDesenvolvimento()
     {
         return $this->faseDesenvolvimento;
+    }
+
+    public function setContribuicao($contribuicao)
+    {
+        $this->contribuicao = $contribuicao;
+    }
+    public function getContribuicao()
+    {
+        return $this->contribuicao;
     }
 
     public function setDescricaoDetalhada($descricaoDetalhada)
@@ -102,25 +131,36 @@ class Projeto extends CRUD
     {
         return $this->descricaoDetalhada;
     }
+     public function setLinksProjeto($linksProjeto)
+    {
+        $this->linksProjeto = $linksProjeto;
+    }
+    public function getLinksProjeto()
+    {
+        return $this->linksProjeto;
+    }
 
     public function add()
     {
         $sql = "INSERT INTO $this->table 
-                (fk_usuario, nomeProjeto, nomeResponsavel, contato, categoria, breveDescricao, faseDesenvolvimento, contribuicao, descricaoDetalhada) 
+                (fk_usuario, nomeProjeto, nomeResponsavel, nomeColaboradores, nomeInstituicao, emailProjeto, localizacaoEstado, categoria, breveDescricao, faseDesenvolvimento, contribuicao, descricaoDetalhada, linksProjeto) 
                 VALUES 
-                (:fk_usuario, :nomeProjeto, :nomeResponsavel, :contato, :categoria, :breveDescricao, :faseDesenvolvimento, :contribuicao, :descricaoDetalhada)";
+                (:fk_usuario, :nomeProjeto, :nomeResponsavel, :nomeColaboradores, :nomeInstituicao, :emailProjeto, :localizacaoEstado,  :categoria, :breveDescricao, :faseDesenvolvimento, :contribuicao, :descricaoDetalhada, :linksProjeto)";
 
         $stmt = $this->db->prepare($sql);
         $stmt->bindParam(':fk_usuario', $this->fk_usuario, PDO::PARAM_INT);
         $stmt->bindParam(':nomeProjeto', $this->nomeProjeto, PDO::PARAM_STR);
         $stmt->bindParam(':nomeResponsavel', $this->nomeResponsavel, PDO::PARAM_STR);
-        $stmt->bindParam(':contato', $this->contato, PDO::PARAM_STR);
+        $stmt->bindParam(':nomeColaboradores', $this->nomeColaboradores, PDO::PARAM_STR);
+        $stmt->bindParam(':nomeInstituicao', $this->nomeInstituicao, PDO::PARAM_STR);
+        $stmt->bindParam(':emailProjeto', $this->emailProjeto, PDO::PARAM_STR);
+        $stmt->bindParam(':localizacaoEstado', $this->localizacaoEstado, PDO::PARAM_STR);
         $stmt->bindParam(':categoria', $this->categoria, PDO::PARAM_STR);
         $stmt->bindParam(':breveDescricao', $this->breveDescricao, PDO::PARAM_STR);
         $stmt->bindParam(':faseDesenvolvimento', $this->faseDesenvolvimento, PDO::PARAM_STR);
         $stmt->bindParam(':contribuicao', $this->contribuicao, PDO::PARAM_STR);
         $stmt->bindParam(':descricaoDetalhada', $this->descricaoDetalhada, PDO::PARAM_STR);
-
+        $stmt->bindParam(':linksProjeto', $this->linksProjeto, PDO::PARAM_STR);
         return $stmt->execute();
     }
 
@@ -129,23 +169,31 @@ class Projeto extends CRUD
         $sql = "UPDATE $this->table SET 
                     nomeProjeto = :nomeProjeto, 
                     nomeResponsavel = :nomeResponsavel, 
-                    contato = :contato, 
+                    nomeColaboradores = :nomeColaboradores,
+                    nomeInstituicao = :nomeInstituicao,
+                    emailProjeto = :emailProjeto, 
+                    localizacaoEstado = :localizacaoEstado,
                     categoria = :categoria, 
                     breveDescricao = :breveDescricao, 
                     faseDesenvolvimento = :faseDesenvolvimento, 
                     contribuicao = :contribuicao, 
-                    descricaoDetalhada = :descricaoDetalhada
+                    descricaoDetalhada = :descricaoDetalhada,
+                    linksProjeto = :linksProjeto
                 WHERE $campo = :id";
 
         $stmt = $this->db->prepare($sql);
         $stmt->bindParam(':nomeProjeto', $this->nomeProjeto, PDO::PARAM_STR);
         $stmt->bindParam(':nomeResponsavel', $this->nomeResponsavel, PDO::PARAM_STR);
-        $stmt->bindParam(':contato', $this->contato, PDO::PARAM_STR);
+        $stmt->bindParam(':nomeColaboradores', $this->nomeColaboradores, PDO::PARAM_STR);
+        $stmt->bindParam(':nomeInstituicao', $this->nomeInstituicao, PDO::PARAM_STR);
+        $stmt->bindParam(':emailProjeto', $this->emailProjeto, PDO::PARAM_STR);
+        $stmt->bindParam(':localizacaoEstado', $this->localizacaoEstado, PDO::PARAM_STR);
         $stmt->bindParam(':categoria', $this->categoria, PDO::PARAM_STR);
         $stmt->bindParam(':breveDescricao', $this->breveDescricao, PDO::PARAM_STR);
         $stmt->bindParam(':faseDesenvolvimento', $this->faseDesenvolvimento, PDO::PARAM_STR);
         $stmt->bindParam(':contribuicao', $this->contribuicao, PDO::PARAM_STR);
         $stmt->bindParam(':descricaoDetalhada', $this->descricaoDetalhada, PDO::PARAM_STR);
+        $stmt->bindParam(':linksProjeto', $this->linksProjeto, PDO::PARAM_STR);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
 
         return $stmt->execute();

@@ -52,9 +52,31 @@
             </div>
 
             <div class="col-12">
-                <label for="contato" class="form-label">Meio de Contato</label>
-                <input type="text" name="contato" id="contato" placeholder="Digite um meio de contato" required
-                    class="form-control" value="<?php echo $projeto->contato ?? ''; ?>">
+                <label for="nomeColaboradores" class="form-label">Nome dos Colaboradores e a Respectiva Área de
+                    Atuação</label>
+                <textarea name="nomeColaboradores" id="nomeColaboradores"
+                    placeholder="Digite o nome dos colaboradores e a área de atuação, se houver" required
+                    class="form-control"><?php echo $projeto->nomeColaboradores ?? ''; ?></textarea>
+            </div>
+
+            <div class="col-12">
+                <label for="nomeInstituicao" class="form-label">Nome da Instituição Responsável</label>
+                <input type="text" name="nomeInstituicao" id="nomeInstituicao"
+                    placeholder="Digite o nome da Instituição responsável, se houver" required class="form-control"
+                    value="<?php echo $projeto->nomeInstituicao ?? ''; ?>">
+            </div>
+
+            <div class="col-12">
+                <label for="emailProjeto" class="form-label">Digite o E-mail para Contato</label>
+                <input type="text" name="emailProjeto" id="emailProjeto" placeholder="Digite um e-mail para contato"
+                    required class="form-control" value="<?php echo $projeto->emailProjeto ?? ''; ?>">
+            </div>
+
+            <div class="col-12">
+                <label for="localizacaoEstado" class="form-label">Estado de desenvolvimento do projeto</label>
+                <input type="text" name="localizacaoEstado" id="localizacaoEstado"
+                    placeholder="Digite o nome do estado de desenvolvimento do projeto" required class="form-control"
+                    value="<?php echo $projeto->localizacaoEstado ?? ''; ?>">
             </div>
 
             <div class="col-12">
@@ -87,14 +109,12 @@
                 </select>
             </div>
 
-
             <div class="col-12">
                 <label for="breveDescricao" class="form-label">Breve Descrição do Projeto</label>
-                <textarea name="breveDescricao" id="descricaoBreve"
+                <textarea name="breveDescricao" id="breveDescricao"
                     placeholder="Digite uma descrição de no máximo 250 caracteres" required class="form-control"
-                    maxlength="250"><?php echo $projeto->descricaoBreve ?? ''; ?></textarea>
+                    maxlength="250"><?php echo $projeto->breveDescricao ?? ''; ?></textarea>
             </div>
-
 
             <div class="col-12">
                 <label for="faseDesenvolvimento" class="form-label">Fase de Desenvolvimento</label>
@@ -108,20 +128,25 @@
                 </select>
             </div>
 
-
             <div class="col-12">
                 <label for="contribuicao" class="form-label">Qual contribuição é necessária?</label>
                 <textarea name="contribuicao" id="contribuicoes" placeholder="Digite a contribuição necessária" required
-                    class="form-control"><?php echo $projeto->contato ?? ''; ?></textarea>
+                    class="form-control"><?php echo $projeto->contribuicao ?? ''; ?></textarea>
             </div>
 
             <div class="col-12">
                 <label for="descricaoDetalhada" class="form-label">Descrição mais detalhada sobre o Projeto</label>
                 <textarea name="descricaoDetalhada" id="descricaoDetalhada"
                     placeholder="Digite uma descrição mais detalhada" required
-                    class="form-control"><?php echo $projeto->contato ?? ''; ?></textarea>
+                    class="form-control"><?php echo $projeto->descricaoDetalhada ?? ''; ?></textarea>
             </div>
 
+            <div class="col-12">
+                <label for="linksProjeto" class="form-label">Links do Projeto</label>
+                <textarea name="linksProjeto" id="linksProjeto"
+                    placeholder="Adicione os links relacionados ao projeto, como Instagram, Figma, GitHub ou outros, se houver."
+                    required class="form-control"><?php echo $projeto->linksProjeto ?? ''; ?></textarea>
+            </div>
 
             <div class="col-12 mt-3 mb-5">
                 <button type="submit" name="btnGravar" class="btn btn-dark">Salvar</button>
