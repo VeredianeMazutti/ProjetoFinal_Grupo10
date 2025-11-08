@@ -2,35 +2,51 @@
 if (session_status() === PHP_SESSION_NONE)
     session_start();
 
-$perfil = $_SESSION['perfil'] ?? 'visitante'; 
+$perfil = $_SESSION['perfil'] ?? 'visitante';
+$current = basename($_SERVER['PHP_SELF']);
 ?>
 
-<nav class="navbar">
-    <a class="logo" href="index.php">InnovaMind</a>
+<nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+        <a class="logo" href="index.php">InnovaMind</a>
 
-    <ul class="main-nav">
-        <li><a href="home.php">Home</a></li>
-        <li><a href="projetos.php">Projetos</a></li>
-        <li><a href="impactos.php">Impactos</a></li>
+        <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-list fs-2 text-white"></i>
+        </button>
 
-        <?php if ($perfil === 'usuario'): ?>
-            <li><a href="educaCoop.php">EducaCoop</a></li>
-            <li><a href="meusProjetos.php">Meus Projetos</a></li>
-            <li><a href="cadProjeto.php">Cadastrar Projeto</a></li>
-        <?php endif; ?>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="main-nav navbar-nav me-auto mb-2 mb-lg-0">
 
-        <?php if ($perfil === 'admin'): ?>
-            <li><a href="cadEducaCoop.php">Cadastro EducaCoop</a></li>
-            <li><a href="usuario.php">Usuários</a></li>
-            <li><a href="instituicoes.php">Instituições</a></li>
-        <?php endif; ?>
-    </ul>
+                <li><a href="home.php" class="<?= ($current === 'home.php') ? 'active' : '' ?>">Home</a></li>
+                <li><a href="projetos.php" class="<?= ($current === 'projetos.php') ? 'active' : '' ?>">Projetos</a>
+                </li>
+                <li><a href="impactos.php" class="<?= ($current === 'impactos.php') ? 'active' : '' ?>">Impactos</a>
+                </li>
 
-    <div class="nav-actions">
-        <?php if ($perfil === 'visitante'): ?>
-            <a href="login.php" class="btn">Entrar</a>
-        <?php else: ?>
-            <a href="logout.php">Sair</a>
-        <?php endif; ?>
+                <?php if ($perfil === 'usuario'): ?>
+                    <li><a href="educaCoop.php" class="<?= ($current === 'educaCoop.php') ? 'active' : '' ?>">EducaCoop</a>
+                    </li>
+                    <li><a href="meusProjetos.php" class="<?= ($current === 'meusProjetos.php') ? 'active' : '' ?>">Meus
+                            Projetos</a></li>
+                    <li><a href="cadProjeto.php" class="<?= ($current === 'cadProjeto.php') ? 'active' : '' ?>">Cadastrar
+                            Projeto</a></li>
+                <?php endif; ?>
+
+                <?php if ($perfil === 'admin'): ?>
+                    <li><a href="cadEducaCoop.php" class="<?= ($current === 'cadEducaCoop.php') ? 'active' : '' ?>">Cadastro
+                            EducaCoop</a></li>
+                    <li><a href="usuario.php" class="<?= ($current === 'usuario.php') ? 'active' : '' ?>">Usuários</a></li>
+                <?php endif; ?>
+            </ul>
+
+            <div class="nav-actions">
+                <?php if ($perfil === 'visitante'): ?>
+                    <a href="login.php" class="btn-custom">Entrar</a>
+                <?php else: ?>
+                    <a href="logout.php" class="btn-custom">Sair</a>
+                <?php endif; ?>
+            </div>
+        </div>
     </div>
 </nav>

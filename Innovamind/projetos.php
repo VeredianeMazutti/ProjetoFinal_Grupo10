@@ -34,12 +34,12 @@ if (($categoriaSelecionada && $categoriaSelecionada != 'todas') || ($faseSelecio
     </nav>
 
     <main class="container my-5">
-        <h1 class="text-center mb-4">Projetos</h1>
+        <h1 class="titulo-pagprojetos text-center mb-4">Projetos</h1>
 
-        <form method="get" class="mb-5 text-center">
-            <div class="d-inline-block">
+        <form method="get" class="mb-5">
+            <div class="filtros-projetos">
                 <select name="categoria" class="form-select" onchange="this.form.submit()">
-                    <option value="todas">Todas as Categorias</option>
+                    <option value="todas">Selecione a Categoria</option>
                     <option value="sustentabilidade" <?= ($categoriaSelecionada == 'sustentabilidade') ? 'selected' : '' ?>>Sustentabilidade e Meio Ambiente</option>
                     <option value="educacao" <?= ($categoriaSelecionada == 'educacao') ? 'selected' : '' ?>>Educação e
                         Capacitação</option>
@@ -68,7 +68,7 @@ if (($categoriaSelecionada && $categoriaSelecionada != 'todas') || ($faseSelecio
                 </select>
 
                 <select name="faseDesenvolvimento" class="form-select" onchange="this.form.submit()">
-                    <option value="todas">Todas as Fases</option>
+                    <option value="todas">Selecione a Fase</option>
                     <option value="ideia" <?= ($faseSelecionada == 'ideia') ? 'selected' : '' ?>>Ideia</option>
                     <option value="planejamento" <?= ($faseSelecionada == 'planejamento') ? 'selected' : '' ?>>Planejamento
                     </option>
@@ -79,19 +79,20 @@ if (($categoriaSelecionada && $categoriaSelecionada != 'todas') || ($faseSelecio
             </div>
         </form>
 
-        <div class="row justify-content-center g-4">
+        <div class="row g-4 justify-content-center">
             <?php if (count($projetos) > 0): ?>
-                <?php foreach ($projetos as $p):
-                    $idp = intval($p->id);
-                    $fotos = $FotoProjeto->fotosProjeto($idp);
+                <?php foreach ($projetos as $proj):
+                    $idProj = intval($proj->id);
+                    $fotos = $FotoProjeto->fotosProjeto($idProj);
                     ?>
-                    <div class="col-md-4 col-sm-6">
-                        <div class="card shadow-lg border-0 rounded-4 overflow-hidden bg-dark text-light">
-                            <div id="carouselProjeto<?php echo $idp; ?>" class="carousel slide" data-bs-ride="carousel">
+                    <div class="col-md-4">
+                        <div class="card h-100 shadow-sm bg-dark rounded-4 overflow-hidden">
+                            <div id="carouselProjeto<?php echo $idProj; ?>" class="carousel slide" data-bs-ride="carousel">
                                 <div class="carousel-inner">
-                                    <?php $isFirst = true;
+                                    <?php
+                                    $isFirst = true;
                                     foreach ($fotos as $f): ?>
-                                        <div class="carousel-item <?php echo $isFirst ? 'active' : ''; ?>">
+                                        <div class="carousel-item <?php echo $isFirst ? 'active' : ''; ?>" data-bs-interval="4000">
                                             <img src="uploads/projetos/<?php echo $f->nome; ?>" class="d-block w-100"
                                                 alt="<?php echo htmlspecialchars($f->alternativo); ?>">
                                         </div>
@@ -99,11 +100,13 @@ if (($categoriaSelecionada && $categoriaSelecionada != 'todas') || ($faseSelecio
                                 </div>
                             </div>
 
-                            <div class="card-body text-center">
-                                <h5 class="card-title"><?= htmlspecialchars($p->nomeProjeto) ?></h5>
-                                <p class="card-text small"><?= htmlspecialchars($p->breveDescricao) ?></p>
-                                <a href="projetoDetalhes.php?id=<?= $idp ?>" class="btn btn-outline-light mt-2">Saiba mais e
-                                    Colabore</a>
+                            <div class="card-body text-center p-3">
+                                <h5 class="titulo-projeto"><?php echo htmlspecialchars($proj->nomeProjeto); ?></h5>
+                                <p class="descricao-projeto">
+                                    <?php echo htmlspecialchars(substr($proj->breveDescricao, 0, 250)); ?>
+                                </p>
+                                <a href="projetoDetalhes.php?id=<?php echo $idProj; ?>" class="btn btn-projeto mt-2">Saiba mais
+                                    e Colabore</a>
                             </div>
                         </div>
                     </div>
@@ -114,6 +117,7 @@ if (($categoriaSelecionada && $categoriaSelecionada != 'todas') || ($faseSelecio
                 </div>
             <?php endif; ?>
         </div>
+
     </main>
 
     <footer class="mt-5">

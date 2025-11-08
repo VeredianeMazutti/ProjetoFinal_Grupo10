@@ -113,7 +113,7 @@
                 <label for="breveDescricao" class="form-label">Breve Descrição do Projeto</label>
                 <textarea name="breveDescricao" id="breveDescricao"
                     placeholder="Digite uma descrição de no máximo 250 caracteres" required class="form-control"
-                    maxlength="250"><?php echo $projeto->breveDescricao ?? ''; ?></textarea>
+                    minlength="100" maxlength="150"><?php echo $projeto->breveDescricao ?? ''; ?></textarea>
             </div>
 
             <div class="col-12">

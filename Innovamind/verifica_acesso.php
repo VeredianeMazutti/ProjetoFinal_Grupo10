@@ -12,7 +12,6 @@ $pagina = basename($_SERVER['PHP_SELF']);
 $regras = [
 
     "usuario.php" => ["admin"],
-    "instituicoe.php" => ["admin"],
     "projeto.php" => ["admin"],
 
 
