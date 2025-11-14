@@ -52,7 +52,7 @@ class Projeto extends CRUD
     {
         return $this->nomeResponsavel;
     }
-      public function setNomeColaboradores($nomeColaboradores)
+    public function setNomeColaboradores($nomeColaboradores)
     {
         $this->nomeColaboradores = $nomeColaboradores;
     }
@@ -61,7 +61,7 @@ class Projeto extends CRUD
         return $this->nomeColaboradores;
     }
 
-       public function setNomeInstituicao($nomeInstituicao)
+    public function setNomeInstituicao($nomeInstituicao)
     {
         $this->nomeInstituicao = $nomeInstituicao;
     }
@@ -78,7 +78,7 @@ class Projeto extends CRUD
     {
         return $this->emailProjeto;
     }
-     public function setLocalizacaoEstado($localizacaoEstado)
+    public function setLocalizacaoEstado($localizacaoEstado)
     {
         $this->localizacaoEstado = $localizacaoEstado;
     }
@@ -131,7 +131,7 @@ class Projeto extends CRUD
     {
         return $this->descricaoDetalhada;
     }
-     public function setLinksProjeto($linksProjeto)
+    public function setLinksProjeto($linksProjeto)
     {
         $this->linksProjeto = $linksProjeto;
     }
@@ -218,7 +218,7 @@ class Projeto extends CRUD
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
-    public function searchByFilters(?string $categoria, ?string $fase)
+    public function searchByFilters(?string $categoria, ?string $fase, ?string $localizacaoEstado)
     {
         $conditions = [];
         $params = [];
@@ -231,6 +231,11 @@ class Projeto extends CRUD
         if ($fase && $fase != 'todas') {
             $conditions[] = 'faseDesenvolvimento = :fase';
             $params[':fase'] = $fase;
+        }
+
+        if ($localizacaoEstado && $localizacaoEstado != 'todas') {
+            $conditions[] = 'localizacaoEstado = :localizacaoEstado';
+            $params[':localizacaoEstado'] = $localizacaoEstado;
         }
 
         $sql = "SELECT * FROM {$this->table}";

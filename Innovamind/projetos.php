@@ -8,9 +8,10 @@ $FotoProjeto = new FotoProjeto();
 
 $categoriaSelecionada = filter_input(INPUT_GET, 'categoria', FILTER_SANITIZE_STRING);
 $faseSelecionada = filter_input(INPUT_GET, 'faseDesenvolvimento', FILTER_SANITIZE_STRING);
+$localizacaoSelecionada = filter_input(INPUT_GET, 'localizacaoEstado', FILTER_SANITIZE_STRING);
 
-if (($categoriaSelecionada && $categoriaSelecionada != 'todas') || ($faseSelecionada && $faseSelecionada != 'todas')) {
-    $projetos = $Projeto->searchByFilters($categoriaSelecionada, $faseSelecionada);
+if (($categoriaSelecionada && $categoriaSelecionada != 'todas') || ($faseSelecionada && $faseSelecionada != 'todas') || ($localizacaoSelecionada != 'todas')) {
+    $projetos = $Projeto->searchByFilters($categoriaSelecionada, $faseSelecionada, $localizacaoSelecionada);
 } else {
     $projetos = $Projeto->searchAll();
 }
@@ -33,8 +34,8 @@ if (($categoriaSelecionada && $categoriaSelecionada != 'todas') || ($faseSelecio
         <?php require_once "_parts/_navbar.php"; ?>
     </nav>
 
-    <main class="container my-5">
-        <h1 class="titulo-pagprojetos text-center mb-4">Projetos</h1>
+    <main class="secao-projetos container my-5">
+        <h1 class="titulo-pagprojetos text-center mb-4">Projetos e Ideias da Comunidade</h1>
 
         <form method="get" class="mb-5">
             <div class="filtros-projetos">
@@ -75,6 +76,52 @@ if (($categoriaSelecionada && $categoriaSelecionada != 'todas') || ($faseSelecio
                     <option value="em_andamento" <?= ($faseSelecionada == 'em_andamento') ? 'selected' : '' ?>>Em andamento
                     </option>
                     <option value="concluido" <?= ($faseSelecionada == 'concluido') ? 'selected' : '' ?>>Concluído</option>
+                </select>
+
+                <select name="localizacaoEstado" class="form-select" onchange="this.form.submit()">
+                    <option value="todas">Selecione o Estado</option>
+                    <option value="Acre" <?= ($localizacaoSelecionada == 'Acre') ? 'selected' : '' ?>>Acre</option>
+                    <option value="Alagoas" <?= ($localizacaoSelecionada == 'Alagoas') ? 'selected' : '' ?>>Alagoas
+                    </option>
+                    <option value="Amapá" <?= ($localizacaoSelecionada == 'Amapá') ? 'selected' : '' ?>>Amapá</option>
+                    <option value="Amazonas" <?= ($localizacaoSelecionada == 'Amazonas') ? 'selected' : '' ?>>Amazonas
+                    </option>
+                    <option value="Bahia" <?= ($localizacaoSelecionada == 'Bahia') ? 'selected' : '' ?>>Bahia</option>
+                    <option value="Ceará" <?= ($localizacaoSelecionada == 'Ceará') ? 'selected' : '' ?>>Ceará</option>
+                    <option value="Distrito Federal" <?= ($localizacaoSelecionada == 'Distrito Federal') ? 'selected' : '' ?>>Distrito Federal</option>
+                    <option value="Espírito Santo" <?= ($localizacaoSelecionada == 'Espírito Santo') ? 'selected' : '' ?>>
+                        Espírito Santo</option>
+                    <option value="Goiás" <?= ($localizacaoSelecionada == 'Goiás') ? 'selected' : '' ?>>Goiás</option>
+                    <option value="Maranhão" <?= ($localizacaoSelecionada == 'Maranhão') ? 'selected' : '' ?>>Maranhão
+                    </option>
+                    <option value="Mato Grosso" <?= ($localizacaoSelecionada == 'Mato Grosso') ? 'selected' : '' ?>>Mato
+                        Grosso</option>
+                    <option value="Mato Grosso do Sul" <?= ($localizacaoSelecionada == 'Mato Grosso do Sul') ? 'selected' : '' ?>>Mato Grosso do Sul</option>
+                    <option value="Minas Gerais" <?= ($localizacaoSelecionada == 'Minas Gerais') ? 'selected' : '' ?>>Minas
+                        Gerais</option>
+                    <option value="Pará" <?= ($localizacaoSelecionada == 'Pará') ? 'selected' : '' ?>>Pará</option>
+                    <option value="Paraíba" <?= ($localizacaoSelecionada == 'Paraíba') ? 'selected' : '' ?>>Paraíba
+                    </option>
+                    <option value="Paraná" <?= ($localizacaoSelecionada == 'Paraná') ? 'selected' : '' ?>>Paraná</option>
+                    <option value="Pernambuco" <?= ($localizacaoSelecionada == 'Pernambuco') ? 'selected' : '' ?>>
+                        Pernambuco</option>
+                    <option value="Piauí" <?= ($localizacaoSelecionada == 'Piauí') ? 'selected' : '' ?>>Piauí</option>
+                    <option value="Rio de Janeiro" <?= ($localizacaoSelecionada == 'Rio de Janeiro') ? 'selected' : '' ?>>
+                        Rio de Janeiro</option>
+                    <option value="Rio Grande do Norte" <?= ($localizacaoSelecionada == 'Rio Grande do Norte') ? 'selected' : '' ?>>Rio Grande do Norte</option>
+                    <option value="Rio Grande do Sul" <?= ($localizacaoSelecionada == 'Rio Grande do Sul') ? 'selected' : '' ?>>Rio Grande do Sul</option>
+                    <option value="Rondônia" <?= ($localizacaoSelecionada == 'Rondônia') ? 'selected' : '' ?>>Rondônia
+                    </option>
+                    <option value="Roraima" <?= ($localizacaoSelecionada == 'Roraima') ? 'selected' : '' ?>>Roraima
+                    </option>
+                    <option value="Santa Catarina" <?= ($localizacaoSelecionada == 'Santa Catarina') ? 'selected' : '' ?>>
+                        Santa Catarina</option>
+                    <option value="São Paulo" <?= ($localizacaoSelecionada == 'São Paulo') ? 'selected' : '' ?>>São Paulo
+                    </option>
+                    <option value="Sergipe" <?= ($localizacaoSelecionada == 'Sergipe') ? 'selected' : '' ?>>Sergipe
+                    </option>
+                    <option value="Tocantins" <?= ($localizacaoSelecionada == 'Tocantins') ? 'selected' : '' ?>>Tocantins
+                    </option>
                 </select>
             </div>
         </form>

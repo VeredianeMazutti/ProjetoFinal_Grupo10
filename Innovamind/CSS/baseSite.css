@@ -296,7 +296,6 @@
 .passos::before {
     top: 50%;
     left: -300px;
-
     transform: translateY(-50%);
     background: radial-gradient(circle,
             rgb(82, 51, 111) 0%,
@@ -320,6 +319,7 @@
 }
 
 .passos h2 {
+    font-family: "Trebuchet MS";
     font-size: 35px;
     font-weight: 700;
     color: #9F6ACE;
@@ -353,15 +353,59 @@
 }
 
 .filtros-projetos {
- display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 15px;
-  margin-left: 30px; 
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 15px;
+    margin-left: 30px;
 }
 
 .form-select {
-  width: 260px;
+    width: 260px;
+}
+
+.secao-projetos {
+    width: 100%;
+    min-height: 75vh;
+    position: relative;
+}
+
+.secao-projetos::before,
+.secao-projetos::after {
+    content: "";
+    position: absolute;
+    width: 420px;
+    height: 420px;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 1;
+    mix-blend-mode: screen;
+    z-index: 0;
+}
+
+.secao-projetos::before {
+    top: 40%;
+    left: -230px;
+    transform: translateY(-50%);
+    background: radial-gradient(circle,
+            rgb(127, 83, 168) 0%,
+            rgba(90, 41, 137, 0.9) 25%,
+            rgba(133, 50, 210, 0.6) 45%,
+            transparent 70%);
+    box-shadow: 0 0 60px 40px rgba(147, 51, 234, 0.3);
+}
+
+.secao-projetos::after {
+    top: 35%;
+    right: -100px;
+    width: 180px;
+    transform: translateY(-50%);
+    background: radial-gradient(circle,
+            rgb(179, 111, 208) 0%,
+            rgba(90, 41, 137, 0.9) 25%,
+            rgba(133, 51, 234, 0.6) 45%,
+            transparent 70%);
+    box-shadow: 0 0 80px 30px rgba(192, 132, 252, 0.4);
 }
 
 /*Trilha*/
@@ -462,6 +506,329 @@
     color: #7c3aed;
 }
 
+/*CadUsuário*/
+main.cadastro-container {
+    max-width: 1400px !important;
+    background-color: #251435;
+    padding: 50px 70px;
+    border-radius: 20px;
+    color: #ffffff;
+    margin: 50px auto;
+}
+
+.efeito-luzes {
+    position: relative;
+    overflow: hidden;
+    background-color: #251435;
+}
+
+.efeito-luzes::before,
+.efeito-luzes::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0.6;
+    z-index: 0;
+}
+
+.efeito-luzes::before {
+    width: 400px;
+    height: 400px;
+    background: #6E3A9B;
+    top: -100px;
+    left: -150px;
+    animation: flutuar1 10s infinite alternate ease-in-out;
+}
+
+.efeito-luzes::after {
+    width: 300px;
+    height: 300px;
+    background: #6E3A9B;
+    bottom: -100px;
+    right: -100px;
+    animation: flutuar2 12s infinite alternate ease-in-out;
+}
+
+@keyframes flutuar1 {
+    from {
+        transform: translate(0, 0);
+        opacity: 0.5;
+    }
+
+    to {
+        transform: translate(50px, 30px);
+        opacity: 0.8;
+    }
+}
+
+@keyframes flutuar2 {
+    from {
+        transform: translate(0, 0);
+        opacity: 0.5;
+    }
+
+    to {
+        transform: translate(-40px, -30px);
+        opacity: 0.8;
+    }
+}
+
+main.cadastro-container h2 {
+    font-family: "Trebuchet MS";
+    text-align: center;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 30px;
+}
+
+.form-label {
+    color: #f7f7f7;
+    font-family: "Segoe UI";
+    font-size: 17px;
+    margin: 6px;
+}
+
+.form-control {
+    background-color: #251435;
+    border: 1px solid #9b5eff;
+    color: #fff;
+    border-radius: 8px;
+    padding: 10px 15px;
+    transition: all 0.3s ease;
+}
+
+.form-control::placeholder {
+    color: #ededed;
+    opacity: 1;
+}
+
+.form-control:focus,
+.form-control:not(:placeholder-shown):not([type="date"]),
+.form-control:valid {
+    background-color: #ffffff !important;
+    border-color: #c88cff !important;
+    color: #000 !important;
+    -webkit-text-fill-color: #000 !important;
+    box-shadow: 0 0 10px rgba(200, 140, 255, 0.3);
+}
+
+input[type="date"].form-control:focus,
+input[type="date"].form-control[value]:not([value=""]) {
+    background-color: #ffffff !important;
+    color: #000 !important;
+    -webkit-text-fill-color: #000 !important;
+    border-color: #c88cff !important;
+    box-shadow: 0 0 10px rgba(200, 140, 255, 0.3);
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: brightness(0) invert(1);
+    opacity: 0.9;
+    cursor: pointer;
+    transition: filter 0.3s ease;
+}
+
+input[type="date"]:focus::-webkit-calendar-picker-indicator,
+input[type="date"][value]:not([value=""])::-webkit-calendar-picker-indicator {
+    filter: brightness(0) invert(0);
+}
+
+.btn-cad {
+  background: linear-gradient(90deg, #b47aff, #8042e0);
+  border: none;
+  color: #fff;
+  padding: 10px 25px;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.btn-cad:hover {
+    background: linear-gradient(90deg, #491874, #9F6ACE, #8B45AA);
+    transform: scale(1.03);
+}
+
+/*Login*/
+
+.login-card {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #251435;
+    border-radius: 20px;
+    max-width: 1000px;
+    margin: 20px auto;
+    position: relative;
+    overflow: hidden; 
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.4);
+}
+
+.login-card::before,
+.login-card::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0.65;
+    z-index: 0; 
+    pointer-events: none; 
+}
+
+.login-card::before {
+    width: 450px;
+    height: 450px;
+    background: radial-gradient(circle, rgba(155, 93, 229, 0.85), transparent 70%);
+    top: -150px;
+    left: -150px;
+}
+
+.login-card::after {
+    width: 550px;
+    height: 550px;
+    background: radial-gradient(circle, rgba(200, 164, 238, 0.6), transparent 70%);
+    bottom: -180px;
+    right: -120px;
+}
+
+.login-ilustracao {
+    flex: 1 1 45%;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    padding: 40px 20px;
+    position: relative;
+    z-index: 1; 
+}
+
+.login-img {
+    width: 300px;
+    height: auto;
+    filter: drop-shadow(0 0 25px #5e3c8a);
+}
+
+.login-frase-box {
+    background: linear-gradient(145deg, rgba(94, 60, 138, 0.25), rgba(20, 10, 30, 0.45));
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(94, 60, 138, 0.25);
+    padding: 20px;
+    max-width: 400px;
+    margin-top: 10px;
+    text-align: center;
+    backdrop-filter: blur(6px);
+}
+
+.login-frase {
+    font-family: "Segoe UI";
+    font-size: 14px;
+    font-style: italic;
+    color: #f5f5f5;
+    margin-bottom: 15px;
+    text-align: justify;
+}
+
+.login-autor {
+    font-family: "Segoe UI";
+    font-size: 0.85rem;
+    color: #cdbde5;
+    text-align: justify;
+}
+
+.login-right {
+    flex: 1 1 55%;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 40px;
+    position: relative;
+    z-index: 1; 
+}
+
+.login-title {
+    font-family: "Trebuchet MS";
+    text-align: center;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 30px;
+}
+
+.campo-formulario {
+    background-color: transparent;
+    border: 1px solid #9b5de5;
+    color: #fff;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    padding: 10px;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.campo-formulario::placeholder {
+    color: #cdbde5;
+}
+
+.campo-formulario:focus {
+    background-color: #ffffff !important;
+    border-color: #c88cff !important;
+    color: #000 !important;
+    -webkit-text-fill-color: #000 !important;
+    box-shadow: 0 0 10px rgba(200, 140, 255, 0.3);
+    outline: none;
+}
+
+.btn-login {
+    background: linear-gradient(90deg, #6d28d9, #a855f7);
+    color: #fff;
+    border: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    padding: 10px;
+    width: 100%;
+    display: block;
+    cursor: pointer;
+}
+
+.btn-login:hover {
+    background: linear-gradient(90deg, #491874, #9F6ACE, #8B45AA);
+    transform: scale(1.03);
+}
+
+.link-criar {
+    color: #c88cff;
+    text-decoration: none;
+}
+
+.link-criar:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    main.container {
+        padding: 30px 25px;
+    }
+}
+
+@media (max-width: 768px) {
+    .login-card {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .login-right,
+    .login-left {
+        padding: 30px 25px;
+    }
+
+    .login-img {
+        width: 180px;
+    }
+}
+
 @media (max-width: 768px) {
     .timeline-item {
         margin-bottom: 40px;
@@ -482,3 +849,4 @@
         padding: 1.5rem;
     }
 }
+
