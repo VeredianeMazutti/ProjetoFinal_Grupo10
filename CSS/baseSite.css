@@ -666,12 +666,12 @@ input[type="date"][value]:not([value=""])::-webkit-calendar-picker-indicator {
 
 
 .btn-cad {
-  background: linear-gradient(90deg, #b47aff, #8042e0);
-  border: none;
-  color: #fff;
-  padding: 10px 25px;
-  border-radius: 10px;
-  transition: all 0.3s ease;
+    background: linear-gradient(90deg, #b47aff, #8042e0);
+    border: none;
+    color: #fff;
+    padding: 10px 25px;
+    border-radius: 10px;
+    transition: all 0.3s ease;
 }
 
 .btn-cad:hover {
@@ -689,7 +689,7 @@ input[type="date"][value]:not([value=""])::-webkit-calendar-picker-indicator {
     max-width: 1000px;
     margin: 20px auto;
     position: relative;
-    overflow: hidden; 
+    overflow: hidden;
     box-shadow: 0 0 40px rgba(0, 0, 0, 0.4);
 }
 
@@ -700,8 +700,8 @@ input[type="date"][value]:not([value=""])::-webkit-calendar-picker-indicator {
     border-radius: 50%;
     filter: blur(120px);
     opacity: 0.65;
-    z-index: 0; 
-    pointer-events: none; 
+    z-index: 0;
+    pointer-events: none;
 }
 
 .login-card::before {
@@ -730,7 +730,7 @@ input[type="date"][value]:not([value=""])::-webkit-calendar-picker-indicator {
     background: none;
     padding: 40px 20px;
     position: relative;
-    z-index: 1; 
+    z-index: 1;
 }
 
 .login-img {
@@ -775,7 +775,7 @@ input[type="date"][value]:not([value=""])::-webkit-calendar-picker-indicator {
     justify-content: center;
     padding: 40px;
     position: relative;
-    z-index: 1; 
+    z-index: 1;
 }
 
 .login-title {
@@ -838,6 +838,51 @@ input[type="date"][value]:not([value=""])::-webkit-calendar-picker-indicator {
     text-decoration: underline;
 }
 
+.dropdown-menu {
+    background: #ffffff !important;
+}
+
+.dropdown-menu .dropdown-item {
+    color: #000 !important;
+}
+
+.dropdown-menu .dropdown-item:hover {
+    background: #f0f0f0 !important;
+    color: #000 !important;
+}
+
+.dropdown-divider {
+    border-color: #dcdcdc !important;
+}
+
+.btn-custom {
+    background: #4b0082;
+    padding: 6px 14px;
+    border-radius: 20px;
+    transition: 0.3s ease;
+    text-decoration: none;
+    position: static;
+    font-weight: bold;
+    margin-left: 15px;
+}
+
+.btn-custom:hover {
+    background: #6a0dad;
+}
+
+.dropdown-toggle::after,
+.dropdown-toggle:hover::after {
+    content: "";
+    border-top: .45em solid #fff !important;
+    border-right: .35em solid transparent !important;
+    border-left: .35em solid transparent !important;
+    border-bottom: 0 !important;
+    width: 0 !important;
+    height: 0 !important;
+    background: transparent !important;
+    display: inline-block !important;
+}
+
 @media (max-width: 768px) {
     main.container {
         padding: 30px 25px;
@@ -880,4 +925,3 @@ input[type="date"][value]:not([value=""])::-webkit-calendar-picker-indicator {
         padding: 1.5rem;
     }
 }
-

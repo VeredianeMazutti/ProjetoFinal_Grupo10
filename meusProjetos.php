@@ -18,7 +18,7 @@ $meusProjetos = $p->search("fk_usuario", $idUsuario);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
-    <link rel="stylesheet" href="CSS/base.css">
+    <link rel="stylesheet" href="CSS/baseSite.css">
     <title>Meus Projetos</title>
 </head>
 
@@ -26,7 +26,7 @@ $meusProjetos = $p->search("fk_usuario", $idUsuario);
     <navbar>
         <?php require_once "_parts/_navbar.php"; ?>
     </navbar>
-    
+
     <main class="container mt-3">
         <div class="mt-5">
             <h3>Meus Projetos</h3>
@@ -47,7 +47,7 @@ $meusProjetos = $p->search("fk_usuario", $idUsuario);
                             <td><?= $proj->id ?></td>
                             <td><?= htmlspecialchars($proj->nomeProjeto) ?></td>
                             <td class="d-flex gap-1 justify-content-center">
-        
+
                                 <form action="cadProjeto.php" method="get" class="d-flex">
                                     <input type="hidden" name="id" value="<?= $proj->id ?>">
                                     <button name="btnEditar" class="btn btn-primary btn-sm" type="submit" title="Editar">

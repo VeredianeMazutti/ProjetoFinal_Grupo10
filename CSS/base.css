@@ -91,20 +91,6 @@ main {
   width: 100%;
 }
 
-.btn-custom {
-  background: #4b0082;
-  padding: 6px 14px;
-  border-radius: 20px;
-  transition: 0.3s ease;
-  text-decoration: none;
-  position: static;
-  font-weight: bold;
-  margin-left: 15px;
-}
-
-.btn-custom:hover {
-  background: #6a0dad;
-}
 
 .footer {
   background: linear-gradient(90deg, #53017F, #53017F, #893ECB);

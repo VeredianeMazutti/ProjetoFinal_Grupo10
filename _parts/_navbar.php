@@ -3,7 +3,8 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-$perfil  = $_SESSION['perfil'] ?? 'visitante';
+$perfil = $_SESSION['perfil'] ?? 'visitante';
+$nome = $_SESSION['nomeUsuario'] ?? 'Conta';
 $current = basename($_SERVER['PHP_SELF']);
 ?>
 
@@ -21,36 +22,52 @@ $current = basename($_SERVER['PHP_SELF']);
             <ul class="main-nav navbar-nav me-auto mb-2 mb-lg-0">
 
                 <li><a href="index.php" class="<?= $current === 'index.php' ? 'active' : '' ?>">Home</a></li>
-
                 <li><a href="projetos.php" class="<?= $current === 'projetos.php' ? 'active' : '' ?>">Projetos</a></li>
-
                 <li><a href="impactos.php" class="<?= $current === 'impactos.php' ? 'active' : '' ?>">Impactos</a></li>
 
                 <?php if ($perfil === 'usuario'): ?>
-                    <li><a href="educaCoop.php" class="<?= $current === 'educaCoop.php' ? 'active' : '' ?>">EducaCoop</a></li>
-
-                    <li><a href="meusProjetos.php" class="<?= $current === 'meusProjetos.php' ? 'active' : '' ?>">Meus Projetos</a></li>
-
-                    <li><a href="cadProjeto.php" class="<?= $current === 'cadProjeto.php' ? 'active' : '' ?>">Cadastrar Projeto</a></li>
+                    <li><a href="educaCoop.php" class="<?= $current === 'educaCoop.php' ? 'active' : '' ?>">EducaCoop</a>
+                    </li>
+                    <li><a href="cadProjeto.php" class="<?= $current === 'cadProjeto.php' ? 'active' : '' ?>">Cadastrar
+                            Projeto</a></li>
                 <?php endif; ?>
 
                 <?php if ($perfil === 'admin'): ?>
-                    <li><a href="cadEducaCoop.php" class="<?= $current === 'cadEducaCoop.php' ? 'active' : '' ?>">Cadastro EducaCoop</a></li>
-
+                    <li><a href="cadEducaCoop.php" class="<?= $current === 'cadEducaCoop.php' ? 'active' : '' ?>">Cadastro
+                            EducaCoop</a></li>
                     <li><a href="usuario.php" class="<?= $current === 'usuario.php' ? 'active' : '' ?>">Usuários</a></li>
                 <?php endif; ?>
 
             </ul>
 
             <div class="nav-actions">
+
                 <?php if ($perfil === 'visitante'): ?>
                     <a href="login.php" class="btn-custom">Entrar</a>
+
                 <?php else: ?>
-                    <a href="logout.php" class="btn-custom">Sair</a>
+                    <div class="dropdown">
+                        <a class="btn-custom dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            <i class="bi bi-person-circle"></i> <?= htmlspecialchars($nome) ?>
+                        </a>
+
+                        <ul class="dropdown-menu dropdown-menu-end">
+
+                            <?php if ($perfil === 'usuario'): ?>
+                                <li><a class="dropdown-item" href="cadProjeto.php">Cadastrar Projeto</a></li>
+                                <li><a class="dropdown-item" href="meusProjetos.php">Meus Projetos</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                            <?php endif; ?>
+
+                            <li><a class="dropdown-item text-danger" href="logout.php">Sair</a></li>
+                        </ul>
+                    </div>
+
                 <?php endif; ?>
             </div>
 
         </div>
     </div>
 </nav>
-
