@@ -14,7 +14,7 @@
         <?php require_once "_parts/_navbar.php"; ?>
     </nav>
 
-    <main class="container my-5">
+    <main class="cadastro-container my-5 efeito-luzes">
 
         <?php
         spl_autoload_register(function ($class) {
@@ -61,7 +61,8 @@
 
             <div class="col-md-3">
                 <label for="nivel" class="form-label">Nível de Dificuldade</label>
-                <select id="nivel" name="nivel" class="form-select">
+                <select id="nivel" name="nivel" class="form-select" required>
+                    <option value="" disabled selected>Selecione o nível</option>
                     <option value="Iniciante" <?= (isset($dados->nivel) && $dados->nivel == 'Iniciante') ? 'selected' : ''; ?>>Iniciante</option>
                     <option value="Intermediário" <?= (isset($dados->nivel) && $dados->nivel == 'Intermediário') ? 'selected' : ''; ?>>Intermediário</option>
                     <option value="Avançado" <?= (isset($dados->nivel) && $dados->nivel == 'Avançado') ? 'selected' : ''; ?>>Avançado</option>
@@ -118,11 +119,6 @@
                     placeholder="Liste aqui as fontes, livros ou links de referência..."><?php echo $dados->referenciasTrilha ?? null; ?></textarea>
             </div>
 
-            <div class="col-12 mt-4 d-flex gap-2">
-                <button type="submit" name="btnSalvar" class="btn btn-primary">Salvar Trilha</button>
-                <a href="trilhas.php" class="btn btn-outline-secondary">Cancelar</a>
-            </div>
-
             <div class="col-md-6">
                 <label for="gerarCertificado" class="form-label">Gerar certificado automaticamente?</label>
                 <select id="gerarCertificado" name="gerarCertificado" class="form-select">
@@ -130,6 +126,12 @@
                     <option value="1" <?= (isset($dados->gerarCertificado) && $dados->gerarCertificado == 1) ? 'selected' : ''; ?>>Sim</option>
                 </select>
             </div>
+
+            <div class="col-12 mt-4 d-flex gap-2">
+                <button type="submit" name="btnSalvar" class="btn-cad">Salvar Trilha</button>
+                <a href="trilhas.php" class="btn btn-secondary">Cancelar</a>
+            </div>
+
         </form>
     </main>
 

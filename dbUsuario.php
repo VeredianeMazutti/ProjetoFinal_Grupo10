@@ -25,7 +25,7 @@ if (filter_has_var(INPUT_POST, 'btnLogar')) {
             } elseif ($u->perfil === 'usuario') {
                 header("Location: meusProjetos.php");
             } else {
-                header("Location: index.php");
+                header("Location: dashboard.php");
             }
             exit;
         }

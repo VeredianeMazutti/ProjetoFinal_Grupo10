@@ -73,9 +73,9 @@
             </div>
 
             <div class="col-12">
-                <label for="localizacaoEstado" class="form-label">Estado de desenvolvimento do projeto</label>
+                <label for="localizacaoEstado" class="form-label form-cad">Estado de desenvolvimento do projeto</label>
                 <select name="localizacaoEstado" class="form-select" id="localizacaoEstado" required>
-                    <option value="localizacaoEstado" disabled selected>Selecione o Estado</option>
+                    <option value="" selected disabled>Selecione o Estado</option>
                     <option value="acre" <?= ($projeto->localizacaoEstado ?? '') == 'acre' ? 'selected' : '' ?>>Acre
                     </option>
                     <option value="alagoas" <?= ($projeto->localizacaoEstado ?? '') == 'alagoas' ? 'selected' : '' ?>>
@@ -124,9 +124,9 @@
             </div>
 
             <div class="col-12">
-                <label for="categoria" class="form-label">Categoria do projeto</label>
+                <label for="categoria" id="categoria" class="form-label">Categoria do projeto</label>
                 <select name="categoria" class="form-select" id="categoria" required>
-                    <option value="" disabled selected>Selecione a Categoria</option>
+                    <option value="" selected disabled>Selecione a Categoria</option>
                     <option value="sustentabilidade" <?= ($projeto->categoria ?? '') == 'sustentabilidade' ? 'selected' : '' ?>>Sustentabilidade e Meio Ambiente</option>
                     <option value="educacao" <?= ($projeto->categoria ?? '') == 'educacao' ? 'selected' : '' ?>>Educação e
                         Capacitação</option>
@@ -181,19 +181,19 @@
             <div class="col-12">
                 <label for="descricaoDetalhada" class="form-label">Descrição mais detalhada sobre o Projeto</label>
                 <textarea name="descricaoDetalhada" id="descricaoDetalhada"
-                    placeholder="Digite uma descrição mais detalhada" required
+                    placeholder="Digite uma descrição completa do projeto: objetivo, poblema que busca resolver, público-alvo, etapas, ferramentas utilizadas e qualquer informação relevante" required
                     class="form-control"><?php echo $projeto->descricaoDetalhada ?? ''; ?></textarea>
             </div>
 
             <div class="col-12">
                 <label for="linksProjeto" class="form-label">Links do Projeto</label>
                 <textarea name="linksProjeto" id="linksProjeto"
-                    placeholder="Adicione os links relacionados ao projeto, como Instagram, Figma, GitHub ou outros, se houver." 
+                    placeholder="Adicione os links relacionados ao projeto, como Instagram, Figma, GitHub ou outros, se houver" 
                     required class="form-control" minlength="500"><?php echo $projeto->linksProjeto ?? ''; ?></textarea>
             </div>
 
             <div class="col-12 mt-3 mb-5">
-                <button type="submit" name="btnGravar" class="btn btn-geral">Salvar</button>
+                <button type="submit" name="btnGravar" class="btn-cad">Salvar</button>
             </div>
 
         </form>

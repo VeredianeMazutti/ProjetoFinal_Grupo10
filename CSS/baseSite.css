@@ -360,7 +360,7 @@
     margin-left: 30px;
 }
 
-.form-select {
+.form-filtro {
     width: 260px;
 }
 
@@ -633,6 +633,37 @@ input[type="date"]:focus::-webkit-calendar-picker-indicator,
 input[type="date"][value]:not([value=""])::-webkit-calendar-picker-indicator {
     filter: brightness(0) invert(0);
 }
+
+.form-select:invalid {
+    background-color: #251435;
+    border: 1px solid #9b5eff;
+    color: #fff;
+    border-radius: 8px;
+    padding: 10px 15px;
+    font-family: "Segoe UI";
+    font-size: 16px;
+    transition: all 0.3s ease;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23ffffff' viewBox='0 0 16 16'%3e%3cpath d='M3.204 5h9.592L8 10.481 3.204 5z'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right .75rem center;
+    background-size: 16px;
+}
+
+.form-select:valid,
+.form-select:focus {
+    background-color: #ffffff !important;
+    border-color: #c88cff !important;
+    color: #000 !important;
+    box-shadow: 0 0 10px rgba(200, 140, 255, 0.3);
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23000000' viewBox='0 0 16 16'%3e%3cpath d='M3.204 5h9.592L8 10.481 3.204 5z'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right .75rem center;
+    background-size: 16px;
+}
+
+
+
+
 
 .btn-cad {
   background: linear-gradient(90deg, #b47aff, #8042e0);

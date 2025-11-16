@@ -39,7 +39,7 @@ if (($categoriaSelecionada && $categoriaSelecionada != 'todas') || ($faseSelecio
 
         <form method="get" class="mb-5">
             <div class="filtros-projetos">
-                <select name="categoria" class="form-select" onchange="this.form.submit()">
+                <select name="categoria" class="form-select form-filtro" onchange="this.form.submit()">
                     <option value="todas">Selecione a Categoria</option>
                     <option value="sustentabilidade" <?= ($categoriaSelecionada == 'sustentabilidade') ? 'selected' : '' ?>>Sustentabilidade e Meio Ambiente</option>
                     <option value="educacao" <?= ($categoriaSelecionada == 'educacao') ? 'selected' : '' ?>>Educação e
@@ -68,7 +68,7 @@ if (($categoriaSelecionada && $categoriaSelecionada != 'todas') || ($faseSelecio
                     <option value="outras" <?= ($categoriaSelecionada == 'outras') ? 'selected' : '' ?>>Outras</option>
                 </select>
 
-                <select name="faseDesenvolvimento" class="form-select" onchange="this.form.submit()">
+                <select name="faseDesenvolvimento" class="form-select form-filtro" onchange="this.form.submit()">
                     <option value="todas">Selecione a Fase</option>
                     <option value="ideia" <?= ($faseSelecionada == 'ideia') ? 'selected' : '' ?>>Ideia</option>
                     <option value="planejamento" <?= ($faseSelecionada == 'planejamento') ? 'selected' : '' ?>>Planejamento
@@ -78,7 +78,7 @@ if (($categoriaSelecionada && $categoriaSelecionada != 'todas') || ($faseSelecio
                     <option value="concluido" <?= ($faseSelecionada == 'concluido') ? 'selected' : '' ?>>Concluído</option>
                 </select>
 
-                <select name="localizacaoEstado" class="form-select" onchange="this.form.submit()">
+                <select name="localizacaoEstado" class="form-select form-filtro" onchange="this.form.submit()">
                     <option value="todas">Selecione o Estado</option>
                     <option value="Acre" <?= ($localizacaoSelecionada == 'Acre') ? 'selected' : '' ?>>Acre</option>
                     <option value="Alagoas" <?= ($localizacaoSelecionada == 'Alagoas') ? 'selected' : '' ?>>Alagoas
