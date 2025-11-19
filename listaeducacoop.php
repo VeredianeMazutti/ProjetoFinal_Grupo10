@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="CSS/base.css">
     <link rel="icon" href="images/LogoInnovamind.png" type="image/png" sizes="32x32">
 
-    <title>Usuários</title>
+    <title>Trilhas Educacionais</title>
 </head>
 
 <body>
@@ -20,66 +20,87 @@
     </navbar>
 
     <main class="container mt-3">
-        <div class="mt-5">
-            <h3>Usuários</h3>
+
+        <div class="d-flex justify-content-between align-items-center mt-5">
+            <h3>Trilhas Cadastradas</h3>
+            <a href="cadEducaCoop.php" class="btn btn-success">
+                <i class="bi bi-plus-lg"></i> Nova Trilha
+            </a>
         </div>
 
-        <table class="table dataTable">
+        <table class="table dataTable mt-3">
             <thead class="table-light">
                 <tr>
                     <th>#</th>
-                    <th>Nome</th>
-                    <th>Email</th>
+                    <th>Título</th>
+                    <th>Subtítulo</th>
+                    <th>Nível</th>
+                    <th>Duração</th>
                     <th class="text-center">Ações</th>
                 </tr>
             </thead>
             <tbody>
+
                 <?php
                 spl_autoload_register(function ($class) {
                     require_once __DIR__ . "/Classes/{$class}.class.php";
                 });
 
-                $usuarioObj = new Usuario();
-                $usuarios = $usuarioObj->all();
+                $trilhaObj = new EducaCoop();
+                $trilhas = $trilhaObj->all();
 
-                foreach ($usuarios as $usuario):
+                foreach ($trilhas as $trilha):
                     ?>
                     <tr>
-                        <td><?= $usuario->id ?></td>
-                        <td><?= $usuario->nomeCompleto ?></td>
-                        <td><?= $usuario->email ?></td>
+                        <td><?= $trilha->id_trilha ?></td>
+                        <td><?= $trilha->titulo ?></td>
+                        <td><?= $trilha->subtitulo ?></td>
+                        <td><?= $trilha->nivel ?></td>
+                        <td><?= $trilha->duracao ?></td>
+
                         <td class="d-flex gap-1 justify-content-center">
 
-                            <form action="cadUsuario.php" method="post" class="d-flex">
-                                <input type="hidden" name="id" value="<?= $usuario->id ?>">
+                            <form action="cadEducaCoop.php" method="get" class="d-flex">
+                                <input type="hidden" name="id" value="<?= $trilha->id_trilha ?>">
                                 <button name="btnEditar" class="btn btn-primary btn-sm" type="submit" title="Editar"
-                                    onclick="return confirm('Tem certeza que deseja editar este usuário?');">
+                                    onclick="return confirm('Deseja editar esta trilha?');">
                                     <i class="bi bi-pencil-square"></i>
                                 </button>
                             </form>
 
-                            <form action="dbUsuario.php" method="post" class="d-flex">
-                                <input type="hidden" name="id" value="<?= $usuario->id ?>">
-                                <button name="btnDeletar" class="btn btn-danger btn-sm" type="submit" title="Deletar"
-                                    onclick="return confirm('Tem certeza que deseja deletar este usuário?');">
+                            <form action="dbEducaCoop.php" method="post" class="d-flex">
+                                <input type="hidden" name="id_trilha" value="<?= $trilha->id_trilha ?>">
+                                <button name="btnDeletar" class="btn btn-danger btn-sm" type="submit" title="Excluir"
+                                    onclick="return confirm('Tem certeza que deseja excluir esta trilha?');">
                                     <i class="bi bi-trash"></i>
                                 </button>
                             </form>
 
+                            <a href="cadAvaliacao.php?id_trilha=<?= $trilha->id_trilha ?>" class="btn btn-warning btn-sm"
+                                title="Editar Avaliação">
+                                <i class="bi bi-check2-square"></i>
+                            </a>
+
                         </td>
                     </tr>
+
                 <?php endforeach; ?>
+
             </tbody>
         </table>
+
     </main>
+
     <footer>
         <?php require_once "_parts/_footer.php"; ?>
     </footer>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn-script.com/ajax/libs/jquery/3.7.1/jquery.min.js" type="text/javascript"></script>
     <script src="https://cdn.datatables.net/2.3.4/js/dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/2.3.4/js/dataTables.bootstrap5.min.js"></script>
     <script src="JS/paginacao.js"></script>
+
 </body>
 
 </html>

@@ -32,7 +32,7 @@ $meusProjetos = $p->search("fk_usuario", $idUsuario);
             <h3>Meus Projetos</h3>
         </div>
 
-        <table class="table">
+        <table class="table dataTable">
             <thead class="table-light">
                 <tr>
                     <th>#</th>
@@ -85,6 +85,10 @@ $meusProjetos = $p->search("fk_usuario", $idUsuario);
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn-script.com/ajax/libs/jquery/3.7.1/jquery.min.js" type="text/javascript"></script>
+    <script src="https://cdn.datatables.net/2.3.4/js/dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/2.3.4/js/dataTables.bootstrap5.min.js"></script>
+     <script src="JS/paginacao.js"></script>
 </body>
 
 </html>

@@ -20,6 +20,12 @@ if ($idTrilha) {
     exit;
 }
 
+$perguntasSalvas = [];
+
+if (!empty($trilhaData->perguntasTrilha)) {
+    $perguntasSalvas = json_decode($trilhaData->perguntasTrilha, true);
+}
+
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $perguntas = [];
 
@@ -76,27 +82,54 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         </h3>
 
         <form action="" method="POST">
+
             <?php for ($i = 1; $i <= 10; $i++): ?>
+
+                <?php
+                $p = $perguntasSalvas[$i - 1]['pergunta'] ?? "";
+                ?>
+
                 <div class="card mb-4">
                     <div class="card-header bg-light">Pergunta <?= $i; ?></div>
+
                     <div class="card-body">
                         <div class="mb-3">
-                            <input type="text" class="form-control" name="pergunta_<?= $i; ?>"
-                                placeholder="Digite a pergunta <?= $i; ?>">
+                            <input type="text"
+                                class="form-control"
+                                name="pergunta_<?= $i; ?>"
+                                placeholder="Digite a pergunta <?= $i; ?>"
+                                value="<?= htmlspecialchars($p) ?>">
                         </div>
+
                         <?php for ($a = 1; $a <= 4; $a++): ?>
+
+                            <?php
+                            $alt = $perguntasSalvas[$i - 1]['alternativas'][$a - 1] ?? "";
+                            $corretaSalva = $perguntasSalvas[$i - 1]['correta'] ?? -1;
+                            ?>
+
                             <div class="input-group mb-2">
                                 <span class="input-group-text"><?= chr(64 + $a); ?></span>
-                                <input type="text" class="form-control" name="alt_<?= $i; ?>_<?= $a; ?>"
-                                    placeholder="Alternativa <?= chr(64 + $a); ?>">
+
+                                <input type="text"
+                                    class="form-control"
+                                    name="alt_<?= $i; ?>_<?= $a; ?>"
+                                    placeholder="Alternativa <?= chr(64 + $a); ?>"
+                                    value="<?= htmlspecialchars($alt) ?>">
+
                                 <div class="input-group-text">
-                                    <input type="radio" name="correta_<?= $i; ?>" value="<?= $a - 1; ?>">
+                                    <input type="radio"
+                                        name="correta_<?= $i; ?>"
+                                        value="<?= $a - 1; ?>"
+                                        <?= ($corretaSalva == ($a - 1)) ? 'checked' : '' ?>>
                                     <span class="ms-1 small">Correta</span>
                                 </div>
                             </div>
+
                         <?php endfor; ?>
                     </div>
                 </div>
+
             <?php endfor; ?>
 
             <button type="submit" class="btn btn-success">Salvar Avaliação</button>

@@ -36,6 +36,7 @@ $current = basename($_SERVER['PHP_SELF']);
                     <li><a href="cadEducaCoop.php" class="<?= $current === 'cadEducaCoop.php' ? 'active' : '' ?>">Cadastro
                             EducaCoop</a></li>
                     <li><a href="usuario.php" class="<?= $current === 'usuario.php' ? 'active' : '' ?>">Usuários</a></li>
+                     <li><a href="listaeducacoop.php" class="<?= $current === 'listaeducacoop.php' ? 'active' : '' ?>">EducaCoop</a></li>
                 <?php endif; ?>
 
             </ul>
@@ -54,7 +55,6 @@ $current = basename($_SERVER['PHP_SELF']);
                         <ul class="dropdown-menu dropdown-menu-end">
 
                             <?php if ($perfil === 'usuario'): ?>
-                                <li><a class="dropdown-item" href="cadProjeto.php">Cadastrar Projeto</a></li>
                                 <li><a class="dropdown-item" href="meusProjetos.php">Meus Projetos</a></li>
                                 <li>
                                     <hr class="dropdown-divider">

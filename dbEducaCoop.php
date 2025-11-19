@@ -60,7 +60,7 @@ if (filter_has_var(INPUT_POST, "btnSalvar")):
 
     else:
         if ($Trilha->update('id_trilha', $id)) {
-            echo "<script>alert('Trilha atualizada com sucesso!'); window.location.href='trilhas.php';</script>";
+            echo "<script>alert('Trilha atualizada com sucesso!'); window.location.href='listaeducacoop.php';</script>";
         } else {
             echo "<script>alert('Erro ao atualizar trilha.'); window.open(document.referrer,'_self');</script>";
         }
