@@ -152,7 +152,7 @@ if (($categoriaSelecionada && $categoriaSelecionada != 'todas') || ($faseSelecio
                                 <p class="descricao-projeto">
                                     <?php echo htmlspecialchars(substr($proj->breveDescricao, 0, 250)); ?>
                                 </p>
-                                <a href="projetoDetalhes.php?id=<?php echo $idProj; ?>" class="btn btn-projeto mt-2">Saiba mais
+                                <a href="projetoDetalhes.php?id=<?php echo $idProj; ?>" class="btn btn-projetos mt-2">Saiba mais
                                     e Colabore</a>
                             </div>
                         </div>
@@ -167,7 +167,7 @@ if (($categoriaSelecionada && $categoriaSelecionada != 'todas') || ($faseSelecio
 
     </main>
 
-    <footer class="mt-5">
+   <footer class="mt-5">
         <?php require_once "_parts/_footer.php"; ?>
     </footer>
 

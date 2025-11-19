@@ -45,7 +45,7 @@
                             required>
                     </div>
                     <div class="text-center mt-3">
-                        <button type="submit" class="btn btn-login" name="btnLogar">Entrar</button>
+                        <button type="submit" class="btn-login" name="btnLogar">Entrar</button>
                     </div>
                 </form>
                 <p class="text-center mt-3">Não tem cadastro? <a href="cadUsuario.php" class="link-criar">Clique

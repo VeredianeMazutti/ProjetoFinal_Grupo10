@@ -33,7 +33,7 @@ CREATE TABLE projetos (
     fk_usuario INT UNSIGNED NOT NULL,
     nomeProjeto VARCHAR(200) NOT NULL,
     nomeResponsavel VARCHAR(150) NOT NULL,
-    nomeColaboradores VARCHAR (500),
+    nomeColaboradores TEXT,
     nomeInstituicao VARCHAR (150),
     emailProjeto VARCHAR(100) NOT NULL,
         localizacaoEstado ENUM(
@@ -90,7 +90,7 @@ CREATE TABLE projetos (
     ) NOT NULL,
     contribuicao TEXT NOT NULL,
     descricaoDetalhada TEXT NOT NULL,
-    linksProjeto TEXT NOT NULL,
+    linksProjeto TEXT,
     visualizacoes INT UNSIGNED DEFAULT 0,
     curtidas INT UNSIGNED DEFAULT 0,
     dataCadastro TIMESTAMP DEFAULT CURRENT_TIMESTAMP,

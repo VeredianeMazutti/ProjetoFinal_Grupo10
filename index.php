@@ -123,7 +123,8 @@
                                     <p class="descricao-projeto">
                                         <?php echo htmlspecialchars(substr($proj->breveDescricao, 0, 250)); ?>
                                     </p>
-                                    <a href="projetoDetalhes.php?id=<?php echo $idProj; ?>" class="btn btn-projeto mt-2">Saiba mais e Colabore</a>
+                                    <a href="projetoDetalhes.php?id=<?php echo $idProj; ?>"
+                                        class="btn btn-projetos mt-2">Saiba mais e Colabore</a>
                                 </div>
                             </div>
                         </div>
@@ -133,22 +134,36 @@
         </section>
 
         <section class="passos text-light py-5">
+
+            <div class="titulo-passos text-center mb-3">
+                <h2>Método InnovaMind: 5 Etapas para Transformar Ideias em Projetos Reais</h2>
+            </div>
+
             <div class="container d-flex align-items-center justify-content-between flex-wrap">
-                <div class="texto-passos col-lg-6 mb-4 mb-lg-0">
-                    <h2>5 passos para tirar sua ideia do papel</h2>
+
+                <div class="texto-passos col-lg-6 mb-4">
                     <ol class="mt-3">
-                        <li>Defina claramente o problema</li>
-                        <li>Estruture a solução</li>
-                        <li>Monte um plano básico</li>
-                        <li>Teste em pequena escala</li>
-                        <li>Busque apoio e parcerias</li>
+                        <li>Entenda a necessidade real e o impacto que deseja gerar.</li>
+                        <li>Desenhe uma solução clara, objetiva e viável.</li>
+                        <li>Aja com foco e execute os primeiros passos com direção.</li>
+                        <li>Teste rapidamente, avalie os resultados e ajuste o necessário.</li>
+                        <li>Mantenha consistência e evolua o projeto de forma contínua.</li>
                     </ol>
+
+                    <p class="mt-3 dica-extra">
+                        ✨ <strong>Dica extra:</strong> divulgue seu projeto e conecte-se com pessoas que podem
+                        impulsionar sua ideia.
+                    </p>
+
+                    <a href="cadUsuario.php" class="btn btn-cadastro mt-3">
+                        Cadastrar-se na Innovamind
+                    </a>
                 </div>
 
                 <div class="imagem-passos col-lg-5 text-center">
-                    <img src="images/5passos.png" alt="Bloco de notas e lâmpada representando ideia"
-                        class="img-fluid" />
+                    <img src="images/passosIndex.png" alt="Bloco de notas e lâmpada representando ideia" class="img-fluid">
                 </div>
+
             </div>
         </section>
 

@@ -6,7 +6,7 @@ spl_autoload_register(function ($class) {
 $Projeto = new Projeto();
 $FotoProjeto = new FotoProjeto();
 
-// Verifica se o ID foi passado na URL
+// Verifica se o ID foi passado
 if (!isset($_GET['id'])) {
     echo "<p class='text-center mt-5 text-danger'>Projeto não especificado.</p>";
     exit;
@@ -23,8 +23,9 @@ if (!$projetoData || count($projetoData) == 0) {
 
 $p = $projetoData[0];
 
-// Busca as fotos do projeto
+// Busca fotos
 $fotos = $FotoProjeto->fotosProjeto($id);
+
 ?>
 
 <!DOCTYPE html>
@@ -34,74 +35,148 @@ $fotos = $FotoProjeto->fotosProjeto($id);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= htmlspecialchars($p->nomeProjeto) ?> - Detalhes do Projeto</title>
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="CSS/baseSite.css">
     <link rel="shortcut icon" href="images/LogoInnovamind.png" type="image/x-icon">
 </head>
 
 <body class="text-light">
+
     <nav>
         <?php require_once "_parts/_navbar.php"; ?>
     </nav>
 
-    <main class="container py-5">
-        <div class="row align-items-center mb-5">
-            <div class="col-lg-6 mb-4 mb-lg-0">
-                <?php if (count($fotos) > 0): ?>
-                    <div id="carouselProjeto<?= $id; ?>" class="carousel slide" data-bs-ride="carousel">
-                        <div class="carousel-inner rounded-4 shadow-lg">
-                            <?php $isFirst = true;
-                            foreach ($fotos as $f): ?>
-                                <div class="carousel-item <?= $isFirst ? 'active' : ''; ?>" data-bs-interval="4500">
-                                    <img src="uploads/projetos/<?= htmlspecialchars($f->nome); ?>"
-                                        class="d-block w-100 rounded-4" alt="<?= htmlspecialchars($f->alternativo); ?>">
-                                </div>
-                                <?php $isFirst = false; ?>
-                            <?php endforeach; ?>
-                        </div>
+    <main class="container py-5 projeto-detalhes-page">
 
-                        <?php if (count($fotos) > 1): ?>
-                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselProjeto<?= $id; ?>"
-                                data-bs-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Anterior</span>
-                            </button>
-                            <button class="carousel-control-next" type="button" data-bs-target="#carouselProjeto<?= $id; ?>"
-                                data-bs-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Próximo</span>
-                            </button>
-                        <?php endif; ?>
-                    </div>
-                <?php else: ?>
-                    <img src="images/sem-foto.png" class="img-fluid rounded-4 shadow-lg" alt="Sem imagem disponível">
-                <?php endif; ?>
-            </div>
+        <div class="row g-5 align-items-start">
 
             <div class="col-lg-6">
-                <h1 class="mb-3"><?= htmlspecialchars($p->nomeProjeto); ?></h1>
-                <p class="mb-2"><strong>Categoria:</strong> <?= htmlspecialchars($p->categoria); ?></p>
-                <p class="mb-2"><strong>Fase de desenvolvimento:</strong>
-                    <?= htmlspecialchars($p->faseDesenvolvimento); ?></p>
-                <p class="mb-2"><strong>Responsável:</strong> <?= htmlspecialchars($p->nomeResponsavel); ?></p>
-                <p class="mb-4"><strong>Contato:</strong> <?= htmlspecialchars($p->contato); ?></p>
-                <p class="lead"><?= nl2br(htmlspecialchars($p->breveDescricao)); ?></p>
+                <div class="projeto-imagem-wrapper shadow-lg rounded-4">
+
+                    <?php if (count($fotos) > 0): ?>
+                        <div id="carouselProjeto<?= $id; ?>" class="carousel slide" data-bs-ride="carousel">
+
+                            <div class="carousel-inner">
+                                <?php $isFirst = true;
+                                foreach ($fotos as $f): ?>
+                                    <div class="carousel-item <?= $isFirst ? 'active' : ''; ?>" data-bs-interval="4500">
+                                        <img src="uploads/projetos/<?= htmlspecialchars($f->nome); ?>"
+                                            class="d-block w-100 img-fluid rounded-4 projeto-imagem"
+                                            alt="<?= htmlspecialchars($f->alternativo); ?>">
+                                    </div>
+                                    <?php $isFirst = false; ?>
+                                <?php endforeach; ?>
+                            </div>
+
+                            <?php if (count($fotos) > 1): ?>
+                                <button class="carousel-control-prev" type="button" data-bs-target="#carouselProjeto<?= $id; ?>"
+                                    data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon"></span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-bs-target="#carouselProjeto<?= $id; ?>"
+                                    data-bs-slide="next">
+                                    <span class="carousel-control-next-icon"></span>
+                                </button>
+                            <?php endif; ?>
+
+                        </div>
+                    <?php else: ?>
+                        <img src="images/sem-foto.png" class="img-fluid rounded-4 shadow-lg projeto-imagem"
+                            alt="Sem imagem disponível">
+                    <?php endif; ?>
+
+                </div>
             </div>
-        </div>
 
-        <div class="card bg-secondary text-light border-0 shadow-lg rounded-4 mb-4 p-4">
-            <h3 class="mb-3">Descrição Detalhada</h3>
-            <p><?= nl2br(htmlspecialchars($p->descricaoDetalhada)); ?></p>
-        </div>
+            <div class="col-lg-6 texto-detalhes-projeto">
 
-        <div class="card bg-dark border-light shadow-lg rounded-4 mb-5 p-4">
-            <h3 class="mb-3 text-light">Como você pode contribuir?</h3>
-            <p><?= nl2br(htmlspecialchars($p->contribuicao)); ?></p>
-        </div>
+                <h1 class="titulo-projeto-detalhes mb-3">
+                    <?= htmlspecialchars($p->nomeProjeto); ?>
+                </h1>
 
-        <div class="text-center">
-            <a href="Projetos.php" class="btn btn-outline-light px-5">Voltar para Projetos</a>
-        </div>
+                <div class="info-projeto-lista">
+
+                    <p>
+                        <i class="bi bi-gear-fill icone-info"></i>
+                        <strong class="titulo-info">Fase:</strong>
+                        <span class="valor-info"><?= Projeto::formatarCampo($p->faseDesenvolvimento, "fase") ?></span>
+                    </p>
+
+                    <p>
+                        <i class="bi bi-tag-fill icone-info"></i>
+                        <strong class="titulo-info">Categoria:</strong>
+                        <span class="valor-info"><?= Projeto::formatarCampo($p->categoria, "categoria") ?></span>
+                    </p>
+
+                    <p>
+                        <i class="bi bi-person-fill icone-info"></i>
+                        <strong class="titulo-info">Responsável:</strong>
+                        <span class="valor-info"><?= htmlspecialchars($p->nomeResponsavel); ?></span>
+                    </p>
+
+                    <p>
+                        <i class="bi bi-envelope-fill icone-info"></i>
+                        <strong class="titulo-info">Contato:</strong>
+                        <span class="valor-info"><?= htmlspecialchars($p->emailProjeto); ?></span>
+                    </p>
+
+                    <?php if (!empty($p->localizacaoEstado)): ?>
+                        <p>
+                            <i class="bi bi-geo-alt-fill icone-info"></i>
+                            <strong class="titulo-info">Estado:</strong>
+                            <span class="valor-info"><?= Projeto::formatarCampo($p->localizacaoEstado, "estado") ?></span>
+                        </p>
+                    <?php endif; ?>
+
+                    <?php if (!empty(trim($p->nomeColaboradores))): ?>
+                        <p class="info-item">
+                            <i class="bi bi-people-fill icone-info"></i>
+                            <strong class="titulo-info">Colaboradores:</strong>
+                            <span class="valor-info"><?= nl2br(htmlspecialchars($p->nomeColaboradores)); ?></span>
+                        </p>
+                    <?php endif; ?>
+
+                    <?php if (!empty(trim($p->nomeInstituicao))): ?>
+                        <p class="info-item">
+                            <i class="bi bi-building icone-info"></i>
+                            <strong class="titulo-info">Instituição:</strong>
+                            <span class="valor-info"><?= htmlspecialchars($p->nomeInstituicao); ?></span>
+                        </p>
+                    <?php endif; ?>
+
+                    <p class="descricao-curta mt-4">
+                        <?= nl2br(htmlspecialchars($p->breveDescricao)); ?>
+                    </p>
+                </div>
+            </div>
+
+            <div class="secao-projeto">
+                <h2 class="titulo-secao-projeto">Descrição Detalhada</h2>
+                <div class="conteudo-secao-projeto">
+                    <?= nl2br(htmlspecialchars($p->descricaoDetalhada)); ?>
+                </div>
+            </div>
+
+            <div class="secao-projeto">
+                <h2 class="titulo-secao-projeto">Como você pode contribuir?</h2>
+                <div class="conteudo-secao-projeto">
+                    <?= nl2br(htmlspecialchars($p->contribuicao)); ?>
+                </div>
+            </div>
+
+            <?php if (!empty(trim($p->linksProjeto))): ?>
+                <div class="secao-projeto">
+                    <h2 class="titulo-secao-projeto">Links do Projeto</h2>
+                    <div class="conteudo-secao-projeto">
+                        <?= nl2br(htmlspecialchars($p->linksProjeto)); ?>
+                    </div>
+                </div>
+            <?php endif; ?>
+
+            <div class="my-4 text-center">
+                <a href="Projetos.php" class="btn-projeto">Voltar para Projetos</a>
+            </div>
     </main>
 
     <footer class="mt-5">

@@ -245,6 +245,7 @@
     font-size: 20px;
     font-weight: bold;
     color: #9F6ACE;
+    text-transform: capitalize;
 }
 
 .descricao-projeto {
@@ -254,7 +255,7 @@
 
 }
 
-.btn-projeto {
+.btn-projetos {
     margin-top: auto;
     background-color: #9a64e4;
     color: #fff;
@@ -265,7 +266,7 @@
     transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
-.btn-projeto:hover {
+.btn-projetos:hover {
     background-color: #b57eff;
     transform: scale(1.05);
 }
@@ -274,6 +275,7 @@
     justify-content: center;
 }
 
+/*Passos*/
 .passos {
     position: relative;
     min-height: 75vh;
@@ -294,15 +296,16 @@
 }
 
 .passos::before {
-    top: 50%;
-    left: -300px;
-    transform: translateY(-50%);
+    top: 30%;
+    left: -360px;
+
+    transform: translateY(-20%);
     background: radial-gradient(circle,
-            rgb(82, 51, 111) 0%,
+            rgb(80, 46, 94) 0%,
             rgba(90, 41, 137, 0.9) 25%,
-            rgba(133, 50, 210, 0.6) 45%,
-            transparent 70%);
-    box-shadow: 0 0 60px 40px rgba(147, 51, 234, 0.3);
+            rgba(93, 31, 168, 0.6) 45%,
+            transparent 75%);
+    box-shadow: 0 0 80px 30px rgba(192, 132, 252, 0.4);
 }
 
 .passos::after {
@@ -320,27 +323,75 @@
 
 .passos h2 {
     font-family: "Trebuchet MS";
-    font-size: 35px;
+    font-size: 36px;
     font-weight: 700;
-    color: #9F6ACE;
+    color: #b78af2;
+    white-space: nowrap;
+
 }
 
 .passos ol {
     list-style: decimal;
     padding-left: 1.5rem;
-    font-size: 1.1rem;
     color: #fff;
     line-height: 1.8;
+    z-index: 2;
+    position: relative;
 }
 
 .passos li {
-    font-size: 21px;
-    margin-bottom: 0.6rem;
-    transition: transform 0.3s ease, text-shadow 0.3s ease;
+    font-family: "Trebuchet MS";
+    font-size: 20px;
+    margin-bottom: 1rem;
+    transition: 0.3s ease;
+}
+
+.passos li strong {
+    display: inline-block;
+    color: #d4b3ff;
+    font-size: 22px;
+    margin-bottom: 2px;
+}
+
+.passos li:hover {
+    transform: translateX(5px);
+    text-shadow: 0 0 8px rgba(180, 140, 255, 0.6);
+}
+
+.dica-extra {
+    font-size: 1.05rem;
+    color: #e8d9ff;
+    margin-top: 15px;
+}
+
+.btn-cadastro {
+    display: inline-block;
+    background: linear-gradient(135deg, #9F6ACE, #7b3bb3);
+    color: #fff;
+    padding: 12px 26px;
+    border-radius: 10px;
+    font-weight: 600;
+    text-decoration: none;
+    font-family: "Trebuchet MS";
+    transition: 0.3s ease;
+}
+
+.btn-cadastro:hover {
+    background: linear-gradient(135deg, #b281ff, #9046d2);
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px rgba(180, 120, 255, 0.5);
 }
 
 .passos img {
-    max-width: 600px;
+    padding-right: 100px;
+    max-width: 550px;
+    z-index: 2;
+    position: relative;
+}
+
+.passos .container {
+    padding-left: 70px;
 }
 
 /*Projetos*/
@@ -370,42 +421,143 @@
     position: relative;
 }
 
-.secao-projetos::before,
-.secao-projetos::after {
-    content: "";
-    position: absolute;
-    width: 420px;
-    height: 420px;
-    border-radius: 50%;
-    filter: blur(80px);
-    opacity: 1;
-    mix-blend-mode: screen;
-    z-index: 0;
+/*ProjetoDetalhes*/
+
+.projeto-detalhes-page {
+    position: relative;
+    z-index: 2;
 }
 
-.secao-projetos::before {
-    top: 40%;
-    left: -230px;
-    transform: translateY(-50%);
-    background: radial-gradient(circle,
-            rgb(127, 83, 168) 0%,
-            rgba(90, 41, 137, 0.9) 25%,
-            rgba(133, 50, 210, 0.6) 45%,
-            transparent 70%);
-    box-shadow: 0 0 60px 40px rgba(147, 51, 234, 0.3);
+.projeto-imagem-wrapper {
+    overflow: hidden;
+    border-radius: 20px;
+    background: #1a0f27;
+    box-shadow: 0 0 25px rgba(112, 74, 166, 0.4);
 }
 
-.secao-projetos::after {
-    top: 35%;
-    right: -100px;
-    width: 180px;
-    transform: translateY(-50%);
-    background: radial-gradient(circle,
-            rgb(179, 111, 208) 0%,
-            rgba(90, 41, 137, 0.9) 25%,
-            rgba(133, 51, 234, 0.6) 45%,
-            transparent 70%);
-    box-shadow: 0 0 80px 30px rgba(192, 132, 252, 0.4);
+.projeto-imagem {
+    border-radius: 20px;
+}
+
+.titulo-projeto-detalhes {
+    font-family: "Trebuchet MS";
+    font-weight: 700;
+    font-size: 38px;
+    color: #dabdff;
+    text-transform: capitalize;
+}
+
+.info-projeto-lista {
+    margin-top: 15px;
+}
+
+.titulo-info {
+    font-family: "Segoe UI";
+    color: #f6effd;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.valor-info {
+    font-family: "Segoe UI";
+    color: #e6e6e6;
+}
+
+.icone-info {
+    color: #c395ff;
+    margin-right: 8px;
+    text-shadow: 0 0 10px rgba(180, 120, 255, 0.4);
+}
+
+.descricao-curta {
+    font-family: "Segoe UI";
+    font-size: 19px;
+    color: #eee;
+    line-height: 1.6;
+}
+
+.card.bg-secondary,
+.card.bg-dark {
+    border-radius: 20px !important;
+    background: rgba(25, 15, 40, 0.75) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 0 25px rgba(150, 100, 220, 0.25);
+}
+
+.card h3 {
+    color: #c8aaff;
+    text-shadow: 0 0 12px rgba(160, 100, 230, 0.4);
+}
+
+.btn-outline-light {
+    border-radius: 10px;
+    border-width: 2px;
+    padding: 10px 28px;
+    font-weight: 600;
+    transition: 0.3s ease;
+}
+
+.btn-outline-light:hover {
+    background: #8b45aa;
+    border-color: #8b45aa;
+}
+
+.secao-projeto {
+    background: #281a38;
+    padding: 40px 45px;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    margin-top: 55px;
+}
+
+.titulo-secao-projeto {
+    font-family: "Segoe UI";
+    font-size: 26px;
+    font-weight: 700;
+    color: #f6effd;
+    margin-bottom: 35px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    padding-bottom: 12px;
+}
+
+.conteudo-secao-projeto {
+    font-family: "Segoe UI";
+    font-size: 17px;
+    color: #ffffff;
+    line-height: 1.9;
+    white-space: pre-line;
+}
+
+.conteudo-secao-projeto p {
+    margin-bottom: 10px;
+}
+
+.btn-projeto {
+    display: inline-block;
+    background: linear-gradient(90deg, #491874, #8b45aa, #9f6ace);
+    color: #ffffff;
+    padding: 12px 32px;
+    font-size: 17px;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.btn-projeto:hover {
+    background: linear-gradient(90deg, #72429d, #bb81d3, #9f6ace);
+    transform: scale(1.04);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45);
+}
+
+.titulo-projeto-detalhes,
+.texto-detalhes-projeto p,
+.descricao-curta,
+.conteudo-secao-projeto {
+    white-space: normal;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
 }
 
 /*Trilha*/
@@ -811,7 +963,7 @@ input[type="date"][value]:not([value=""])::-webkit-calendar-picker-indicator {
 }
 
 .btn-login {
-    background: linear-gradient(90deg, #6d28d9, #a855f7);
+    background: linear-gradient(90deg, #b47aff, #8042e0);
     color: #fff;
     border: none;
     font-weight: 600;

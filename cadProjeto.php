@@ -41,13 +41,13 @@
             <div class="col-12">
                 <label for="nomeProjeto" class="form-label">Nome do Projeto</label>
                 <input type="text" name="nomeProjeto" id="nomeProjeto" placeholder="Digite o nome do projeto" required
-                    class="form-control" value="<?php echo $projeto->nomeProjeto ?? ''; ?>">
+                class="form-control"  maxlength="200" value="<?php echo $projeto->nomeProjeto ?? ''; ?>">
             </div>
 
             <div class="col-12">
                 <label for="nomeResponsavel" class="form-label">Nome do Responsável</label>
                 <input type="text" name="nomeResponsavel" id="nomeResponsavel"
-                    placeholder="Digite o nome do responsável principal" required class="form-control"
+                    placeholder="Digite o nome do responsável principal" required class="form-control" maxlength="150"
                     value="<?php echo $projeto->nomeResponsavel ?? ''; ?>">
             </div>
 
@@ -55,21 +55,21 @@
                 <label for="nomeColaboradores" class="form-label">Nome dos Colaboradores e a Respectiva Área de
                     Atuação</label>
                 <textarea name="nomeColaboradores" id="nomeColaboradores"
-                    placeholder="Digite o nome dos colaboradores e a área de atuação, se houver" required
+                    placeholder="Digite o nome dos colaboradores e a área de atuação, se houver"
                     class="form-control"><?php echo $projeto->nomeColaboradores ?? ''; ?></textarea>
             </div>
 
             <div class="col-12">
                 <label for="nomeInstituicao" class="form-label">Nome da Instituição Responsável</label>
                 <input type="text" name="nomeInstituicao" id="nomeInstituicao"
-                    placeholder="Digite o nome da Instituição responsável, se houver" required class="form-control"
+                    placeholder="Digite o nome da Instituição responsável, se houver" class="form-control" maxlength="150"
                     value="<?php echo $projeto->nomeInstituicao ?? ''; ?>">
             </div>
 
             <div class="col-12">
                 <label for="emailProjeto" class="form-label">Digite o E-mail para Contato</label>
                 <input type="text" name="emailProjeto" id="emailProjeto" placeholder="Digite um e-mail para contato"
-                    required class="form-control" value="<?php echo $projeto->emailProjeto ?? ''; ?>">
+                    required class="form-control" maxlength="100" value="<?php echo $projeto->emailProjeto ?? ''; ?>">
             </div>
 
             <div class="col-12">
@@ -189,7 +189,7 @@
                 <label for="linksProjeto" class="form-label">Links do Projeto</label>
                 <textarea name="linksProjeto" id="linksProjeto"
                     placeholder="Adicione os links relacionados ao projeto, como Instagram, Figma, GitHub ou outros, se houver" 
-                    required class="form-control" minlength="500"><?php echo $projeto->linksProjeto ?? ''; ?></textarea>
+                    class="form-control" minlength="500"><?php echo $projeto->linksProjeto ?? ''; ?></textarea>
             </div>
 
             <div class="col-12 mt-3 mb-5">
