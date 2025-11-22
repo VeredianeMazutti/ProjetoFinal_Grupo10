@@ -21,9 +21,14 @@ $current = basename($_SERVER['PHP_SELF']);
 
             <ul class="main-nav navbar-nav me-auto mb-2 mb-lg-0">
 
-                <li><a href="index.php" class="<?= $current === 'index.php' ? 'active' : '' ?>">Home</a></li>
-                <li><a href="projetos.php" class="<?= $current === 'projetos.php' ? 'active' : '' ?>">Projetos</a></li>
-                <li><a href="impactos.php" class="<?= $current === 'impactos.php' ? 'active' : '' ?>">Impactos</a></li>
+                <?php if ($perfil === 'visitante' || $perfil === 'usuario'): ?>
+                    <li><a href="index.php" class="<?= $current === 'index.php' ? 'active' : '' ?>">Home</a></li>
+                    <li><a href="projetos.php" class="<?= $current === 'projetos.php' ? 'active' : '' ?>">Projetos</a></li>
+                    <li><a href="impactos.php" class="<?= $current === 'impactos.php' ? 'active' : '' ?>">Impactos</a></li>
+                    <li><a href="apoiadores.php" class="<?= $current === 'apoiadores.php' ? 'active' : '' ?>">Rede
+                            Innova</a></li>
+                <?php endif; ?>
+
 
                 <?php if ($perfil === 'usuario'): ?>
                     <li><a href="educaCoop.php" class="<?= $current === 'educaCoop.php' ? 'active' : '' ?>">EducaCoop</a>
@@ -32,14 +37,24 @@ $current = basename($_SERVER['PHP_SELF']);
                             Projeto</a></li>
                 <?php endif; ?>
 
+
                 <?php if ($perfil === 'admin'): ?>
+                    <li><a href="dashboard.php" class="<?= $current === 'dashboard.php' ? 'active' : '' ?>">Dashboard</a>
+                    </li>
                     <li><a href="cadEducaCoop.php" class="<?= $current === 'cadEducaCoop.php' ? 'active' : '' ?>">Cadastro
                             EducaCoop</a></li>
                     <li><a href="usuario.php" class="<?= $current === 'usuario.php' ? 'active' : '' ?>">Usuários</a></li>
-                     <li><a href="listaeducacoop.php" class="<?= $current === 'listaeducacoop.php' ? 'active' : '' ?>">EducaCoop</a></li>
+                    <li><a href="listaeducacoop.php"
+                            class="<?= $current === 'listaeducacoop.php' ? 'active' : '' ?>">EducaCoop</a></li>
+                    <li><a href="cadApoiadores.php" class="<?= $current === 'cadApoiadores.php' ? 'active' : '' ?>">Cadastro
+                            de Apoiadores</a></li>
+                    <li><a href="listaApoiadores.php"
+                            class="<?= $current === 'listaApoiadores.php' ? 'active' : '' ?>">Lista Apoiadores</a></li>
                 <?php endif; ?>
 
+
             </ul>
+
 
             <div class="nav-actions">
 

@@ -99,7 +99,7 @@
                         $idProj = intval($proj->id);
                         $fotos = $FotoProjeto->fotosProjeto($idProj);
                         ?>
-                        <div class="col-md-4">
+                        <div class="col-12 col-sm-6 col-md-4">
                             <div class="card h-100 shadow-sm bg-dark rounded-4 overflow-hidden">
                                 <div id="carouselProjeto<?php echo $idProj; ?>" class="carousel slide"
                                     data-bs-ride="carousel">
@@ -161,7 +161,8 @@
                 </div>
 
                 <div class="imagem-passos col-lg-5 text-center">
-                    <img src="images/passosIndex.png" alt="Bloco de notas e lâmpada representando ideia" class="img-fluid">
+                    <img src="images/passosIndex.png" alt="Bloco de notas e lâmpada representando ideia"
+                        class="img-fluid">
                 </div>
 
             </div>
@@ -173,6 +174,20 @@
         <?php require_once "_parts/_footer.php"; ?>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Botão do VLibras -->
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+
+    <!-- Script oficial do VLibras -->
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
 </body>
 
 </html>

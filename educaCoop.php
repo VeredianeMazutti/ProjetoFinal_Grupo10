@@ -16,7 +16,7 @@
         <?php require_once "_parts/_navbar.php"; ?>
     </nav>
 
-    <main class="container my-5">
+    <main class="container my-5 pagina-trilha">
         <?php
         spl_autoload_register(function ($class) {
             require_once "Classes/{$class}.class.php";
@@ -26,12 +26,23 @@
         $trilhas = $Trilha->listAll("ativoTrilha = 1");
         ?>
 
-        <section class="text-center mb-5">
-            <h2 class="fw-bold">
-                <span class="roxo">Trilhe sua jornada</span> de conhecimento e colaboração<br>
-                para <span class="roxo">transformar ideias em impacto!</span>
-            </h2>
+        <section class="hero-trilha container py-5">
+            <div class="row align-items-center">
+                <div class="col-md-6 mb-4 mb-md-0">
+                    <h1 class="tituloPagina-trilha">
+                        <span class="roxo">Trilhe sua jornada</span> de<br>
+                        conhecimento e colaboração<br>
+                        para <span class="roxo">transformar ideias em impacto!</span>
+                    </h1>
+                </div>
+
+                <div class="col-md-6 text-center">
+                    <img src="images/Trilha.png" alt="Rede de colaboração" class="img-fluid trilha-img">
+                </div>
+
+            </div>
         </section>
+
 
         <section class="timeline">
             <div class="linha-central"></div>

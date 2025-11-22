@@ -145,3 +145,14 @@ CREATE TABLE trilha_usuario (
     data_conclusao DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (id_trilha) REFERENCES trilha(id_trilha)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE apoiadores (
+    idApoiadores INT AUTO_INCREMENT PRIMARY KEY,
+    tipo ENUM('pessoa', 'empresa', 'instituicao') NOT NULL,
+    nome VARCHAR(255) NOT NULL,
+    descricao VARCHAR(500) NOT NULL,
+    imagem VARCHAR(255) DEFAULT NULL,
+    site VARCHAR(255) DEFAULT NULL,
+    instagram VARCHAR(255) DEFAULT NULL,
+    linkedin VARCHAR(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
