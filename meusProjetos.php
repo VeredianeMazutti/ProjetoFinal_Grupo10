@@ -32,15 +32,15 @@ $meusProjetos = $p->search("fk_usuario", $idUsuario);
             <h3>Meus Projetos</h3>
         </div>
 
-        <table class="table">
-            <thead class="table-light">
+        <table class="table table-striped">
+            <thead class="table-dark">
                 <tr>
                     <th>#</th>
                     <th>Nome do Projeto</th>
                     <th class="text-center">Ações</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody class="table-dark">
                 <?php if ($meusProjetos): ?>
                     <?php foreach ($meusProjetos as $proj): ?>
                         <tr>
