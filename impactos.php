@@ -23,14 +23,12 @@
         });
         ?>
 
-        <!-- Seção do Power BI -->
         <section class="text-center my-5">
 
             <div class="ratio ratio-16x9 shadow-lg rounded-4 overflow-hidden">
-                <iframe title="innovamind"
-                    src="https://app.powerbi.com/view?r=eyJrIjoiNjAxNjI2NTgtYmFkMy00ODE3LTgwNGEtMTQyYTI4OGQ5NzQzIiwidCI6Ijk1NmFmNTU3LTRiYTctNDM2OS1hODIwLWU3Y2ZmOThlOTBmOSJ9"
-                    frameborder="0" allowfullscreen="true"
-                    sandbox="allow-same-origin allow-scripts allow-popups allow-forms"></iframe>
+                <iframe title="innovamind" width="600" height="373.5"
+                    src="https://app.powerbi.com/view?r=eyJrIjoiMThjNmZhMTctYTg3NS00ZmQ4LTlhYjktOTFkMWU0YzU3MDA2IiwidCI6ImUwMjBiZmYzLWRhYjgtNGMxNi1iYjFmLTUyMmY3NWVhYjA3NiJ9"
+                    frameborder="0" allowFullScreen="true"></iframe>
             </div>
 
             <p class="mt-3 text-muted">Explore os dados em tempo real diretamente pelo painel Power BI integrado.</p>

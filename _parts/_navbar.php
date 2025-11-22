@@ -27,6 +27,8 @@ $current = basename($_SERVER['PHP_SELF']);
                     <li><a href="impactos.php" class="<?= $current === 'impactos.php' ? 'active' : '' ?>">Impactos</a></li>
                     <li><a href="apoiadores.php" class="<?= $current === 'apoiadores.php' ? 'active' : '' ?>">Rede
                             Innova</a></li>
+                    <li><a href="sobreInnovamind.php"
+                            class="<?= $current === 'sobreInnovamind.php' ? 'active' : '' ?>">Conheça a Innovamind</a></li>
                 <?php endif; ?>
 
 
@@ -50,6 +52,7 @@ $current = basename($_SERVER['PHP_SELF']);
                             de Apoiadores</a></li>
                     <li><a href="listaApoiadores.php"
                             class="<?= $current === 'listaApoiadores.php' ? 'active' : '' ?>">Lista Apoiadores</a></li>
+                    <li><a href="cadFaq.php" class="<?= $current === 'cadFaq.php' ? 'active' : '' ?>">Cadastro FAQ</a></li>
                 <?php endif; ?>
 
 
