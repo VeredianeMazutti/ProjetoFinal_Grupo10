@@ -1,0 +1,63 @@
+-- view dos projetos
+
+CREATE OR REPLACE
+ALGORITHM = UNDEFINED VIEW u795051998_innovamind.vw_projetos_consolidada AS
+SELECT
+    p.id AS projeto_id,
+    
+    -- Categoria: substituir _ por espaço e primeira letra maiúscula
+    CONCAT(
+        UPPER(SUBSTRING(REPLACE(p.categoria, '_', ' '), 1, 1)),
+        LOWER(SUBSTRING(REPLACE(p.categoria, '_', ' '), 2))
+    ) AS categoria,
+    
+    -- Estado: substituir _ por espaço e primeira letra maiúscula
+    CONCAT(
+        UPPER(SUBSTRING(REPLACE(p.localizacaoEstado, '_', ' '), 1, 1)),
+        LOWER(SUBSTRING(REPLACE(p.localizacaoEstado, '_', ' '), 2))
+    ) AS estado,
+    
+    -- Fase: substituir _ por espaço e primeira letra maiúscula
+    CONCAT(
+        UPPER(SUBSTRING(REPLACE(p.faseDesenvolvimento, '_', ' '), 1, 1)),
+        LOWER(SUBSTRING(REPLACE(p.faseDesenvolvimento, '_', ' '), 2))
+    ) AS fase,
+    
+    p.breveDescricao AS breveDescricao,
+    p.visualizacoes AS visualizacoes,
+    p.curtidas AS curtidas,
+    p.dataCadastro AS dataCadastro,
+    YEAR(p.dataCadastro) AS ano,
+    MONTH(p.dataCadastro) AS mes,
+    QUARTER(p.dataCadastro) AS trimestre,
+    WEEK(p.dataCadastro, 1) AS semana
+FROM
+    u795051998_innovamind.projetos p;
+
+
+-- view total de usuarios
+
+create or replace
+algorithm = UNDEFINED view u795051998_innovamind.vw_quantidade_usuarios as
+select
+    count(0) as total_usuarios_cadastrados
+from
+    u795051998_innovamind.usuario;
+
+--view quantidade de projetos
+
+create or replace
+algorithm = UNDEFINED view u795051998_innovamind.vw_quantidade_projetos as
+select
+    count(0) as total_projetos_cadastrados
+from
+    u795051998_innovamind.projetos;
+
+--- view quantidade de apoiadores
+
+create or replace
+algorithm = UNDEFINED view u795051998_innovamind.vw_quantidade_apoiadores as
+select
+    count(0) as total_apoiadores_cadastrados
+from
+    u795051998_innovamind.apoiadores;

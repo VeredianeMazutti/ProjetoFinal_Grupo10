@@ -162,3 +162,43 @@ CREATE TABLE faq (
     pergunta VARCHAR(450) NOT NULL,
     resposta TEXT NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE editalinterno (
+    idEditalInterno INT AUTO_INCREMENT PRIMARY KEY,
+    titulo VARCHAR(255) NOT NULL,
+    descResumida TEXT NOT NULL,
+    descCompleta TEXT NOT NULL,
+    organizacao VARCHAR(255) NOT NULL,
+    tipoApoio VARCHAR(255) NOT NULL,
+    dataAbertura DATE NOT NULL,
+    dataEncerramento DATE NOT NULL,
+    status VARCHAR(50) NOT NULL,
+    vagas INT NOT NULL,
+    criterios TEXT NOT NULL,
+    participantes TEXT NOT NULL,
+    etapas TEXT,
+    beneficios TEXT,
+    responsavel VARCHAR(255),
+    contato VARCHAR(255),
+    observacoes TEXT
+); ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+CREATE TABLE inscricaoedital (
+    idInscricao INT AUTO_INCREMENT PRIMARY KEY,
+    idEditalInterno INT NOT NULL,
+    fk_usuario INT NOT NULL,
+    responsavel VARCHAR(150) NOT NULL,
+    email VARCHAR(120) NOT NULL,
+    telefone VARCHAR(20) NOT NULL,
+    instituicao VARCHAR(150) NULL,
+    titulo VARCHAR(200) NOT NULL,
+    resumo TEXT NOT NULL,
+    objetivo TEXT NOT NULL,
+    relato TEXT NOT NULL,
+	status VARCHAR(20) NOT NULL,
+    dataInscricao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT fk_inscricao_edital
+        FOREIGN KEY (idEditalInterno) REFERENCES editalinterno(idEditalInterno)
+        ON DELETE CASCADE
+); ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

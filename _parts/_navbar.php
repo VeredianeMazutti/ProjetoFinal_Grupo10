@@ -29,6 +29,7 @@ $current = basename($_SERVER['PHP_SELF']);
                             Innova</a></li>
                     <li><a href="sobreInnovamind.php"
                             class="<?= $current === 'sobreInnovamind.php' ? 'active' : '' ?>">Conheça a Innovamind</a></li>
+                     <li><a href="editaisinternos.php" class="<?= $current === 'editaisinternos.php' ? 'active' : '' ?>">Editais Internos</a></li>
                 <?php endif; ?>
 
 
@@ -53,6 +54,7 @@ $current = basename($_SERVER['PHP_SELF']);
                     <li><a href="listaApoiadores.php"
                             class="<?= $current === 'listaApoiadores.php' ? 'active' : '' ?>">Lista Apoiadores</a></li>
                     <li><a href="cadFaq.php" class="<?= $current === 'cadFaq.php' ? 'active' : '' ?>">Cadastro FAQ</a></li>
+                     <li><a href="cadEditalInterno.php" class="<?= $current === 'cadEditalInterno.php' ? 'active' : '' ?>">Cadastro Edital Interno</a></li>
                 <?php endif; ?>
 
 
@@ -74,6 +76,7 @@ $current = basename($_SERVER['PHP_SELF']);
 
                             <?php if ($perfil === 'usuario'): ?>
                                 <li><a class="dropdown-item" href="meusProjetos.php">Meus Projetos</a></li>
+                                 <li><a class="dropdown-item" href="minhasInscricoes.php">Minhas Incriçoes em Editais</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
