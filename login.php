@@ -18,15 +18,15 @@
         <div class="login-card">
             <section class="login-ilustracao text-center p-4">
                 <img src="Images/login.png" alt="Ideia" class="login-img mb-4">
-                  <div class="login-frase-box">
-                <blockquote class="login-frase">
-                    “A vida está cheia de desafios que, se aproveitados de forma criativa, transformam-se em
-                    oportunidades.”
-                </blockquote>
-                <p class="login-autor">
-                    <strong>Maxwell Maltz</strong><br>
-                    Cirurgião que desenvolveu a psicocibernética
-                </p>
+                <div class="login-frase-box">
+                    <blockquote class="login-frase">
+                        “A vida está cheia de desafios que, se aproveitados de forma criativa, transformam-se em
+                        oportunidades.”
+                    </blockquote>
+                    <p class="login-autor">
+                        <strong>Maxwell Maltz</strong><br>
+                        Cirurgião que desenvolveu a psicocibernética
+                    </p>
                 </div>
             </section>
 
@@ -50,6 +50,9 @@
                 </form>
                 <p class="text-center mt-3">Não tem cadastro? <a href="cadUsuario.php" class="link-criar">Clique
                         aqui</a></p>
+                <p class="text-center mt-3">
+                    <a href="redefinir_senha.php" class="link-criar">Esqueci minha senha</a>
+                </p>
         </div>
         </div>
     </main>

@@ -28,7 +28,7 @@ require_once "verifica_acesso.php";
             <?php if ($_SESSION['perfil'] === 'admin'): ?>
                 <div class="alert alert-success">
                     Você é <strong>admin</strong>. Acesse:<br>
-                    <a href="usuario.php">Gerenciar Usuários</a>
+                    <a href="listaUsuarios.php">Gerenciar Usuários</a>
                 </div>
             <?php else: ?>
                 <div class="alert alert-info">

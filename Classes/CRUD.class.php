@@ -1,5 +1,7 @@
 <?php
 
+require_once __DIR__ . "/Database.class.php";
+
 abstract class CRUD
 {
     protected $table;

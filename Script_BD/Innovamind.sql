@@ -9,6 +9,7 @@ CREATE TABLE usuario (
     telefone VARCHAR(20) NOT NULL,
     areaAtuacao VARCHAR(150) NOT NULL,
     nomeExibicao VARCHAR(70) NOT NULL UNIQUE,
+    foto VARCHAR(255),
     email VARCHAR(100) NOT NULL UNIQUE,
     senha VARCHAR(255) NOT NULL,
     perfil ENUM('admin', 'usuario') NOT NULL DEFAULT 'usuario',
@@ -181,7 +182,7 @@ CREATE TABLE editalinterno (
     responsavel VARCHAR(255),
     contato VARCHAR(255),
     observacoes TEXT
-); ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
 CREATE TABLE inscricaoedital (
@@ -201,4 +202,23 @@ CREATE TABLE inscricaoedital (
     CONSTRAINT fk_inscricao_edital
         FOREIGN KEY (idEditalInterno) REFERENCES editalinterno(idEditalInterno)
         ON DELETE CASCADE
-); ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE editaisexternos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(255) NOT NULL,
+    categoria VARCHAR(50) NOT NULL,
+    descricao VARCHAR(100) NOT NULL,
+    link VARCHAR(500) NOT NULL,
+    dataCadastro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE RecuperacaoSenha (
+    idRecuperacaoSenha INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    idUsuarioFK INT(11) NOT NULL,
+    tokenRecuperacaoSenha VARCHAR(200) NOT NULL UNIQUE,
+    expiraRecuperacaoSenha DATETIME NOT NULL,
+    criadoRecuperacaoSenha DATETIME DEFAULT CURRENT_TIMESTAMP(),
+    KEY idUsuarioFK (idUsuarioFK),
+    CONSTRAINT recuperacao_senha_usuario FOREIGN KEY (idUsuarioFK) REFERENCES Usuario(idUsuario) ON DELETE CASCADE
+);

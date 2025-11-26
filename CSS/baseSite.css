@@ -999,64 +999,6 @@ input[type="date"][value]:not([value=""])::-webkit-calendar-picker-indicator {
     transform: scale(1.03);
 }
 
-/*Menu*/
-
-.link-criar {
-    color: #c88cff;
-    text-decoration: none;
-}
-
-.link-criar:hover {
-    text-decoration: underline;
-}
-
-.dropdown-menu {
-    background: #ffffff !important;
-}
-
-.dropdown-menu .dropdown-item {
-    color: #000 !important;
-}
-
-.dropdown-menu .dropdown-item:hover {
-    background: #f0f0f0 !important;
-    color: #000 !important;
-}
-
-.dropdown-divider {
-    border-color: #dcdcdc !important;
-}
-
-.btn-custom {
-    background: #4b0082;
-    padding: 6px 14px;
-    border-radius: 20px;
-    transition: 0.3s ease;
-    text-decoration: none;
-    position: static;
-    font-weight: bold;
-    margin-left: 15px;
-}
-
-.btn-custom:hover {
-    background: #6a0dad;
-}
-
-.dropdown-toggle::after,
-.dropdown-toggle:hover::after {
-    content: "";
-    border-top: .45em solid #fff !important;
-    border-right: .35em solid transparent !important;
-    border-left: .35em solid transparent !important;
-    border-bottom: 0 !important;
-    width: 0 !important;
-    height: 0 !important;
-    background: transparent !important;
-    display: inline-block !important;
-}
-
-
-
 /* Apoiadores*/
 h2.titulo-apoiadores {
     font-family: "Trebuchet MS";

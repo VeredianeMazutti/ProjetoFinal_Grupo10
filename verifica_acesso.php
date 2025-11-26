@@ -15,7 +15,7 @@ $pagina = basename($_SERVER['PHP_SELF']);
 
 // Regras de acesso
 $regras = [
-    "usuario.php"      => ["admin"],
+    "listaUsuarios.php"      => ["admin"],
     "projeto.php"      => ["admin"],
 
     "meusProjetos.php" => ["usuario"],
