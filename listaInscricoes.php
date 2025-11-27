@@ -84,7 +84,8 @@ $lista = $Inscricao->searchAll();
                         <td><?= date("d/m/Y H:i", strtotime($i->dataInscricao)) ?></td>
 
                         <td class="text-center">
-                            <a href="inscricaoDetalhes.php?idInscricao=<?= $i->idInscricao ?>" class="btn btn-info btn-sm me-1">
+                            <a href="inscricaoDetalhes.php?idInscricao=<?= $i->idInscricao ?>"
+                                class="btn btn-info btn-sm me-1">
                                 Ver
                             </a>
 
@@ -113,6 +114,21 @@ $lista = $Inscricao->searchAll();
     <footer class="mt-5">
         <?php include "_parts/_footer.php"; ?>
     </footer>
+
+    <!-- VLibras -->
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
 
 </body>
 

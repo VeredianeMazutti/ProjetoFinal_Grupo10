@@ -41,7 +41,7 @@
             <div class="col-12">
                 <label for="nomeProjeto" class="form-label">Nome do Projeto</label>
                 <input type="text" name="nomeProjeto" id="nomeProjeto" placeholder="Digite o nome do projeto" required
-                class="form-control"  maxlength="200" value="<?php echo $projeto->nomeProjeto ?? ''; ?>">
+                    class="form-control" maxlength="100" value="<?php echo $projeto->nomeProjeto ?? ''; ?>">
             </div>
 
             <div class="col-12">
@@ -62,8 +62,8 @@
             <div class="col-12">
                 <label for="nomeInstituicao" class="form-label">Nome da Instituição Responsável</label>
                 <input type="text" name="nomeInstituicao" id="nomeInstituicao"
-                    placeholder="Digite o nome da Instituição responsável, se houver" class="form-control" maxlength="150"
-                    value="<?php echo $projeto->nomeInstituicao ?? ''; ?>">
+                    placeholder="Digite o nome da Instituição responsável, se houver" class="form-control"
+                    maxlength="150" value="<?php echo $projeto->nomeInstituicao ?? ''; ?>">
             </div>
 
             <div class="col-12">
@@ -155,9 +155,9 @@
 
             <div class="col-12">
                 <label for="breveDescricao" class="form-label">Breve Descrição do Projeto</label>
-                <textarea name="breveDescricao" id="breveDescricao"
-                    placeholder="Digite uma descrição de no máximo 250 caracteres" required class="form-control"
-                    minlength="100" maxlength="150"><?php echo $projeto->breveDescricao ?? ''; ?></textarea>
+                <input type="text" name="breveDescricao" id="breveDescricao"
+                    placeholder="Digite uma descrição de no máximo 150 caracteres" class="form-control" minlength="100"
+                    maxlength="150" value="<?php echo $projeto->breveDescricao ?? ''; ?>">
             </div>
 
             <div class="col-12">
@@ -181,14 +181,14 @@
             <div class="col-12">
                 <label for="descricaoDetalhada" class="form-label">Descrição mais detalhada sobre o Projeto</label>
                 <textarea name="descricaoDetalhada" id="descricaoDetalhada"
-                    placeholder="Digite uma descrição completa do projeto: objetivo, poblema que busca resolver, público-alvo, etapas, ferramentas utilizadas e qualquer informação relevante" required
-                    class="form-control"><?php echo $projeto->descricaoDetalhada ?? ''; ?></textarea>
+                    placeholder="Digite uma descrição completa do projeto: objetivo, poblema que busca resolver, público-alvo, etapas, ferramentas utilizadas e qualquer informação relevante"
+                    required class="form-control"><?php echo $projeto->descricaoDetalhada ?? ''; ?></textarea>
             </div>
 
             <div class="col-12">
                 <label for="linksProjeto" class="form-label">Links do Projeto</label>
                 <textarea name="linksProjeto" id="linksProjeto"
-                    placeholder="Adicione os links relacionados ao projeto, como Instagram, Figma, GitHub ou outros, se houver" 
+                    placeholder="Adicione os links relacionados ao projeto, como Instagram, Figma, GitHub ou outros, se houver"
                     class="form-control" minlength="500"><?php echo $projeto->linksProjeto ?? ''; ?></textarea>
             </div>
 
@@ -202,6 +202,20 @@
         <?php require_once "_parts/_footer.php"; ?>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- VLibras -->
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
+
 </body>
 
 </html>

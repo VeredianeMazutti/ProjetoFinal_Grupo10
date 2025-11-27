@@ -22,7 +22,7 @@ if (filter_has_var(INPUT_POST, "btnGravar")):
     $Projeto->setContribuicao(filter_input(INPUT_POST, "contribuicao", FILTER_SANITIZE_STRING));
     $Projeto->setDescricaoDetalhada(filter_input(INPUT_POST, "descricaoDetalhada", FILTER_SANITIZE_STRING));
     $Projeto->setlinksProjeto(filter_input(INPUT_POST, "linksProjeto", FILTER_SANITIZE_STRING));
-
+    $Projeto->setVisualizacoes(0);
     $Projeto->setFkUsuario($_SESSION['idUsuario']);
 
     if (empty($id)):

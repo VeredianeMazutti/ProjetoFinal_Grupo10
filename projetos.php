@@ -126,52 +126,98 @@ if (($categoriaSelecionada && $categoriaSelecionada != 'todas') || ($faseSelecio
             </div>
         </form>
 
+
         <div class="row g-4 justify-content-center">
+
             <?php if (count($projetos) > 0): ?>
+
                 <?php foreach ($projetos as $proj):
                     $idProj = intval($proj->id);
                     $fotos = $FotoProjeto->fotosProjeto($idProj);
+
+                    if (empty($fotos)) {
+                        $fotos = [
+                            (object) [
+                                "nome" => "default-projeto.png",
+                                "alternativo" => "Imagem padrão do projeto"
+                            ]
+                        ];
+                    }
                     ?>
-                    <div class="col-md-4">
-                        <div class="card h-100 shadow-sm bg-dark rounded-4 overflow-hidden">
-                            <div id="carouselProjeto<?php echo $idProj; ?>" class="carousel slide" data-bs-ride="carousel">
+
+                    <div class="col-md-4 d-flex justify-content-center">
+                        <div class="card-projeto">
+
+                            <div id="carouselProjeto<?= $idProj ?>" class="carousel slide" data-bs-ride="carousel">
                                 <div class="carousel-inner">
-                                    <?php
-                                    $isFirst = true;
-                                    foreach ($fotos as $f): ?>
-                                        <div class="carousel-item <?php echo $isFirst ? 'active' : ''; ?>" data-bs-interval="4000">
-                                            <img src="uploads/projetos/<?php echo $f->nome; ?>" class="d-block w-100"
-                                                alt="<?php echo htmlspecialchars($f->alternativo); ?>">
+
+                                    <?php $isFirst = true; ?>
+                                    <?php foreach ($fotos as $f): ?>
+                                        <div class="carousel-item <?= $isFirst ? 'active' : '' ?>" data-bs-interval="4000">
+                                            <img src="uploads/projetos/<?= $f->nome ?>" class="d-block w-100"
+                                                alt="<?= htmlspecialchars($f->alternativo) ?>">
                                         </div>
-                                        <?php $isFirst = false; endforeach; ?>
+                                        <?php $isFirst = false; ?>
+                                    <?php endforeach; ?>
+
                                 </div>
                             </div>
 
-                            <div class="card-body text-center p-3">
-                                <h5 class="titulo-projeto"><?php echo htmlspecialchars($proj->nomeProjeto); ?></h5>
-                                <p class="descricao-projeto">
-                                    <?php echo htmlspecialchars(substr($proj->breveDescricao, 0, 250)); ?>
+                            <div class="card-body">
+
+                                <h3 class="card-title"><?= htmlspecialchars($proj->nomeProjeto) ?></h3>
+
+                                <p class="card-views">
+                                    <i class="bi bi-eye-fill"></i>
+                                    <?= intval($proj->visualizacoes) ?> visualizações
                                 </p>
-                                <a href="projetoDetalhes.php?id=<?php echo $idProj; ?>" class="btn btn-projetos mt-2">Saiba mais
-                                    e Colabore</a>
+
+                                <p class="card-desc">
+                                    <?= htmlspecialchars(substr($proj->breveDescricao, 0, 150)) ?>
+                                </p>
+
+                                <a href="projetoDetalhes.php?id=<?= $idProj ?>" class="btn-projeto">
+                                    Saiba mais e Colabore
+                                </a>
+
                             </div>
+
                         </div>
                     </div>
+
                 <?php endforeach; ?>
+
             <?php else: ?>
+
                 <div class="text-center">
                     <p class="text-light">Nenhum projeto encontrado nesta categoria.</p>
                 </div>
+
             <?php endif; ?>
+
         </div>
 
     </main>
 
-   <footer class="mt-5">
+    <footer class="mt-5">
         <?php require_once "_parts/_footer.php"; ?>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- VLibras -->
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
+
 </body>
 
 </html>

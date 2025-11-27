@@ -3,6 +3,7 @@
 class Projeto extends CRUD
 {
     protected $table = "projetos";
+
     private $id;
     private $fk_usuario;
     private $nomeProjeto;
@@ -17,6 +18,7 @@ class Projeto extends CRUD
     private $contribuicao;
     private $descricaoDetalhada;
     private $linksProjeto;
+    private $visualizacoes;
 
     public function setId($id)
     {
@@ -26,6 +28,7 @@ class Projeto extends CRUD
     {
         return $this->id;
     }
+
     public function setFkUsuario($fk_usuario)
     {
         $this->fk_usuario = $fk_usuario;
@@ -52,6 +55,7 @@ class Projeto extends CRUD
     {
         return $this->nomeResponsavel;
     }
+
     public function setNomeColaboradores($nomeColaboradores)
     {
         $this->nomeColaboradores = $nomeColaboradores;
@@ -78,6 +82,7 @@ class Projeto extends CRUD
     {
         return $this->emailProjeto;
     }
+
     public function setLocalizacaoEstado($localizacaoEstado)
     {
         $this->localizacaoEstado = $localizacaoEstado;
@@ -131,6 +136,7 @@ class Projeto extends CRUD
     {
         return $this->descricaoDetalhada;
     }
+
     public function setLinksProjeto($linksProjeto)
     {
         $this->linksProjeto = $linksProjeto;
@@ -140,73 +146,96 @@ class Projeto extends CRUD
         return $this->linksProjeto;
     }
 
+    public function setVisualizacoes($visualizacoes)
+    {
+        $this->visualizacoes = $visualizacoes;
+    }
+    public function getVisualizacoes()
+    {
+        return $this->visualizacoes;
+    }
+
+
     public function add()
     {
         $sql = "INSERT INTO $this->table 
-                (fk_usuario, nomeProjeto, nomeResponsavel, nomeColaboradores, nomeInstituicao, emailProjeto, localizacaoEstado, categoria, breveDescricao, faseDesenvolvimento, contribuicao, descricaoDetalhada, linksProjeto) 
-                VALUES 
-                (:fk_usuario, :nomeProjeto, :nomeResponsavel, :nomeColaboradores, :nomeInstituicao, :emailProjeto, :localizacaoEstado,  :categoria, :breveDescricao, :faseDesenvolvimento, :contribuicao, :descricaoDetalhada, :linksProjeto)";
+                (fk_usuario, nomeProjeto, nomeResponsavel, nomeColaboradores, nomeInstituicao, emailProjeto, 
+                localizacaoEstado, categoria, breveDescricao, faseDesenvolvimento, contribuicao, 
+                descricaoDetalhada, linksProjeto, visualizacoes)
+                VALUES
+                (:fk_usuario, :nomeProjeto, :nomeResponsavel, :nomeColaboradores, :nomeInstituicao, :emailProjeto,
+                :localizacaoEstado, :categoria, :breveDescricao, :faseDesenvolvimento, :contribuicao,
+                :descricaoDetalhada, :linksProjeto, :visualizacoes)";
 
         $stmt = $this->db->prepare($sql);
-        $stmt->bindParam(':fk_usuario', $this->fk_usuario, PDO::PARAM_INT);
-        $stmt->bindParam(':nomeProjeto', $this->nomeProjeto, PDO::PARAM_STR);
-        $stmt->bindParam(':nomeResponsavel', $this->nomeResponsavel, PDO::PARAM_STR);
-        $stmt->bindParam(':nomeColaboradores', $this->nomeColaboradores, PDO::PARAM_STR);
-        $stmt->bindParam(':nomeInstituicao', $this->nomeInstituicao, PDO::PARAM_STR);
-        $stmt->bindParam(':emailProjeto', $this->emailProjeto, PDO::PARAM_STR);
-        $stmt->bindParam(':localizacaoEstado', $this->localizacaoEstado, PDO::PARAM_STR);
-        $stmt->bindParam(':categoria', $this->categoria, PDO::PARAM_STR);
-        $stmt->bindParam(':breveDescricao', $this->breveDescricao, PDO::PARAM_STR);
-        $stmt->bindParam(':faseDesenvolvimento', $this->faseDesenvolvimento, PDO::PARAM_STR);
-        $stmt->bindParam(':contribuicao', $this->contribuicao, PDO::PARAM_STR);
-        $stmt->bindParam(':descricaoDetalhada', $this->descricaoDetalhada, PDO::PARAM_STR);
-        $stmt->bindParam(':linksProjeto', $this->linksProjeto, PDO::PARAM_STR);
+
+        $stmt->bindParam(':fk_usuario', $this->fk_usuario);
+        $stmt->bindParam(':nomeProjeto', $this->nomeProjeto);
+        $stmt->bindParam(':nomeResponsavel', $this->nomeResponsavel);
+        $stmt->bindParam(':nomeColaboradores', $this->nomeColaboradores);
+        $stmt->bindParam(':nomeInstituicao', $this->nomeInstituicao);
+        $stmt->bindParam(':emailProjeto', $this->emailProjeto);
+        $stmt->bindParam(':localizacaoEstado', $this->localizacaoEstado);
+        $stmt->bindParam(':categoria', $this->categoria);
+        $stmt->bindParam(':breveDescricao', $this->breveDescricao);
+        $stmt->bindParam(':faseDesenvolvimento', $this->faseDesenvolvimento);
+        $stmt->bindParam(':contribuicao', $this->contribuicao);
+        $stmt->bindParam(':descricaoDetalhada', $this->descricaoDetalhada);
+        $stmt->bindParam(':linksProjeto', $this->linksProjeto);
+        $stmt->bindParam(':visualizacoes', $this->visualizacoes);
+
         return $stmt->execute();
     }
+
 
     public function update(string $campo, int $id)
     {
         $sql = "UPDATE $this->table SET 
-                    nomeProjeto = :nomeProjeto, 
-                    nomeResponsavel = :nomeResponsavel, 
-                    nomeColaboradores = :nomeColaboradores,
-                    nomeInstituicao = :nomeInstituicao,
-                    emailProjeto = :emailProjeto, 
-                    localizacaoEstado = :localizacaoEstado,
-                    categoria = :categoria, 
-                    breveDescricao = :breveDescricao, 
-                    faseDesenvolvimento = :faseDesenvolvimento, 
-                    contribuicao = :contribuicao, 
-                    descricaoDetalhada = :descricaoDetalhada,
-                    linksProjeto = :linksProjeto
+                nomeProjeto = :nomeProjeto,
+                nomeResponsavel = :nomeResponsavel,
+                nomeColaboradores = :nomeColaboradores,
+                nomeInstituicao = :nomeInstituicao,
+                emailProjeto = :emailProjeto,
+                localizacaoEstado = :localizacaoEstado,
+                categoria = :categoria,
+                breveDescricao = :breveDescricao,
+                faseDesenvolvimento = :faseDesenvolvimento,
+                contribuicao = :contribuicao,
+                descricaoDetalhada = :descricaoDetalhada,
+                linksProjeto = :linksProjeto,
+                visualizacoes = :visualizacoes
                 WHERE $campo = :id";
 
         $stmt = $this->db->prepare($sql);
-        $stmt->bindParam(':nomeProjeto', $this->nomeProjeto, PDO::PARAM_STR);
-        $stmt->bindParam(':nomeResponsavel', $this->nomeResponsavel, PDO::PARAM_STR);
-        $stmt->bindParam(':nomeColaboradores', $this->nomeColaboradores, PDO::PARAM_STR);
-        $stmt->bindParam(':nomeInstituicao', $this->nomeInstituicao, PDO::PARAM_STR);
-        $stmt->bindParam(':emailProjeto', $this->emailProjeto, PDO::PARAM_STR);
-        $stmt->bindParam(':localizacaoEstado', $this->localizacaoEstado, PDO::PARAM_STR);
-        $stmt->bindParam(':categoria', $this->categoria, PDO::PARAM_STR);
-        $stmt->bindParam(':breveDescricao', $this->breveDescricao, PDO::PARAM_STR);
-        $stmt->bindParam(':faseDesenvolvimento', $this->faseDesenvolvimento, PDO::PARAM_STR);
-        $stmt->bindParam(':contribuicao', $this->contribuicao, PDO::PARAM_STR);
-        $stmt->bindParam(':descricaoDetalhada', $this->descricaoDetalhada, PDO::PARAM_STR);
-        $stmt->bindParam(':linksProjeto', $this->linksProjeto, PDO::PARAM_STR);
+
+        $stmt->bindParam(':nomeProjeto', $this->nomeProjeto);
+        $stmt->bindParam(':nomeResponsavel', $this->nomeResponsavel);
+        $stmt->bindParam(':nomeColaboradores', $this->nomeColaboradores);
+        $stmt->bindParam(':nomeInstituicao', $this->nomeInstituicao);
+        $stmt->bindParam(':emailProjeto', $this->emailProjeto);
+        $stmt->bindParam(':localizacaoEstado', $this->localizacaoEstado);
+        $stmt->bindParam(':categoria', $this->categoria);
+        $stmt->bindParam(':breveDescricao', $this->breveDescricao);
+        $stmt->bindParam(':faseDesenvolvimento', $this->faseDesenvolvimento);
+        $stmt->bindParam(':contribuicao', $this->contribuicao);
+        $stmt->bindParam(':descricaoDetalhada', $this->descricaoDetalhada);
+        $stmt->bindParam(':linksProjeto', $this->linksProjeto);
+        $stmt->bindParam(':visualizacoes', $this->visualizacoes);
+
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
 
         return $stmt->execute();
     }
+
     public function lastInsertId()
     {
         return $this->db->lastInsertId();
     }
+
     public function searchAll()
     {
         $sql = "SELECT * FROM {$this->table}";
-        $stmt = $this->db->prepare($sql);
-        $stmt->execute();
+        $stmt = $this->db->query($sql);
         return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
 
@@ -214,11 +243,12 @@ class Projeto extends CRUD
     {
         $sql = "SELECT * FROM projetos ORDER BY id DESC LIMIT :limite";
         $stmt = $this->db->prepare($sql);
-        $stmt->bindValue(":limite", (int) $limite, PDO::PARAM_INT);
+        $stmt->bindValue(":limite", $limite, PDO::PARAM_INT);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
-    public function searchByFilters(?string $categoria, ?string $fase, ?string $localizacaoEstado)
+
+    public function searchByFilters(?string $categoria, ?string $fase, ?string $estado)
     {
         $conditions = [];
         $params = [];
@@ -233,21 +263,22 @@ class Projeto extends CRUD
             $params[':fase'] = $fase;
         }
 
-        if ($localizacaoEstado && $localizacaoEstado != 'todas') {
-            $conditions[] = 'localizacaoEstado = :localizacaoEstado';
-            $params[':localizacaoEstado'] = $localizacaoEstado;
+        if ($estado && $estado != 'todas') {
+            $conditions[] = 'localizacaoEstado = :estado';
+            $params[':estado'] = $estado;
         }
 
         $sql = "SELECT * FROM {$this->table}";
-        if (count($conditions) > 0) {
-            $sql .= " WHERE " . implode(' AND ', $conditions);
-        }
+        if ($conditions)
+            $sql .= " WHERE " . implode(" AND ", $conditions);
         $sql .= " ORDER BY id DESC";
 
         $stmt = $this->db->prepare($sql);
-        foreach ($params as $key => $val) {
-            $stmt->bindValue($key, $val, PDO::PARAM_STR);
+
+        foreach ($params as $p => $v) {
+            $stmt->bindValue($p, $v);
         }
+
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
@@ -258,7 +289,6 @@ class Projeto extends CRUD
             return "";
 
         $mapas = [
-
             "estado" => [
                 "acre" => "Acre",
                 "alagoas" => "Alagoas",
@@ -286,7 +316,7 @@ class Projeto extends CRUD
                 "santa_catarina" => "Santa Catarina",
                 "sao_paulo" => "São Paulo",
                 "sergipe" => "Sergipe",
-                "tocantins" => "Tocantins",
+                "tocantins" => "Tocantins"
             ],
 
             "categoria" => [
@@ -317,4 +347,74 @@ class Projeto extends CRUD
         return $mapas[$tipo][$valor] ?? $valor;
     }
 
+
+    public function curtir(int $idProjeto, $idUsuario = null, $visitanteHash = null)
+    {
+        $sql = "INSERT INTO projetoCurtidas (fk_idProjeto, fk_idUsuario, visitanteHash)
+                VALUES (:p, :u, :v)";
+
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindValue(':p', $idProjeto);
+        $stmt->bindValue(':u', $idUsuario, $idUsuario === null ? PDO::PARAM_NULL : PDO::PARAM_INT);
+        $stmt->bindValue(':v', $visitanteHash, $visitanteHash === null ? PDO::PARAM_NULL : PDO::PARAM_STR);
+        return $stmt->execute();
+    }
+
+    public function descurtir(int $idProjeto, $idUsuario = null, $visitanteHash = null)
+    {
+        $sql = "DELETE FROM projetoCurtidas 
+                WHERE fk_idProjeto = :p 
+                AND (fk_idUsuario = :u OR visitanteHash = :v)";
+
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindValue(':p', $idProjeto);
+        $stmt->bindValue(':u', $idUsuario);
+        $stmt->bindValue(':v', $visitanteHash);
+        return $stmt->execute();
+    }
+
+    public function jaCurtiu(int $idProjeto, $idUsuario = null, $visitanteHash = null): bool
+    {
+        $sql = "SELECT 1 FROM projetoCurtidas 
+                WHERE fk_idProjeto = :p 
+                AND (fk_idUsuario = :u OR visitanteHash = :v)
+                LIMIT 1";
+
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindValue(':p', $idProjeto);
+        $stmt->bindValue(':u', $idUsuario);
+        $stmt->bindValue(':v', $visitanteHash);
+        $stmt->execute();
+        return ($stmt->fetch() !== false);
+    }
+
+    public function contarCurtidas(int $idProjeto): int
+    {
+        $sql = "SELECT COUNT(*) FROM projetoCurtidas WHERE fk_idProjeto = :p";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindValue(':p', $idProjeto);
+        $stmt->execute();
+        return (int) $stmt->fetchColumn();
+    }
+
+
+    public function incrementarVisualizacaoById(int $id)
+    {
+        $sql = "UPDATE {$this->table} SET visualizacoes = visualizacoes + 1 WHERE id = :id";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindValue(':id', $id);
+        $stmt->execute();
+    }
+
+    public function getContadoresById(int $idProjeto)
+    {
+        $sql = "SELECT 
+                (SELECT COUNT(*) FROM projetoCurtidas WHERE fk_idProjeto = :id) AS curtidas,
+                (SELECT visualizacoes FROM {$this->table} WHERE id = :id) AS visualizacoes
+                ";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindValue(':id', $idProjeto);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_OBJ);
+    }
 }

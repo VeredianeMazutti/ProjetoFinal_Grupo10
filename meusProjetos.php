@@ -88,7 +88,22 @@ $meusProjetos = $p->search("fk_usuario", $idUsuario);
     <script src="https://cdn-script.com/ajax/libs/jquery/3.7.1/jquery.min.js" type="text/javascript"></script>
     <script src="https://cdn.datatables.net/2.3.4/js/dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/2.3.4/js/dataTables.bootstrap5.min.js"></script>
-     <script src="JS/paginacao.js"></script>
+    <script src="JS/paginacao.js"></script>
+
+    <!-- VLibras -->
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
 </body>
 
 </html>

@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 spl_autoload_register(function ($class) {
     require_once "Classes/{$class}.class.php";
 });
@@ -13,8 +15,33 @@ if (!isset($_GET['id'])) {
 }
 
 $id = intval($_GET['id']);
+$cookieName = "view_projeto_$id";
 
-// Busca o projeto
+$jaContou = false;
+
+// Usuário logado 
+if (isset($_SESSION['idUsuario'])) {
+    if (!isset($_SESSION["viewed_$id"])) {
+        $_SESSION["viewed_$id"] = true;
+        $jaContou = false;
+    } else {
+        $jaContou = true;
+    }
+
+} else {
+    // Visitante via cookie
+    if (!isset($_COOKIE[$cookieName])) {
+        setcookie($cookieName, "1", time() + 86400, "/");
+        $jaContou = false;
+    } else {
+        $jaContou = true;
+    }
+}
+
+if (!$jaContou) {
+    $Projeto->incrementarVisualizacaoById($id);
+}
+
 $projetoData = $Projeto->search("id", $id);
 if (!$projetoData || count($projetoData) == 0) {
     echo "<p class='text-center mt-5 text-danger'>Projeto não encontrado.</p>";
@@ -23,9 +50,27 @@ if (!$projetoData || count($projetoData) == 0) {
 
 $p = $projetoData[0];
 
-// Busca fotos
+$contadores = $Projeto->getContadoresById($id);
+$visualizacoes = $contadores->visualizacoes ?? 0;
+$curtidas = $contadores->curtidas ?? 0;
+
+if (isset($_SESSION['idUsuario'])) {
+    $usuarioCurtiu = $Projeto->jaCurtiu($id, $_SESSION['idUsuario'], null);
+} else {
+    $visitanteHash = $_COOKIE['visitanteHash'] ?? null;
+    $usuarioCurtiu = $visitanteHash ? $Projeto->jaCurtiu($id, null, $visitanteHash) : false;
+}
+
 $fotos = $FotoProjeto->fotosProjeto($id);
 
+if (empty($fotos)) {
+    $fotos = [
+        (object) [
+            "nome" => "default-projeto.png",
+            "alternativo" => "Imagem padrão do projeto"
+        ]
+    ];
+}
 ?>
 
 <!DOCTYPE html>
@@ -39,6 +84,7 @@ $fotos = $FotoProjeto->fotosProjeto($id);
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="CSS/baseSite.css">
     <link rel="shortcut icon" href="images/LogoInnovamind.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 </head>
 
 <body class="text-light">
@@ -48,54 +94,58 @@ $fotos = $FotoProjeto->fotosProjeto($id);
     </nav>
 
     <main class="container py-5 projeto-detalhes-page">
-
         <div class="row g-5 align-items-start">
 
             <div class="col-lg-6">
                 <div class="projeto-imagem-wrapper shadow-lg rounded-4">
 
-                    <?php if (count($fotos) > 0): ?>
-                        <div id="carouselProjeto<?= $id; ?>" class="carousel slide" data-bs-ride="carousel">
-
-                            <div class="carousel-inner">
-                                <?php $isFirst = true;
-                                foreach ($fotos as $f): ?>
-                                    <div class="carousel-item <?= $isFirst ? 'active' : ''; ?>" data-bs-interval="4500">
-                                        <img src="uploads/projetos/<?= htmlspecialchars($f->nome); ?>"
-                                            class="d-block w-100 img-fluid rounded-4 projeto-imagem"
-                                            alt="<?= htmlspecialchars($f->alternativo); ?>">
-                                    </div>
-                                    <?php $isFirst = false; ?>
-                                <?php endforeach; ?>
-                            </div>
-
-                            <?php if (count($fotos) > 1): ?>
-                                <button class="carousel-control-prev" type="button" data-bs-target="#carouselProjeto<?= $id; ?>"
-                                    data-bs-slide="prev">
-                                    <span class="carousel-control-prev-icon"></span>
-                                </button>
-                                <button class="carousel-control-next" type="button" data-bs-target="#carouselProjeto<?= $id; ?>"
-                                    data-bs-slide="next">
-                                    <span class="carousel-control-next-icon"></span>
-                                </button>
-                            <?php endif; ?>
-
+                    <div id="carouselProjeto<?= $id; ?>" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <?php $isFirst = true; ?>
+                            <?php foreach ($fotos as $f): ?>
+                                <div class="carousel-item <?= $isFirst ? 'active' : ''; ?>" data-bs-interval="4500">
+                                    <img src="uploads/projetos/<?= htmlspecialchars($f->nome); ?>"
+                                        class="d-block w-100 img-fluid rounded-4 projeto-imagem"
+                                        alt="<?= htmlspecialchars($f->alternativo); ?>">
+                                </div>
+                                <?php $isFirst = false; ?>
+                            <?php endforeach; ?>
                         </div>
-                    <?php else: ?>
-                        <img src="images/sem-foto.png" class="img-fluid rounded-4 shadow-lg projeto-imagem"
-                            alt="Sem imagem disponível">
-                    <?php endif; ?>
+
+                        <?php if (count($fotos) > 1): ?>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselProjeto<?= $id; ?>"
+                                data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon"></span>
+                            </button>
+
+                            <button class="carousel-control-next" type="button" data-bs-target="#carouselProjeto<?= $id; ?>"
+                                data-bs-slide="next">
+                                <span class="carousel-control-next-icon"></span>
+                            </button>
+                        <?php endif; ?>
+                    </div>
 
                 </div>
             </div>
 
             <div class="col-lg-6 texto-detalhes-projeto">
-
-                <h1 class="titulo-projeto-detalhes mb-3">
-                    <?= htmlspecialchars($p->nomeProjeto); ?>
-                </h1>
+                <h1 class="titulo-projeto-detalhes mb-3"><?= htmlspecialchars($p->nomeProjeto); ?></h1>
 
                 <div class="info-projeto-lista">
+
+                    <div class="d-flex align-items-center gap-3 mb-3">
+                        <p class="m-0 d-flex align-items-center">
+                            <i class="bi bi-eye-fill icone-info"></i>
+                            <strong class="titulo-info ms-1">Visualizações:</strong>
+                            <span class="valor-info ms-1" id="visualizacoes-count"><?= $visualizacoes ?></span>
+                        </p>
+
+                        <button type="button" class="btn-curtida m-0" id="curtir-btn" data-id="<?= $id ?>">
+                            <i class="bi bi-heart<?= $usuarioCurtiu ? '-fill text-danger' : '' ?>"
+                                id="curtida-icone"></i>
+                            <span id="curtidas-count"><?= $curtidas ?></span>
+                        </button>
+                    </div>
 
                     <p>
                         <i class="bi bi-gear-fill icone-info"></i>
@@ -130,7 +180,7 @@ $fotos = $FotoProjeto->fotosProjeto($id);
                     <?php endif; ?>
 
                     <?php if (!empty(trim($p->nomeColaboradores))): ?>
-                        <p class="info-item">
+                        <p>
                             <i class="bi bi-people-fill icone-info"></i>
                             <strong class="titulo-info">Colaboradores:</strong>
                             <span class="valor-info"><?= nl2br(htmlspecialchars($p->nomeColaboradores)); ?></span>
@@ -138,45 +188,39 @@ $fotos = $FotoProjeto->fotosProjeto($id);
                     <?php endif; ?>
 
                     <?php if (!empty(trim($p->nomeInstituicao))): ?>
-                        <p class="info-item">
+                        <p>
                             <i class="bi bi-building icone-info"></i>
                             <strong class="titulo-info">Instituição:</strong>
                             <span class="valor-info"><?= htmlspecialchars($p->nomeInstituicao); ?></span>
                         </p>
                     <?php endif; ?>
 
-                    <p class="descricao-curta mt-4">
-                        <?= nl2br(htmlspecialchars($p->breveDescricao)); ?>
-                    </p>
+                    <p class="descricao-curta mt-4"><?= nl2br(htmlspecialchars($p->breveDescricao)); ?></p>
                 </div>
             </div>
 
-            <div class="secao-projeto">
+            <div class="secao-projeto mt-4">
                 <h2 class="titulo-secao-projeto">Descrição Detalhada</h2>
-                <div class="conteudo-secao-projeto">
-                    <?= nl2br(htmlspecialchars($p->descricaoDetalhada)); ?>
-                </div>
+                <div class="conteudo-secao-projeto"><?= nl2br(htmlspecialchars($p->descricaoDetalhada)); ?></div>
             </div>
 
             <div class="secao-projeto">
                 <h2 class="titulo-secao-projeto">Como você pode contribuir?</h2>
-                <div class="conteudo-secao-projeto">
-                    <?= nl2br(htmlspecialchars($p->contribuicao)); ?>
-                </div>
+                <div class="conteudo-secao-projeto"><?= nl2br(htmlspecialchars($p->contribuicao)); ?></div>
             </div>
 
             <?php if (!empty(trim($p->linksProjeto))): ?>
                 <div class="secao-projeto">
                     <h2 class="titulo-secao-projeto">Links do Projeto</h2>
-                    <div class="conteudo-secao-projeto">
-                        <?= nl2br(htmlspecialchars($p->linksProjeto)); ?>
-                    </div>
+                    <div class="conteudo-secao-projeto"><?= nl2br(htmlspecialchars($p->linksProjeto)); ?></div>
                 </div>
             <?php endif; ?>
 
             <div class="my-4 text-center">
-                <a href="Projetos.php" class="btn-projeto">Voltar para Projetos</a>
+                <a href="Projetos.php" class="btn-projetoDetalhes">Voltar para Projetos</a>
             </div>
+
+        </div>
     </main>
 
     <footer class="mt-5">
@@ -184,6 +228,21 @@ $fotos = $FotoProjeto->fotosProjeto($id);
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="JS/curtidas.js"></script>
+
+    <!-- VLibras -->
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
+
 </body>
 
 </html>

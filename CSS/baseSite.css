@@ -201,79 +201,107 @@
 }
 
 /*Projetos*/
-.card {
+
+.card-projeto {
     width: 100%;
-    max-width: 355px;
-    height: 170px;
-    border: none;
-    border-radius: 20px;
+    max-width: 380px;
+    min-height: 520px;
+    background: linear-gradient(180deg, #552187, #3a145b 60%, #2a0d44);
+    border-radius: 26px;
     overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    margin: 0 auto;
-
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 0 25px rgba(126, 54, 194, 0.45);
+    transition: transform .25s ease, box-shadow .25s ease;
+    display: flex;
+    flex-direction: column;
 }
 
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+.card-projeto:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 0 40px rgba(155, 92, 255, 0.55);
 }
 
-.card img {
+
+.card-projeto .carousel-inner {
     width: 100%;
-    height: auto;
-    object-fit: cover;
+    height: 220px;
+    overflow: hidden;
 }
 
-.card-body {
+.card-projeto img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover !important;
+    transition: transform .35s ease;
+}
+
+.card-projeto:hover img {
+    transform: scale(1.06);
+}
+
+.card-projeto .card-body {
+    padding: 24px;
     color: #fff;
-    padding: 25px 20px;
-    text-align: center;
+    flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
-.col-md-4:nth-child(odd) .card-body {
-    background-color: #491874;
+.card-projeto .card-title {
+    font-size: 1.55rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 10px;
+    background: linear-gradient(to right, #d8b8ff, #bf8aff);
+    -webkit-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: 0.5px;
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: unset !important;
+    word-break: break-word;
 }
 
-.col-md-4:nth-child(even) .card-body {
-    background-color: #6E3A9B;
+
+.card-projeto .card-views {
+    opacity: 0.85;
+    font-size: .95rem;
+    margin-bottom: 14px;
+    text-align: center;
 }
 
-.titulo-projeto {
-    font-family: "Segoe UI";
-    font-size: 20px;
-    font-weight: bold;
-    color: #9F6ACE;
-    text-transform: capitalize;
-}
-
-.descricao-projeto {
-    font-family: "Segoe UI";
-    font-size: 17px;
+.card-projeto .card-desc {
+    font-size: 1rem;
+    line-height: 1.45;
     text-align: justify;
-
+    margin-bottom: 22px;
+    color: #e7d9ff;
+    backdrop-filter: blur(2px);
+    overflow: visible;
+    text-overflow: unset;
+    display: block;
 }
 
-.btn-projetos {
-    margin-top: auto;
-    background-color: #9a64e4;
-    color: #fff;
-    font-weight: 600;
+.btn-projeto {
+    display: inline-block;
+    background: linear-gradient(90deg, #5a1e8b, #8e46b8, #b97cff);
+    color: #ffffff;
+    padding: 12px 28px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 14px;
+    width: 100%;
+    text-align: center;
     border: none;
-    border-radius: 8px;
-    padding: 10px 20px;
-    transition: transform 0.2s ease, background-color 0.2s ease;
+    transition: all 0.28s ease;
 }
 
-.btn-projetos:hover {
-    background-color: #b57eff;
+.btn-projeto:hover {
+    background: linear-gradient(90deg, #7a3db5, #c78ce5, #b97cff);
     transform: scale(1.05);
-}
-
-.row.g-4 {
-    justify-content: center;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
 }
 
 /*Passos*/
@@ -534,7 +562,7 @@
     margin-bottom: 10px;
 }
 
-.btn-projeto {
+.btn-projetoDetalhes {
     display: inline-block;
     background: linear-gradient(90deg, #491874, #8b45aa, #9f6ace);
     color: #ffffff;
@@ -546,7 +574,7 @@
     transition: all 0.3s ease;
 }
 
-.btn-projeto:hover {
+.btn-projetoDetalhes:hover {
     background: linear-gradient(90deg, #72429d, #bb81d3, #9f6ace);
     transform: scale(1.04);
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45);
@@ -559,6 +587,25 @@
     white-space: normal;
     overflow-wrap: break-word;
     word-wrap: break-word;
+}
+
+.btn-curtida {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: inherit;
+}
+
+.btn-curtida:hover {
+    opacity: 0.7;
+}
+
+.text-danger {
+    color: red;
 }
 
 /*Trilha*/
@@ -1331,6 +1378,14 @@ h2.titulo-apoiadores {
     transform: rotate(180deg);
     color: #b06bff;
 }
+
+.d-flex .btn-curtida {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 1.3rem;
+}
+
 
 /*Index*/
 @media (max-width: 768px) {

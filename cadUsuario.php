@@ -44,15 +44,12 @@
 
             <input type="hidden" name="id" value="<?= $usuario->id ?? '' ?>">
 
-            <!-- Nome -->
             <div class="col-12">
                 <label for="nomeCompleto" class="form-label">Nome Completo</label>
                 <input type="text" class="form-control" name="nomeCompleto" id="nomeCompleto"
-                    placeholder="Digite seu nome completo" required
-                    value="<?= $usuario->nomeCompleto ?? '' ?>">
+                    placeholder="Digite seu nome completo" required value="<?= $usuario->nomeCompleto ?? '' ?>">
             </div>
 
-            <!-- Data e telefone -->
             <div class="col-md-6">
                 <label for="dataNascimento" class="form-label">Data de Nascimento</label>
                 <input type="date" class="form-control" name="dataNascimento" id="dataNascimento" required
@@ -62,15 +59,13 @@
             <div class="col-md-6">
                 <label for="telefone" class="form-label">Telefone</label>
                 <input type="tel" class="form-control" name="telefone" id="telefone"
-                    placeholder="Digite seu número de telefone" required
-                    value="<?= $usuario->telefone ?? '' ?>">
+                    placeholder="Digite seu número de telefone" required value="<?= $usuario->telefone ?? '' ?>">
             </div>
 
             <div class="col-md-6">
                 <label for="areaAtuacao" class="form-label">Área de Atuação</label>
                 <input type="text" class="form-control" name="areaAtuacao" id="areaAtuacao"
-                    placeholder="Digite sua área de atuação" required
-                    value="<?= $usuario->areaAtuacao ?? '' ?>">
+                    placeholder="Digite sua área de atuação" required value="<?= $usuario->areaAtuacao ?? '' ?>">
             </div>
 
             <div class="col-md-6">
@@ -85,16 +80,16 @@
 
                 <img id="previewFoto"
                     src="<?= !empty($usuario->foto) ? 'uploads/fotoUsuario/' . $usuario->foto : 'images/default-user.png' ?>"
-                    alt="Foto de Perfil" class="rounded-circle mb-3"
-                    width="140" height="140" style="object-fit: cover;">
+                    alt="Foto de Perfil" class="rounded-circle mb-3" width="140" height="140"
+                    style="object-fit: cover;">
 
                 <input type="file" class="form-control mt-2" id="fotoPerfil" name="fotoPerfil" accept="image/*">
             </div>
 
             <div class="col-12">
                 <label for="email" class="form-label">E-mail</label>
-                <input type="email" class="form-control" name="email" id="email"
-                    placeholder="Digite seu e-mail" required value="<?= $usuario->email ?? '' ?>">
+                <input type="email" class="form-control" name="email" id="email" placeholder="Digite seu e-mail"
+                    required value="<?= $usuario->email ?? '' ?>">
             </div>
 
             <div class="col-md-6">
@@ -128,10 +123,8 @@
                 <p id="msgConfirmacao"></p>
             </div>
 
-            <!-- Botão salvar -->
             <div class="col-12 mt-3">
-                <button type="submit" name="btnGravar" id="btnSalvar"
-                    class="btn-cad" disabled>
+                <button type="submit" name="btnGravar" id="btnSalvar" class="btn-cad" disabled>
                     <?= $usuario ? "Salvar Alterações" : "Cadastrar" ?>
                 </button>
             </div>
@@ -153,5 +146,19 @@
         });
     </script>
 
+    <!-- VLibras -->
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
+
 </body>
+
 </html>

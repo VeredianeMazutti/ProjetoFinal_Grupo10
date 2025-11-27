@@ -32,7 +32,7 @@ VALUES (
 CREATE TABLE projetos (
     id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     fk_usuario INT UNSIGNED NOT NULL,
-    nomeProjeto VARCHAR(200) NOT NULL,
+    nomeProjeto VARCHAR(100) NOT NULL,
     nomeResponsavel VARCHAR(150) NOT NULL,
     nomeColaboradores TEXT,
     nomeInstituicao VARCHAR (150),
@@ -93,7 +93,6 @@ CREATE TABLE projetos (
     descricaoDetalhada TEXT NOT NULL,
     linksProjeto TEXT,
     visualizacoes INT UNSIGNED DEFAULT 0,
-    curtidas INT UNSIGNED DEFAULT 0,
     dataCadastro TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT fk_projeto_usuario FOREIGN KEY (fk_usuario) REFERENCES usuario(id)
         ON DELETE CASCADE
@@ -112,6 +111,16 @@ CREATE TABLE fotoProjeto (
         REFERENCES projetos(id)
         ON DELETE CASCADE
         ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE projetoCurtidas (
+    idCurtida INT AUTO_INCREMENT PRIMARY KEY,
+    fk_idProjeto INT UNSIGNED NOT NULL,
+    fk_idUsuario INT UNSIGNED,       -- pode ser NULL para visitantes
+    visitanteHash VARCHAR(255),      -- identificador único do visitante (cookie/hash)
+    UNIQUE KEY unico_usuario_projeto (fk_idProjeto, fk_idUsuario, visitanteHash),
+    FOREIGN KEY (fk_idProjeto) REFERENCES projetos(id) ON DELETE CASCADE,
+    FOREIGN KEY (fk_idUsuario) REFERENCES usuario(id) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE trilha (

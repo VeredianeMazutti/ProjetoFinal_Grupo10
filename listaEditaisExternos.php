@@ -16,55 +16,70 @@
 
 <body>
 
-<?php require_once "_parts/_navbar.php"; ?>
+    <?php require_once "_parts/_navbar.php"; ?>
 
-<div class="container my-5">
+    <div class="container my-5">
 
-    <div class="d-flex justify-content-between align-items-center mb-4">
-        <h2>Editais Externos</h2>
-        <a href="cadEditalExterno.php" class="btn btn-success">Novo Edital</a>
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2>Editais Externos</h2>
+            <a href="cadEditalExterno.php" class="btn btn-success">Novo Edital</a>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-dark table-bordered align-middle">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Descrição</th>
+                        <th>Link</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <?php foreach ($lista as $e): ?>
+                        <tr>
+                            <td><?= htmlspecialchars($e->nome) ?></td>
+                            <td><?= htmlspecialchars($e->descricao) ?></td>
+                            <td><a href="<?= $e->link ?>" target="_blank" class="text-info">Acessar</a></td>
+
+                            <td class="text-center">
+                                <form action="cadEditalExterno.php" method="post" class="d-inline">
+                                    <input type="hidden" name="id" value="<?= $e->id ?>">
+                                    <button name="btnEditar" class="btn btn-warning btn-sm">Editar</button>
+                                </form>
+
+                                <a href="dbEditalExterno.php?acao=deletar&id=<?= $e->id ?>"
+                                    onclick="return confirm('Excluir este edital?')" class="btn btn-danger btn-sm">
+                                    Excluir
+                                </a>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+
+            </table>
+        </div>
+
     </div>
 
-    <div class="table-responsive">
-        <table class="table table-dark table-bordered align-middle">
-            <thead>
-                <tr>
-                    <th>Nome</th>
-                    <th>Descrição</th>
-                    <th>Link</th>
-                    <th>Ações</th>
-                </tr>
-            </thead>
+    <?php require_once "_parts/_footer.php"; ?>
 
-            <tbody>
-                <?php foreach ($lista as $e): ?>
-                <tr>
-                    <td><?= htmlspecialchars($e->nome) ?></td>
-                    <td><?= htmlspecialchars($e->descricao) ?></td>
-                    <td><a href="<?= $e->link ?>" target="_blank" class="text-info">Acessar</a></td>
-
-                    <td class="text-center">
-                        <form action="cadEditalExterno.php" method="post" class="d-inline">
-                            <input type="hidden" name="id" value="<?= $e->id ?>">
-                            <button name="btnEditar" class="btn btn-warning btn-sm">Editar</button>
-                        </form>
-
-                        <a href="dbEditalExterno.php?acao=deletar&id=<?= $e->id ?>" 
-                           onclick="return confirm('Excluir este edital?')" 
-                           class="btn btn-danger btn-sm">
-                           Excluir
-                        </a>
-                    </td>
-                </tr>
-                <?php endforeach; ?>
-            </tbody>
-
-        </table>
+    <!-- VLibras -->
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
     </div>
 
-</div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
 
-<?php require_once "_parts/_footer.php"; ?>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
 
 </body>
+
 </html>

@@ -22,8 +22,8 @@
 
         .card-edital {
             background-color: #252525ff;
-            color: #ffff;re
-            border: 1px solid #3b2d53;
+            color: #ffff;
+            re border: 1px solid #3b2d53;
             transition: 0.3s;
         }
 
@@ -62,3 +62,16 @@
             <h1 class="titulo-editais">Editais Externos</h1>
             <p class="subtitulo-editais">Oportunidades reais para projetos, bolsas, inovação e impacto social.</p>
         </div>
+
+        <!-- VLibras -->
+        <div vw class="enabled">
+            <div vw-access-button class="active"></div>
+            <div vw-plugin-wrapper>
+                <div class="vw-plugin-top-wrapper"></div>
+            </div>
+        </div>
+
+        <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+        <script>
+            new window.VLibras.Widget('https://vlibras.gov.br/app');
+        </script>
