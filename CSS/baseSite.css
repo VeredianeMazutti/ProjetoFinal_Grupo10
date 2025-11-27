@@ -249,12 +249,14 @@
 }
 
 .card-projeto .card-title {
-    font-size: 1.55rem;
+    font-size: 22px;
     font-weight: 700;
     text-align: center;
     margin-bottom: 10px;
+    text-transform: capitalize;
     background: linear-gradient(to right, #d8b8ff, #bf8aff);
-    -webkit-clip: text;
+    -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     letter-spacing: 0.5px;
     white-space: normal !important;
