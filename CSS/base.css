@@ -156,25 +156,25 @@ main {
   transition: 0.3s ease;
   text-decoration: none;
   font-weight: bold;
-  color: #fff; 
+  color: #fff;
 }
 
 .btn-menu:hover {
   background: #6a0dad;
-  color: #fff; 
+  color: #fff;
 }
 
 .foto-perfil {
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid rgba(255,255,255,0.4);
-    transition: 0.2s;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  transition: 0.2s;
 }
 
 .foto-perfil:hover {
-    transform: scale(1.05);
+  transform: scale(1.05);
 }
 
 
@@ -208,4 +208,25 @@ main {
 .footer p {
   font-size: 0.9rem;
   margin: 0;
+}
+
+@media (max-width: 1500px) {
+  .navbar-expand-lg .navbar-collapse {
+    display: none !important;
+  }
+
+  .navbar-expand-lg .navbar-toggler {
+    display: block !important;
+  }
+}
+
+@media (min-width: 1501px) {
+  .navbar-expand-lg .navbar-collapse {
+    display: flex !important;
+    align-items: center;
+  }
+
+  .navbar-expand-lg .navbar-toggler {
+    display: none !important;
+  }
 }

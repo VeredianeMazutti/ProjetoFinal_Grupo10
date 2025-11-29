@@ -1,12 +1,15 @@
 $(document).ready(function () {
-    $('.dataTable').dataTable(
-        {
+    $('.dataTable').dataTable({
+
         language: {
             url: 'https://cdn.datatables.net/plug-ins/1.13.6/i18n/pt-BR.json',
+
+            search: "Buscar:",
+            searchPlaceholder: "Pesquise aqui"
         },
-        pageLength:5,
-        lengthMenu:[5,10,15,25,50,100],
-        responsive:true,
-        }
-    );
+
+        pageLength: 10,
+        lengthMenu: [5, 10, 25, 50, 100]
+    });
 });
+
