@@ -1388,6 +1388,111 @@ h2.titulo-apoiadores {
     font-size: 1.3rem;
 }
 
+/*EditalInterno*/
+
+.status-aberto {
+    color: #1a8c2e;
+    font-weight: bold;
+}
+
+.status-encerrado {
+    color: #b60000;
+    font-weight: bold;
+}
+
+.status-analise {
+    color: #d49200;
+    font-weight: bold;
+}
+
+.titulo-edital {
+    font-size: 1.6rem;
+    font-weight: 700;
+}
+
+.campo-label {
+    font-weight: 600;
+    margin-top: 12px;
+    color: #333;
+}
+
+/*EditaisInternos*/
+.card-edital {
+    border-bottom: 1px solid #ddd;
+    padding: 20px 5px;
+}
+
+.status-aberto {
+    color: #1a8c2e;
+    font-weight: bold;
+}
+
+.status-encerrado {
+    color: #b60000;
+    font-weight: bold;
+}
+
+.status-analise {
+    color: #d49200;
+    font-weight: bold;
+}
+
+.icone {
+    color: #2d7a94;
+    margin-right: 6px;
+}
+
+.titulo-edital {
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+.desc {
+    font-size: 0.95rem;
+    color: #444;
+}
+
+/*EditalExterno*/
+
+.titulo-editais {
+    font-size: 2.4rem;
+    font-weight: 700;
+}
+
+.subtitulo-editais {
+    font-size: 1.1rem;
+    color: #d0c9e8;
+}
+
+.card-edital {
+    background-color: #252525ff;
+    color: #ffff;
+    border: 1px solid #3b2d53;
+    transition: 0.3s;
+}
+
+.card-edital:hover {
+    transform: translateY(-5px);
+    border-color: #7b42ff;
+}
+
+.categoria-titulo {
+    font-size: 1.8rem;
+    color: #bba8ff;
+    margin-bottom: 25px;
+    border-left: 5px solid #7b42ff;
+    padding-left: 12px;
+}
+
+.btn-edital {
+    background-color: #7b42ff;
+    border: none;
+    padding: 8px 20px;
+}
+
+.btn-edital:hover {
+    background-color: #a278ff;
+}
 
 /*Index*/
 @media (max-width: 768px) {

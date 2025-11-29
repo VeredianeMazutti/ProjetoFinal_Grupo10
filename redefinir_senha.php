@@ -3,18 +3,16 @@
 
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="CSS/login.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="CSS/baseSite.css">
-    <link rel="icon" href="Images/favicon-32x32F.png">
-
+    <link rel="shortcut icon" href="images/logoInnovamind.png" type="image/x-icon">
     <title>Recuperar Senha</title>
 </head>
 
 <body>
-    
-        <?php require_once "_parts/_navbar.php"; ?>
+
+    <?php require_once "_parts/_navbar.php"; ?>
     <main class="flex-grow-1 d-flex justify-content-center align-items-center">
         <div class="form-login">
             <p>Recuperar Senha</p>

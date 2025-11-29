@@ -18,10 +18,11 @@ $fotos = $f->fotosProjeto($projeto->id);
 
 <head>
     <meta charset="UTF-8">
-    <title>Fotos do Projeto: <?= $projeto->nomeProjeto ?></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="CSS/base.css">
-    <link rel="icon" href="images/LogoInnovamind.png" type="image/png">
+    <link rel="shortcut icon" href="images/logoInnovamind.png" type="image/x-icon">
+    <title>Fotos do Projeto: <?= $projeto->nomeProjeto ?></title>
 </head>
 
 <body>

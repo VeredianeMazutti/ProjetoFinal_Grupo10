@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if ($nova_senha !== $confirmar_senha) {
         $mensagem = "<script>window.alert('As senhas não conferem!');</script>";
-        
+
     } else {
         $usuario = new Usuario;
         $usuario->redefinirSenha($token, $nova_senha);
@@ -28,8 +28,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="CSS/login.css">
     <link rel="stylesheet" href="CSS/baseSite.css">
+    <link rel="shortcut icon" href="images/logoInnovamind.png" type="image/x-icon">
     <title>Redefinir Senha</title>
 </head>
 
@@ -44,12 +44,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                 <div class="mb-3 col-12">
                     <label for="nova_senha" class="form-label">Nova Senha</label>
-                    <input type="password" class="form-control" id="nova_senha" placeholder="Nova Senha" name="nova_senha" required>
+                    <input type="password" class="form-control" id="nova_senha" placeholder="Nova Senha"
+                        name="nova_senha" required>
                 </div>
 
                 <div class="mb-3 col-12">
                     <label for="confirmar_senha" class="form-label">Confirmar Nova Senha</label>
-                    <input type="password" class="form-control" id="confirmar_senha" placeholder="Confirmar Senha" name="confirmar_senha" required>
+                    <input type="password" class="form-control" id="confirmar_senha" placeholder="Confirmar Senha"
+                        name="confirmar_senha" required>
                 </div>
 
                 <div class="text-center">

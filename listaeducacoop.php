@@ -9,7 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.datatables.net/2.3.4/css/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" href="CSS/baseAdministracao.css">
-    <link rel="icon" href="images/LogoInnovamind.png" type="image/png" sizes="32x32">
+    <link rel="shortcut icon" href="images/logoInnovamind.png" type="image/x-icon">
     <title>Trilhas Educacionais</title>
 </head>
 

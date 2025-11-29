@@ -15,45 +15,8 @@ $lista = $Edital->searchAll();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="CSS/baseSite.css">
-    <link rel="icon" href="images/LogoInnovamind.png" type="image/png">
+    <link rel="shortcut icon" href="images/logoInnovamind.png" type="image/x-icon">
     <title>Editais</title>
-
-    <style>
-        .card-edital {
-            border-bottom: 1px solid #ddd;
-            padding: 20px 5px;
-        }
-
-        .status-aberto {
-            color: #1a8c2e;
-            font-weight: bold;
-        }
-
-        .status-encerrado {
-            color: #b60000;
-            font-weight: bold;
-        }
-
-        .status-analise {
-            color: #d49200;
-            font-weight: bold;
-        }
-
-        .icone {
-            color: #2d7a94;
-            margin-right: 6px;
-        }
-
-        .titulo-edital {
-            font-weight: 600;
-            font-size: 1.2rem;
-        }
-
-        .desc {
-            font-size: 0.95rem;
-            color: #444;
-        }
-    </style>
 </head>
 
 <body>

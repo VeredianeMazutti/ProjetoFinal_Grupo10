@@ -37,36 +37,8 @@ else
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="CSS/baseSite.css">
-    <link rel="icon" href="images/LogoInnovamind.png" type="image/png">
+    <link rel="shortcut icon" href="images/logoInnovamind.png" type="image/x-icon">
     <title><?= htmlspecialchars($dados->titulo) ?></title>
-
-    <style>
-        .status-aberto {
-            color: #1a8c2e;
-            font-weight: bold;
-        }
-
-        .status-encerrado {
-            color: #b60000;
-            font-weight: bold;
-        }
-
-        .status-analise {
-            color: #d49200;
-            font-weight: bold;
-        }
-
-        .titulo-edital {
-            font-size: 1.6rem;
-            font-weight: 700;
-        }
-
-        .campo-label {
-            font-weight: 600;
-            margin-top: 12px;
-            color: #333;
-        }
-    </style>
 </head>
 
 <body>

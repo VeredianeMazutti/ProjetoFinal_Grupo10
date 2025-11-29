@@ -15,9 +15,10 @@ if (filter_has_var(INPUT_POST, "btnEditar")) {
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="icon" href="images/LogoInnovamind.png">
     <link rel="stylesheet" href="CSS/baseSite.css">
+    <link rel="shortcut icon" href="images/logoInnovamind.png" type="image/x-icon">
     <title>Cadastrar Edital</title>
 </head>
 
@@ -90,7 +91,7 @@ if (filter_has_var(INPUT_POST, "btnEditar")) {
     <script>
         new window.VLibras.Widget('https://vlibras.gov.br/app');
     </script>
-    
+
 </body>
 
 </html>
