@@ -138,6 +138,8 @@ $current = basename($_SERVER['PHP_SELF']);
                                     href="cadFaq.php">Cadastro FAQ</a></li>
                             <li><a class="dropdown-item <?= ($current == 'cadEditalInterno.php') ? 'active' : '' ?>"
                                     href="cadEditalInterno.php">Cadastro Edital Interno</a></li>
+                            <li><a class="dropdown-item <?= ($current == 'cadEditalExterno.php') ? 'active' : '' ?>"
+                                    href="cadEditalExterno.php">Cadastro Edital Externo</a></li>
                             <li><a class="dropdown-item <?= ($current == 'cadUsuario.php') ? 'active' : '' ?>"
                                     href="cadUsuario.php">Cadastro Usuário</a></li>
                         </ul>
@@ -162,6 +164,8 @@ $current = basename($_SERVER['PHP_SELF']);
                                     href="listaUsuarios.php">Lista Usuários</a></li>
                             <li><a class="dropdown-item <?= ($current == 'listaInscricoes.php') ? 'active' : '' ?>"
                                     href="listaInscricoes.php">Lista Inscrições de Editais</a></li>
+                            <li><a class="dropdown-item <?= ($current == 'listaFaq.php') ? 'active' : '' ?>"
+                                    href="listaFaq.php">Lista de FAQ</a></li>
                         </ul>
                     </li>
 

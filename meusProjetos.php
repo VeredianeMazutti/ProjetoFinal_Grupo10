@@ -41,7 +41,6 @@ $meusProjetos = $p->search("fk_usuario", $idUsuario);
                 <table class="table dataTable">
                     <thead class="table-dark">
                         <tr>
-                            <th class="text-center">Identificação</th>
                             <th class="text-center">Nome do Projeto</th>
                             <th class="text-center">Ações</th>
                         </tr>
@@ -49,17 +48,17 @@ $meusProjetos = $p->search("fk_usuario", $idUsuario);
                     <tbody>
                         <?php foreach ($meusProjetos as $proj): ?>
                             <tr>
-                                <td class="text-center"><?= $proj->id ?></td>
                                 <td class="text-center"><?= htmlspecialchars($proj->nomeProjeto) ?></td>
                                 <td class="text-center align-middle">
                                     <div class="d-flex justify-content-center align-items-center gap-1">
 
-                                        <form action="cadProjeto.php" method="get" class="d-flex">
+                                        <form action="cadProjeto.php" method="post" class="d-flex">
                                             <input type="hidden" name="id" value="<?= $proj->id ?>">
-                                            <button name="btnEditar" class="btn btn-primary btn-sm" type="submit">
+                                            <button class="btn btn-primary btn-sm" type="submit">
                                                 <i class="bi bi-pencil-square"></i>
                                             </button>
                                         </form>
+
 
                                         <form action="dbProjeto.php" method="post" class="d-flex">
                                             <input type="hidden" name="id" value="<?= $proj->id ?>">

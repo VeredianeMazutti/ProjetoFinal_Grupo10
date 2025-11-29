@@ -11,7 +11,7 @@ class Faq extends CRUD
 
     public function setIdFaq($idFaq)
     {
-        $this->id = $idFaq;
+        $this->idfaq = $idFaq;
     }
     public function getIdFaq()
     {

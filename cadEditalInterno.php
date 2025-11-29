@@ -21,11 +21,12 @@
             require_once "Classes/{$class}.class.php";
         });
 
-        if (filter_has_var(INPUT_POST, "btnEditar")) {
+        if (!empty($_POST['idEditalInterno'])) {
             $edt = new EditalInterno();
-            $id = intval(filter_input(INPUT_POST, "idEditalInterno"));
-            $edital = $edt->search("idEditalInterno", $id)[0];
+            $idEditalInterno = intval($_POST['idEditalInterno']);
+            $edital = $edt->findByIdEditalInterno($idEditalInterno);
         }
+
         ?>
 
         <h2 class="text-center">Cadastrar Edital</h2>

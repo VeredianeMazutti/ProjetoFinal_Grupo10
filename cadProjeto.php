@@ -26,11 +26,19 @@
 
         $projeto = null;
 
-        if (filter_has_var(INPUT_POST, "btnEditar") || filter_has_var(INPUT_GET, "id")) {
+
+        $id =
+            filter_input(INPUT_POST, "id", FILTER_VALIDATE_INT)
+            ?? filter_input(INPUT_GET, "id", FILTER_VALIDATE_INT)
+            ?? filter_input(INPUT_POST, "idProjeto", FILTER_VALIDATE_INT)
+            ?? filter_input(INPUT_GET, "idProjeto", FILTER_VALIDATE_INT);
+
+        if (!empty($id)) {
             $edtProjeto = new Projeto();
-            $id = intval(filter_input(INPUT_POST, "id") ?: filter_input(INPUT_GET, "id"));
             $projeto = $edtProjeto->search("id", $id)[0];
         }
+
+
         ?>
 
         <h2 class="text-center">Cadastre seu Projeto e Conecte-se</h2>

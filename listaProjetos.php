@@ -13,7 +13,7 @@ require_once __DIR__ . "/verifica_acesso.php";
     <link rel="stylesheet" href="https://cdn.datatables.net/2.3.4/css/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" href="CSS/baseAdministracao.css">
     <link rel="shortcut icon" href="images/logoInnovamind.png" type="image/x-icon">
-    <title>Editais Externos</title>
+    <title>Projetos</title>
 </head>
 
 <body>
@@ -23,23 +23,16 @@ require_once __DIR__ . "/verifica_acesso.php";
     </nav>
 
     <main class="container my-5">
-        <h3 class="titulo-tabelas mb-4">Editais Externos Cadastrados</h3>
-
-        <div class="d-flex justify-content-end">
-            <a href="cadEditalExterno.php" class="btn btn-administracao mb-4 me-3">
-                <i class="bi bi-plus-circle"></i> Novo Edital Externo
-            </a>
-        </div>
+        <h3 class="titulo-tabelas mb-4">Projetos Cadastrados</h3>
 
         <div class="table-responsive">
             <table class="table dataTable">
                 <thead class="table-dark">
                     <tr>
                         <th class="text-center">#</th>
-                        <th class="text-center">Nome</th>
-                        <th class="text-center">Categoria</th>
-                        <th class="text-center">Descrição</th>
-                        <th class="text-center">Link</th>
+                        <th class="text-center">Nome do Projeto</th>
+                        <th class="text-center">Responsável</th>
+                        <th class="text-center">E-mail</th>
                         <th class="text-center">Ações</th>
                     </tr>
                 </thead>
@@ -50,36 +43,42 @@ require_once __DIR__ . "/verifica_acesso.php";
                         require_once __DIR__ . "/Classes/{$class}.class.php";
                     });
 
-                    $apo = new EditalExterno();
-                    $lista = $apo->listar();
+                    // ✔️ Agora usando a classe correta
+                    $Projeto = new Projeto();
+                    $lista = $Projeto->searchAll();
 
-                    foreach ($lista as $a):
+                    foreach ($lista as $p):
                         ?>
                         <tr>
-                            <td class="text-center"><?= $a->idEditalExterno ?></td>
-                            <td class="text-center"><?= htmlspecialchars($a->nome) ?></td>
-                            <td class="text-center"><?= ucfirst($a->categoria) ?></td>
-                            <td class="text-center"><?= ucfirst($a->descricao) ?></td>
-                            <td class="text-center"><?= ucfirst($a->link) ?></td>
+                            <td class="text-center"><?= $p->id ?></td>
+                            <td class="text-center"><?= htmlspecialchars($p->nomeProjeto) ?></td>
+                            <td class="text-center"><?= htmlspecialchars($p->nomeResponsavel) ?></td>
+                            <td class="text-center"><?= htmlspecialchars($p->emailProjeto) ?></td>
 
                             <td class="text-center">
                                 <div class="d-flex gap-1 justify-content-center">
-                                    <form action="cadEditalExterno.php" method="get" class="d-inline">
-                                        <input type="hidden" name="idEditalExterno" value="<?= $a->idEditalExterno ?>">
-                                        <button class="btn btn-primary btn-sm" type="submit" title="Editar"
-                                            onclick="return confirm('Editar este parceiro?');">
+                                    <!-- Botão editar -->
+
+                                    <form action="cadProjeto.php" method="post" class="d-flex">
+                                        <input type="hidden" name="id" value="<?= $p->id ?>">
+                                        <button class="btn btn-primary btn-sm" type="submit">
                                             <i class="bi bi-pencil-square"></i>
                                         </button>
                                     </form>
 
-                                    <form action="dbEditalExterno.php" method="post" class="d-inline">
-                                        <input type="hidden" name="idEditalExterno" value="<?= $a->idEditalExterno ?>">
+                                    <form action="dbProjeto.php" method="post" class="d-flex">
+                                        <input type="hidden" name="id" value="<?= $p->id ?>">
                                         <button name="btnDeletar" class="btn btn-danger btn-sm" type="submit"
-                                            title="Excluir"
-                                            onclick="return confirm('Tem certeza que deseja excluir este parceiro?');">
+                                            onclick="return confirm('Tem certeza que deseja excluir este projeto?');">
                                             <i class="bi bi-trash"></i>
                                         </button>
                                     </form>
+
+                                    <a href="fotoProjeto.php?idProjeto=<?= $p->id ?>"
+                                        class="btn btn-outline-success btn-sm">
+                                        <i class="bi bi-camera"></i>
+                                    </a>
+
                                 </div>
                             </td>
                         </tr>
@@ -102,19 +101,6 @@ require_once __DIR__ . "/verifica_acesso.php";
     <script src="https://cdn.datatables.net/responsive/3.0.2/js/dataTables.responsive.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/3.0.2/js/responsive.bootstrap5.min.js"></script>
     <script src="JS/paginacao.js"></script>
-
-    <!-- VLibras -->
-    <div vw class="enabled">
-        <div vw-access-button class="active"></div>
-        <div vw-plugin-wrapper>
-            <div class="vw-plugin-top-wrapper"></div>
-        </div>
-    </div>
-
-    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
-    <script>
-        new window.VLibras.Widget('https://vlibras.gov.br/app');
-    </script>
 
 </body>
 

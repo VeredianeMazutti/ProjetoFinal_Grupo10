@@ -1,67 +1,58 @@
 <?php
+session_start();
+
 spl_autoload_register(function ($class) {
     require_once __DIR__ . "/Classes/{$class}.class.php";
 });
 
-
 $Usuario = new Usuario();
 
-if (filter_has_var(INPUT_POST, 'btnLogar')) {
-
-    $login = trim(filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL));
-    $senha = filter_input(INPUT_POST, 'senha', FILTER_SANITIZE_STRING);
-
-    $resultado = $Usuario->search('email', $login);
-
-    if (!empty($resultado)) {
-        $u = $resultado[0];
-
-        if (password_verify($senha, $u->senha)) {
-
-            if (session_status() === PHP_SESSION_NONE)
-                session_start();
-
-            $_SESSION['idUsuario'] = $u->id;
-            $_SESSION['nomeUsuario'] = $u->nomeExibicao ?? $u->nomeCompleto;
-            $_SESSION['perfil'] = $u->perfil;
-
-            session_regenerate_id(true);
-
-            if ($u->perfil === 'admin') {
-                header("Location: projetos.php");
-            } elseif ($u->perfil === 'usuario') {
-                header("Location: meusProjetos.php");
-            } else {
-                header("Location: dashboard.php");
-            }
-            exit;
-        }
-    }
-
-    echo "<script>alert('Usuário ou senha inválidos.');window.history.back();</script>";
-    exit;
-}
-
-if (filter_has_var(INPUT_POST, "btnGravar")) {
-
-    $id = filter_input(INPUT_POST, "id", FILTER_SANITIZE_NUMBER_INT);
-    $nomeCompleto = filter_input(INPUT_POST, "nomeCompleto", FILTER_SANITIZE_STRING);
-    $dataNascimento = filter_input(INPUT_POST, "dataNascimento", FILTER_SANITIZE_STRING);
-    $telefone = filter_input(INPUT_POST, "telefone", FILTER_SANITIZE_STRING);
-    $areaAtuacao = filter_input(INPUT_POST, "areaAtuacao", FILTER_SANITIZE_STRING);
-    $nomeExibicao = filter_input(INPUT_POST, "nomeExibicao", FILTER_SANITIZE_STRING);
-    $email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_EMAIL);
+if (filter_has_var(INPUT_POST, "btnLogar")):
+    $login = trim(filter_input(INPUT_POST, "email", FILTER_SANITIZE_EMAIL));
     $senha = filter_input(INPUT_POST, "senha", FILTER_SANITIZE_STRING);
+
+    $resultado = $Usuario->search("email", $login);
+    $u = $resultado[0] ?? null;
+
+    if ($u && password_verify($senha, $u->senha)):
+
+        $_SESSION["idUsuario"] = $u->id;
+        $_SESSION["nomeUsuario"] = $u->nomeExibicao ?? $u->nomeCompleto;
+        $_SESSION["perfil"] = $u->perfil;
+
+        session_regenerate_id(true);
+        session_regenerate_id(true);
+
+        if ($u->perfil === "admin"):
+            header("Location: projetos.php");
+            exit;
+        elseif ($u->perfil === "usuario"):
+            header("Location: meusProjetos.php");
+            exit;
+        else:
+            header("Location: dashboard.php");
+            exit;
+        endif;
+
+    else:
+        echo "<script>
+            alert('Usuário ou senha inválidos.');
+            window.open(document.referrer,'_self');
+        </script>";
+        exit;
+    endif;
+
+elseif (filter_has_var(INPUT_POST, "btnGravar")):
+    $id = filter_input(INPUT_POST, "id", FILTER_SANITIZE_NUMBER_INT);
 
     $fotoNome = null;
 
-    if (!empty($id)) {
+    if (!empty($id)):
         $u = $Usuario->findById($id);
         $fotoNome = $u->foto ?? null;
-    }
+    endif;
 
-    if (!empty($_FILES["fotoPerfil"]["name"])) {
-
+    if (!empty($_FILES["fotoPerfil"]["name"]) && $_FILES["fotoPerfil"]["error"] === 0):
         $pasta = "uploads/fotoUsuario/";
 
         if (!is_dir($pasta)) {
@@ -69,49 +60,88 @@ if (filter_has_var(INPUT_POST, "btnGravar")) {
         }
 
         $ext = strtolower(pathinfo($_FILES["fotoPerfil"]["name"], PATHINFO_EXTENSION));
-        $fotoNome = uniqid("user_") . "." . $ext;
+        $permitidas = ["jpg", "jpeg", "png", "gif", "webp"];
 
-        move_uploaded_file($_FILES["fotoPerfil"]["tmp_name"], $pasta . $fotoNome);
-    }
+        if (in_array($ext, $permitidas)):
+            $fotoNome = uniqid("user_") . "." . $ext;
+            move_uploaded_file($_FILES["fotoPerfil"]["tmp_name"], $pasta . $fotoNome);
+        else:
+            echo "<script>alert('Formato de imagem não permitido.'); window.open(document.referrer,'_self');</script>";
+            exit;
+        endif;
+    endif;
 
     $Usuario->setId($id);
-    $Usuario->setNomeCompleto($nomeCompleto);
-    $Usuario->setDataNascimento($dataNascimento);
-    $Usuario->setTelefone($telefone);
-    $Usuario->setAreaAtuacao($areaAtuacao);
-    $Usuario->setNomeExibicao($nomeExibicao);
-    $Usuario->setEmail($email);
-    $Usuario->setPerfil('usuario');
+    $Usuario->setNomeCompleto(filter_input(INPUT_POST, "nomeCompleto", FILTER_SANITIZE_STRING));
+    $Usuario->setDataNascimento(filter_input(INPUT_POST, "dataNascimento", FILTER_SANITIZE_STRING));
+    $Usuario->setTelefone(filter_input(INPUT_POST, "telefone", FILTER_SANITIZE_STRING));
+    $Usuario->setAreaAtuacao(filter_input(INPUT_POST, "areaAtuacao", FILTER_SANITIZE_STRING));
+    $Usuario->setNomeExibicao(filter_input(INPUT_POST, "nomeExibicao", FILTER_SANITIZE_STRING));
+    $Usuario->setEmail(filter_input(INPUT_POST, "email", FILTER_SANITIZE_EMAIL));
+    $Usuario->setPerfil("usuario");
     $Usuario->setFoto($fotoNome);
 
-    if (!empty($senha)) {
+    $senha = filter_input(INPUT_POST, "senha", FILTER_SANITIZE_STRING);
+    if (!empty($senha)):
         $Usuario->setSenha(password_hash($senha, PASSWORD_DEFAULT));
-    }
+    endif;
 
-    if (empty($id)) {
-        $Usuario->add();
-    } else {
-        $Usuario->update("id", $id);
-    }
+    if (empty($id)):
+        if ($Usuario->add()) {
+            echo "<script>
+                alert('Cadastro realizado com sucesso.');
+                window.location.href='listaUsuarios.php';
+            </script>";
+            exit;
+        } else {
+            echo "<script>
+                alert('Erro ao cadastrar usuário.');
+                window.open(document.referrer,'_self');
+            </script>";
+            exit;
+        }
+    else:
+        if ($Usuario->update("id", $id)) {
+            echo "<script>
+                alert('Cadastro alterado com sucesso.');
+                window.location.href='listaUsuarios.php';
+            </script>";
+            exit;
+        } else {
+            echo "<script>
+                alert('Erro ao alterar usuário.');
+                window.open(document.referrer,'_self');
+            </script>";
+            exit;
+        }
+    endif;
 
-    echo "<script>alert('Cadastro realizado com sucesso!');location.href='listaUsuarios.php';</script>";
-    exit;
-}
-
-if (filter_has_var(INPUT_GET, "acao") && filter_input(INPUT_GET, "acao") === "deletar") {
-
-    $id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_NUMBER_INT);
-
+elseif (filter_has_var(INPUT_POST, "btnDeletar")):
+    $id = filter_input(INPUT_POST, "id", FILTER_VALIDATE_INT);
     $u = $Usuario->findById($id);
 
-    if ($u && $u->perfil === 'admin') {
-        echo "<script>alert('Não é permitido excluir um administrador.');location.href='listaUsuarios.php';</script>";
+    if ($u && $u->perfil === "admin"):
+        echo "<script>
+            alert('Não é permitido excluir um administrador.');
+            window.location.href='listaUsuarios.php';
+        </script>";
+        exit;
+    endif;
+
+    if ($Usuario->delete("id", $id)) {
+        echo "<script>
+            alert('Usuário excluído com sucesso.');
+            window.location.href='listaUsuarios.php';
+        </script>";
+        exit;
+    } else {
+        echo "<script>
+            alert('Erro ao excluir usuário.');
+            window.open(document.referrer,'_self');
+        </script>";
         exit;
     }
 
-    $Usuario->delete("id", $id);
+endif;
 
-    echo "<script>alert('Usuário excluído com sucesso!');location.href='listaUsuarios.php';</script>";
-    exit;
-}
 ?>

@@ -16,13 +16,21 @@ $pagina = basename($_SERVER['PHP_SELF']);
 // Regras de acesso
 $regras = [
     "listaUsuarios.php"      => ["admin"],
-    "projeto.php"      => ["admin"],
+    "cadProjeto.php"         => ["admin", "usuario"],
+    "listaProjetos.php"      => ["admin"],
+
+    "listaEditaisInternos.php" => ["admin"],
+    "cadEditalInterno.php"     => ["admin"],
+    "dbEditalInterno.php"      => ["admin"],
+
+    "listaEditaisExternos.php" => ["admin"],
+    "cadEditalExterno.php"     => ["admin"],
+    "dbEditalExterno.php"      => ["admin"],
 
     "meusProjetos.php" => ["usuario"],
-    "cadProjeto.php"   => ["usuario"],
-
     "dashboard.php"    => ["admin", "usuario"],
 ];
+
 
 // Validação
 if (isset($regras[$pagina]) && !in_array($_SESSION['perfil'], $regras[$pagina])) {

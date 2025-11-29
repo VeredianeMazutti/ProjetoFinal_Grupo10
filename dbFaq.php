@@ -1,35 +1,68 @@
 <?php
+session_start();
+
 spl_autoload_register(function ($class) {
     require_once __DIR__ . "/Classes/{$class}.class.php";
 });
 
 $Faq = new Faq();
 
-
-if (filter_has_var(INPUT_POST, "btnGravar")) {
-
+if (filter_has_var(INPUT_POST, "btnGravar")):
     $idFaq = filter_input(INPUT_POST, "idFaq", FILTER_SANITIZE_NUMBER_INT);
-    $pergunta = filter_input(INPUT_POST, "pergunta", FILTER_SANITIZE_STRING);
-    $resposta = filter_input(INPUT_POST, "resposta", FILTER_SANITIZE_STRING);
 
     $Faq->setIdFaq($idFaq);
-    $Faq->setPergunta($pergunta);
-    $Faq->setResposta($resposta);
+    $Faq->setPergunta(filter_input(INPUT_POST, "pergunta", FILTER_SANITIZE_STRING));
+    $Faq->setResposta(filter_input(INPUT_POST, "resposta", FILTER_SANITIZE_STRING));
 
-    if (empty($id)) {
-        $Faq->add();
+    if (empty($idFaq)):
+        $novoId = $Faq->add();
+
+        if ($novoId) {
+            echo "<script>
+                alert('Cadastro de FAQ realizado com sucesso.');
+                window.location.href='faq.php';
+            </script>";
+            exit;
+        } else {
+            echo "<script>
+                alert('Erro ao cadastrar FAQ.');
+                window.open(document.referrer,'_self');
+            </script>";
+            exit;
+        }
+
+    else:
+        if ($Faq->update("idFaq", $idFaq)) {
+            echo "<script>
+                alert('FAQ alterado com sucesso.');
+                window.location.href='listaFaq.php';
+            </script>";
+            exit;
+        } else {
+            echo "<script>
+                alert('Erro ao alterar FAQ.');
+                window.open(document.referrer,'_self');
+            </script>";
+            exit;
+        }
+    endif;
+
+elseif (filter_has_var(INPUT_POST, "btnDeletar")):
+    $idFaq = filter_input(INPUT_POST, "idFaq", FILTER_VALIDATE_INT);
+
+    if ($Faq->delete("idFaq", $idFaq)) {
+        echo "<script>
+            alert('FAQ excluído com sucesso.');
+            window.location.href='listaFaq.php';
+        </script>";
+        exit;
     } else {
-        $Faq->update("idFaq", $idFaq);
+        echo "<script>
+            alert('Erro ao excluir FAQ.');
+            window.open(document.referrer,'_self');
+        </script>";
+        exit;
     }
 
-    echo "<script>alert('FAQ salvo com sucesso!');location.href='faq.php';</script>";
-    exit;
-}
-
-if (filter_has_var(INPUT_GET, "btnDeletar") && filter_input(INPUT_GET, "btnDeletar") === "deletar") {
-    $id = filter_input(INPUT_GET, "idFaq", FILTER_SANITIZE_NUMBER_INT);
-    $Faq->delete("idFaq", $idFaq);
-
-    echo "<script>alert('FAQ excluído com sucesso!');location.href='faq.php';</script>";
-    exit;
-}
+endif;
+?>

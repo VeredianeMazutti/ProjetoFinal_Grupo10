@@ -3,21 +3,21 @@ require_once "CRUD.class.php";
 
 class EditalExterno extends CRUD
 {
-    protected $table = "editais_externos";
+    protected $table = "editaisexternos";
 
-    private $id;
+    private $idEditalExterno;
     private $nome;
     private $descricao;
     private $link;
     private $categoria; 
 
-    public function setId($id)
+    public function setIdEditalExterno($idEditalExterno)
     {
-        $this->id = $id;
+        $this->idEditalExterno = $idEditalExterno;
     }
-    public function getId()
+    public function getIdEditalExterno()
     {
-        return $this->id;
+        return $this->idEditalExterno;
     }
 
     public function setNome($nome)
@@ -78,7 +78,7 @@ class EditalExterno extends CRUD
                     descricao = :descricao,
                     link = :link,
                     categoria = :categoria
-                WHERE $campo = :id";
+                WHERE $campo = :idEditalExterno";
 
         $stmt = $this->db->prepare($sql);
 
@@ -86,7 +86,7 @@ class EditalExterno extends CRUD
         $stmt->bindValue(':descricao', $this->descricao);
         $stmt->bindValue(':link', $this->link);
         $stmt->bindValue(':categoria', $this->categoria);
-        $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+        $stmt->bindValue(':idEditalExterno', $id, PDO::PARAM_INT);
 
         return $stmt->execute();
     }

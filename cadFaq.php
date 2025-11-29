@@ -22,10 +22,10 @@
             require_once "Classes/{$class}.class.php";
         });
 
-        if (filter_has_var(INPUT_POST, "btnEditar")) {
+        if (filter_has_var(INPUT_GET, "idFaq")) {
             $edtFaq = new Faq();
-            $idFaq = intval(filter_input(INPUT_POST, "id"));
-            $faq = $edtFaq->search("idFaq", $idFaq)[0];
+            $idFaq = intval(filter_input(INPUT_GET, "idFaq"));
+            $faq = $edtFaq->search("idFaq", $idFaq)[0] ?? null;
         }
         ?>
 
@@ -43,7 +43,7 @@
 
             <div class="col-12 mt-3">
                 <label for="resposta" class="form-label">Resposta</label>
-                <textarea class="form-control" name="resposta" idFaq="resposta" placeholder="Digite a resposta"
+                <textarea class="form-control" name="resposta" id="resposta" placeholder="Digite a resposta"
                     required><?= $faq->resposta ?? '' ?></textarea>
             </div>
 

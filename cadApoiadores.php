@@ -65,7 +65,7 @@
                     <p class="mt-2">Imagem atual: <img src="uploads/parceiros/<?= $ap->imagem ?>" width="120"></p>
                 <?php endif; ?>
             </div>
-            ]
+
             <div class="col-md-4">
                 <label class="form-label">Website</label>
                 <input type="url" class="form-control" name="site" value="<?= $ap->site ?? "" ?>">

@@ -13,7 +13,7 @@ require_once __DIR__ . "/verifica_acesso.php";
     <link rel="stylesheet" href="https://cdn.datatables.net/2.3.4/css/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" href="CSS/baseAdministracao.css">
     <link rel="shortcut icon" href="images/logoInnovamind.png" type="image/x-icon">
-    <title>Editais Externos</title>
+    <title>Editais Internos</title>
 </head>
 
 <body>
@@ -23,11 +23,11 @@ require_once __DIR__ . "/verifica_acesso.php";
     </nav>
 
     <main class="container my-5">
-        <h3 class="titulo-tabelas mb-4">Editais Externos Cadastrados</h3>
+        <h3 class="titulo-tabelas mb-4">Editais Interno Cadastrados</h3>
 
         <div class="d-flex justify-content-end">
             <a href="cadEditalExterno.php" class="btn btn-administracao mb-4 me-3">
-                <i class="bi bi-plus-circle"></i> Novo Edital Externo
+                <i class="bi bi-plus-circle"></i> Novo Edital Interno
             </a>
         </div>
 
@@ -36,10 +36,10 @@ require_once __DIR__ . "/verifica_acesso.php";
                 <thead class="table-dark">
                     <tr>
                         <th class="text-center">#</th>
-                        <th class="text-center">Nome</th>
-                        <th class="text-center">Categoria</th>
-                        <th class="text-center">Descrição</th>
-                        <th class="text-center">Link</th>
+                        <th class="text-center">Titulo</th>
+                        <th class="text-center">Tipo de Apoio</th>
+                        <th class="text-center">Data de Abertura</th>
+                        <th class="text-center">Data de Encerramento</th>
                         <th class="text-center">Ações</th>
                     </tr>
                 </thead>
@@ -50,30 +50,30 @@ require_once __DIR__ . "/verifica_acesso.php";
                         require_once __DIR__ . "/Classes/{$class}.class.php";
                     });
 
-                    $apo = new EditalExterno();
-                    $lista = $apo->listar();
+                    $apo = new EditalInterno();
+                    $lista = $apo->searchAll();
 
                     foreach ($lista as $a):
                         ?>
                         <tr>
-                            <td class="text-center"><?= $a->idEditalExterno ?></td>
-                            <td class="text-center"><?= htmlspecialchars($a->nome) ?></td>
-                            <td class="text-center"><?= ucfirst($a->categoria) ?></td>
-                            <td class="text-center"><?= ucfirst($a->descricao) ?></td>
-                            <td class="text-center"><?= ucfirst($a->link) ?></td>
+                            <td class="text-center"><?= $a->idEditalInterno ?></td>
+                            <td class="text-center"><?= htmlspecialchars($a->titulo) ?></td>
+                            <td class="text-center"><?= ucfirst($a->tipoApoio) ?></td>
+                            <td class="text-center"><?= ucfirst($a->dataAbertura) ?></td>
+                            <td class="text-center"><?= ucfirst($a->dataEncerramento) ?></td>
 
                             <td class="text-center">
                                 <div class="d-flex gap-1 justify-content-center">
-                                    <form action="cadEditalExterno.php" method="get" class="d-inline">
-                                        <input type="hidden" name="idEditalExterno" value="<?= $a->idEditalExterno ?>">
-                                        <button class="btn btn-primary btn-sm" type="submit" title="Editar"
-                                            onclick="return confirm('Editar este parceiro?');">
+                                    <form action="cadEditalInterno.php" method="post">
+                                        <input type="hidden" name="idEditalInterno" value="<?= $a->idEditalInterno ?>">
+                                        <button type="submit" class="btn btn-primary btn-sm">
                                             <i class="bi bi-pencil-square"></i>
                                         </button>
                                     </form>
 
-                                    <form action="dbEditalExterno.php" method="post" class="d-inline">
-                                        <input type="hidden" name="idEditalExterno" value="<?= $a->idEditalExterno ?>">
+
+                                    <form action="dbEditalInterno.php" method="post" class="d-inline">
+                                        <input type="hidden" name="idEditalInterno" value="<?= $a->idEditalInterno ?>">
                                         <button name="btnDeletar" class="btn btn-danger btn-sm" type="submit"
                                             title="Excluir"
                                             onclick="return confirm('Tem certeza que deseja excluir este parceiro?');">
