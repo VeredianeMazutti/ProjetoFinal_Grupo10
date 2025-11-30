@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="CSS/baseSite.css">
+    <link rel="stylesheet" href="CSS/baseAdministracao.css">
     <link rel="shortcut icon" href="images/logoInnovamind.png" type="image/x-icon">
     <title>Cadastrar FAQ</title>
 </head>
@@ -15,7 +15,7 @@
         <?php require_once "_parts/_navbar.php"; ?>
     </navbar>
 
-    <main class="cadastro-container my-5 efeito-luzes">
+    <main class="cadastro-container my-5">
 
         <?php
         spl_autoload_register(function ($class) {
@@ -29,7 +29,7 @@
         }
         ?>
 
-        <h2 class="text-center">Cadastrar FAQ</h2>
+        <h2 class="titulo-cad text-center">Cadastrar FAQ</h2>
 
         <form action="dbFaq.php" method="post" class="row g3 mt-3">
 
@@ -60,6 +60,7 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
+     <script src="JS/formTheme.js"></script>
 
     <!-- VLibras -->
     <div vw class="enabled">

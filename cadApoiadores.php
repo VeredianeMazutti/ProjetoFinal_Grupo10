@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="CSS/baseSite.css">
+    <link rel="stylesheet" href="CSS/baseAdministracao.css">
     <link rel="shortcut icon" href="images/logoInnovamind.png" type="image/x-icon">
     <title>Cadastrar Parceiro</title>
 </head>
@@ -15,7 +15,7 @@
         <?php require_once "_parts/_navbar.php"; ?>
     </navbar>
 
-    <main class="cadastro-container my-5 efeito-luzes">
+    <main class="cadastro-container my-5">
 
         <?php
         spl_autoload_register(function ($class) {
@@ -30,7 +30,7 @@
         }
         ?>
 
-        <h2 class="text-center"><?= $ap ? "Editar Parceiro" : "Cadastre-se como Parceiro!" ?></h2>
+        <h2 class="titulo-cad text-center"><?= $ap ? "Editar Parceiro" : "Cadastre-se como Parceiro!" ?></h2>
 
         <form action="dbApoiadores.php" method="post" class="row g-3 mt-3" enctype="multipart/form-data">
 
@@ -48,13 +48,13 @@
             </div>
 
             <div class="col-12">
-                <label for="nome" class="form-label">Nome / Razão Social</label>
-                <input type="text" class="form-control" name="nome" id="nome" value="<?= $ap->nome ?? "" ?>" required>
+                <label for="nome" class="form-label">Nome do Apoiador</label>
+                <input type="text" class="form-control" name="nome" id="nome" placeholder="Digite o nome do apoiador"  value="<?= $ap->nome ?? "" ?>" required>
             </div>
 
             <div class="col-12">
                 <label for="descricao" class="form-label">Descrição / Biografia</label>
-                <input type="text" class="form-control" name="descricao" id="descricao"
+                <input type="text" class="form-control" name="descricao" id="descricao" placeholder="Digite a descrição/biografia do apoiador" 
                     value="<?= $ap->descricao ?? "" ?>" required maxlength="500">
             </div>
 
@@ -68,17 +68,17 @@
 
             <div class="col-md-4">
                 <label class="form-label">Website</label>
-                <input type="url" class="form-control" name="site" value="<?= $ap->site ?? "" ?>">
+                <input type="url" class="form-control" name="site" placeholder="Adicione o link do site do apoiador"  value="<?= $ap->site ?? "" ?>">
             </div>
 
             <div class="col-md-4">
                 <label class="form-label">Instagram</label>
-                <input type="url" class="form-control" name="instagram" value="<?= $ap->instagram ?? "" ?>">
+                <input type="url" class="form-control" name="instagram" placeholder="Adicione o link do Instagram do apoiador" value="<?= $ap->instagram ?? "" ?>">
             </div>
 
             <div class="col-md-4">
                 <label class="form-label">LinkedIn</label>
-                <input type="url" class="form-control" name="linkedin" value="<?= $ap->linkedin ?? "" ?>">
+                <input type="url" class="form-control" name="linkedin" placeholder="Adicione o Linkedin do apoiador" value="<?= $ap->linkedin ?? "" ?>">
             </div>
 
             <div class="col-12 mt-4">
@@ -95,6 +95,7 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="JS/formTheme.js"></script>
 
     <!-- VLibras -->
     <div vw class="enabled">

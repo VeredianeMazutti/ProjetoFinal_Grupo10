@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="CSS/baseSite.css">
+    <link rel="stylesheet" href="CSS/baseAdministracao.css">
     <link rel="shortcut icon" href="images/logoInnovamind.png" type="image/x-icon">
     <title>Cadastrar Edital</title>
 </head>
@@ -15,7 +15,7 @@
         <?php require_once "_parts/_navbar.php"; ?>
     </navbar>
 
-    <main class="cadastro-container my-5 efeito-luzes">
+    <main class="cadastro-container my-5">
 
         <?php
         spl_autoload_register(function ($class) {
@@ -30,7 +30,7 @@
         }
         ?>
 
-        <h2 class="text-center"><?= $edital ? "Editar Edital Externo" : "Cadastrar Novo Edital Externo" ?></h2>
+        <h2 class="titulo-cad text-center"><?= $edital ? "Editar Edital Externo" : "Cadastrar Novo Edital Externo" ?></h2>
 
         <form action="dbEditalExterno.php" method="post" class="row g-3 mt-3">
 
@@ -38,7 +38,7 @@
 
             <div class="col-12 mb-3">
                 <label for="nome" class="form-label">Nome do Edital</label>
-                <input type="text" class="form-control" name="nome" id="nome" value="<?= $edital->nome ?? "" ?>" required>
+                <input type="text" class="form-control" name="nome" id="nome" placeholder="Digite o nome do edital"  value="<?= $edital->nome ?? "" ?>" required>
             </div>
 
             <div class="col-12 mb-3">
@@ -57,12 +57,12 @@
 
             <div class="col-12">
                 <label for="descricao" class="form-label">Descrição</label>
-                <input type="text" class="form-control" name="descricao" id="descricao" value="<?= $edital->descricao ?? "" ?>" required maxlength="500">
+                <input type="text" class="form-control" name="descricao" id="descricao" placeholder="Digite a descrição do edital" value="<?= $edital->descricao ?? "" ?>" required maxlength="500">
             </div>
 
             <div class="col-12">
                 <label for="link" class="form-label">Link</label>
-                <input type="url" class="form-control" name="link" id="link" value="<?= $edital->link ?? "" ?>" required>
+                <input type="url" class="form-control" name="link" id="link" placeholder="Adicione o link do edital" value="<?= $edital->link ?? "" ?>" required>
             </div>
 
             <div class="col-12 mt-4">
@@ -79,6 +79,8 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="JS/formTheme.js"></script>
+
 
     <!-- VLibras -->
     <div vw class="enabled">

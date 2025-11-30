@@ -10,9 +10,9 @@
     text-align: center;
     padding: 0 2rem;
 
-    display: block;      
-    margin: 0 auto;       
-      margin-bottom: 40px;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 40px;
 }
 
 .badge-status {
@@ -22,9 +22,17 @@
     color: #fff;
 }
 
-.badge-aprovado { background: #28a745; }
-.badge-reprovado { background: #dc3545; }
-.badge-analise   { background: #0d6efd; }
+.badge-aprovado {
+    background: #28a745;
+}
+
+.badge-reprovado {
+    background: #dc3545;
+}
+
+.badge-analise {
+    background: #0d6efd;
+}
 
 .btn-ver {
     background: #4d287c !important;
@@ -52,4 +60,112 @@
 .btn-administracao:hover {
     background: #9d00ff !important;
     transform: scale(1.05);
+}
+
+/*Cadastros*/
+
+main.cadastro-container {
+    max-width: 1400px !important;
+    background-color: #251435;
+    padding: 50px 70px;
+    border-radius: 20px;
+    color: #fff;
+    margin: 50px auto;
+}
+
+.titulo-cad {
+    font-family: "Trebuchet MS";
+    color: #fff;
+    font-size: 40px;
+    font-weight: 700;
+}
+
+.form-label {
+    color: #f7f7f7;
+    font-size: 17px;
+    margin: 6px;
+}
+
+.form-control,
+.form-select {
+    background-color: #251435;
+    border: 1px solid #9b5eff;
+    color: #fff;
+    border-radius: 8px;
+    padding: 10px 15px;
+    transition: .3s;
+}
+
+.form-select {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' fill='%23ffffff' viewBox='0 0 16 16'><path d='M3.204 5h9.592L8 10.481 3.204 5z'/></svg>");
+    background-position: right .75rem center;
+    background-repeat: no-repeat;
+}
+
+.form-control::placeholder {
+    color: #e6e6e6;
+}
+
+.form-control:focus,
+.form-select:focus {
+    background-color: #fff !important;
+    color: #000 !important;
+    border-color: #c88cff !important;
+    box-shadow: 0 0 10px rgba(200, 140, 255, 0.3);
+}
+
+.form-control.filled,
+.form-select.filled {
+    background-color: #fff !important;
+    color: #000 !important;
+    border-color: #c88cff !important;
+}
+
+.form-select.filled {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' fill='%23000000' viewBox='0 0 16 16'><path d='M3.204 5h9.592L8 10.481 3.204 5z'/></svg>");
+}
+
+.btn-cad {
+    background: linear-gradient(90deg, #b47aff, #8042e0);
+    border: none;
+    color: #fff;
+    padding: 10px 25px;
+    border-radius: 10px;
+    transition: .3s;
+}
+
+.btn-cad:hover {
+    background: linear-gradient(90deg, #491874, #9F6ACE, #8B45AA);
+    transform: scale(1.03);
+}
+
+input[type="file"] {
+    color: #fff;
+}
+
+input[type="file"]::-webkit-file-upload-button {
+    background-color: #251435;
+    color: #fff;
+    border: 1px solid #9b5eff;
+    padding: 7px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+input[type="file"]::-ms-browse {
+    background-color: #251435;
+    color: #fff;
+    border: 1px solid #9b5eff;
+    padding: 7px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+input[type="file"]::file-selector-button {
+    background-color: #251435;
+    color: #fff;
+    border: 1px solid #9b5eff;
+    padding: 7px 12px;
+    border-radius: 6px;
+    cursor: pointer;
 }

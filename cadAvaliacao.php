@@ -67,7 +67,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="CSS/base.css">
+    <link rel="stylesheet" href="CSS/baseAdministracao.css">
     <link rel="shortcut icon" href="images/logoInnovamind.png" type="image/x-icon">
     <title>Cadastro da Avaliação</title>
 </head>
@@ -78,7 +78,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     </navbar>
 
     <main class="container mt-3">
-        <h3>
+        <h3 class="titulo-cad text-center">
             <?= htmlspecialchars($trilhaData->titulo) ?>
             - Cadastro da Avaliação
         </h3>
@@ -144,6 +144,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="JS/formTheme.js"></script>
 
        <!-- VLibras -->
     <div vw class="enabled">

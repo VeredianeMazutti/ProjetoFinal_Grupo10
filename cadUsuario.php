@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="shortcut icon" href="images/logoInnovamind.png" type="image/x-icon">
-    <link rel="stylesheet" href="CSS/baseSite.css">
+    <link rel="stylesheet" href="CSS/baseAdministracao.css">
     <title>Cadastrar Usuário</title>
 </head>
 
@@ -16,7 +16,7 @@
         <?php require_once "_parts/_navbar.php"; ?>
     </nav>
 
-    <main class="cadastro-container my-5 efeito-luzes">
+    <main class="cadastro-container my-5">
 
         <?php
         spl_autoload_register(function ($class) {
@@ -38,7 +38,7 @@
         }
         ?>
 
-        <h2 class="text-center">Cadastre-se e faça parte!</h2>
+        <h2 class="titulo-cad text-center">Cadastre-se e faça parte!</h2>
 
         <form action="dbUsuario.php" method="post" enctype="multipart/form-data" class="row g-3 mt-3">
 
@@ -138,6 +138,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
     <script src="JS/senhaForte.js"></script>
+    <script src="JS/formTheme.js"></script>
 
     <script>
         document.getElementById('fotoPerfil').addEventListener('change', function (event) {

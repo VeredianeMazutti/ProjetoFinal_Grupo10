@@ -23,7 +23,10 @@
         });
         ?>
 
-        <section class="text-center my-5">
+        <section class="text-center">
+            <h1 class="titulo-impacto">Impacto Gerado pela Nossa Comunidade</h1>
+            <p class="subtitulo-impacto">Acompanhe o crescimento dos projetos e das iniciativas apoiadas</p>
+
 
             <div class="ratio ratio-16x9 shadow-lg rounded-4 overflow-hidden">
                 <iframe title="innovamind" width="600" height="373.5"

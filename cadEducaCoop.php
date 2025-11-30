@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="CSS/baseSite.css">
+    <link rel="stylesheet" href="CSS/baseAdministracao.css">
     <link rel="shortcut icon" href="images/logoInnovamind.png" type="image/x-icon">
     <title>Cadastro de Trilha</title>
 </head>
@@ -15,7 +15,7 @@
         <?php require_once "_parts/_navbar.php"; ?>
     </nav>
 
-    <main class="cadastro-container my-5 efeito-luzes">
+    <main class="cadastro-container my-5">
 
         <?php
         spl_autoload_register(function ($class) {
@@ -28,7 +28,7 @@
         $dados = !empty($resultado) ? $resultado[0] : null;
         ?>
 
-        <h2 class="text-center mb-4">Cadastro de Trilha de Aprendizado</h2>
+        <h2 class="titulo-cad text-center mb-4">Cadastro de Trilha de Aprendizado</h2>
 
         <form action="dbEducaCoop.php" method="post" enctype="multipart/form-data" class="row g-3">
             <input type="hidden" name="id_trilha" value="<?php echo $dados->id_trilha ?? null; ?>">
@@ -141,6 +141,7 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="JS/formTheme.js"></script>
 
     <!-- VLibras -->
     <div vw class="enabled">

@@ -51,7 +51,7 @@ foreach ($lista as $item) {
 
                     <?php foreach ($editais as $edital): ?>
                         <div class="col-md-4">
-                            <div class="card-edital shadow">
+                            <div class="card-editais shadow">
 
                                 <h5 class="titulo-edital"><?= htmlspecialchars($edital->nome) ?></h5>
 
