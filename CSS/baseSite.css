@@ -249,6 +249,7 @@
 }
 
 .card-projeto .card-title {
+    font-family: "Segoe UI";
     font-size: 22px;
     font-weight: 700;
     text-align: center;
@@ -436,10 +437,11 @@
 
 .filtros-projetos {
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     gap: 15px;
-    margin-left: 30px;
+    margin: 0 auto;
+    width: fit-content;
 }
 
 .form-filtro {
@@ -1388,74 +1390,12 @@ h2.titulo-apoiadores {
     font-size: 1.3rem;
 }
 
-/*EditalInterno*/
-
-.status-aberto {
-    color: #1a8c2e;
-    font-weight: bold;
-}
-
-.status-encerrado {
-    color: #b60000;
-    font-weight: bold;
-}
-
-.status-analise {
-    color: #d49200;
-    font-weight: bold;
-}
-
-.titulo-edital {
-    font-size: 1.6rem;
-    font-weight: 700;
-}
-
-.campo-label {
-    font-weight: 600;
-    margin-top: 12px;
-    color: #333;
-}
-
-/*EditaisInternos*/
-.card-edital {
-    border-bottom: 1px solid #ddd;
-    padding: 20px 5px;
-}
-
-.status-aberto {
-    color: #1a8c2e;
-    font-weight: bold;
-}
-
-.status-encerrado {
-    color: #b60000;
-    font-weight: bold;
-}
-
-.status-analise {
-    color: #d49200;
-    font-weight: bold;
-}
-
-.icone {
-    color: #2d7a94;
-    margin-right: 6px;
-}
-
-.titulo-edital {
-    font-weight: 600;
-    font-size: 1.2rem;
-}
-
-.desc {
-    font-size: 0.95rem;
-    color: #444;
-}
-
 /*EditalExterno*/
 
 .titulo-editais {
-    font-size: 2.4rem;
+    font-family: "Trebuchet MS";
+    color: #fff;
+    font-size: 40px;
     font-weight: 700;
 }
 
@@ -1464,34 +1404,169 @@ h2.titulo-apoiadores {
     color: #d0c9e8;
 }
 
+.categoria-titulo {
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin: 40px 0 20px;
+    border-left: 5px solid #8b5cf6;
+    padding-left: 12px;
+    color: #fff;
+}
+
 .card-edital {
-    background-color: #252525ff;
-    color: #ffff;
-    border: 1px solid #3b2d53;
-    transition: 0.3s;
+    background: #1f1f1f;
+    border-radius: 18px;
+    padding: 25px;
+    height: 100%;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-edital h5 {
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+.card-edital p {
+    opacity: 0.9;
+    margin-bottom: 20px;
+}
+
+.btn-acessar {
+    margin-top: auto;
+    background: #8b5cf6;
+    color: white;
+    font-weight: 500;
+    border-radius: 10px;
+    padding: 10px 0;
+    width: 100%;
+    transition: 0.2s;
+}
+
+.btn-acessar:hover {
+    background: #7c3aed;
+    color: #fff;
+}
+
+/*EditaisInternos*/
+
+.editais-container {
+    background: radial-gradient(circle at top, #3b2b5b 0%, #1e172f 100%);
+    padding: 40px;
+    border-radius: 15px;
+}
+
+.card-edital {
+    background: #000;
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 35px;
+    border-left: 4px solid #460872;
+    color: #fff;
+    transition: transform .25s ease, box-shadow .25s ease;
 }
 
 .card-edital:hover {
-    transform: translateY(-5px);
-    border-color: #7b42ff;
+    transform: translateY(-6px);
+    box-shadow: 0 0 18px rgba(130, 42, 255, 0.35);
 }
 
-.categoria-titulo {
-    font-size: 1.8rem;
-    color: #bba8ff;
-    margin-bottom: 25px;
-    border-left: 5px solid #7b42ff;
-    padding-left: 12px;
+.titulo-edital {
+    font-family: "Segoe UI";
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #d6b8ff;
+    text-transform: capitalize;
 }
 
-.btn-edital {
-    background-color: #7b42ff;
+.desc {
+    color: #cfcfcf;
+    font-size: 0.95rem;
+}
+
+.status-aberto {
+    color: #22ff77 !important;
+}
+
+.status-encerrado {
+    color: #ff4b4b !important;
+}
+
+.status-analise {
+    color: #f6d32d !important;
+}
+
+.card-edital .btn-dark {
+    background: #4d287c;
     border: none;
-    padding: 8px 20px;
+    padding: 10px 20px;
+    font-weight: 500;
+    border-radius: 8px;
+    transition: 0.25s;
 }
 
-.btn-edital:hover {
-    background-color: #a278ff;
+.card-edital .btn-dark:hover {
+    background: #9f63ff;
+}
+
+/*EditalInterno*/
+.edital-container {
+    max-width: 1400px;
+    width: 90%;
+    margin: 50px auto;
+}
+
+.titulo-editais {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+.subtitulo {
+    font-size: 1.2rem;
+    color: #e1d4ff;
+    margin-bottom: 30px;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px 40px;
+}
+
+.bloco-info .label,
+.card-detalhado .label {
+    font-family: "Segoe UI";
+    font-weight: 700;
+    font-size: 19px;
+    color: #f0e5ff;
+}
+
+.bloco-info .texto,
+.card-detalhado .texto {
+    font-family: "Segoe UI";
+    font-size: 17px;
+    color: #faf7ff;
+    line-height: 20px;
+}
+
+.btn-inscricao {
+    background: #8a4dff;
+    border: none;
+    padding: 12px 22px;
+    border-radius: 10px;
+    color: white;
+    font-weight: 600;
+    display: block;
+    width: fit-content;
+    margin: 25px auto 0;
+    transition: .2s;
+    text-decoration: none;
+}
+
+.btn-inscricao:hover {
+    background: #a372ff;
 }
 
 /*Index*/
@@ -1877,27 +1952,6 @@ nav img {
         height: auto;
     }
 }
-
-/*Projetos*/
-
-.filtros-projetos {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 15px;
-    margin-left: 30px;
-}
-
-.form-filtro {
-    width: 260px;
-}
-
-.secao-projetos {
-    width: 100%;
-    min-height: 75vh;
-    position: relative;
-}
-
 @media (max-width: 1024px) {
 
     .titulo-pagprojetos {
@@ -1926,12 +1980,15 @@ nav img {
         margin: 25px 0 15px 0 !important;
     }
 
+
     .filtros-projetos {
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        margin-left: 0 !important;
+        margin: 0 auto !important;
+        /* CENTRALIZA DE VERDADE */
         gap: 12px;
+        width: fit-content;
     }
 
     .form-filtro {
@@ -2036,5 +2093,24 @@ nav img {
         width: 220px !important;
         height: 220px !important;
         filter: blur(70px);
+    }
+}
+
+/*Editais*/
+@media (max-width: 768px) {
+    .editais-container {
+        padding: 20px;
+    }
+
+    .card-edital {
+        padding: 18px;
+    }
+
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .edital-wrapper {
+        width: 95%;
     }
 }

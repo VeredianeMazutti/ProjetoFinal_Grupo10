@@ -46,56 +46,84 @@ else
     <navbar>
         <?php require_once "_parts/_navbar.php"; ?>
     </navbar>
+    <main class="edital-container">
 
-    <main class="container my-5 efeito-luzes">
+        <div class="editais-container">
 
-        <p class="<?= $statusClass ?>"><?= strtoupper($dados->status) ?></p>
+            <h2 class="titulo-editais text-center my-3"><?= htmlspecialchars($dados->titulo) ?></h2>
+            <p class="subtitulo text-center"><?= htmlspecialchars($dados->descResumida) ?></p>
 
-        <h2 class="titulo-edital mb-3"><?= htmlspecialchars($dados->titulo) ?></h2>
+            <div class="info-section">
+                <div class="info-grid">
 
-        <p class="lead"><?= htmlspecialchars($dados->descResumida) ?></p>
+                    <div class="bloco-info">
+                        <p class="label">Status:</p>
+                        <p class="texto"><?= htmlspecialchars($dados->status) ?></p>
+                    </div>
 
-        <p class="campo-label">Organização responsável:</p>
-        <p><?= htmlspecialchars($dados->organizacao) ?></p>
+                    <div class="bloco-info">
+                        <p class="label">Organização:</p>
+                        <p class="texto"><?= htmlspecialchars($dados->organizacao) ?></p>
+                    </div>
 
-        <p class="campo-label">Tipo de apoio:</p>
-        <p><?= htmlspecialchars($dados->tipoApoio) ?></p>
+                    <div class="bloco-info">
+                        <p class="label">Tipo de apoio:</p>
+                        <p class="texto"><?= htmlspecialchars($dados->tipoApoio) ?></p>
+                    </div>
 
-        <p class="campo-label">Abertura e Encerramento:</p>
-        <p><?= $dataAbertura ?> até <?= $dataEncerramento ?></p>
+                    <div class="bloco-info">
+                        <p class="label">Período:</p>
+                        <p class="texto"><?= $dataAbertura ?> até <?= $dataEncerramento ?></p>
+                    </div>
 
-        <p class="campo-label">Vagas disponíveis:</p>
-        <p><?= htmlspecialchars($dados->vagas) ?></p>
+                    <div class="bloco-info">
+                        <p class="label">Vagas:</p>
+                        <p class="texto"><?= htmlspecialchars($dados->vagas) ?></p>
+                    </div>
 
-        <p class="campo-label">Quem pode participar:</p>
-        <p><?= nl2br(htmlspecialchars($dados->participantes)) ?></p>
+                    <div class="bloco-info">
+                        <p class="label">Responsável:</p>
+                        <p class="texto"><?= htmlspecialchars($dados->responsavel) ?></p>
+                    </div>
 
-        <p class="campo-label">Critérios de avaliação:</p>
-        <p><?= nl2br(htmlspecialchars($dados->criterios)) ?></p>
+                    <div class="bloco-info">
+                        <p class="label">Contato:</p>
+                        <p class="texto"><?= htmlspecialchars($dados->contato) ?></p>
+                    </div>
 
-        <p class="campo-label">Cronograma / Etapas</p>
-        <p><?= nl2br(htmlspecialchars($dados->etapas)) ?></p>
+                </div>
+            </div>
 
-        <p class="campo-label">Benefícios oferecidos:</p>
-        <p><?= nl2br(htmlspecialchars($dados->beneficios)) ?></p>
+            <div class="card-detalhado">
 
-        <p class="campo-label">Responsável pelo edital:</p>
-        <p><?= htmlspecialchars($dados->responsavel) ?></p>
+                <div class="divisor"></div>
 
-        <p class="campo-label">Contato:</p>
-        <p><?= htmlspecialchars($dados->contato) ?></p>
+                <h2 class="titulo-editais text-center my-3">Informações Detalhadas</h2>
 
-        <p class="campo-label">Observações:</p>
-        <p><?= nl2br(htmlspecialchars($dados->observacoes)) ?></p>
+                <p class="label">Quem pode participar:</p>
+                <p class="texto"><?= nl2br(htmlspecialchars($dados->participantes)) ?></p>
 
-        <p class="campo-label">Descrição completa:</p>
-        <p><?= nl2br(htmlspecialchars($dados->descCompleta)) ?></p>
+                <p class="label">Critérios de avaliação:</p>
+                <p class="texto"><?= nl2br(htmlspecialchars($dados->criterios)) ?></p>
 
-        <?php if ($dados->status === "Aberto"): ?>
-            <a href="cadInscricaoEdital.php?id=<?= $dados->idEditalInterno ?>" class="btn btn-dark mt-2">
-                Inscrever-se neste Edital
-            </a>
-        <?php endif; ?>
+                <p class="label">Cronograma / Etapas:</p>
+                <p class="texto"><?= nl2br(htmlspecialchars($dados->etapas)) ?></p>
+
+                <p class="label">Benefícios oferecidos:</p>
+                <p class="texto"><?= nl2br(htmlspecialchars($dados->beneficios)) ?></p>
+
+                <p class="label">Observações:</p>
+                <p class="texto"><?= nl2br(htmlspecialchars($dados->observacoes)) ?></p>
+
+                <p class="label">Descrição completa:</p>
+                <p class="texto"><?= nl2br(htmlspecialchars($dados->descCompleta)) ?></p>
+
+                <?php if ($dados->status === "Aberto"): ?>
+                    <a href="cadInscricaoEdital.php?id=<?= $dados->idEditalInterno ?>" class="btn-inscricao">
+                        Inscrever-se neste Edital
+                    </a>
+                <?php endif; ?>
+            </div>
 
     </main>
 

@@ -25,8 +25,8 @@ $lista = $Edital->searchAll();
         <?php require_once "_parts/_navbar.php"; ?>
     </navbar>
 
-    <main class="container my-5 efeito-luzes">
-        <h2>Editais Internos</h2>
+    <main class="container my-5 editais-container">
+        <h2 class="titulo-editais text-center my-3">Editais Internos</h2>
 
         <?php if (count($lista) == 0): ?>
             <p class="text-muted mt-4">Nenhum edital cadastrado.</p>

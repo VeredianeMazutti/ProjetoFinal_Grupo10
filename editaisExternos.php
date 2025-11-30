@@ -1,3 +1,18 @@
+<?php
+spl_autoload_register(function ($class) {
+    require_once "Classes/{$class}.class.php";
+});
+
+$EditalExterno = new EditalExterno();
+$lista = $EditalExterno->listar();
+
+// Organizar por categoria
+$categorias = [];
+foreach ($lista as $item) {
+    $categorias[$item->categoria][] = $item;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -22,6 +37,40 @@
             <p class="subtitulo-editais">Oportunidades reais para projetos, bolsas, inovação e impacto social.</p>
         </div>
 
+        <?php if (empty($lista)): ?>
+            <div class="alert alert-warning text-center">
+                Nenhum edital cadastrado no momento.
+            </div>
+        <?php else: ?>
+
+            <?php foreach ($categorias as $categoria => $editais): ?>
+
+                <h3 class="categoria-titulo"><?= htmlspecialchars($categoria) ?></h3>
+
+                <div class="row g-4">
+
+                    <?php foreach ($editais as $edital): ?>
+                        <div class="col-md-4">
+                            <div class="card-edital shadow">
+
+                                <h5 class="titulo-edital"><?= htmlspecialchars($edital->nome) ?></h5>
+
+                                <p><?= htmlspecialchars($edital->descricao) ?></p>
+
+                                <a href="<?= htmlspecialchars($edital->link) ?>" target="_blank" class="btn btn-acessar">
+                                    Acessar
+                                </a>
+
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+
+                </div>
+
+            <?php endforeach; ?>
+
+        <?php endif; ?>
+
         <!-- VLibras -->
         <div vw class="enabled">
             <div vw-access-button class="active"></div>
@@ -34,3 +83,9 @@
         <script>
             new window.VLibras.Widget('https://vlibras.gov.br/app');
         </script>
+
+    </main>
+
+</body>
+
+</html>
