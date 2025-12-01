@@ -19,6 +19,13 @@ if (!$trilha) {
     exit;
 }
 
+$Trilha->setTitulo($trilha->titulo);
+$Trilha->setAutorTrilha($trilha->autorTrilha);
+$Trilha->setPontuacaoMinima($trilha->pontuacaoMinima);
+$Trilha->setPerguntasTrilha($trilha->perguntasTrilha);
+$Trilha->setTituloAvaliacao($trilha->tituloAvaliacao);
+
+
 $perguntas = json_decode($trilha->perguntasTrilha ?? '[]', true);
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {

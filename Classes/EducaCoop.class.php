@@ -300,29 +300,75 @@ class EducaCoop extends CRUD
 
         $pdf = new FPDF('L', 'mm', 'A4');
         $pdf->AddPage();
-        $encode = fn($texto) => mb_convert_encoding($texto, 'ISO-8859-1', 'UTF-8');
-        $pdf->SetFont('Arial', 'B', 30);
-        $pdf->Cell(0, 50, $encode('CERTIFICADO DE CONCLUSÃO DA TRILHA INNOVAMIND'), 0, 1, 'C');
-        $pdf->SetFont('Arial', '', 20);
-        $pdf->Ln(10);
-        $pdf->Cell(0, 10, $encode("Certificamos que $nomeAluno"), 0, 1, 'C');
-        $pdf->SetFont('Arial', '', 18);
-        $pdf->Ln(5);
-        $pdf->Cell(0, 10, $encode("concluiu a trilha: " . $this->titulo), 0, 1, 'C');
-        $pdf->Ln(15);
-        $pdf->SetFont('Arial', '', 16);
-        $pdf->Cell(0, 10, $encode("Autor: " . $this->autorTrilha), 0, 1, 'C');
-        $pdf->Cell(0, 10, $encode("Data: " . date('d/m/Y')), 0, 1, 'C');
-        $dirCertificados = __DIR__ . '/../certificados/';
-        if (!is_dir($dirCertificados)) {
-            mkdir($dirCertificados, 0777, true);
+
+        // Função para conversão de charset
+        $encode = fn($t) => mb_convert_encoding($t, 'ISO-8859-1', 'UTF-8');
+
+        $roxoEscuro = [34, 0, 51];
+        $roxoClaro = [140, 70, 200];
+
+        $pdf->SetFillColor($roxoEscuro[0], $roxoEscuro[1], $roxoEscuro[2]);
+        $pdf->Rect(0, 0, 297, 210, 'F');
+
+        $pdf->SetDrawColor($roxoClaro[0], $roxoClaro[1], $roxoClaro[2]);
+        $pdf->SetLineWidth(2);
+        $pdf->Rect(5, 5, 287, 200);
+
+        // LOGO NO TOPO 
+        $logo = __DIR__ . '/../images/logoInnovamind.png'; 
+        if (file_exists($logo)) {
+            $pdf->Image($logo, 130, 18, 35);
         }
 
-        $arquivoNome = 'certificado_' . str_replace(' ', '_', $nomeAluno) . '_' . $this->id_trilha . '.pdf';
-        $arquivoFisico = $dirCertificados . $arquivoNome;
-        $pdf->Output('F', $arquivoFisico);
-        return 'certificados/' . $arquivoNome;
+        $pdf->Ln(60);
+        $pdf->SetFont('Arial', 'B', 34);
+        $pdf->SetTextColor(255, 255, 255);
+        $pdf->Cell(0, 10, $encode('CERTIFICADO DE CONCLUSÃO'), 0, 1, 'C');
+
+        $pdf->SetFont('Arial', 'B', 22);
+        $pdf->SetTextColor($roxoClaro[0], $roxoClaro[1], $roxoClaro[2]);
+        $pdf->Cell(0, 14, $encode('TRILHA INNOVAMIND'), 0, 1, 'C');
+
+        // Linha divisória
+        $pdf->Ln(4);
+        $pdf->SetDrawColor(255, 255, 255);
+        $pdf->SetLineWidth(0.4);
+        $pdf->Line(40, $pdf->GetY(), 257, $pdf->GetY());
+
+        // CORPO DO TEXTO 
+        $pdf->Ln(12);
+        $pdf->SetTextColor(255, 255, 255);
+        $pdf->SetFont('Arial', '', 20);
+        $pdf->Cell(0, 10, $encode("Certificamos que"), 0, 1, 'C');
+
+        $pdf->SetFont('Arial', 'B', 28);
+        $pdf->SetTextColor($roxoClaro[0], $roxoClaro[1], $roxoClaro[2]);
+        $pdf->Cell(0, 15, $encode($nomeAluno), 0, 1, 'C');
+
+        // Trilha
+        $pdf->Ln(3);
+        $pdf->SetTextColor(255, 255, 255);
+        $pdf->SetFont('Arial', '', 18);
+        $pdf->Cell(0, 12, $encode("Concluiu a trilha: " . $this->titulo), 0, 1, 'C');
+
+        $pdf->Ln(15);
+        $pdf->SetFont('Arial', '', 14);
+        $pdf->Cell(0, 8, $encode("Autor da Trilha: " . $this->autorTrilha), 0, 1, 'C');
+        $pdf->Cell(0, 8, $encode("Data da Conclusão: " . date('d/m/Y')), 0, 1, 'C');
+
+        // ARQUIVO 
+        $dir = __DIR__ . '/../certificados/';
+        if (!is_dir($dir))
+            mkdir($dir, 0777, true);
+
+        $nomeArquivo = 'certificado_' . str_replace(' ', '_', $nomeAluno) . '_' . $this->id_trilha . '.pdf';
+        $path = $dir . $nomeArquivo;
+
+        $pdf->Output('F', $path);
+
+        return 'certificados/' . $nomeArquivo;
     }
+
 
     public function listAll($condicao = null)
     {
@@ -343,4 +389,14 @@ class EducaCoop extends CRUD
         $stmt->bindValue(":id", $whereValor);
         return $stmt->execute();
     }
+    public function getConclusaoUsuario($idTrilha, $nomeUsuario)
+    {
+        $sql = "SELECT * FROM trilha_usuario WHERE id_trilha = :id_trilha AND nome_usuario = :usuario";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindParam(":id_trilha", $idTrilha, PDO::PARAM_INT);
+        $stmt->bindParam(":usuario", $nomeUsuario, PDO::PARAM_STR);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_OBJ);
+    }
+
 }

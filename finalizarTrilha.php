@@ -21,6 +21,11 @@ if (!$trilha) {
     die("Trilha não encontrada.");
 }
 
+$Trilha->setIdTrilha($trilha->id_trilha);
+$Trilha->setTitulo($trilha->titulo);
+$Trilha->setAutorTrilha($trilha->autorTrilha);
+
+
 if ($nota >= intval($trilha->pontuacaoMinima ?? 70)) {
 
     if (!empty($trilha->gerarCertificado)) {
