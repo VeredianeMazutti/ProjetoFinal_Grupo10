@@ -13,7 +13,6 @@ class EducaCoop extends CRUD
     private $introducao;
     private $objetivos;
     private $conteudo;
-    private $imagemCapa;
     private $tituloAvaliacao;
     private $pontuacaoMinima;
     private $perguntasTrilha;
@@ -105,15 +104,6 @@ class EducaCoop extends CRUD
         return $this->conteudo;
     }
 
-    public function setImagemCapa($imagemCapa)
-    {
-        $this->imagemCapa = $imagemCapa;
-    }
-    public function getImagemCapa()
-    {
-        return $this->imagemCapa;
-    }
-
     public function setTituloAvaliacao($tituloAvaliacao)
     {
         $this->tituloAvaliacao = $tituloAvaliacao;
@@ -198,9 +188,9 @@ class EducaCoop extends CRUD
     public function add()
     {
         $sql = "INSERT INTO $this->table 
-            (titulo, subtitulo, descricao, duracao, nivel, introducao, objetivos, conteudo, imagemCapa, tituloAvaliacao, pontuacaoMinima, perguntasTrilha, mensagemConclusao, gerarCertificado, autorTrilha, tagsTrilha, referenciasTrilha, ativoTrilha)
+            (titulo, subtitulo, descricao, duracao, nivel, introducao, objetivos, conteudo, tituloAvaliacao, pontuacaoMinima, perguntasTrilha, mensagemConclusao, gerarCertificado, autorTrilha, tagsTrilha, referenciasTrilha, ativoTrilha)
             VALUES
-            (:titulo, :subtitulo, :descricao, :duracao, :nivel, :introducao, :objetivos, :conteudo, :imagemCapa, :tituloAvaliacao, :pontuacaoMinima, :perguntasTrilha, :mensagemConclusao, :gerarCertificado, :autorTrilha, :tagsTrilha, :referenciasTrilha, :ativoTrilha)";
+            (:titulo, :subtitulo, :descricao, :duracao, :nivel, :introducao, :objetivos, :conteudo, :tituloAvaliacao, :pontuacaoMinima, :perguntasTrilha, :mensagemConclusao, :gerarCertificado, :autorTrilha, :tagsTrilha, :referenciasTrilha, :ativoTrilha)";
 
         $stmt = $this->db->prepare($sql);
         $stmt->bindParam(':titulo', $this->titulo);
@@ -211,7 +201,6 @@ class EducaCoop extends CRUD
         $stmt->bindParam(':introducao', $this->introducao);
         $stmt->bindParam(':objetivos', $this->objetivos);
         $stmt->bindParam(':conteudo', $this->conteudo);
-        $stmt->bindParam(':imagemCapa', $this->imagemCapa);
         $stmt->bindParam(':tituloAvaliacao', $this->tituloAvaliacao);
         $stmt->bindParam(':pontuacaoMinima', $this->pontuacaoMinima, PDO::PARAM_INT);
         $stmt->bindParam(':perguntasTrilha', $this->perguntasTrilha);
@@ -236,7 +225,6 @@ class EducaCoop extends CRUD
             introducao = :introducao,
             objetivos = :objetivos,
             conteudo = :conteudo,
-            imagemCapa = :imagemCapa,
             tituloAvaliacao = :tituloAvaliacao,
             pontuacaoMinima = :pontuacaoMinima,
             perguntasTrilha = :perguntasTrilha,
@@ -257,7 +245,6 @@ class EducaCoop extends CRUD
         $stmt->bindParam(':introducao', $this->introducao);
         $stmt->bindParam(':objetivos', $this->objetivos);
         $stmt->bindParam(':conteudo', $this->conteudo);
-        $stmt->bindParam(':imagemCapa', $this->imagemCapa);
         $stmt->bindParam(':tituloAvaliacao', $this->tituloAvaliacao);
         $stmt->bindParam(':pontuacaoMinima', $this->pontuacaoMinima, PDO::PARAM_INT);
         $stmt->bindParam(':perguntasTrilha', $this->perguntasTrilha);

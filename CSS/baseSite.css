@@ -1364,8 +1364,11 @@ h1.titulo-impacto {
 
 /*EditalInterno*/
 .edital-container {
-    max-width: 1400px;
-    width: 90%;
+      max-width: 1400px !important;
+    background-color: #251435;
+    padding: 50px 70px;
+    border-radius: 20px;
+    color: #fff;
     margin: 50px auto;
 }
 
@@ -1392,7 +1395,7 @@ h1.titulo-impacto {
     font-family: "Segoe UI";
     font-weight: 700;
     font-size: 19px;
-    color: #f0e5ff;
+    color: #f5d3ff;
 }
 
 .bloco-info .texto,
@@ -1420,6 +1423,15 @@ h1.titulo-impacto {
 .btn-inscricao:hover {
     background: #a372ff;
 }
+
+.subtitulo-editalinterno{
+    color: #9a00c5;
+    font-size: 22px;
+     font-weight: 550;
+}
+
+
+
 
 /*Index*/
 @media (max-width: 768px) {

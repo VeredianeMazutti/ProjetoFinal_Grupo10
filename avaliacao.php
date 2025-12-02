@@ -103,7 +103,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
                 <div class="text-center">
                     <button type="submit" class="btn btn-success px-4">Salvar Avaliação</button>
-                    <a href="trilha.php?id_trilha=<?= $idTrilha ?>" class="btn btn-secondary px-4">Cancelar</a>
                 </div>
             </form>
         <?php endif; ?>

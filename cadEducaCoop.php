@@ -89,17 +89,6 @@
                     placeholder="Insira aqui o conteúdo completo da trilha..."><?php echo $dados->conteudo ?? null; ?></textarea>
             </div>
 
-            <div class="col-md-6">
-                <label for="imagemCapa" class="form-label">Imagem de Capa</label>
-                <input type="file" class="form-control" name="imagemCapa" id="imagemCapa" accept="image/*">
-                <?php if (!empty($dados->imagemCapa)): ?>
-                    <div class="mt-2">
-                        <img src="uploads/trilhas/<?php echo $dados->imagemCapa; ?>" width="120" alt="Capa">
-                    </div>
-                <?php endif; ?>
-                <input type="hidden" name="imagemAntiga" value="<?php echo $dados->imagemCapa ?? ''; ?>">
-            </div>
-
             <h4 class="mt-4">Configurações Extras</h4>
             <div class="col-md-6">
                 <label for="autorTrilha" class="form-label">Autor / Instrutor</label>
@@ -130,7 +119,6 @@
 
             <div class="col-12 mt-4 d-flex gap-2">
                 <button type="submit" name="btnSalvar" class="btn-cad">Salvar Trilha</button>
-                <a href="trilhas.php" class="btn btn-secondary">Cancelar</a>
             </div>
 
         </form>

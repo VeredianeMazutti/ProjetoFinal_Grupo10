@@ -169,3 +169,42 @@ input[type="file"]::file-selector-button {
     border-radius: 6px;
     cursor: pointer;
 }
+
+/*InscricaoDetalhes*/
+
+.container-inscricao{
+    max-width: 1400px !important;
+    background-color: #251435;
+    padding: 50px 70px;
+    border-radius: 20px;
+    color: #fff;
+    margin: 50px auto;
+}
+
+.titulo-inscricao {
+    font-family: "Trebuchet MS";
+    color: #fff;
+    font-size: 40px;
+    font-weight: 700;
+}
+
+.subtitulo-inscricao{
+    color: #9a00c5;
+    font-size: 22px;
+     font-weight: 550;
+}
+
+/*btnGeral*/
+.btn-geral {
+    background: linear-gradient(90deg, #b47aff, #8042e0);
+    border: none;
+    color: #fff;
+    padding: 10px 25px;
+    border-radius: 10px;
+    transition: .3s;
+}
+
+.btn-geral:hover {
+    background: linear-gradient(90deg, #491874, #9F6ACE, #8B45AA);
+    transform: scale(1.03);
+}

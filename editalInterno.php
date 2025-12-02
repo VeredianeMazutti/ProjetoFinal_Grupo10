@@ -46,19 +46,25 @@ else
         <?php require_once "_parts/_navbar.php"; ?>
     </navbar>
 
-    <main class="edital-container">
+    <main class="edital-container d-flex justify-content-center align-items-center">
 
-        <div class="editais-container">
+        <div>
+            <h2 class="titulo-editais text-center my-3">
+                <?= htmlspecialchars($EditalInterno->titulo) ?>
+            </h2>
+            <p class="subtitulo text-center">
+                <?= htmlspecialchars($EditalInterno->descResumida) ?>
+            </p>
 
-            <h2 class="titulo-editais text-center my-3"><?= htmlspecialchars($EditalInterno->titulo) ?></h2>
-            <p class="subtitulo text-center"><?= htmlspecialchars($EditalInterno->descResumida) ?></p>
+            <section class="info-section">
 
-            <div class="info-section">
+                <h4 class="subtitulo-editalinterno text-center my-4">Informações Gerais</h4>
+
                 <div class="info-grid">
 
                     <div class="bloco-info">
                         <p class="label">Status:</p>
-                        <p class="texto"><?= htmlspecialchars($EditalInterno->status) ?></p>
+                        <p class="texto <?= $statusClass ?>"><?= htmlspecialchars($EditalInterno->status) ?></p>
                     </div>
 
                     <div class="bloco-info">
@@ -91,42 +97,55 @@ else
                         <p class="texto"><?= htmlspecialchars($EditalInterno->contato) ?></p>
                     </div>
 
+            </section>
+
+            <section>
+
+                <h2 class="subtitulo-editalinterno text-center my-3">Informações Detalhadas</h2>
+
+                <div class="bloco-info">
+                    <p class="label">Quem pode participar:</p>
+                    <p class="texto"><?= nl2br(htmlspecialchars($EditalInterno->participantes)) ?></p>
                 </div>
-            </div>
 
-            <div class="card-detalhado">
+                <div class="bloco-info">
+                    <p class="label">Critérios de avaliação:</p>
+                    <p class="texto"><?= nl2br(htmlspecialchars($EditalInterno->criterios)) ?></p>
+                </div>
 
-                <div class="divisor"></div>
+                <div class="bloco-info">
+                    <p class="label">Cronograma / Etapas:</p>
+                    <p class="texto"><?= nl2br(htmlspecialchars($EditalInterno->etapas)) ?></p>
+                </div>
 
-                <h2 class="titulo-editais text-center my-3">Informações Detalhadas</h2>
+                <div class="bloco-info">
+                    <p class="label">Benefícios oferecidos:</p>
+                    <p class="texto"><?= nl2br(htmlspecialchars($EditalInterno->beneficios)) ?></p>
+                </div>
 
-                <p class="label">Quem pode participar:</p>
-                <p class="texto"><?= nl2br(htmlspecialchars($EditalInterno->participantes)) ?></p>
+                <div class="bloco-info">
+                    <p class="label">Observações:</p>
+                    <p class="texto"><?= nl2br(htmlspecialchars($EditalInterno->observacoes)) ?></p>
+                </div>
 
-                <p class="label">Critérios de avaliação:</p>
-                <p class="texto"><?= nl2br(htmlspecialchars($EditalInterno->criterios)) ?></p>
+                <div class="bloco-info">
+                    <p class="label">Descrição completa:</p>
+                    <p class="texto"><?= nl2br(htmlspecialchars($EditalInterno->descCompleta)) ?></p>
+                </div>
 
-                <p class="label">Cronograma / Etapas:</p>
-                <p class="texto"><?= nl2br(htmlspecialchars($EditalInterno->etapas)) ?></p>
-
-                <p class="label">Benefícios oferecidos:</p>
-                <p class="texto"><?= nl2br(htmlspecialchars($EditalInterno->beneficios)) ?></p>
-
-                <p class="label">Observações:</p>
-                <p class="texto"><?= nl2br(htmlspecialchars($EditalInterno->observacoes)) ?></p>
-
-                <p class="label">Descrição completa:</p>
-                <p class="texto"><?= nl2br(htmlspecialchars($EditalInterno->descCompleta)) ?></p>
 
                 <?php if ($EditalInterno->status === "Aberto"): ?>
                     <a href="cadInscricaoEdital.php?id=<?= $EditalInterno->idEditalInterno ?>" class="btn-inscricao">
                         Inscrever-se neste Edital
                     </a>
                 <?php endif; ?>
+            </section>
 
-            </div>
+        </div>
 
     </main>
+
+
 
     <footer>
         <?php require_once "_parts/_footer.php"; ?>

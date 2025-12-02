@@ -20,7 +20,7 @@ if (filter_has_var(INPUT_POST, "btnGravar")):
         if ($novoId) {
             echo "<script>
                 alert('Cadastro de FAQ realizado com sucesso.');
-                window.location.href='faq.php';
+                window.location.href='listaFaq.php';
             </script>";
             exit;
         } else {

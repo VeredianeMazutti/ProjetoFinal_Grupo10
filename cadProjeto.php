@@ -195,9 +195,10 @@
 
             <div class="col-12">
                 <label for="linksProjeto" class="form-label">Links do Projeto</label>
-                <textarea name="linksProjeto" id="linksProjeto"
-                    placeholder="Adicione os links relacionados ao projeto, como Instagram, Figma, GitHub ou outros, se houver"
-                    class="form-control" minlength="500"><?php echo $projeto->linksProjeto ?? ''; ?></textarea>
+                <textarea name="linksProjeto" id="linksProjeto" placeholder="Cole uma ou mais URLs, cada uma em uma nova linha. Ex: 
+                https://instagram.com/seuprojeto
+                https://figma.com/seuarquivo
+                https://github.com/usuario/repo" class="form-control"><?php echo $projeto->linksProjeto ?? ''; ?></textarea>
             </div>
 
             <div class="col-12 mt-3 mb-5">

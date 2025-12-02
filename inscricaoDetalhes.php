@@ -14,9 +14,9 @@ if (!$id) {
     exit;
 }
 
-$dados = $Inscricao->findById($id);
+$Inscricao = $Inscricao->findById($id);
 
-if (!$dados) {
+if (!$Inscricao) {
     echo "<script>alert('Inscrição não encontrada.');location.href='adminInscricoes.php';</script>";
     exit;
 }
@@ -29,7 +29,7 @@ if (!$dados) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="CSS/base.css">
+    <link rel="stylesheet" href="CSS/baseAdministracao.css">
     <link rel="shortcut icon" href="images/logoInnovamind.png" type="image/x-icon">
     <title>Detalhes da Inscrição</title>
 </head>
@@ -40,44 +40,38 @@ if (!$dados) {
         <?php include "_parts/_navbar.php"; ?>
     </nav>
 
-    <main class="container mt-4">
+    <main class="container-inscricao my-4">
 
-        <h3 class="mb-4">Detalhes da Inscrição</h3>
+        <h3 class="titulo-inscricao text-center">Detalhes da Inscrição</h3>
 
-        <div class="card shadow-sm border-0">
-            <div class="card-body">
+        <div>
 
-                <h5 class="text-primary mb-3">Informações Gerais</h5>
+                <h5 class="subtitulo-inscricao mb-3">Informações Gerais</h5>
 
-                <p><strong>ID da Inscrição:</strong> <?= $dados->idInscricao ?></p>
-                <p><strong>ID do Edital:</strong> <?= $dados->idEditalInterno ?></p>
-                <p><strong>Data da Inscrição:</strong> <?= date("d/m/Y H:i", strtotime($dados->dataInscricao)) ?></p>
-
-                <hr>
-
-                <h5 class="text-primary mb-3">Dados do Responsável</h5>
-
-                <p><strong>Responsável:</strong> <?= htmlspecialchars($dados->responsavel) ?></p>
-                <p><strong>Email:</strong> <?= htmlspecialchars($dados->email) ?></p>
-                <p><strong>Telefone:</strong> <?= htmlspecialchars($dados->telefone) ?></p>
-                <p><strong>Instituição:</strong> <?= htmlspecialchars($dados->instituicao) ?></p>
+                <p><strong>Código da Inscrição:</strong> <?= $Inscricao->idInscricao ?></p>
+                <p><strong>Código do Edital:</strong> <?= $Inscricao->idEditalInterno ?></p>
+                <p><strong>Data da Inscrição:</strong> <?= date("d/m/Y H:i", strtotime($Inscricao->dataInscricao)) ?></p>
 
                 <hr>
 
-                <h5 class="text-primary mb-3">Informações do Projeto</h5>
+                <h5 class="subtitulo-inscricao mb-3">Dados do Responsável</h5>
 
-                <p><strong>Título:</strong><br><?= nl2br(htmlspecialchars($dados->titulo)) ?></p>
+                <p><strong>Responsável:</strong> <?= htmlspecialchars($Inscricao->responsavel) ?></p>
+                <p><strong>Email:</strong> <?= htmlspecialchars($Inscricao->email) ?></p>
+                <p><strong>Telefone:</strong> <?= htmlspecialchars($Inscricao->telefone) ?></p>
+                <p><strong>Instituição:</strong> <?= htmlspecialchars($Inscricao->instituicao) ?></p>
 
-                <p><strong>Resumo:</strong><br><?= nl2br(htmlspecialchars($dados->resumo)) ?></p>
+                <hr>
 
-                <p><strong>Objetivo:</strong><br><?= nl2br(htmlspecialchars($dados->objetivo)) ?></p>
+                <h5 class="subtitulo-inscricao mb-3">Informações do Projeto</h5>
+                <p><strong>Título:</strong><br><?= nl2br(htmlspecialchars($Inscricao->titulo)) ?></p>
+                <p><strong>Resumo:</strong><br><?= nl2br(htmlspecialchars($Inscricao->resumo)) ?></p>
+                <p><strong>Objetivo:</strong><br><?= nl2br(htmlspecialchars($Inscricao->objetivo)) ?></p>
+                <p><strong>Relato:</strong><br><?= nl2br(htmlspecialchars($Inscricao->relato)) ?></p>
 
-                <p><strong>Relato:</strong><br><?= nl2br(htmlspecialchars($dados->relato)) ?></p>
-
-            </div>
         </div>
 
-        <a href="adminInscricoes.php" class="btn btn-secondary mt-4">
+        <a href="adminInscricoes.php" class="btn btn-geral mt-4">
             Voltar
         </a>
 
