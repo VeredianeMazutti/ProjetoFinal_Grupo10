@@ -51,7 +51,7 @@ if (filter_has_var(INPUT_POST, "btnGravar")):
         if ($novoId) {
             echo "<script>
                 alert('Cadastro de parceiro realizado com sucesso.');
-                window.location.href='apoiadores.php';
+                window.location.href='listaApoiadores.php';
             </script>";
             exit;
         } else {

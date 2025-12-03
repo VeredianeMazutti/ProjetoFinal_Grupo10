@@ -176,12 +176,11 @@ if (($categoriaSelecionada && $categoriaSelecionada != 'todas') || ($faseSelecio
                                     <?= htmlspecialchars(substr($proj->breveDescricao, 0, 150)) ?>
                                 </p>
 
-                                <a href="projetoDetalhes.php?id=<?= $idProj ?>" class="btn-projeto">
+                                <a href="projetoDetalhes.php?id=<?= $idProj ?>&from=projetos" class="btn-projeto">
                                     Saiba mais e Colabore
                                 </a>
 
                             </div>
-
                         </div>
                     </div>
 

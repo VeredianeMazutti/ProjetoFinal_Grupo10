@@ -50,6 +50,18 @@ if (!$projetoData || count($projetoData) == 0) {
 
 $p = $projetoData[0];
 
+// Captura de onde o usuário veio
+$from = $_GET['from'] ?? null;
+
+if ($from === 'home') {
+    $destinoVoltar = 'index.php';
+} elseif ($from === 'projetos') {
+    $destinoVoltar = 'Projetos.php';
+} else {
+    $destinoVoltar = 'Projetos.php'; 
+}
+
+
 $contadores = $Projeto->getContadoresById($id);
 $visualizacoes = $contadores->visualizacoes ?? 0;
 $curtidas = $contadores->curtidas ?? 0;
@@ -221,10 +233,9 @@ if (empty($fotos)) {
                     <i class="bi bi-people-fill me-1"></i> Quero Contribuir
                 </button>
 
-                <a href="Projetos.php" class="btn-voltarProjeto">
-                    Voltar para Projetos
+                <a href="<?= $destinoVoltar ?>" class="btn-voltarProjeto">
+                    Voltar
                 </a>
-
             </div>
         </div>
     </main>

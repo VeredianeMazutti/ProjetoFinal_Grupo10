@@ -284,6 +284,8 @@
     overflow: visible;
     text-overflow: unset;
     display: block;
+    word-break: break-word;
+    overflow-wrap: break-word;
 }
 
 .btn-projeto {

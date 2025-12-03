@@ -7,22 +7,24 @@ spl_autoload_register(function ($class) {
 
 $Inscricao = new InscricaoEdital();
 
+// id do edital
 $idEdital = filter_input(INPUT_POST, "idEditalInterno", FILTER_SANITIZE_NUMBER_INT);
 
-if (!$idEdital || $idEdital <= 0):
+if (!$idEdital || $idEdital <= 0) {
     echo "<script>
         alert('Edital inválido.');
         window.open(document.referrer,'_self');
     </script>";
     exit;
-endif;
+}
 
-if (filter_has_var(INPUT_POST, "btnGravar")):
+if (filter_has_var(INPUT_POST, "btnGravar")) {
 
     $idInscricao = filter_input(INPUT_POST, "idInscricao", FILTER_SANITIZE_NUMBER_INT);
 
     $Inscricao->setIdInscricao($idInscricao);
-    $Inscricao->setIdEditalInterno(filter_input(INPUT_POST, "idEditalInterno", FILTER_SANITIZE_NUMBER_INT));
+    $Inscricao->setIdEditalInterno($idEdital);
+    $Inscricao->setFkUsuario($_SESSION['idUsuario']);
     $Inscricao->setResponsavel(filter_input(INPUT_POST, "responsavel", FILTER_SANITIZE_STRING));
     $Inscricao->setEmail(filter_input(INPUT_POST, "email", FILTER_SANITIZE_STRING));
     $Inscricao->setTelefone(filter_input(INPUT_POST, "telefone", FILTER_SANITIZE_STRING));
@@ -32,7 +34,8 @@ if (filter_has_var(INPUT_POST, "btnGravar")):
     $Inscricao->setObjetivo(filter_input(INPUT_POST, "objetivo", FILTER_SANITIZE_STRING));
     $Inscricao->setRelato(filter_input(INPUT_POST, "relato", FILTER_SANITIZE_STRING));
 
-    if (empty($idInscricao)):
+    if (empty($idInscricao)) {
+
         $Inscricao->setStatus("Em Análise");
         $novoId = $Inscricao->add();
 
@@ -49,7 +52,9 @@ if (filter_has_var(INPUT_POST, "btnGravar")):
             </script>";
             exit;
         }
-    else:
+
+    } else {
+
         if ($Inscricao->update("idInscricao", $idInscricao)) {
             echo "<script>
                 alert('Inscrição alterada com sucesso.');
@@ -63,14 +68,14 @@ if (filter_has_var(INPUT_POST, "btnGravar")):
             </script>";
             exit;
         }
-    endif;
+    }
 
-elseif (filter_has_var(INPUT_POST, "btnDeletar")):
+} elseif (filter_has_var(INPUT_POST, "btnDeletar")) {
 
     $idInscricao = filter_input(INPUT_POST, "idInscricao", FILTER_VALIDATE_INT);
     $inscricaoEncontrada = $Inscricao->findById($idInscricao);
 
-    if ($inscricaoEncontrada):
+    if ($inscricaoEncontrada) {
         if ($Inscricao->delete("idInscricao", $idInscricao)) {
             echo "<script>
                 alert('Inscrição excluída com sucesso.');
@@ -83,7 +88,6 @@ elseif (filter_has_var(INPUT_POST, "btnDeletar")):
             </script>";
         }
         exit;
-    endif;
-
-endif;
+    }
+}
 ?>
