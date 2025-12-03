@@ -576,12 +576,15 @@
     text-decoration: none;
     border-radius: 12px;
     transition: all 0.3s ease;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
 }
 
 .btn-projetoDetalhes:hover {
     background: linear-gradient(90deg, #72429d, #bb81d3, #9f6ace);
     transform: scale(1.04);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45) !important;
 }
 
 .titulo-projeto-detalhes,
@@ -1364,7 +1367,7 @@ h1.titulo-impacto {
 
 /*EditalInterno*/
 .edital-container {
-      max-width: 1400px !important;
+    max-width: 1400px !important;
     background-color: #251435;
     padding: 50px 70px;
     border-radius: 20px;
@@ -1424,13 +1427,91 @@ h1.titulo-impacto {
     background: #a372ff;
 }
 
-.subtitulo-editalinterno{
+.subtitulo-editalinterno {
     color: #9a00c5;
     font-size: 22px;
-     font-weight: 550;
+    font-weight: 550;
 }
 
+/*ModalProjeto*/
 
+.modal-contribuir {
+    background: #1b1223 !important;
+    color: #ffffff !important;
+    border-radius: 16px;
+    padding: 5px 10px;
+    border: 1px solid #5a2e84;
+    box-shadow: 0 0 25px rgba(146, 69, 220, 0.5);
+}
+
+.modal-contribuir .modal-header {
+    border-bottom: 1px solid #2d1a3f;
+}
+
+.modal-contribuir .modal-title {
+    font-family: "Segoe UI", sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.modal-contribuir .modal-body,
+.modal-contribuir .modal-body p,
+.modal-contribuir .modal-footer,
+.modal-contribuir .modal-footer button,
+.modal-contribuir .modal-contact-box,
+.modal-contribuir .modal-contact-box strong {
+    font-family: "Segoe UI", sans-serif;
+    font-size: 16px;
+}
+
+.text-aviso {
+    font-family: "Segoe UI", sans-serif;
+    font-size: 16px;
+    color: #d08ae9;
+}
+
+.modal-contribuir .modal-footer {
+    border-top: 1px solid #2d1a3f;
+}
+
+.modal-contribuir .btn-close-white {
+    filter: invert(1);
+}
+
+.modal-contact-box {
+    background: #2a1b3c;
+    border-radius: 10px;
+    padding: 12px 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid #4b2f6c;
+}
+
+.modal-contact-box i {
+    color: #c78bff;
+    font-size: 1.4rem;
+}
+
+.btn-voltarProjeto {
+    background: #4a4359;
+    color: #e0d7f6;
+    font-weight: 600;
+    padding: 12px 32px;
+    font-size: 17px;
+    border-radius: 12px;
+    border: none;
+    transition: all 0.25s ease-in-out;
+    text-decoration: none !important;
+    display: inline-block;
+}
+
+.btn-voltarProjeto:hover {
+    background: #5a5270;
+    color: #ffffff;
+    transform: translateY(-2px);
+}
 
 
 /*Index*/
@@ -1937,5 +2018,36 @@ nav img {
 
     .edital-wrapper {
         width: 95%;
+    }
+}
+
+/*Botão-ProjetoDetalhes*/
+@media (max-width: 768px) {
+    .botoes-projeto {
+        flex-direction: column !important;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .botoes-projeto .btn-projetoDetalhes,
+    .botoes-projeto .btn-voltarProjeto {
+        width: 85%;
+        padding: 14px 0;
+        text-align: center;
+    }
+}
+
+@media (min-width: 769px) {
+    .botoes-projeto {
+        flex-direction: row !important;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .botoes-projeto .btn-projetoDetalhes,
+    .botoes-projeto .btn-voltarProjeto {
+        min-width: 260px;
+        padding: 14px 40px;
+        text-align: center;
     }
 }
