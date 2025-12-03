@@ -1129,71 +1129,66 @@ h1.titulo-impacto {
 }
 
 .estrutura-panel {
-    max-width: 1250px;
-}
-
-.estrutura-card {
-    background: linear-gradient(180deg, rgba(18, 8, 31, 0.9) 0%, rgba(11, 6, 20, 0.85) 100%);
-    border: 1px solid rgba(176, 107, 255, 0.07);
-    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.55);
-    padding: 28px;
-    border-radius: 20px;
+    max-width: 1100px;
+    margin: 0 auto;
 }
 
 .estrutura-titulo {
-    font-family: "Segoe UI";
-    font-size: 27px;
-    color: #d7c9ff;
+    color: #c8a6ff;
+    font-size: 2.4rem;
     font-weight: 700;
-    font-size: 2rem;
+    letter-spacing: 1px;
+}
+
+.estrutura-row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.estrutura-col {
+    display: flex;
 }
 
 .estrutura-col-inner {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+    background: #140b24;
+    border-radius: 16px;
+    padding: 25px;
+    border: 1px solid #3b2360;
+    transition: transform .2s ease, box-shadow .2s ease;
+
     height: 100%;
+    flex: 1;
 }
 
-.estrutura-icon-wrap {
-    width: 56px;
-    height: 56px;
-    border-radius: 12px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(176, 107, 255, 0.08);
-    box-shadow: 0 6px 18px rgba(176, 107, 255, 0.06);
-    margin-bottom: 6px;
+.estrutura-col-inner:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(90, 0, 160, 0.3);
 }
 
 .estrutura-subtitulo {
-    font-size: 1.25rem;
-    color: #e8dcff;
-    margin: 0 0 6px 0;
-    font-weight: 700;
+    color: #d4b2ff;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 12px;
 }
 
 .estrutura-texto {
-    color: #d8d2e8;
     line-height: 1.6;
-    margin: 0;
-    font-size: 0.98rem;
-    text-align: justify;
+    color: #d8d4e2;
+    font-size: 1.05rem;
 }
 
 .estrutura-lista {
-    padding-left: 1.05rem;
+    padding-left: 20px;
     margin: 0;
-    color: #e6dff6;
-    line-height: 1.7;
-    font-size: 0.98rem;
+    color: #e8e4f5;
 }
 
-.estrutura-card .estrutura-col-inner:hover .estrutura-icon-wrap {
-    transform: translateY(-4px);
-    transition: transform 0.25s ease;
+.estrutura-lista li {
+    margin-bottom: 8px;
+    padding-left: 4px;
 }
+
 
 .faq-container {
     width: 90%;

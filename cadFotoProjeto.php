@@ -56,7 +56,7 @@ if ($idFoto) {
         <?php require_once "_parts/_navbar.php"; ?>
     </navbar>
 
-    <main class="container mt-3">
+    <main class="container my-4">
         <h3 class="titulo-cad text-center">
             <?= htmlspecialchars($projeto->nomeProjeto) ?>
             - <?= $idFoto ? "Editar Foto" : "Nova Foto" ?>
@@ -81,10 +81,10 @@ if ($idFoto) {
                 <input type="text" name="textoAlt" class="form-control" value="<?= htmlspecialchars($textoAlt) ?>">
             </div>
 
-            <button type="submit" name="btnGravar" class="btn btn-success">
+            <button type="submit" name="btnGravar" class="btn-geral">
                 <?= $idFoto ? "Atualizar" : "Salvar" ?>
             </button>
-            <a href="fotoProjeto.php?idProjeto=<?= $projeto->id ?>" class="btn btn-secondary">Voltar</a>
+            <a href="fotoProjeto.php?idProjeto=<?= $projeto->id ?>" class="btn-voltar">Voltar</a>
         </form>
     </main>
     <footer>

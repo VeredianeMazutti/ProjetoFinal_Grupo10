@@ -12,6 +12,14 @@
 </head>
 
 <body>
+
+<?php if (isset($_GET['expirou']) && $_GET['expirou'] == 1): ?>
+    <div class="alert alert-warning text-center">
+        Sua sessão expirou por inatividade. Faça login novamente.
+    </div>
+<?php endif; ?>
+
+
     <navbar>
         <?php require_once "_parts/_navbar.php"; ?>
     </navbar>

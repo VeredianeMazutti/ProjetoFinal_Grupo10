@@ -20,7 +20,7 @@ $fotos = $f->fotosProjeto($projeto->id);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="CSS/base.css">
+    <link rel="stylesheet" href="CSS/baseAdministracao.css">
     <link rel="shortcut icon" href="images/logoInnovamind.png" type="image/x-icon">
     <title>Fotos do Projeto: <?= $projeto->nomeProjeto ?></title>
 </head>
@@ -31,10 +31,12 @@ $fotos = $f->fotosProjeto($projeto->id);
     </navbar>
 
     <main class="container my-5">
-        <h3>Fotos do Projeto: <?= $projeto->nomeProjeto ?></h3>
+        <h3 class="titulo-cad">Fotos do Projeto: <?= $projeto->nomeProjeto ?></h3>
 
-        <a href="cadFotoProjeto.php?idProjeto=<?= $projeto->id ?>" class="btn btn-success mb-3">Nova Foto</a>
-        <a href="meusProjetos.php" class="btn btn-secondary">Voltar para Meus Projetos</a>
+        <div class="my-3">
+        <a href="cadFotoProjeto.php?idProjeto=<?= $projeto->id ?>" class="btn btn-geral">Nova Foto</a>
+        <a href="meusProjetos.php" class="btn-voltar">Voltar para Meus Projetos</a>
+        </div>
 
         <div class="d-flex gap-3 flex-wrap">
             <?php foreach ($fotos as $foto): ?>

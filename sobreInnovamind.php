@@ -90,13 +90,12 @@
 
             </div>
         </section>
-
         <section class="estrutura-section">
             <div class="estrutura-panel container py-5">
                 <h2 class="estrutura-titulo text-center mb-4">Missão, Visão e Valores</h2>
 
                 <div class="estrutura-card rounded-4 p-4">
-                    <div class="row gx-4 gy-4 align-items-start">
+                    <div class="row gx-4 gy-4 align-items-stretch">
 
                         <div class="col-md-4 estrutura-col">
                             <div class="estrutura-col-inner">
