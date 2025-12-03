@@ -10,11 +10,33 @@ $categoriaSelecionada = filter_input(INPUT_GET, 'categoria', FILTER_SANITIZE_STR
 $faseSelecionada = filter_input(INPUT_GET, 'faseDesenvolvimento', FILTER_SANITIZE_STRING);
 $localizacaoSelecionada = filter_input(INPUT_GET, 'localizacaoEstado', FILTER_SANITIZE_STRING);
 
-if (($categoriaSelecionada && $categoriaSelecionada != 'todas') || ($faseSelecionada && $faseSelecionada != 'todas') || ($localizacaoSelecionada != 'todas')) {
+$temFiltro =
+    (!empty($categoriaSelecionada) && $categoriaSelecionada !== 'todas') ||
+    (!empty($faseSelecionada) && $faseSelecionada !== 'todas') ||
+    (!empty($localizacaoSelecionada) && $localizacaoSelecionada !== 'todas');
+
+if ($temFiltro) {
     $projetos = $Projeto->searchByFilters($categoriaSelecionada, $faseSelecionada, $localizacaoSelecionada);
 } else {
     $projetos = $Projeto->searchAll();
 }
+
+/*Páginação*/
+$projetosPorPagina = 18;
+$totalProjetos = count($projetos);
+$totalPaginas = max(1, ceil($totalProjetos / $projetosPorPagina));
+
+$paginaAtual = filter_input(INPUT_GET, 'pagina', FILTER_VALIDATE_INT);
+if (!$paginaAtual || $paginaAtual < 1)
+    $paginaAtual = 1;
+if ($paginaAtual > $totalPaginas)
+    $paginaAtual = $totalPaginas;
+
+$inicio = ($paginaAtual - 1) * $projetosPorPagina;
+$projetosPagina = array_slice($projetos, $inicio, $projetosPorPagina);
+$queryString = "categoria=" . urlencode($categoriaSelecionada)
+    . "&faseDesenvolvimento=" . urlencode($faseSelecionada)
+    . "&localizacaoEstado=" . urlencode($localizacaoSelecionada);
 ?>
 
 <!DOCTYPE html>
@@ -125,13 +147,11 @@ if (($categoriaSelecionada && $categoriaSelecionada != 'todas') || ($faseSelecio
                 </select>
             </div>
         </form>
-
-
         <div class="row g-4 justify-content-center">
 
-            <?php if (count($projetos) > 0): ?>
+            <?php if (count($projetosPagina) > 0): ?>
 
-                <?php foreach ($projetos as $proj):
+                <?php foreach ($projetosPagina as $proj):
                     $idProj = intval($proj->id);
                     $fotos = $FotoProjeto->fotosProjeto($idProj);
 
@@ -164,7 +184,6 @@ if (($categoriaSelecionada && $categoriaSelecionada != 'todas') || ($faseSelecio
                             </div>
 
                             <div class="card-body">
-
                                 <h3 class="card-title"><?= htmlspecialchars($proj->nomeProjeto) ?></h3>
 
                                 <p class="card-views">
@@ -179,7 +198,6 @@ if (($categoriaSelecionada && $categoriaSelecionada != 'todas') || ($faseSelecio
                                 <a href="projetoDetalhes.php?id=<?= $idProj ?>&from=projetos" class="btn-projeto">
                                     Saiba mais e Colabore
                                 </a>
-
                             </div>
                         </div>
                     </div>
@@ -195,6 +213,33 @@ if (($categoriaSelecionada && $categoriaSelecionada != 'todas') || ($faseSelecio
             <?php endif; ?>
 
         </div>
+
+        <nav aria-label="Page navigation" class="mt-5">
+            <ul class="pagination justify-content-center">
+
+                <li class="page-item <?= ($paginaAtual <= 1 ? 'disabled' : '') ?>">
+                    <a class="page-link" href="?pagina=<?= $paginaAtual - 1 ?>&<?= $queryString ?>"
+                        aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+
+                <?php for ($i = 1; $i <= $totalPaginas; $i++): ?>
+                    <li class="page-item <?= ($i == $paginaAtual ? 'active' : '') ?>">
+                        <a class="page-link" href="?pagina=<?= $i ?>&<?= $queryString ?>">
+                            <?= $i ?>
+                        </a>
+                    </li>
+                <?php endfor; ?>
+
+                <li class="page-item <?= ($paginaAtual >= $totalPaginas ? 'disabled' : '') ?>">
+                    <a class="page-link" href="?pagina=<?= $paginaAtual + 1 ?>&<?= $queryString ?>" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+
+            </ul>
+        </nav>
 
     </main>
 
