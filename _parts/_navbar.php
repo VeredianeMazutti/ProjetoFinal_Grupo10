@@ -54,6 +54,12 @@ $current = basename($_SERVER['PHP_SELF']);
                                     Conheça a Innovamind
                                 </a>
                             </li>
+                             <li>
+                                <a class="dropdown-item <?= ($current == 'nossaEquipe.php') ? 'active' : '' ?>"
+                                    href="nossaEquipe.php">
+                                    Conheça nossa equipe
+                                </a>
+                            </li>
                         </ul>
                     </li>
 
