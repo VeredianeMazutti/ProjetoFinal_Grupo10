@@ -172,7 +172,7 @@ input[type="file"]::file-selector-button {
 
 /*InscricaoDetalhes*/
 
-.container-inscricao{
+.container-inscricao {
     max-width: 1400px !important;
     background-color: #251435;
     padding: 50px 70px;
@@ -188,10 +188,10 @@ input[type="file"]::file-selector-button {
     font-weight: 700;
 }
 
-.subtitulo-inscricao{
+.subtitulo-inscricao {
     color: #9a00c5;
     font-size: 22px;
-     font-weight: 550;
+    font-weight: 550;
 }
 
 /*btnGeral*/
@@ -209,7 +209,7 @@ input[type="file"]::file-selector-button {
     transform: scale(1.03);
 }
 
-.btn-voltar{
+.btn-voltar {
     background: #4a4359;
     color: #e0d7f6;
     font-weight: 600;
