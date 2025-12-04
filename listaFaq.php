@@ -52,7 +52,7 @@ require_once __DIR__ . "/verifica_acesso.php";
                     $lista = $faq->listar();
 
                     foreach ($lista as $f):
-                    ?>
+                        ?>
                         <tr>
                             <td class="text-center"><?= $f->idFaq ?></td>
 
@@ -106,6 +106,20 @@ require_once __DIR__ . "/verifica_acesso.php";
     <script src="https://cdn.datatables.net/responsive/3.0.2/js/dataTables.responsive.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/3.0.2/js/responsive.bootstrap5.min.js"></script>
     <script src="JS/paginacao.js"></script>
+
+
+    <!-- VLibras -->
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
 
 </body>
 
