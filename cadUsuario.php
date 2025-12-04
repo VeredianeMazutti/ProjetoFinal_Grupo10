@@ -8,6 +8,34 @@
     <link rel="shortcut icon" href="images/logoInnovamind.png" type="image/x-icon">
     <link rel="stylesheet" href="CSS/baseAdministracao.css">
     <title>Cadastrar Usuário</title>
+    <style>
+/* ====== CHECKBOX PERSONALIZADO INNOVAMIND ====== */
+.form-check-input {
+  width: 1.2em;
+  height: 1.2em;
+  border: 2px solid #b387ff;
+  background-color: transparent;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.form-check-input:checked {
+  background-color: #b387ff !important; /* lilás */
+  border-color: #b387ff !important;
+  box-shadow: 0 0 5px #c59cff;
+}
+
+.form-check-input:focus {
+  box-shadow: 0 0 5px #b387ff !important;
+  outline: none;
+}
+
+.form-check-label {
+  color: #e0d8f7;
+  margin-left: 5px;
+}
+</style>
+
 </head>
 
 <body>
@@ -109,6 +137,7 @@
                     <button type="button" id="toggleConfirmar" class="btn btn-outline-secondary">👁️</button>
                 </div>
             </div>
+
             <div class="col-12 mt-3">
                 <ul id="requisitos">
                     <li id="minChar">Mínimo 12 caracteres</li>
@@ -123,7 +152,81 @@
                 <p id="msgConfirmacao"></p>
             </div>
 
-            <div class="col-12 mt-3">
+            <!-- ===================================================== -->
+<!--          LGPD - Termos e Política (Com Modais)        -->
+<!-- ===================================================== -->
+<div class="col-12 mt-4 p-4 rounded" 
+     style="background-color: #2c1b47; border: 1px solid #5e2ca5; color: #e0d8f7;">
+
+    <h5 class="mb-3" style="color: #b387ff;">📜 Termos e Privacidade</h5>
+
+    <div class="form-check mb-2">
+        <input class="form-check-input" type="checkbox" id="aceitarTermos" name="aceitarTermos" required
+               style="border-color: #b387ff; background-color: transparent;">
+        <label class="form-check-label" for="aceitarTermos" style="color: #e0d8f7;">
+            Declaro que li e aceito os 
+            <a href="#" data-bs-toggle="modal" data-bs-target="#modalTermos"
+               style="color: #8ab4ff; text-decoration: underline;">Termos de Uso</a>.
+        </label>
+    </div>
+
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="aceitarPolitica" name="aceitarPolitica" required
+               style="border-color: #b387ff; background-color: transparent;">
+        <label class="form-check-label" for="aceitarPolitica" style="color: #e0d8f7;">
+            Concordo com a 
+            <a href="#" data-bs-toggle="modal" data-bs-target="#modalPolitica"
+               style="color: #8ab4ff; text-decoration: underline;">Política de Privacidade (LGPD)</a>.
+        </label>
+    </div>
+
+</div>
+
+<!-- ===================================================== -->
+<!--              MODAL - TERMOS DE USO                    -->
+<!-- ===================================================== -->
+<div class="modal fade" id="modalTermos" tabindex="-1" aria-labelledby="modalTermosLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content" style="background-color:#2c1b47; color:#e0d8f7; border:1px solid #5e2ca5;">
+      <div class="modal-header" style="border-bottom:1px solid #5e2ca5;">
+        <h5 class="modal-title" id="modalTermosLabel" style="color:#b387ff;">📄 Termos de Uso — Innovamind</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fechar"></button>
+      </div>
+      <div class="modal-body" style="max-height:70vh; overflow-y:auto;">
+        <?php include "termos.php"; ?>
+      </div>
+      <div class="modal-footer" style="border-top:1px solid #5e2ca5;">
+        <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Fechar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================================================== -->
+<!--              MODAL - POLÍTICA DE PRIVACIDADE          -->
+<!-- ===================================================== -->
+<div class="modal fade" id="modalPolitica" tabindex="-1" aria-labelledby="modalPoliticaLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content" style="background-color:#2c1b47; color:#e0d8f7; border:1px solid #5e2ca5;">
+      <div class="modal-header" style="border-bottom:1px solid #5e2ca5;">
+        <h5 class="modal-title" id="modalPoliticaLabel" style="color:#b387ff;">🔒 Política de Privacidade — LGPD</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fechar"></button>
+      </div>
+      <div class="modal-body" style="max-height:70vh; overflow-y:auto;">
+        <?php include "politica.php"; ?>
+      </div>
+      <div class="modal-footer" style="border-top:1px solid #5e2ca5;">
+        <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Fechar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ===================================================== -->
+<!--           FIM DOS MODAIS - TERMOS E POLÍTICA          -->
+<!-- ===================================================== -->
+
+
+            <div class="col-12 mt-4">
                 <button type="submit" name="btnGravar" id="btnSalvar" class="btn-cad" disabled>
                     <?= $usuario ? "Salvar Alterações" : "Cadastrar" ?>
                 </button>
@@ -145,6 +248,18 @@
             const img = document.getElementById('previewFoto');
             img.src = URL.createObjectURL(event.target.files[0]);
         });
+
+        // HABILITAR BOTÃO SOMENTE SE OS CHECKBOXES DE LGPD FOREM MARCADOS
+        const btn = document.getElementById("btnSalvar");
+        const termos = document.getElementById("aceitarTermos");
+        const politica = document.getElementById("aceitarPolitica");
+
+        function validarLGPD() {
+            btn.disabled = !(termos.checked && politica.checked);
+        }
+
+        termos.addEventListener("change", validarLGPD);
+        politica.addEventListener("change", validarLGPD);
     </script>
 
     <!-- VLibras -->
