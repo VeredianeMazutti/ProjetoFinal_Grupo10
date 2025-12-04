@@ -54,7 +54,7 @@ $current = basename($_SERVER['PHP_SELF']);
                                     Conheça a Innovamind
                                 </a>
                             </li>
-                             <li>
+                            <li>
                                 <a class="dropdown-item <?= ($current == 'nossaEquipe.php') ? 'active' : '' ?>"
                                     href="nossaEquipe.php">
                                     Conheça nossa equipe
@@ -214,13 +214,28 @@ $current = basename($_SERVER['PHP_SELF']);
                         </a>
 
                         <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item text-danger" href="logout.php">Sair</a></li>
+
+                            <li>
+                                <a class="dropdown-item" href="editarPerfil.php">
+                                    Editar Perfil
+                                </a>
+                            </li>
+
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+
+                            <li>
+                                <a class="dropdown-item text-danger" href="logout.php">
+                                    Sair
+                                </a>
+                            </li>
+
                         </ul>
                     </div>
 
                 <?php endif; ?>
             </div>
-
         </div>
     </div>
 </nav>
