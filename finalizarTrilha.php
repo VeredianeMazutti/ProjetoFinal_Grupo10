@@ -25,23 +25,44 @@ $Trilha->setIdTrilha($trilha->id_trilha);
 $Trilha->setTitulo($trilha->titulo);
 $Trilha->setAutorTrilha($trilha->autorTrilha);
 
-
 if ($nota >= intval($trilha->pontuacaoMinima ?? 70)) {
 
     if (!empty($trilha->gerarCertificado)) {
+
+        // Gera o PDF
         $arquivo = $Trilha->gerarCertificadoAutomatico($usuario);
+
         if ($arquivo) {
-            echo "🎉 Certificado gerado com sucesso! 
-          <a href='$arquivo' target='_blank' download>Baixar PDF</a>";
-        } else {
-            echo "⚠️ Erro ao gerar certificado automático.";
+
+            // INSERE OU ATUALIZA NA trilha_usuario
+            $sql = "INSERT INTO trilha_usuario (id_trilha, nome_usuario, certificado, nota)
+                    VALUES (:id_trilha, :usuario, :certificado, :nota)
+                    ON DUPLICATE KEY UPDATE 
+                        certificado = :certificado,
+                        nota = :nota";
+
+            $db = $Trilha->getDB();
+            $stmt = $db->prepare($sql);
+
+            $stmt->bindParam(':id_trilha', $idTrilha, PDO::PARAM_INT);
+            $stmt->bindParam(':usuario', $usuario, PDO::PARAM_STR);
+            $stmt->bindParam(':certificado', $arquivo, PDO::PARAM_STR);
+            $stmt->bindParam(':nota', $nota, PDO::PARAM_INT);
+
+            $stmt->execute();
+
+            // Redireciona para aba certificado
+            header("Location: trilha.php?id_trilha={$idTrilha}&aba=certificado");
+            exit;
         }
 
     } else {
-        echo "⚙️ Esta trilha não está configurada para gerar certificado automaticamente.";
+        header("Location: trilha.php?id_trilha={$idTrilha}&aba=certificado&erro=nao_tem_certificado");
+        exit;
     }
 
 } else {
-    echo "❌ Você precisa atingir pelo menos 70% para receber o certificado (sua nota: {$nota}%).";
+    header("Location: trilha.php?id_trilha={$idTrilha}&aba=avaliacao&erro=nota_baixa&nota={$nota}");
+    exit;
 }
 ?>

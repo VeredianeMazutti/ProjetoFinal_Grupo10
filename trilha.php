@@ -12,6 +12,9 @@ if (!$trilha) {
     echo "<p class='text-center mt-5 text-danger'>Trilha não encontrada.</p>";
     exit;
 }
+
+// controle da aba ativa 
+$aba = $_GET['aba'] ?? 'apresentacao';
 ?>
 
 <!DOCTYPE html>
@@ -38,46 +41,40 @@ if (!$trilha) {
         </section>
 
         <ul class="nav nav-tabs" id="trilhaTabs" role="tablist">
+
             <li class="nav-item" role="presentation">
-                <button class="nav-link active" id="apresentacao-tab" data-bs-toggle="tab"
-                    data-bs-target="#apresentacao" type="button" role="tab" aria-controls="apresentacao"
-                    aria-selected="true">
-                    Apresentação da Trilha
-                </button>
+                <button class="nav-link <?= $aba == 'apresentacao' ? 'active' : '' ?>" id="apresentacao-tab"
+                    data-bs-toggle="tab" data-bs-target="#apresentacao" type="button" role="tab">Apresentação da
+                    Trilha</button>
             </li>
 
             <li class="nav-item" role="presentation">
-                <button class="nav-link" id="conteudo-tab" data-bs-toggle="tab" data-bs-target="#conteudo" type="button"
-                    role="tab" aria-controls="conteudo" aria-selected="false">
-                    Conteúdo da Trilha
-                </button>
+                <button class="nav-link <?= $aba == 'conteudo' ? 'active' : '' ?>" id="conteudo-tab"
+                    data-bs-toggle="tab" data-bs-target="#conteudo" type="button" role="tab">Conteúdo da Trilha</button>
             </li>
 
             <li class="nav-item" role="presentation">
-                <button class="nav-link" id="avaliacao-tab" data-bs-toggle="tab" data-bs-target="#avaliacao"
-                    type="button" role="tab" aria-controls="avaliacao" aria-selected="false">
-                    Avaliação Final
-                </button>
+                <button class="nav-link <?= $aba == 'avaliacao' ? 'active' : '' ?>" id="avaliacao-tab"
+                    data-bs-toggle="tab" data-bs-target="#avaliacao" type="button" role="tab">Avaliação Final</button>
             </li>
 
             <li class="nav-item" role="presentation">
-                <button class="nav-link" id="referencias-tab" data-bs-toggle="tab" data-bs-target="#referencias"
-                    type="button" role="tab" aria-controls="referencias" aria-selected="false">
-                    Referências e Autor
-                </button>
+                <button class="nav-link <?= $aba == 'referencias' ? 'active' : '' ?>" id="referencias-tab"
+                    data-bs-toggle="tab" data-bs-target="#referencias" type="button" role="tab">Referências e
+                    Autor</button>
             </li>
 
             <li class="nav-item" role="presentation">
-                <button class="nav-link" id="certificado-tab" data-bs-toggle="tab" data-bs-target="#certificado"
-                    type="button" role="tab" aria-controls="certificado" aria-selected="false">
-                    Certificado
-                </button>
+                <button class="nav-link <?= $aba == 'certificado' ? 'active' : '' ?>" id="certificado-tab"
+                    data-bs-toggle="tab" data-bs-target="#certificado" type="button" role="tab">Certificado</button>
             </li>
+
         </ul>
 
         <div class="tab-content shadow-sm rounded-bottom" id="trilhaTabsContent">
-            <div class="tab-pane fade show active my-4" id="apresentacao" role="tabpanel"
-                aria-labelledby="apresentacao-tab">
+
+            <div class="tab-pane fade <?= $aba == 'apresentacao' ? 'show active' : '' ?> my-4" id="apresentacao"
+                role="tabpanel">
                 <h5 class="fw-bold mb-3">Introdução</h5>
                 <p><?= nl2br(htmlspecialchars($trilha->introducao)); ?></p>
 
@@ -86,30 +83,32 @@ if (!$trilha) {
 
                 <?php if (!empty($trilha->imagemCapa)): ?>
                     <div class="text-center mt-4">
-                        <img src="uploads/trilhas/<?= htmlspecialchars($trilha->imagemCapa); ?>" alt="Imagem da trilha"
+                        <img src="uploads/trilhas/<?= htmlspecialchars($trilha->imagemCapa); ?>"
                             class="img-fluid rounded shadow-sm" style="max-width: 400px;">
                     </div>
                 <?php endif; ?>
             </div>
 
-            <div class="tab-pane fade my-4" id="conteudo" role="tabpanel" aria-labelledby="conteudo-tab">
+            <div class="tab-pane fade <?= $aba == 'conteudo' ? 'show active' : '' ?> my-4" id="conteudo"
+                role="tabpanel">
                 <h5 class="fw-bold mb-3">Conteúdo Principal</h5>
                 <p><?= nl2br(htmlspecialchars($trilha->conteudo)); ?></p>
             </div>
 
-            <div class="tab-pane fade my-4" id="avaliacao" role="tabpanel" aria-labelledby="avaliacao-tab">
+            <div class="tab-pane fade <?= $aba == 'avaliacao' ? 'show active' : '' ?> my-4" id="avaliacao"
+                role="tabpanel">
                 <h5 class="fw-bold mb-3">Avaliação Final</h5>
-                <p><strong>Título:</strong> <?= htmlspecialchars($trilha->tituloAvaliacao); ?></p>
+                <p><strong>Título da Trilha:</strong> <?= htmlspecialchars($trilha->titulo); ?></p>
                 <p><strong>Pontuação mínima:</strong> 70%</p>
 
                 <div class="text-center mt-4">
-                    <a href="avaliacao.php?id_trilha=<?= $trilha->id_trilha; ?>" class="btn btn-success px-4">
-                        Iniciar Avaliação
-                    </a>
+                    <a href="avaliacao.php?id_trilha=<?= $trilha->id_trilha; ?>" class="btn btn-success px-4">Iniciar
+                        Avaliação</a>
                 </div>
             </div>
 
-            <div class="tab-pane fade my-4" id="referencias" role="tabpanel" aria-labelledby="referencias-tab">
+            <div class="tab-pane fade <?= $aba == 'referencias' ? 'show active' : '' ?> my-4" id="referencias"
+                role="tabpanel">
                 <h5 class="fw-bold mb-3">Autor</h5>
                 <p><strong>Instrutor:</strong> <?= htmlspecialchars($trilha->autorTrilha); ?></p>
                 <p><strong>Tags:</strong> <?= htmlspecialchars($trilha->tagsTrilha); ?></p>
@@ -118,18 +117,54 @@ if (!$trilha) {
                 <p><?= nl2br(htmlspecialchars($trilha->referenciasTrilha)); ?></p>
             </div>
 
-            <div class="tab-pane fade my-4" id="certificado" role="tabpanel" aria-labelledby="certificado-tab">
-                <?php if (!empty($trilha->gerarCertificado)): ?>
-                    <div class="alert alert-success text-center">
-                        <i class="bi bi-award-fill"></i>
-                        Esta trilha gera certificado automaticamente ao concluir com sucesso!
-                    </div>
-                <?php else: ?>
-                    <div class="alert alert-warning text-center">
-                        <i class="bi bi-info-circle-fill"></i>
-                        Esta trilha não possui certificado configurado.
-                    </div>
-                <?php endif; ?>
+            <div class="tab-pane fade <?= $aba == 'certificado' ? 'show active' : '' ?> my-4" id="certificado"
+                role="tabpanel">
+
+                <?php
+                if (!isset($_SESSION['nomeUsuario'])) {
+                    echo "<div class='alert alert-warning text-center'>
+            Faça login para ver seu certificado.
+          </div>";
+                } else {
+                    $usuario = $_SESSION['nomeUsuario'];
+                    $idTrilhaAtual = $trilha->id_trilha;
+
+                    $db = (new EducaCoop())->getDB();
+
+                    $sql = "SELECT certificado, nota 
+            FROM trilha_usuario 
+            WHERE id_trilha = :id AND nome_usuario = :usuario
+            LIMIT 1";
+
+
+                    $stmt = $db->prepare($sql);
+                    $stmt->bindParam(':id', $idTrilhaAtual, PDO::PARAM_INT);
+                    $stmt->bindParam(':usuario', $usuario, PDO::PARAM_STR);
+                    $stmt->execute();
+
+                    $registro = $stmt->fetch(PDO::FETCH_OBJ);
+
+                    if ($registro && !empty($registro->certificado)) {
+                        echo "
+                            <div class='text-center'>
+                                <h5 class='text-certificado fw-bold'>🎉 Certificado disponível!</h5>
+                                <p>Sua nota: <strong>{$registro->nota}%</strong></p>
+                                <a href='{$registro->certificado}' download 
+                                   class='btn btn-certificado'>
+                                   Baixar Certificado
+                                </a>
+                            </div>
+                        ";
+                    } else {
+                        echo "
+                            <div class='alert alert-info text-center'>
+                                Você ainda não concluiu a trilha ou o certificado não foi gerado.
+                            </div>
+                        ";
+                    }
+                }
+                ?>
+
             </div>
         </div>
 
@@ -146,7 +181,7 @@ if (!$trilha) {
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- VLibras -->
+    <!-- Botão do VLibras -->
     <div vw class="enabled">
         <div vw-access-button class="active"></div>
         <div vw-plugin-wrapper>
@@ -154,12 +189,12 @@ if (!$trilha) {
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
-
+    <!-- Script do VLibras -->
     <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
     <script>
         new window.VLibras.Widget('https://vlibras.gov.br/app');
     </script>
+
 </body>
 
 </html>

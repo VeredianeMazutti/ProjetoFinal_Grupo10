@@ -134,7 +134,6 @@ CREATE TABLE trilha (
     objetivos LONGTEXT NULL,
     conteudo LONGTEXT NULL,
     imagemCapa VARCHAR(255) NULL,
-    tituloAvaliacao VARCHAR(255) NULL,
     pontuacaoMinima INT DEFAULT 0,
     perguntasTrilha LONGTEXT NULL,
     mensagemConclusao LONGTEXT NULL,
@@ -152,6 +151,7 @@ CREATE TABLE trilha_usuario (
     id_trilha INT NOT NULL,
     nome_usuario VARCHAR(255) NOT NULL,
     nota INT NOT NULL,
+    certificado VARCHAR(255),
     data_conclusao DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (id_trilha) REFERENCES trilha(id_trilha)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

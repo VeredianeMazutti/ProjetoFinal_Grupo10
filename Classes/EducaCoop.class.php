@@ -13,7 +13,6 @@ class EducaCoop extends CRUD
     private $introducao;
     private $objetivos;
     private $conteudo;
-    private $tituloAvaliacao;
     private $pontuacaoMinima;
     private $perguntasTrilha;
     private $mensagemConclusao;
@@ -104,15 +103,6 @@ class EducaCoop extends CRUD
         return $this->conteudo;
     }
 
-    public function setTituloAvaliacao($tituloAvaliacao)
-    {
-        $this->tituloAvaliacao = $tituloAvaliacao;
-    }
-    public function getTituloAvaliacao()
-    {
-        return $this->tituloAvaliacao;
-    }
-
     public function setPontuacaoMinima($pontuacaoMinima)
     {
         $this->pontuacaoMinima = $pontuacaoMinima;
@@ -188,9 +178,9 @@ class EducaCoop extends CRUD
     public function add()
     {
         $sql = "INSERT INTO $this->table 
-            (titulo, subtitulo, descricao, duracao, nivel, introducao, objetivos, conteudo, tituloAvaliacao, pontuacaoMinima, perguntasTrilha, mensagemConclusao, gerarCertificado, autorTrilha, tagsTrilha, referenciasTrilha, ativoTrilha)
+            (titulo, subtitulo, descricao, duracao, nivel, introducao, objetivos, conteudo, pontuacaoMinima, perguntasTrilha, mensagemConclusao, gerarCertificado, autorTrilha, tagsTrilha, referenciasTrilha, ativoTrilha)
             VALUES
-            (:titulo, :subtitulo, :descricao, :duracao, :nivel, :introducao, :objetivos, :conteudo, :tituloAvaliacao, :pontuacaoMinima, :perguntasTrilha, :mensagemConclusao, :gerarCertificado, :autorTrilha, :tagsTrilha, :referenciasTrilha, :ativoTrilha)";
+            (:titulo, :subtitulo, :descricao, :duracao, :nivel, :introducao, :objetivos, :conteudo, :pontuacaoMinima, :perguntasTrilha, :mensagemConclusao, :gerarCertificado, :autorTrilha, :tagsTrilha, :referenciasTrilha, :ativoTrilha)";
 
         $stmt = $this->db->prepare($sql);
         $stmt->bindParam(':titulo', $this->titulo);
@@ -201,7 +191,6 @@ class EducaCoop extends CRUD
         $stmt->bindParam(':introducao', $this->introducao);
         $stmt->bindParam(':objetivos', $this->objetivos);
         $stmt->bindParam(':conteudo', $this->conteudo);
-        $stmt->bindParam(':tituloAvaliacao', $this->tituloAvaliacao);
         $stmt->bindParam(':pontuacaoMinima', $this->pontuacaoMinima, PDO::PARAM_INT);
         $stmt->bindParam(':perguntasTrilha', $this->perguntasTrilha);
         $stmt->bindParam(':mensagemConclusao', $this->mensagemConclusao);
@@ -225,7 +214,6 @@ class EducaCoop extends CRUD
             introducao = :introducao,
             objetivos = :objetivos,
             conteudo = :conteudo,
-            tituloAvaliacao = :tituloAvaliacao,
             pontuacaoMinima = :pontuacaoMinima,
             perguntasTrilha = :perguntasTrilha,
             mensagemConclusao = :mensagemConclusao,
@@ -245,7 +233,6 @@ class EducaCoop extends CRUD
         $stmt->bindParam(':introducao', $this->introducao);
         $stmt->bindParam(':objetivos', $this->objetivos);
         $stmt->bindParam(':conteudo', $this->conteudo);
-        $stmt->bindParam(':tituloAvaliacao', $this->tituloAvaliacao);
         $stmt->bindParam(':pontuacaoMinima', $this->pontuacaoMinima, PDO::PARAM_INT);
         $stmt->bindParam(':perguntasTrilha', $this->perguntasTrilha);
         $stmt->bindParam(':mensagemConclusao', $this->mensagemConclusao);
@@ -302,7 +289,7 @@ class EducaCoop extends CRUD
         $pdf->Rect(5, 5, 287, 200);
 
         // LOGO NO TOPO 
-        $logo = __DIR__ . '/../images/logoInnovamind.png'; 
+        $logo = __DIR__ . '/../images/logoInnovamind.png';
         if (file_exists($logo)) {
             $pdf->Image($logo, 130, 18, 35);
         }
@@ -385,5 +372,11 @@ class EducaCoop extends CRUD
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_OBJ);
     }
+
+    public function getDB()
+    {
+        return $this->db;
+    }
+
 
 }
