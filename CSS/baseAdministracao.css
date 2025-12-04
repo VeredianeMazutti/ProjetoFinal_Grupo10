@@ -227,3 +227,154 @@ input[type="file"]::file-selector-button {
     color: #ffffff;
     transform: translateY(-2px);
 }
+
+
+/*Login*/
+
+.login-card {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #251435;
+    border-radius: 20px;
+    max-width: 1000px;
+    margin: 20px auto;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.4);
+}
+
+.login-card::before,
+.login-card::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0.65;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.login-card::before {
+    width: 450px;
+    height: 450px;
+    background: radial-gradient(circle, rgba(155, 93, 229, 0.85), transparent 70%);
+    top: -150px;
+    left: -150px;
+}
+
+.login-card::after {
+    width: 550px;
+    height: 550px;
+    background: radial-gradient(circle, rgba(200, 164, 238, 0.6), transparent 70%);
+    bottom: -180px;
+    right: -120px;
+}
+
+.login-ilustracao {
+    flex: 1 1 45%;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    padding: 40px 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.login-img {
+    width: 300px;
+    height: auto;
+    filter: drop-shadow(0 0 25px #5e3c8a);
+}
+
+.login-frase-box {
+    background: linear-gradient(145deg, rgba(94, 60, 138, 0.25), rgba(20, 10, 30, 0.45));
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(94, 60, 138, 0.25);
+    padding: 20px;
+    max-width: 400px;
+    margin-top: 10px;
+    text-align: center;
+    backdrop-filter: blur(6px);
+}
+
+.login-frase {
+    font-family: "Segoe UI";
+    font-size: 14px;
+    font-style: italic;
+    color: #f5f5f5;
+    margin-bottom: 15px;
+    text-align: justify;
+}
+
+.login-autor {
+    font-family: "Segoe UI";
+    font-size: 0.85rem;
+    color: #cdbde5;
+    text-align: justify;
+}
+
+.login-right {
+    flex: 1 1 55%;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 40px;
+    position: relative;
+    z-index: 1;
+}
+
+.login-title {
+    font-family: "Trebuchet MS";
+    text-align: center;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 30px;
+}
+
+.campo-formulario {
+    background-color: transparent;
+    border: 1px solid #9b5de5;
+    color: #fff;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    padding: 10px;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.campo-formulario::placeholder {
+    color: #cdbde5;
+}
+
+.campo-formulario:focus {
+    background-color: #ffffff !important;
+    border-color: #c88cff !important;
+    color: #000 !important;
+    -webkit-text-fill-color: #000 !important;
+    box-shadow: 0 0 10px rgba(200, 140, 255, 0.3);
+    outline: none;
+}
+
+.btn-login {
+    background: linear-gradient(90deg, #b47aff, #8042e0);
+    color: #fff;
+    border: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    padding: 10px;
+    width: 100%;
+    display: block;
+    cursor: pointer;
+}
+
+.btn-login:hover {
+    background: linear-gradient(90deg, #491874, #9F6ACE, #8B45AA);
+    transform: scale(1.03);
+}
