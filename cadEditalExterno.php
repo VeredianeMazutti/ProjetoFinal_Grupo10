@@ -61,7 +61,7 @@
                 <label for="descricao" class="form-label">Descrição</label>
                 <input type="text" class="form-control" name="descricao" id="descricao"
                     placeholder="Digite a descrição do edital" value="<?= $edital->descricao ?? "" ?>" required
-                    maxlength="500">
+                    maxlength="50">
             </div>
 
             <div class="col-12">

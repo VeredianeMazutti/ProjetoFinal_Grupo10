@@ -26,7 +26,7 @@ require_once __DIR__ . "/verifica_acesso.php";
         <h3 class="titulo-tabelas mb-4">Editais Interno Cadastrados</h3>
 
         <div class="d-flex justify-content-end">
-            <a href="cadEditalExterno.php" class="btn btn-administracao mb-4 me-3">
+            <a href="cadEditalInterno.php" class="btn btn-administracao mb-4 me-3">
                 <i class="bi bi-plus-circle"></i> Novo Edital Interno
             </a>
         </div>
