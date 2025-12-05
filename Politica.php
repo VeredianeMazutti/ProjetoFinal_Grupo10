@@ -13,7 +13,7 @@
 <body>
 
     <div class="container">
-        <h1 class="text-center mb-4">POLÍTICA DE PRIVACIDADE — INNOVAMIND</h1>
+        <h1 class="text-center my-4">POLÍTICA DE PRIVACIDADE — INNOVAMIND</h1>
         <p><strong>Última atualização:</strong> 29/11/2025</p>
 
         <p>A Innovamind adota esta Política de Privacidade em conformidade com a <strong>Lei nº 13.709/2018 —

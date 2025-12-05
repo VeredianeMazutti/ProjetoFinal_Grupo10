@@ -13,7 +13,7 @@
 <body>
 
     <div class="container">
-        <h1 class="text-center mb-4">TERMO DE USO E RESPONSABILIDADE — INNOVAMIND</h1>
+        <h1 class="text-center my-4">TERMO DE USO E RESPONSABILIDADE — INNOVAMIND</h1>
         <p><strong>Última atualização:</strong> 29/11/2025</p>
 
         <p>Bem-vindo(a) à Innovamind, uma plataforma destinada ao cadastro, divulgação e conexão de projetos, ideias e
