@@ -55,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // Salva JSON no campo perguntasTrilha
     $trilha->updateField("perguntasTrilha", $json, "id_trilha", $idTrilha);
 
-    echo "<script>alert('Avaliação salva com sucesso!');window.location.href='trilha.php?id_trilha={$idTrilha}';</script>";
+    echo "<script>alert('Avaliação salva com sucesso!');window.location.href='listaEducaCoop.php?id_trilha={$idTrilha}';</script>";
     exit;
 }
 ?>
@@ -135,7 +135,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             <?php endfor; ?>
 
             <button type="submit" class="btn btn-certificado">Salvar Avaliação</button>
-            <a href="trilha.php?id_trilha=<?= $trilhaData->id_trilha ?>" class="btn btn-voltarEdital">Voltar</a>
+            <a href="listaEducaCoop.php?id_trilha=<?= $trilhaData->id_trilha ?>" class="btn btn-voltarEdital">Voltar</a>
         </form>
     </main>
 
