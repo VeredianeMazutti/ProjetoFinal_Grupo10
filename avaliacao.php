@@ -102,7 +102,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 <?php endforeach; ?>
 
                 <div class="text-center">
-                    <button type="submit" class="btn btn-success px-4">Salvar Avaliação</button>
+                    <button type="submit" class="btn btn-certificado px-4">Salvar Avaliação</button>
                 </div>
             </form>
         <?php endif; ?>
