@@ -33,13 +33,13 @@
 
             <div class="integrantes">
                 <img src="images/verediane.png" alt="Verediane Mazutti Filomeno">
-                <a href="http://lattes.cnpq.br/4240636442955710" target="_blank">Verediane Mazutti Filomeno</a>
+                <a href="https://www.linkedin.com/in/verediane-mazutti-filomeno-38a15935a/" target="_blank">Verediane Mazutti Filomeno</a>
                 <p>Técnica em Informática | Desenvolvedora Web</p>
                 <a href="mailto:verediane.m.f@gmail.com">verediane.m.f@gmail.com</a>
             </div>
 
             <div class="integrantes">
-                <img src="Images/devid.png" alt="Devid Sobrenome">
+                <img src="images/devid.png" alt="Deivid da Silva Souza">
                 <a href="https://www.linkedin.com/in/deivid-da-silva-84862a200/" target="_blank">Deivid da Silva
                     Souza</a>
                 <p>Desenvolvedor Power BI | Dashboards e Visual Analytics</p>
@@ -47,7 +47,7 @@
             </div>
 
             <div class="integrantes">
-                <img src="Images/Integrantes/Italo.png" alt="Italo Sobrenome">
+                <img src="images/Integrantes/default-user.png" alt="Italo Jaruzo Moraes">
                 <a href="https://www.linkedin.com/in/italo-perfil" target="_blank">Ítalo Jaruzo Moraes</a>
                 <p>Analista de Qualidade | Desenvolvedor</p>
                 <a href="mailto:italo@email.com">itajaruzo@gmail.com </a>
