@@ -102,7 +102,7 @@ foreach ($lista as $e) {
                         <p class="desc"><?= htmlspecialchars($Edital->descResumida) ?></p>
                         <p class="small text-secondary"><strong>De:</strong> <?= $dataAbertura ?> | <strong>Até:</strong>
                             <?= $dataEncerramento ?></p>
-                        <a href="editalinterno.php?id=<?= $Edital->idEditalInterno ?>" class="btn btn-dark mt-2">Saiba
+                        <a href="editalInterno.php?id=<?= $Edital->idEditalInterno ?>" class="btn btn-dark mt-2">Saiba
                             mais</a>
                     </div>
 
