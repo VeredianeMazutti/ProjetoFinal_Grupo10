@@ -47,36 +47,79 @@
     </ul>
 
     <h2>2. CADASTRO DO USUÁRIO</h2>
-    <p>O usuário deve fornecer informações verdadeiras e manter seus dados atualizados, sendo responsável por sua senha e conta.</p>
+    <p>Para utilizar a plataforma, o usuário deve fornecer informações verdadeiras, completas e atualizadas, incluindo nome completo, telefone, e-mail, área de atuação, foto, nome de usuário e senha.</p>
+    <p>O usuário é responsável por: </p>
+    <ul>
+        <li>Manter a segurança de sua senha;</li>
+        <li>Manter seus dados atualizados;</li>
+        <li>Informar imediatamente qualquer uso indevido de sua conta;</li>
+        <li>Todas as informações fornecidas são de sua responsabilidade;</li>
+    </ul>
 
     <h2>3. CADASTRO DE PROJETOS</h2>
-    <p>Ao cadastrar um projeto, o usuário declara ser o autor das informações e estar ciente de que o conteúdo será público. A Innovamind não se responsabiliza por informações falsas ou negociações decorrentes.</p>
+    <p>Ao cadastrar um projeto, o usuário declara que:</p>
+    <ul>
+        <li>Todas as informações fornecidas são verdadeiras;</li>
+        <li>Possui direitos de uso e divulgação do conteúdo inserido;</li>
+        <li>Não viola direitos autorais ou de terceiros;</li>    
+        <li>Está ciente de que o conteúdo será exibido publicamente para outros usuários.</li>
+    </ul>
+    <p>A Innovamind não se responsabiliza por informações falsas, conflitos de autoria, contatos feitos por terceiros ou negociações externas decorrentes da divulgação.</p>
 
     <h2>4. COMUNICAÇÃO ENTRE USUÁRIOS</h2>
-    <p>Toda comunicação e negociação ocorre fora da plataforma, sem participação da Innovamind.</p>
+    <p>A plataforma apenas exibe os dados de contato informados pelo criador do projeto.
+Toda comunicação, acordo, apoio financeiro ou parceria ocorre fora da plataforma, sem qualquer participação, responsabilidade ou intermediação da Innovamind.</p>
 
     <h2>5. PROIBIÇÕES GERAIS</h2>
+    <p>É proibido utilizar a Innovamind para:</p>
     <ul>
-        <li>Conteúdo falso, ofensivo ou discriminatório;</li>
-        <li>Conteúdo ilegal ou fraudulento;</li>
-        <li>Plágio de ideias, textos ou imagens;</li>
-        <li>Uso indevido da plataforma para fins ilícitos.</li>
+        <li>Cadastrar informações falsas, enganosas ou fraudulentas;</li>
+        <li>Divulgar conteúdo ilegal, ofensivo ou discriminatório;</li>
+        <li>Publicar projetos com finalidades ilícitas;</li>
+        <li>Plagiar ideias, textos, imagens ou outros materiais;</li>
+        <li>Realizar qualquer atividade que viole a legislação vigente.</li>
     </ul>
 
     <h2>6. PROIBIÇÃO DE CONTEÚDOS ADULTOS E MATERIAL SEXUAL (+18)</h2>
-    <p>É proibido publicar, armazenar ou divulgar material sexual, erótico ou pornográfico de qualquer tipo. A violação pode resultar em exclusão imediata e comunicação às autoridades.</p>
+    <p>É expressamente proibido ao usuário publicar, enviar, armazenar, transmitir ou divulgar, por qualquer meio dentro da plataforma, conteúdos que incluam, mas não se limitem a:</p>
+    <ul>
+        <li>Pornografia de qualquer natureza;</li>
+        <li>Nudez explícita ou em caráter sugestivo;</li>
+        <li>Material adulto ou conteúdo destinado a maiores de 18 anos;</li>
+        <li>Atos sexuais reais ou simulados;</li>
+        <li>Exploração sexual de adultos ou menores;</li>
+        <li>Linguagem de cunho sexual explícito;</li>
+        <li>Fotos, vídeos, ilustrações, desenhos, textos ou qualquer representação de natureza erótica;</li>
+        <li>Oferta, solicitação, divulgação ou intermediação de serviços sexuais;</li>
+        <li>Links, referências ou redirecionamentos que levem a conteúdo pornográfico ou de natureza sexual.</li>
+    </ul>  
+    <p>A violação das disposições acima poderá resultar, a exclusivo critério da Innovamind, em:</p> 
+<ul>
+        <li>Remoção imediata do conteúdo ou projeto publicado;</li>
+        <li>Suspensão temporária do acesso à plataforma;</li>
+        <li>Exclusão definitiva da conta do usuário;</li>
+        <li>Comunicação às autoridades competentes, sempre que aplicável;</li>
+    </ul>
 
     <h2>7. PROPRIEDADE INTELECTUAL</h2>
-    <p>Os direitos autorais dos projetos pertencem aos respectivos criadores. A Innovamind tem permissão apenas para exibir o conteúdo dentro da plataforma.</p>
-
+    <ul>
+        <li>Os projetos cadastrados permanecem de propriedade de seus autores.</li>
+    <li>O usuário concede à Innovamind permissão não exclusiva para exibir o conteúdo dentro da plataforma.</li>
+    <li>A Innovamind não reivindica direitos autorais sobre os projetos e não se responsabiliza por eventuais disputas de autoria.</li>
+</ul>
     <h2>8. LIMITAÇÃO DE RESPONSABILIDADE</h2>
-    <p>A Innovamind não se responsabiliza por negociações entre usuários, falhas técnicas, perdas de dados ou indisponibilidade temporária do serviço.</p>
+    <ul>
+        <li>A Innovamind não se responsabiliza por negociações, acordos ou contatos realizados entre usuários fora da plataforma;</li>
+        <li>Prejuízos financeiros decorrentes dessas interações entre usuários;</li>
+        <li>Links externos ou serviços de terceiros;</li>
+    </ul>
 
-    <h2>9. ENCERRAMENTO OU EXCLUSÃO DE CONTA</h2>
-    <p>O usuário pode excluir sua conta a qualquer momento. Contas que violem estes Termos poderão ser suspensas ou removidas.</p>
-
-    <h2>10. LEGISLAÇÃO APLICÁVEL</h2>
+    <h2>9. LEGISLAÇÃO APLICÁVEL</h2>
     <p>Estes Termos são regidos pela legislação brasileira. O foro eleito é o da cidade-sede da Innovamind.</p>
+
+    <h2>10. ACEITE</h2>
+    <p>Ao clicar em “Cadastrar”, o usuário declara estar ciente e de acordo com este Termo de Uso e Responsabilidade.</p>
+
 
     <div class="text-center mt-4">
     </div>
