@@ -51,9 +51,13 @@
                     </div>
                     <div class="mb-3 col-12">
                         <label for="senha" class="form-label">Senha</label>
-                        <input type="password" class="form-control" id="senha" name="senha" placeholder="Senha"
-                            required>
+                        <div class="input-group">
+                            <input type="password" class="form-control" id="senha" name="senha" placeholder="Senha"
+                                required>
+                            <button type="button" id="toggleSenhaLogin" class="btn btn-outline-secondary">👁️</button>
+                        </div>
                     </div>
+
                     <div class="text-center mt-3">
                         <button type="submit" class="btn-login" name="btnLogar">Entrar</button>
                     </div>
@@ -70,6 +74,7 @@
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
     <script src="JS/formTheme.js"></script>
+    <script src="JS/visibilidadeSenha.js"></script>
 
     <!-- VLibras -->
     <div vw class="enabled">
