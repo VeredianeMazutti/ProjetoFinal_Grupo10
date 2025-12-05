@@ -19,7 +19,6 @@ $meusProjetos = $p->search("fk_usuario", $idUsuario);
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.datatables.net/2.3.4/css/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" href="CSS/baseAdministracao.css?v=<?php echo time(); ?>">
-    <link rel="stylesheet" href="CSS/baseAdministracao.css">
     <link rel="shortcut icon" href="images/logoInnovamind.png" type="image/x-icon">
     <title>Meus Projetos</title>
 </head>

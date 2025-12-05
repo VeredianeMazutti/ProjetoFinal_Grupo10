@@ -22,7 +22,6 @@ foreach ($lista as $item) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
     <link rel="stylesheet" href="CSS/baseSite.css?v=<?php echo time(); ?>">
-    <link rel="stylesheet" href="CSS/baseSite.css">
     <link rel="shortcut icon" href="images/logoInnovamind.png" type="image/x-icon">
     <title>Editais Externos</title>
 </head>
