@@ -71,10 +71,6 @@ elseif (filter_has_var(INPUT_POST, "btnGravar")):
         endif;
     endif;
 
-    // -------------------------------
-    //  🟡 CAMPOS EDITADOS PARA INCLUIR LGPD
-    // -------------------------------
-
     $Usuario->setId($id);
     $Usuario->setNomeCompleto(filter_input(INPUT_POST, "nomeCompleto", FILTER_SANITIZE_STRING));
     $Usuario->setDataNascimento(filter_input(INPUT_POST, "dataNascimento", FILTER_SANITIZE_STRING));
@@ -90,21 +86,14 @@ elseif (filter_has_var(INPUT_POST, "btnGravar")):
         $Usuario->setSenha(password_hash($senha, PASSWORD_DEFAULT));
     endif;
 
-    // ----------------------------------
-    // 🔵 NOVO — TRATAMENTO DOS ACEITES LGPD
-    // ----------------------------------
-    $aceitouTermos   = filter_has_var(INPUT_POST, "aceitouTermos") ? 1 : 0;   // NOVO
-    $aceitouPolitica = filter_has_var(INPUT_POST, "aceitouPolitica") ? 1 : 0; // NOVO
-    $dataAceite      = ($aceitouTermos && $aceitouPolitica) ? date("Y-m-d H:i:s") : null; // NOVO
+    $aceitouTermos = filter_has_var(INPUT_POST, "aceitouTermos") ? 1 : 0;
+    $aceitouPolitica = filter_has_var(INPUT_POST, "aceitouPolitica") ? 1 : 0;
+    $dataAceite = ($aceitouTermos && $aceitouPolitica) ? date("Y-m-d H:i:s") : null;
 
-    $Usuario->setAceitouTermos($aceitouTermos);       // NOVO
-    $Usuario->setAceitouPolitica($aceitouPolitica);   // NOVO
-    $Usuario->setDataAceite($dataAceite);             // NOVO
+    $Usuario->setAceitouTermos($aceitouTermos);
+    $Usuario->setAceitouPolitica($aceitouPolitica);
+    $Usuario->setDataAceite($dataAceite);
 
-
-    // -------------------------
-    // SALVAR NOVO CADASTRO
-    // -------------------------
     if (empty($id)):
         if ($Usuario->add()) {
             echo "<script>
@@ -120,17 +109,11 @@ elseif (filter_has_var(INPUT_POST, "btnGravar")):
             exit;
         }
 
-    // -------------------------
-    // ATUALIZAR CADASTRO
-    // -------------------------
     else:
         if ($Usuario->update("id", $id)) {
 
-
-            //Recarrega o usuário atualizado
             $u = $Usuario->findById($id);
 
-            // Atualiza sessão
             $_SESSION["nomeUsuario"] = $u->nomeExibicao ?? $u->nomeCompleto;
             $_SESSION["perfil"] = $u->perfil;
             $_SESSION["foto"] = $u->foto;

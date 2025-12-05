@@ -431,3 +431,28 @@ input[type="file"]::file-selector-button {
 .lgpd-modal-footer {
     border-top: 1px solid #5e2ca5;
 }
+.form-check-input {
+  width: 1.2em;
+  height: 1.2em;
+  border: 2px solid #b387ff;
+  background-color: transparent;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.form-check-input:checked {
+  background-color: #b387ff !important; /* lilás */
+  border-color: #b387ff !important;
+  box-shadow: 0 0 5px #c59cff;
+}
+
+.form-check-input:focus {
+  box-shadow: 0 0 5px #b387ff !important;
+  outline: none;
+}
+
+.form-check-label {
+  color: #e0d8f7;
+  margin-left: 5px;
+}
+
