@@ -161,9 +161,9 @@
     <h5 class="mb-3" style="color: #b387ff;">📜 Termos e Privacidade</h5>
 
     <div class="form-check mb-2">
-        <input class="form-check-input" type="checkbox" id="aceitarTermos" name="aceitarTermos" required
+        <input class="form-check-input" type="checkbox" id="aceitouTermos" name="aceitouTermos" required
                style="border-color: #b387ff; background-color: transparent;">
-        <label class="form-check-label" for="aceitarTermos" style="color: #e0d8f7;">
+        <label class="form-check-label" for="aceitouTermos" style="color: #e0d8f7;">
             Declaro que li e aceito os 
             <a href="#" data-bs-toggle="modal" data-bs-target="#modalTermos"
                style="color: #8ab4ff; text-decoration: underline;">Termos de Uso</a>.
@@ -171,9 +171,9 @@
     </div>
 
     <div class="form-check">
-        <input class="form-check-input" type="checkbox" id="aceitarPolitica" name="aceitarPolitica" required
+        <input class="form-check-input" type="checkbox" id="aceitouPolitica" name="aceitouPolitica" required
                style="border-color: #b387ff; background-color: transparent;">
-        <label class="form-check-label" for="aceitarPolitica" style="color: #e0d8f7;">
+        <label class="form-check-label" for="aceitouPolitica" style="color: #e0d8f7;">
             Concordo com a 
             <a href="#" data-bs-toggle="modal" data-bs-target="#modalPolitica"
                style="color: #8ab4ff; text-decoration: underline;">Política de Privacidade (LGPD)</a>.
@@ -253,8 +253,8 @@
 
         // HABILITAR BOTÃO SOMENTE SE OS CHECKBOXES DE LGPD FOREM MARCADOS
         const btn = document.getElementById("btnSalvar");
-        const termos = document.getElementById("aceitarTermos");
-        const politica = document.getElementById("aceitarPolitica");
+        const termos = document.getElementById("aceitouTermos");
+        const politica = document.getElementById("aceitouPolitica");
 
         function validarLGPD() {
             btn.disabled = !(termos.checked && politica.checked);
