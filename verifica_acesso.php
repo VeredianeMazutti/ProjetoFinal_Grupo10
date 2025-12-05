@@ -31,6 +31,7 @@ $regras = [
     "dbEditalInterno.php"      => ["admin"],
 
     "listaEducaCoop.php" => ["admin"],
+    "trilha.php" => ["usuario"],
 
     "listaEditaisExternos.php" => ["admin"],
     "cadEditalExterno.php"     => ["admin"],

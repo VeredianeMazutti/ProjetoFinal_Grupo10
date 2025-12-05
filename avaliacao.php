@@ -93,7 +93,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                     <input class="form-check-input" type="radio" name="resposta[<?= $i ?>]" value="<?= $a ?>"
                                         id="p<?= $i ?>a<?= $a ?>">
                                     <label class="form-check-label" for="p<?= $i ?>a<?= $a ?>">
-                                        <?= chr(65 + $a) ?>) <?= htmlspecialchars($alt) ?>
+                                        <?= chr(65 + $a) ?> <?= htmlspecialchars($alt) ?>
                                     </label>
                                 </div>
                             <?php endforeach; ?>
