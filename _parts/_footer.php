@@ -2,7 +2,7 @@
     <div class="footer-container">
 
         <div class="footer-col">
-            <img src="Images/logoInnovamind.png" alt="Logo Innovamind" class="footer-logo">
+            <img src="images/logoInnovamind.png" alt="Logo Innovamind" class="footer-logo">
 
         </div>
 
