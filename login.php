@@ -28,7 +28,7 @@
     <main class="d-flex align-items-center justify-content-center my-4">
         <div class="login-card">
             <section class="login-ilustracao text-center p-4">
-                <img src="Images/login.png" alt="Ideia" class="login-img mb-4">
+                <img src="images/login.png" alt="Ideia" class="login-img mb-4">
                 <div class="login-frase-box">
                     <blockquote class="login-frase">
                         “A vida está cheia de desafios que, se aproveitados de forma criativa, transformam-se em
