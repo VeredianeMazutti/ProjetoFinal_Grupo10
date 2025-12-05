@@ -438,6 +438,11 @@
     font-weight: 700;
 }
 
+.projetos-subtitulo {
+    font-size: 1.1rem;
+    color: #d0c9e8;
+}
+
 .filtros-projetos {
     display: flex;
     justify-content: center;
@@ -736,16 +741,21 @@
 
 /* Apoiadores*/
 h2.titulo-apoiadores {
-    font-family: "Trebuchet MS";
+    font-family: "Stack Sans Notch", sans-serif;
+    font-size: 57px;
+    font-weight: 900px;
     color: #fff;
-    font-size: 40px;
-    font-weight: 700;
+    font-weight: bold;
+}
+
+h1.titulo-equipe .roxo {
+    color: #b86bff;
 }
 
 .subtitulo-apoiadores {
     text-align: center;
     font-size: 1.05rem;
-    color: rgba(255, 255, 255, 0.75);
+    color: #d0c9e8;
     max-width: 720px;
     margin: 0 auto 28px auto;
     line-height: 1.55;
@@ -874,7 +884,7 @@ h1.titulo-impacto {
 .subtitulo-impacto {
     text-align: center;
     font-size: 1.05rem;
-    color: rgba(255, 255, 255, 0.75);
+    color: #d0c9e8;
     max-width: 720px;
     margin: 0 auto 28px auto;
     line-height: 1.55;
@@ -934,7 +944,7 @@ h1.titulo-impacto {
 
 .conheca-lead {
     font-family: "Segoe UI";
-    font-size: 18px;
+    font-size: 20px;
     color: #d8d2e8;
     text-align: justify;
 }
@@ -1176,13 +1186,7 @@ h1.titulo-impacto {
     box-shadow: 0 0 18px rgba(130, 42, 255, 0.35);
 }
 
-.titulo-edital {
-    font-family: "Segoe UI";
-    font-size: 1.4rem;
-    font-weight: 600;
-    color: #d6b8ff;
-    text-transform: capitalize;
-}
+
 
 .desc {
     color: #cfcfcf;
@@ -1224,17 +1228,7 @@ h1.titulo-impacto {
     margin: 50px auto;
 }
 
-.titulo-editais {
-    font-size: 2rem;
-    font-weight: 700;
-    color: #fff;
-}
 
-.subtitulo {
-    font-size: 1.2rem;
-    color: #e1d4ff;
-    margin-bottom: 30px;
-}
 
 .info-grid {
     display: grid;

@@ -42,9 +42,11 @@ foreach ($lista as $e) {
     </navbar>
 
     <main class="container my-5">
-        <h2 class="titulo-editais text-center my-3">Editais Internos</h2>
+        <h2 class="titulo-editais text-center">Editais Internos</h2>
+        <p class="subtitulo-editais text-center">Participe dos nossos editais internos e dê novos passos na evolução do
+            seu projeto</p>
 
-        <ul class="nav nav-tabs justify-content-center mb-4">
+        <ul class="nav nav-tabs justify-content-center my-5">
             <li class="nav-item">
                 <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#tab1">Abertos</button>
             </li>

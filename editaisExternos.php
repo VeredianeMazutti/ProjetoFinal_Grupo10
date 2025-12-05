@@ -34,7 +34,8 @@ foreach ($lista as $item) {
 
         <div class="text-center mb-5">
             <h1 class="titulo-editais">Editais Externos</h1>
-            <p class="subtitulo-editais">Oportunidades reais para projetos, bolsas, inovação e impacto social.</p>
+            <p class="subtitulo-editais">Conheça editais de organizações que podem fortalecer e impulsionar o caminho do
+                seu projeto.</p>
         </div>
 
         <?php if (empty($lista)): ?>

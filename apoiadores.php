@@ -27,9 +27,9 @@
         $lista = $apo->listar();
         ?>
 
-        <h2 class="titulo-apoiadores text-center">Conheça a Rede Innovamind</h2>
+        <h2 class="titulo-apoiadores text-center">Conheça a <span class="roxo">Rede Innovamind</span></h2>
         <p class="subtitulo-apoiadores">Empresas, pessoas e instituições que fortalecem nossa rede de inovação
-            colaborativa.</p>
+            colaborativa</p>
 
         <div class="apoiadores-grid">
 

@@ -29,32 +29,42 @@
                 Conheça a <span class="conheca-roxo">InnovaMind</span>
             </h1>
             <p class="conheca-subtitulo mt-3">
-                Uma plataforma criada para transformar ideias em impacto real através da cooperação.
+                Uma plataforma criada para transformar ideias em impacto real através da cooperação!
             </p>
         </section>
 
         <section class="conheca-section">
             <h2 class="conheca-h2">O que é a InnovaMind?</h2>
             <p class="conheca-lead">
-                A InnovaMind é uma plataforma digital que conecta pessoas, instituições e empresas com o objetivo de
-                impulsionar projetos inovadores por meio da colaboração. Ela nasceu para facilitar o networking,
-                oferecer visibilidade a iniciativas promissoras e unir setores que desejam gerar impacto positivo.
+                A InnovaMind é um espaço criado para aproximar pessoas e transformar ideias em impacto. Aqui,
+                iniciativas ganham voz, talentos se conectam e projetos encontram apoio para crescer. É um ambiente
+                vivo, onde estudantes, profissionais e instituições compartilham experiências, aprendem uns com os
+                outros e colaboram para construir soluções que fazem sentido. A plataforma funciona como uma ponte que
+                une quem tem uma ideia com quem deseja ajudar. A InnovaMind nasceu para tornar a inovação mais humana,
+                mais acessível e, acima de tudo, mais colaborativa.
             </p>
 
             <h3 class="conheca-h3">Por que ela foi criada?</h3>
             <p class="conheca-p">
-                Foi criada para resolver um problema comum: <strong>ideias que têm potencial, mas não encontram apoio,
-                    conexão ou orientação.</strong>
-                Aqui, qualquer pessoa pode compartilhar seu projeto, aprender com a comunidade e receber suporte
-                técnico,
-                educacional ou institucional.
+                A InnovaMind foi criada porque <strong>muitas ideias boas se perdem antes mesmo de começar</strong>.
+                Falta orientação, falta oportunidade e, muitas vezes, falta alguém que simplesmente diga
+                <strong>"eu posso ajudar"</strong>. A plataforma surgiu para mudar esse cenário, oferecendo
+                <strong>um espaço acolhedor e cooperativo</strong> onde qualquer pessoa pode compartilhar sua ideia
+                e encontrar <strong>apoio técnico, educacional ou financeiro</strong>.
+                Ela nasce da vontade de <strong>aproximar talentos, facilitar conexões</strong> e tornar possível o que,
+                sozinho, seria difícil.
+                A InnovaMind existe para que <strong>ideias não fiquem guardadas</strong>, mas se tornem algo real e
+                transformador.
+            </p>
 
             <h2 class="conheca-h2">O que é cooperar?</h2>
             <p class="conheca-lead">
-                Cooperar é unir forças para alcançar objetivos que sozinho seriam difíceis — ou até impossíveis — de
-                conquistar.
-                Na InnovaMind, a cooperação acontece quando usuários compartilham conhecimento, apoiam iniciativas e
-                constroem soluções de forma conjunta.
+                Cooperar é caminhar junto. É entender que cada pessoa tem algo valioso para oferecer e que, quando
+                unimos nossas forças, criamos resultados maiores do que conseguiríamos sozinhos. Cooperar é compartilhar
+                conhecimento, apoiar iniciativas, orientar quem está começando e estar aberto a aprender e ensinar. Na
+                InnovaMind, cooperar é participar de forma ativa, dando voz e oportunidade a todos. É agir com interesse
+                pela comunidade, praticando ajuda mútua e fortalecendo o coletivo.
+                <strong>Cooperar é escolher construir junto. É transformar o eu em nós.</strong>
             </p>
         </section>
 
@@ -62,19 +72,19 @@
             <h2 class="text-center conheca-h2">Como funciona a InnovaMind</h2>
 
             <p class="text-center conheca-subtitulo mb-5">
-                Uma jornada simples para transformar ideias em impacto real.
+                Uma jornada simples para transformar ideias em resultados
             </p>
 
             <div class="row g-4 text-center">
 
                 <?php
                 $passos = [
-                    ["bi-person-plus", "Crie sua conta", "Cadastre-se como estudante, profissional ou instituição e participe da comunidade."],
+                    ["bi-person-plus", "Crie sua conta", "Torne-se um usuário e participe de uma jornada para transformar suas ideias em impacto."],
                     ["bi-search", "Explore ideias e conteúdos", "Descubra projetos, acesse materiais educacionais e inspire-se com novas soluções."],
                     ["bi-lightbulb", "Cadastre seu projeto", "Compartilhe sua ideia para obter apoio, colaboração e visibilidade."],
                     ["bi-people", "Colabore com outras pessoas", "Comente, participe e apoie iniciativas que façam sentido para você."],
                     ["bi-file-earmark-text", "Participe de editais", "Inscreva-se em oportunidades de apoio técnico, financeiro ou institucional."],
-                    ["bi-building", "Conecte-se com apoiadores", "Empresas e instituições acompanham, apoiam e divulgam projetos reais."],
+                    ["bi-building", "Conecte-se com apoiadores", "Empresas e instituições acompanham projetos e contribuem para que eles cresçam e ganhem visibilidade."],
                 ];
 
                 foreach ($passos as $p):
@@ -101,8 +111,9 @@
                             <div class="estrutura-col-inner">
                                 <h4 class="estrutura-subtitulo">Missão</h4>
                                 <p class="estrutura-texto">
-                                    Promover a inovação colaborativa, conectando pessoas e organizações para criar
-                                    soluções reais.
+                                    Promover a colaboração entre pessoas e projetos, criando um ambiente onde ideias
+                                    recebem apoio, conhecimento é compartilhado e todos crescem juntos. Nossa missão é
+                                    transformar inovação em impacto coletivo.
                                 </p>
                             </div>
                         </div>
@@ -111,8 +122,9 @@
                             <div class="estrutura-col-inner">
                                 <h4 class="estrutura-subtitulo">Visão</h4>
                                 <p class="estrutura-texto">
-                                    Ser a principal plataforma de cooperação e inovação do Brasil, impulsionando
-                                    projetos de impacto social.
+                                    Ser uma plataforma que inspira cooperação, conecta talentos e fortalece iniciativas
+                                    que beneficiam comunidades. Queremos um futuro onde criar e inovar seja algo
+                                    construído de forma conjunta.
                                 </p>
                             </div>
                         </div>
@@ -139,9 +151,10 @@
         <section class="conheca-section">
             <h2 class="conheca-h2">Impacto Esperado</h2>
             <p class="conheca-lead">
-                A InnovaMind busca criar um ecossistema onde ideias se transformam em projetos sólidos, conectando
-                talentos, empresas, instituições e comunidades. O objetivo é gerar impacto positivo, colaboração,
-                oportunidades e desenvolvimento social.
+                A InnovaMind busca gerar impacto positivo ao aproximar pessoas, ideias e oportunidades. Esperamos
+                fortalecer a colaboração, ampliar o acesso ao conhecimento, incentivar a inovação e apoiar projetos que
+                beneficiem comunidades. O objetivo é criar um ambiente onde cada contribuição gera crescimento coletivo
+                e transforma ideias em resultados reais.
             </p>
         </section>
 

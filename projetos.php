@@ -57,7 +57,10 @@ $queryString = "categoria=" . urlencode($categoriaSelecionada)
     </nav>
 
     <main class="secao-projetos container my-5">
-        <h1 class="titulo-pagprojetos text-center mb-4">Projetos e Ideias da Comunidade</h1>
+        <h1 class="titulo-pagprojetos text-center">Projetos e Ideias da Comunidade</h1>
+        <p class="projetos-subtitulo text-center">
+            Projetos e ideias criadas e compartilhadas por nossa comunidade
+        </p>
 
         <form method="get" class="mb-5">
             <div class="filtros-projetos">

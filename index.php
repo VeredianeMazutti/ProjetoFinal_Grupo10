@@ -81,7 +81,8 @@
                             <i class="bi bi-people fs-1 mb-3"></i>
                             <h5 class="titulo-pilar">Força Coletiva</h5>
                             <p class="texto-pilar">
-                                Empresas, profissionais e comunidade apoiam iniciativas e recebem reconhecimento.
+                                Empresas, profissionais e comunidade se unem para apoiar iniciativas e transformar
+                                colaboração em reconhecimento.
                             </p>
                         </div>
                     </div>

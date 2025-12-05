@@ -24,15 +24,21 @@
     ?>
 
     <main class="my-4">
-        <h1 class="titulo-equipe text-center my-4">
-            Conheça nossa <span class="roxo">Equipe</span>
-        </h1>
+        <section class="text-center">
+            <h1 class="titulo-equipe">
+                Conheça nossa <span class="roxo">Equipe</span>
+            </h1>
+            <p class="conheca-subtitulo">
+                Profissionais unidos para fazer a inovação acontecer
+            </p>
+        </section>
 
         <div class="container-equipe my-5">
 
             <div class="integrantes">
                 <img src="images/verediane.png" alt="Verediane Mazutti Filomeno">
-                <a href="https://www.linkedin.com/in/verediane-mazutti-filomeno-38a15935a/" target="_blank">Verediane Mazutti Filomeno</a>
+                <a href="https://www.linkedin.com/in/verediane-mazutti-filomeno-38a15935a/" target="_blank">Verediane
+                    Mazutti Filomeno</a>
                 <p>Técnica em Informática | Desenvolvedora Web</p>
                 <a href="mailto:verediane.m.f@gmail.com">verediane.m.f@gmail.com</a>
             </div>
