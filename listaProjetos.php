@@ -57,7 +57,6 @@ require_once __DIR__ . "/verifica_acesso.php";
 
                             <td class="text-center">
                                 <div class="d-flex gap-1 justify-content-center">
-                                    <!-- Botão editar -->
 
                                     <form action="cadProjeto.php" method="post" class="d-flex">
                                         <input type="hidden" name="id" value="<?= $p->id ?>">

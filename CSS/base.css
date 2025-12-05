@@ -32,12 +32,11 @@ main {
 .navbar .logo {
   font-size: 30px;
   font-weight: bold;
-  font-family: 'Segoe UI', cursive;
+  font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
   background: linear-gradient(90deg, #53017F, #893ECB);
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-
 
 .main-nav {
   list-style: none;
@@ -175,8 +174,6 @@ main {
 .foto-perfil:hover {
   transform: scale(1.05);
 }
-
-
 
 .footer {
   background: linear-gradient(90deg, #53017F, #53017F, #893ECB);

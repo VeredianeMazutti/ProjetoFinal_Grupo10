@@ -38,8 +38,8 @@ foreach ($lista as $item) {
         </div>
 
         <?php if (empty($lista)): ?>
-            <div class="alert alert-warning text-center">
-                Nenhum edital cadastrado no momento.
+            <div class="alert alert-dark">
+                Nenhum edital externo cadastrado no momento.
             </div>
         <?php else: ?>
 

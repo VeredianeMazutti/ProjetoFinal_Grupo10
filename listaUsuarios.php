@@ -51,25 +51,27 @@
                             <td class="text-center"><?= $usuario->nomeCompleto ?></td>
                             <td class="text-center"><?= $usuario->email ?></td>
 
-                            <td class="d-flex gap-1 justify-content-center">
+                            <td class="text-center">
+                                <div class="d-flex gap-1 justify-content-center">
+                                    <form action="cadUsuario.php" method="post" class="d-flex">
+                                        <input type="hidden" name="id" value="<?= $usuario->id ?>">
+                                        <button name="btnEditar" class="btn btn-primary btn-sm" type="submit" title="Editar"
+                                            onclick="return confirm('Tem certeza que deseja editar este usuário?');">
+                                            <i class="bi bi-pencil-square"></i>
+                                        </button>
+                                    </form>
 
-                                <form action="cadUsuario.php" method="post" class="d-flex">
-                                    <input type="hidden" name="id" value="<?= $usuario->id ?>">
-                                    <button name="btnEditar" class="btn btn-primary btn-sm" type="submit" title="Editar"
-                                        onclick="return confirm('Tem certeza que deseja editar este usuário?');">
-                                        <i class="bi bi-pencil-square"></i>
-                                    </button>
-                                </form>
-
-                                <form action="dbUsuario.php" method="post" class="d-flex">
-                                    <input type="hidden" name="id" value="<?= $usuario->id ?>">
-                                    <button name="btnDeletar" class="btn btn-danger btn-sm" type="submit" title="Deletar"
-                                        onclick="return confirm('Tem certeza que deseja deletar este usuário?');">
-                                        <i class="bi bi-trash"></i>
-                                    </button>
-                                </form>
-
+                                    <form action="dbUsuario.php" method="post" class="d-flex">
+                                        <input type="hidden" name="id" value="<?= $usuario->id ?>">
+                                        <button name="btnDeletar" class="btn btn-danger btn-sm" type="submit"
+                                            title="Deletar"
+                                            onclick="return confirm('Tem certeza que deseja deletar este usuário?');">
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+                                    </form>
+                                </div>
                             </td>
+
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
