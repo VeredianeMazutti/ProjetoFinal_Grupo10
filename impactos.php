@@ -42,8 +42,6 @@
         <?php require_once "_parts/_footer.php"; ?>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
-
     <!-- VLibras -->
     <div vw class="enabled">
         <div vw-access-button class="active"></div>

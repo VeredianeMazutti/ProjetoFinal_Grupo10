@@ -79,8 +79,6 @@
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
-
     <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
     <script>
         new window.VLibras.Widget('https://vlibras.gov.br/app');
