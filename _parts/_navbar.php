@@ -201,8 +201,8 @@ $current = basename($_SERVER['PHP_SELF']);
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item <?= ($current == 'listaApoiadores.php') ? 'active' : '' ?>"
                                     href="listaApoiadores.php">Lista Apoiadores</a></li>
-                            <li><a class="dropdown-item <?= ($current == 'listaEducacoop.php') ? 'active' : '' ?>"
-                                    href="listaEducacoop.php">Lista EducaCoop</a></li>
+                            <li><a class="dropdown-item <?= ($current == 'listaEducaCoop.php') ? 'active' : '' ?>"
+                                    href="listaEducaCoop.php">Lista EducaCoop</a></li>
                             <li><a class="dropdown-item <?= ($current == 'listaEditaisExternos.php') ? 'active' : '' ?>"
                                     href="listaEditaisExternos.php">Lista Editais Externos</a></li>
                             <li><a class="dropdown-item <?= ($current == 'listaEditaisInternos.php') ? 'active' : '' ?>"
