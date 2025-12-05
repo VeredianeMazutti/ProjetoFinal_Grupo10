@@ -35,6 +35,7 @@ else
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="CSS/baseSite.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="CSS/baseSite.css">
     <link rel="shortcut icon" href="images/logoInnovamind.png" type="image/x-icon">
     <title><?= htmlspecialchars($EditalInterno->titulo) ?></title>
@@ -135,11 +136,15 @@ else
 
 
                 <?php if ($EditalInterno->status === "Aberto"): ?>
-                    <a href="cadInscricaoEdital.php?id=<?= $EditalInterno->idEditalInterno ?>" class="btn-inscricao">
-                        Inscrever-se neste Edital
-                    </a>
+                    <div class="d-flex gap-2 justify-content-start mt-3">
+                        <a href="cadInscricaoEdital.php?id=<?= $EditalInterno->idEditalInterno ?>" class="btn-inscricao">
+                            Inscrever-se neste Edital
+                        </a>
+                        <a href="editaisInternos.php" class="btn btn-voltarEdital">Voltar</a>
+                    </div>
                 <?php endif; ?>
             </section>
+
 
         </div>
 

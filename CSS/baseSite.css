@@ -757,10 +757,10 @@ h2.titulo-apoiadores {
 
 .apoiadores-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, 300px);
+    grid-template-columns: repeat(3, 300px);
     gap: 25px;
     justify-content: center;
-    max-width: 900px;
+    max-width: 960px;
     margin: 0 auto;
 }
 
@@ -1115,7 +1115,7 @@ h1.titulo-impacto {
 }
 
 .card-editais {
-    background: #292828;
+    background: #171717;
     border-radius: 18px;
     padding: 25px;
     height: 100%;
@@ -1162,7 +1162,7 @@ h1.titulo-impacto {
 }
 
 .card-edital {
-    background: #000;
+    background: #171717;
     border-radius: 12px;
     padding: 25px;
     margin-bottom: 35px;
@@ -1267,7 +1267,6 @@ h1.titulo-impacto {
     font-weight: 600;
     display: block;
     width: fit-content;
-    margin: 25px auto 0;
     transition: .2s;
     text-decoration: none;
 }
@@ -1281,6 +1280,74 @@ h1.titulo-impacto {
     font-size: 22px;
     font-weight: 550;
 }
+
+.btn-voltarEdital {
+    background: #4a4359;
+    color: #e0d7f6;
+    font-weight: 600;
+    padding: 12px 32px;
+    font-size: 17px;
+    border-radius: 12px;
+    border: none;
+    transition: all 0.25s ease-in-out;
+    text-decoration: none !important;
+    display: inline-block;
+}
+
+.btn-voltarEdital:hover {
+    background: #5a5270;
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+
+.nav-tabs {
+    border: none;
+    position: relative;
+}
+
+.nav-tabs::after {
+    content: "";
+    display: block;
+    width: 70%;
+    height: 2px;
+    border-radius: 50px;
+    opacity: 0.2;
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+}
+
+.nav-tabs .nav-link {
+    font-family: "Segoe UI", sans-serif;
+    color: #fff;
+    background: rgba(20, 20, 30, 0.6);
+    border: 1px solid rgba(61, 21, 110, 0.3);
+    border-bottom: none;
+    padding: 10px 22px;
+    border-radius: 12px 12px 0 0;
+    margin: 0 6px;
+    transition: 0.3s;
+}
+
+.nav-tabs .nav-link:hover {
+    background: rgba(40, 30, 70, 0.8);
+    color: #d2c8ff;
+}
+
+.nav-tabs .nav-link.active {
+    background: #7846ff;
+    color: #fff;
+    border-color: #4d2f83;
+    font-weight: 700;
+    box-shadow: 0 0 15px rgba(120, 60, 255, 0.6);
+}
+
+.nav-tabs {
+    margin-bottom: 40px !important;
+}
+
 
 /*ModalProjeto*/
 
@@ -2155,5 +2222,18 @@ nav img {
 @media (max-width: 960px) {
     .container-equipe {
         grid-template-columns: 1fr;
+    }
+}
+
+/*Apoiadores*/
+@media (max-width: 1000px) {
+    .apoiadores-grid {
+        grid-template-columns: repeat(2, 300px);
+    }
+}
+
+@media (max-width: 650px) {
+    .apoiadores-grid {
+        grid-template-columns: repeat(1, 300px);
     }
 }

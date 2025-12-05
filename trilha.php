@@ -24,6 +24,7 @@ $aba = $_GET['aba'] ?? 'apresentacao';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="CSS/baseSite.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="CSS/baseSite.css">
     <link rel="shortcut icon" href="images/logoInnovamind.png" type="image/x-icon">
     <title><?= htmlspecialchars($trilha->titulo); ?> - Trilha de Aprendizado</title>
@@ -102,7 +103,8 @@ $aba = $_GET['aba'] ?? 'apresentacao';
                 <p><strong>Pontuação mínima:</strong> 70%</p>
 
                 <div class="text-center mt-4">
-                    <a href="avaliacao.php?id_trilha=<?= $trilha->id_trilha; ?>" class="btn btn-success px-4">Iniciar
+                    <a href="avaliacao.php?id_trilha=<?= $trilha->id_trilha; ?>"
+                        class="btn btn-certificado px-4">Iniciar
                         Avaliação</a>
                 </div>
             </div>
