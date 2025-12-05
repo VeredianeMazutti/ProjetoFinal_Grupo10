@@ -378,3 +378,56 @@ input[type="file"]::file-selector-button {
     background: linear-gradient(90deg, #491874, #9F6ACE, #8B45AA);
     transform: scale(1.03);
 }
+
+/*Lgpd*/
+
+.lgpd-container {
+    background-color: #2c1b47;
+    border: 1px solid #5e2ca5;
+    color: #e0d8f7;
+    padding: 1rem;
+    border-radius: 0.25rem;
+    margin-top: 1rem;
+}
+
+.lgpd-title {
+    margin-bottom: 1rem;
+    color: #b387ff;
+}
+
+.lgpd-checkbox {
+    border-color: #b387ff;
+    background-color: transparent;
+}
+
+.lgpd-label {
+    color: #e0d8f7;
+}
+
+.lgpd-link {
+    color: #8ab4ff;
+    text-decoration: underline;
+}
+
+.lgpd-modal-content {
+    background-color: #2c1b47;
+    color: #e0d8f7;
+    border: 1px solid #5e2ca5;
+}
+
+.lgpd-modal-header {
+    border-bottom: 1px solid #5e2ca5;
+}
+
+.lgpd-modal-title {
+    color: #b387ff;
+}
+
+.lgpd-modal-body {
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+.lgpd-modal-footer {
+    border-top: 1px solid #5e2ca5;
+}

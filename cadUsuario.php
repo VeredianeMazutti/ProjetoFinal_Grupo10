@@ -8,34 +8,6 @@
     <link rel="shortcut icon" href="images/logoInnovamind.png" type="image/x-icon">
     <link rel="stylesheet" href="CSS/baseAdministracao.css?v=<?php echo time(); ?>">
     <title>Cadastrar Usuário</title>
-    <style>
-/* ====== CHECKBOX PERSONALIZADO INNOVAMIND ====== */
-.form-check-input {
-  width: 1.2em;
-  height: 1.2em;
-  border: 2px solid #b387ff;
-  background-color: transparent;
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
-}
-
-.form-check-input:checked {
-  background-color: #b387ff !important; /* lilás */
-  border-color: #b387ff !important;
-  box-shadow: 0 0 5px #c59cff;
-}
-
-.form-check-input:focus {
-  box-shadow: 0 0 5px #b387ff !important;
-  outline: none;
-}
-
-.form-check-label {
-  color: #e0d8f7;
-  margin-left: 5px;
-}
-</style>
-
 </head>
 
 <body>
@@ -152,79 +124,72 @@
                 <p id="msgConfirmacao"></p>
             </div>
 
-            <!-- ===================================================== -->
-<!--          LGPD - Termos e Política (Com Modais)        -->
-<!-- ===================================================== -->
-<div class="col-12 mt-4 p-4 rounded" 
-     style="background-color: #2c1b47; border: 1px solid #5e2ca5; color: #e0d8f7;">
 
-    <h5 class="mb-3" style="color: #b387ff;">📜 Termos e Privacidade</h5>
+            <div class="lgpd-container">
 
-    <div class="form-check mb-2">
-        <input class="form-check-input" type="checkbox" id="aceitouTermos" name="aceitouTermos" required
-               style="border-color: #b387ff; background-color: transparent;">
-        <label class="form-check-label" for="aceitouTermos" style="color: #e0d8f7;">
-            Declaro que li e aceito os 
-            <a href="#" data-bs-toggle="modal" data-bs-target="#modalTermos"
-               style="color: #8ab4ff; text-decoration: underline;">Termos de Uso</a>.
-        </label>
-    </div>
+                <h5 class="lgpd-title">📜 Termos e Privacidade</h5>
 
-    <div class="form-check">
-        <input class="form-check-input" type="checkbox" id="aceitouPolitica" name="aceitouPolitica" required
-               style="border-color: #b387ff; background-color: transparent;">
-        <label class="form-check-label" for="aceitouPolitica" style="color: #e0d8f7;">
-            Concordo com a 
-            <a href="#" data-bs-toggle="modal" data-bs-target="#modalPolitica"
-               style="color: #8ab4ff; text-decoration: underline;">Política de Privacidade (LGPD)</a>.
-        </label>
-    </div>
+                <div class="form-check mb-2">
+                    <input class="form-check-input lgpd-checkbox" type="checkbox" id="aceitouTermos"
+                        name="aceitouTermos" required>
+                    <label class="form-check-label lgpd-label" for="aceitouTermos">
+                        Declaro que li e aceito os
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#modalTermos" class="lgpd-link">Termos de
+                            Uso</a>.
+                    </label>
+                </div>
 
-</div>
+                <div class="form-check">
+                    <input class="form-check-input lgpd-checkbox" type="checkbox" id="aceitouPolitica"
+                        name="aceitouPolitica" required>
+                    <label class="form-check-label lgpd-label" for="aceitouPolitica">
+                        Concordo com a
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#modalPolitica" class="lgpd-link">Política de
+                            Privacidade (LGPD)</a>.
+                    </label>
+                </div>
 
-<!-- ===================================================== -->
-<!--              MODAL - TERMOS DE USO                    -->
-<!-- ===================================================== -->
-<div class="modal fade" id="modalTermos" tabindex="-1" aria-labelledby="modalTermosLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
-    <div class="modal-content" style="background-color:#2c1b47; color:#e0d8f7; border:1px solid #5e2ca5;">
-      <div class="modal-header" style="border-bottom:1px solid #5e2ca5;">
-        <h5 class="modal-title" id="modalTermosLabel" style="color:#b387ff;">📄 Termos de Uso — Innovamind</h5>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fechar"></button>
-      </div>
-      <div class="modal-body" style="max-height:70vh; overflow-y:auto;">
-        <?php include "termos.php"; ?>
-      </div>
-      <div class="modal-footer" style="border-top:1px solid #5e2ca5;">
-        <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Fechar</button>
-      </div>
-    </div>
-  </div>
-</div>
+            </div>
 
-<!-- ===================================================== -->
-<!--              MODAL - POLÍTICA DE PRIVACIDADE          -->
-<!-- ===================================================== -->
-<div class="modal fade" id="modalPolitica" tabindex="-1" aria-labelledby="modalPoliticaLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
-    <div class="modal-content" style="background-color:#2c1b47; color:#e0d8f7; border:1px solid #5e2ca5;">
-      <div class="modal-header" style="border-bottom:1px solid #5e2ca5;">
-        <h5 class="modal-title" id="modalPoliticaLabel" style="color:#b387ff;">🔒 Política de Privacidade — LGPD</h5>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fechar"></button>
-      </div>
-      <div class="modal-body" style="max-height:70vh; overflow-y:auto;">
-        <?php include "politica.php"; ?>
-      </div>
-      <div class="modal-footer" style="border-top:1px solid #5e2ca5;">
-        <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Fechar</button>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- ===================================================== -->
-<!--           FIM DOS MODAIS - TERMOS E POLÍTICA          -->
-<!-- ===================================================== -->
+            <div class="modal fade" id="modalTermos" tabindex="-1" aria-labelledby="modalTermosLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+                    <div class="modal-content lgpd-modal-content">
+                        <div class="modal-header lgpd-modal-header">
+                            <h5 class="modal-title lgpd-modal-title" id="modalTermosLabel">📄 Termos de Uso — Innovamind
+                            </h5>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                                aria-label="Fechar"></button>
+                        </div>
+                        <div class="modal-body lgpd-modal-body">
+                            <?php include "termos.php"; ?>
+                        </div>
+                        <div class="modal-footer lgpd-modal-footer">
+                            <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Fechar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
+            <div class="modal fade" id="modalPolitica" tabindex="-1" aria-labelledby="modalPoliticaLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+                    <div class="modal-content lgpd-modal-content">
+                        <div class="modal-header lgpd-modal-header">
+                            <h5 class="modal-title lgpd-modal-title" id="modalPoliticaLabel">🔒 Política de Privacidade
+                                — LGPD</h5>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                                aria-label="Fechar"></button>
+                        </div>
+                        <div class="modal-body lgpd-modal-body">
+                            <?php include "politica.php"; ?>
+                        </div>
+                        <div class="modal-footer lgpd-modal-footer">
+                            <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Fechar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <div class="col-12 mt-4">
                 <button type="submit" name="btnGravar" id="btnSalvar" class="btn-cad" disabled>
@@ -245,23 +210,12 @@
     <script src="JS/senhaForte.js"></script>
     <script src="JS/formTheme.js"></script>
     <script src="JS/foto.js"></script>
+    <script src="JS/politicasTermos.js"></script>
 
     <script>
         $(document).ready(function () {
             $('#telefone').mask('(00) 00000-0000');
         });
-
-        // HABILITAR BOTÃO SOMENTE SE OS CHECKBOXES DE LGPD FOREM MARCADOS
-        const btn = document.getElementById("btnSalvar");
-        const termos = document.getElementById("aceitouTermos");
-        const politica = document.getElementById("aceitouPolitica");
-
-        function validarLGPD() {
-            btn.disabled = !(termos.checked && politica.checked);
-        }
-
-        termos.addEventListener("change", validarLGPD);
-        politica.addEventListener("change", validarLGPD);
     </script>
 
     <!-- VLibras -->
