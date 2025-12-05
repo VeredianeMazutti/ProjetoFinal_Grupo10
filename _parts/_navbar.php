@@ -88,7 +88,7 @@ $current = basename($_SERVER['PHP_SELF']);
                             $current == 'cadastrarProjeto.php' ||
                             $current == 'meusProjetos.php' ||
                             $current == 'impactos.php' ||
-                            $current == 'educacoop.php'
+                            $current == 'educaCoop.php'
                         ) ? 'active' : '' ?>" href="#" data-bs-toggle="dropdown">
                             Projetos
                         </a>
@@ -102,8 +102,8 @@ $current = basename($_SERVER['PHP_SELF']);
                                     href="meusProjetos.php">Meus Projetos</a></li>
                             <li><a class="dropdown-item <?= ($current == 'impactos.php') ? 'active' : '' ?>"
                                     href="impactos.php">Impacto da Comunidade</a></li>
-                            <li><a class="dropdown-item <?= ($current == 'educacoop.php') ? 'active' : '' ?>"
-                                    href="educacoop.php">EducaCoop</a></li>
+                            <li><a class="dropdown-item <?= ($current == 'educaCoop.php') ? 'active' : '' ?>"
+                                    href="educaCoop.php">EducaCoop</a></li>
                         </ul>
                     </li>
 
