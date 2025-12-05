@@ -47,7 +47,7 @@
             </div>
 
             <div class="integrantes">
-                <img src="images/Integrantes/default-user.png" alt="Italo Jaruzo Moraes">
+                <img src="images/default-user.png" alt="Italo Jaruzo Moraes">
                 <a href="https://www.linkedin.com/in/italo-perfil" target="_blank">Ítalo Jaruzo Moraes</a>
                 <p>Analista de Qualidade | Desenvolvedor</p>
                 <a href="mailto:italo@email.com">itajaruzo@gmail.com </a>
