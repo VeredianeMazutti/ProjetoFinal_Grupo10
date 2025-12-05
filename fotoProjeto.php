@@ -60,6 +60,7 @@ $fotos = $f->fotosProjeto($projeto->id);
             <?php endforeach; ?>
         </div>
     </main>
+    
     <footer>
         <?php require_once "_parts/_footer.php"; ?>
     </footer>

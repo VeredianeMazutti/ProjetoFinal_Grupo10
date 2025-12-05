@@ -1,4 +1,8 @@
 <?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
 spl_autoload_register(function ($class) {
     require_once "Classes/{$class}.class.php";
 });
@@ -170,8 +174,8 @@ $aba = $_GET['aba'] ?? 'apresentacao';
         </div>
 
         <div class="text-center mt-5">
-            <a href="EducaCoop.php" class="btn btn-outline-purple px-5">
-                <i class="bi bi-arrow-left-circle me-2"></i>Voltar para Trilha
+            <a href="educaCoop.php" class="btn btn-outline-purple px-5">
+                <i class="bi bi-arrow-left-circle me-2"></i>Voltar para Todas as Trilhas
             </a>
         </div>
     </main>

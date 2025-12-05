@@ -67,7 +67,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="CSS/baseAdministracao.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="CSS/baseSite.css?v=<?php echo time(); ?>">
     <link rel="shortcut icon" href="images/logoInnovamind.png" type="image/x-icon">
     <title>Cadastro da Avaliação</title>
 </head>
@@ -77,8 +77,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <?php require_once "_parts/_navbar.php"; ?>
     </navbar>
 
-    <main class="container mt-3">
-        <h3 class="titulo-cad text-center">
+    <main class="container my-4">
+        <h3 class="titulo-cad text-center my-4">
             <?= htmlspecialchars($trilhaData->titulo) ?>
             - Cadastro da Avaliação
         </h3>
@@ -134,8 +134,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
             <?php endfor; ?>
 
-            <button type="submit" class="btn btn-success">Salvar Avaliação</button>
-            <a href="trilha.php?id_trilha=<?= $trilhaData->id_trilha ?>" class="btn btn-secondary">Voltar</a>
+            <button type="submit" class="btn btn-certificado">Salvar Avaliação</button>
+            <a href="trilha.php?id_trilha=<?= $trilhaData->id_trilha ?>" class="btn btn-voltarEdital">Voltar</a>
         </form>
     </main>
 
@@ -144,7 +144,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="JS/formTheme.js"></script>
 
        <!-- VLibras -->
     <div vw class="enabled">

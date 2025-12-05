@@ -1664,6 +1664,13 @@ h5.fw-bold {
     margin-bottom: 8px;
 }
 
+.titulo-cad {
+    font-family: "Trebuchet MS";
+    color: #fff;
+    font-size: 36px;
+    font-weight: 700;
+}
+
 /*Index*/
 @media (max-width: 768px) {
 
