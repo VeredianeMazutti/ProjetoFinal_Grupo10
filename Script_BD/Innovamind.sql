@@ -1,5 +1,6 @@
 DROP SCHEMA IF EXISTS Innovamind_ProjetoFinal;
-CREATE SCHEMA IF NOT EXISTS Innovamind_ProjetoFinal  DEFAULT CHARACTER SET utf8mb4;
+
+CREATE SCHEMA IF NOT EXISTS Innovamind_ProjetoFinal DEFAULT CHARACTER SET utf8mb4;
 USE Innovamind_ProjetoFinal;
 
 CREATE TABLE usuario (
@@ -8,26 +9,40 @@ CREATE TABLE usuario (
     dataNascimento DATE NOT NULL,
     telefone VARCHAR(20) NOT NULL,
     areaAtuacao VARCHAR(150) NOT NULL,
-    nomeExibicao VARCHAR(70) NOT NULL UNIQUE,
+    nomeExibicao VARCHAR(20) NOT NULL UNIQUE,
     foto VARCHAR(255),
     email VARCHAR(100) NOT NULL UNIQUE,
     senha VARCHAR(255) NOT NULL,
     perfil ENUM('admin', 'usuario') NOT NULL DEFAULT 'usuario',
+    aceitouTermos TINYINT(1) NOT NULL DEFAULT 0,
+    aceitouPolitica TINYINT(1) NOT NULL DEFAULT 0,
+    dataAceite DATETIME NULL,
     criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     atualizado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
 
-INSERT INTO usuario (nomeCompleto, dataNascimento, telefone, areaAtuacao, nomeExibicao, email, senha, perfil)
-VALUES (
-    'Administrador',
-    '1990-01-01',
-    '11999999999',
-    'Gestão',
-    'admin',
-    'admin@innovamind.com',
-    '$2y$10$vNPWwCfCO5voTptPMNo0l..uWHZmJah1PvtlrdoGAs1BeTJJfveni',
-    'admin'
-);
+INSERT INTO
+    usuario (
+        nomeCompleto,
+        dataNascimento,
+        telefone,
+        areaAtuacao,
+        nomeExibicao,
+        email,
+        senha,
+        perfil
+    )
+VALUES
+    (
+        'Administrador',
+        '1990-01-01',
+        '11999999999',
+        'Gestão',
+        'admin',
+        'siteinnovamind@gmail.com',
+        '$2y$10$vNPWwCfCO5voTptPMNo0l..uWHZmJah1PvtlrdoGAs1BeTJJfveni',
+        'admin'
+    );
 
 CREATE TABLE projetos (
     id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -37,8 +52,8 @@ CREATE TABLE projetos (
     nomeColaboradores TEXT,
     nomeInstituicao VARCHAR (150),
     emailProjeto VARCHAR(100) NOT NULL,
-        localizacaoEstado ENUM(
-		'acre',
+    localizacaoEstado ENUM(
+        'acre',
         'alagoas',
         'amapa',
         'amazonas',
@@ -94,11 +109,8 @@ CREATE TABLE projetos (
     linksProjeto TEXT,
     visualizacoes INT UNSIGNED DEFAULT 0,
     dataCadastro TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    CONSTRAINT fk_projeto_usuario FOREIGN KEY (fk_usuario) REFERENCES usuario(id)
-        ON DELETE CASCADE
-        ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
+    CONSTRAINT fk_projeto_usuario FOREIGN KEY (fk_usuario) REFERENCES usuario(id) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
 
 CREATE TABLE fotoProjeto (
     id_foto INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -107,21 +119,18 @@ CREATE TABLE fotoProjeto (
     legenda VARCHAR(255),
     alternativo VARCHAR(255),
     data_upload DATETIME DEFAULT CURRENT_TIMESTAMP,
-    CONSTRAINT fk_foto_projeto FOREIGN KEY (fk_projeto)
-        REFERENCES projetos(id)
-        ON DELETE CASCADE
-        ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+    CONSTRAINT fk_foto_projeto FOREIGN KEY (fk_projeto) REFERENCES projetos(id) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
 
 CREATE TABLE projetoCurtidas (
     idCurtida INT AUTO_INCREMENT PRIMARY KEY,
     fk_idProjeto INT UNSIGNED NOT NULL,
-    fk_idUsuario INT UNSIGNED,       -- pode ser NULL para visitantes
-    visitanteHash VARCHAR(255),      -- identificador único do visitante (cookie/hash)
+    fk_idUsuario INT UNSIGNED,
+    visitanteHash VARCHAR(255),
     UNIQUE KEY unico_usuario_projeto (fk_idProjeto, fk_idUsuario, visitanteHash),
     FOREIGN KEY (fk_idProjeto) REFERENCES projetos(id) ON DELETE CASCADE,
     FOREIGN KEY (fk_idUsuario) REFERENCES usuario(id) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
 
 CREATE TABLE trilha (
     id_trilha INT AUTO_INCREMENT PRIMARY KEY,
@@ -133,7 +142,6 @@ CREATE TABLE trilha (
     introducao LONGTEXT NULL,
     objetivos LONGTEXT NULL,
     conteudo LONGTEXT NULL,
-    imagemCapa VARCHAR(255) NULL,
     pontuacaoMinima INT DEFAULT 0,
     perguntasTrilha LONGTEXT NULL,
     mensagemConclusao LONGTEXT NULL,
@@ -144,7 +152,7 @@ CREATE TABLE trilha (
     ativoTrilha TINYINT(1) DEFAULT 1,
     data_criacao DATETIME DEFAULT CURRENT_TIMESTAMP,
     data_atualizacao DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
 
 CREATE TABLE trilha_usuario (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -154,7 +162,7 @@ CREATE TABLE trilha_usuario (
     certificado VARCHAR(255),
     data_conclusao DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (id_trilha) REFERENCES trilha(id_trilha)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
 
 CREATE TABLE apoiadores (
     idApoiadores INT AUTO_INCREMENT PRIMARY KEY,
@@ -165,13 +173,13 @@ CREATE TABLE apoiadores (
     site VARCHAR(255) DEFAULT NULL,
     instagram VARCHAR(255) DEFAULT NULL,
     linkedin VARCHAR(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
 
 CREATE TABLE faq (
     idFaq INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     pergunta VARCHAR(450) NOT NULL,
     resposta TEXT NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
 
 CREATE TABLE editalinterno (
     idEditalInterno INT AUTO_INCREMENT PRIMARY KEY,
@@ -191,8 +199,7 @@ CREATE TABLE editalinterno (
     responsavel VARCHAR(255),
     contato VARCHAR(255),
     observacoes TEXT
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
 
 CREATE TABLE inscricaoedital (
     idInscricao INT AUTO_INCREMENT PRIMARY KEY,
@@ -206,21 +213,19 @@ CREATE TABLE inscricaoedital (
     resumo TEXT NOT NULL,
     objetivo TEXT NOT NULL,
     relato TEXT NOT NULL,
-	status VARCHAR(20) NOT NULL,
+    status VARCHAR(20) NOT NULL,
     dataInscricao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    CONSTRAINT fk_inscricao_edital
-        FOREIGN KEY (idEditalInterno) REFERENCES editalinterno(idEditalInterno)
-        ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+    CONSTRAINT fk_inscricao_edital FOREIGN KEY (idEditalInterno) REFERENCES editalinterno(idEditalInterno) ON DELETE CASCADE
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
 
 CREATE TABLE editaisexternos (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    idEditalExterno INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(255) NOT NULL,
     categoria VARCHAR(50) NOT NULL,
     descricao VARCHAR(100) NOT NULL,
     link VARCHAR(500) NOT NULL,
     dataCadastro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
 
 CREATE TABLE RecuperacaoSenha (
     idRecuperacaoSenha INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
