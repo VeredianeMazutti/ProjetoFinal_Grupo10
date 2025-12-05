@@ -5,6 +5,21 @@ spl_autoload_register(function ($class) {
 
 $Edital = new EditalInterno();
 $lista = $Edital->searchAll();
+
+/* Separando por status */
+$abertos = [];
+$analise = [];
+$encerrados = [];
+
+foreach ($lista as $e) {
+    if ($e->status === "Aberto") {
+        $abertos[] = $e;
+    } elseif ($e->status === "Em análise" || $e->status === "Em analise") {
+        $analise[] = $e;
+    } elseif ($e->status === "Encerrado") {
+        $encerrados[] = $e;
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -14,9 +29,10 @@ $lista = $Edital->searchAll();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="CSS/baseSite.css">
+    <link rel="stylesheet" href="CSS/baseSite.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="shortcut icon" href="images/logoInnovamind.png" type="image/x-icon">
-    <title>Editais</title>
+    <title>Editais Internos</title>
 </head>
 
 <body>
@@ -25,59 +41,102 @@ $lista = $Edital->searchAll();
         <?php require_once "_parts/_navbar.php"; ?>
     </navbar>
 
-    <main class="container my-5 editais-container">
+    <main class="container my-5">
         <h2 class="titulo-editais text-center my-3">Editais Internos</h2>
 
-        <?php if (count($lista) == 0): ?>
-            <p class="text-muted mt-4">Nenhum edital cadastrado.</p>
-        <?php endif; ?>
+        <ul class="nav nav-tabs justify-content-center mb-4">
+            <li class="nav-item">
+                <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#tab1">Abertos</button>
+            </li>
+            <li class="nav-item">
+                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab2">Em análise</button>
+            </li>
+            <li class="nav-item">
+                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab3">Encerrados</button>
+            </li>
+        </ul>
 
-        <?php foreach ($lista as $Edital): ?>
+        <div class="tab-content">
 
-            <?php
-            $statusClass = "";
-            if ($Edital->status == "Aberto")
-                $statusClass = "status-aberto";
-            elseif ($Edital->status == "Encerrado")
-                $statusClass = "status-encerrado";
-            else
-                $statusClass = "status-analise";
+            <div class="tab-pane fade show active apoiadores-grid" id="tab1">
+                <?php foreach ($abertos as $Edital): ?>
 
-            $dataAbertura = date("d/m/y", strtotime($Edital->dataAbertura));
-            $horaAbertura = date("H:i", strtotime($Edital->dataAbertura));
+                    <?php
+                    $statusClass = "status-aberto";
+                    $dataAbertura = date("d/m/y", strtotime($Edital->dataAbertura));
+                    $dataEncerramento = date("d/m/y", strtotime($Edital->dataEncerramento));
+                    ?>
 
-            $dataEncerramento = date("d/m/y", strtotime($Edital->dataEncerramento));
-            $horaEncerramento = date("H:i", strtotime($Edital->dataEncerramento));
-            ?>
+                    <div class="card-edital">
+                        <p class="mb-1 <?= $statusClass ?>"><i class="bi bi-check-circle"></i>
+                            <?= strtoupper($Edital->status) ?></p>
+                        <p class="titulo-edital mt-2"><?= htmlspecialchars($Edital->titulo) ?></p>
+                        <p class="desc"><?= htmlspecialchars($Edital->descResumida) ?></p>
+                        <p class="small text-secondary"><strong>De:</strong> <?= $dataAbertura ?> | <strong>Até:</strong>
+                            <?= $dataEncerramento ?></p>
+                        <a href="editalinterno.php?id=<?= $Edital->idEditalInterno ?>" class="btn btn-dark mt-2">Saiba
+                            mais</a>
+                    </div>
 
-            <div class="card-edital">
+                <?php endforeach; ?>
 
-                <p class="mb-1 <?= $statusClass ?>">
-                    <i class="bi bi-check-circle"></i> <?= strtoupper($Edital->status) ?>
-                </p>
-
-                <p class="titulo-edital mt-2">
-                    <?= htmlspecialchars($Edital->titulo) ?>
-                </p>
-
-                <p class="desc">
-                    <?= htmlspecialchars($Edital->descResumida) ?>
-                </p>
-
-                <p class="small text-secondary mb-1">
-                    <strong>Organização responsável:</strong> <?= htmlspecialchars($Edital->organizacao) ?>
-                </p>
-
-                <p class="small text-secondary">
-                    <strong>De:</strong> <?= $dataAbertura ?> |
-                    <strong>Até:</strong> <?= $dataEncerramento ?>
-                </p>
-
-                <a href="editalinterno.php?id=<?= $Edital->idEditalInterno ?>" class="btn btn-dark mt-2">
-                    Saiba mais
-                </a>
+                <?php if (count($abertos) == 0)
+                    echo '<p class="text-center text-muted">Nenhum edital aberto.</p>'; ?>
             </div>
-        <?php endforeach; ?>
+
+            <div class="tab-pane fade apoiadores-grid" id="tab2">
+                <?php foreach ($analise as $Edital): ?>
+
+                    <?php
+                    $statusClass = "status-analise";
+                    $dataAbertura = date("d/m/y", strtotime($Edital->dataAbertura));
+                    $dataEncerramento = date("d/m/y", strtotime($Edital->dataEncerramento));
+                    ?>
+
+                    <div class="card-edital">
+                        <p class="mb-1 <?= $statusClass ?>"><i class="bi bi-clock"></i> <?= strtoupper($Edital->status) ?>
+                        </p>
+                        <p class="titulo-edital mt-2"><?= htmlspecialchars($Edital->titulo) ?></p>
+                        <p class="desc"><?= htmlspecialchars($Edital->descResumida) ?></p>
+                        <p class="small text-secondary"><strong>De:</strong> <?= $dataAbertura ?> | <strong>Até:</strong>
+                            <?= $dataEncerramento ?></p>
+                        <a href="editalinterno.php?id=<?= $Edital->idEditalInterno ?>" class="btn btn-dark mt-2">Saiba
+                            mais</a>
+                    </div>
+
+                <?php endforeach; ?>
+
+                <?php if (count($analise) == 0)
+                    echo '<p class="text-center text-muted">Nenhum edital em análise.</p>'; ?>
+            </div>
+
+            <div class="tab-pane fade apoiadores-grid" id="tab3">
+                <?php foreach ($encerrados as $Edital): ?>
+
+                    <?php
+                    $statusClass = "status-encerrado";
+                    $dataAbertura = date("d/m/y", strtotime($Edital->dataAbertura));
+                    $dataEncerramento = date("d/m/y", strtotime($Edital->dataEncerramento));
+                    ?>
+
+                    <div class="card-edital">
+                        <p class="mb-1 <?= $statusClass ?>"><i class="bi bi-x-circle"></i>
+                            <?= strtoupper($Edital->status) ?></p>
+                        <p class="titulo-edital mt-2"><?= htmlspecialchars($Edital->titulo) ?></p>
+                        <p class="desc"><?= htmlspecialchars($Edital->descResumida) ?></p>
+                        <p class="small text-secondary"><strong>De:</strong> <?= $dataAbertura ?> | <strong>Até:</strong>
+                            <?= $dataEncerramento ?></p>
+                        <a href="editalinterno.php?id=<?= $Edital->idEditalInterno ?>" class="btn btn-dark mt-2">Saiba
+                            mais</a>
+                    </div>
+
+                <?php endforeach; ?>
+
+                <?php if (count($encerrados) == 0)
+                    echo '<p class="text-center text-muted">Nenhum edital encerrado.</p>'; ?>
+            </div>
+
+        </div>
     </main>
 
     <footer>

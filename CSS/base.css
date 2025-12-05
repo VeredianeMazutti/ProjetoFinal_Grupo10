@@ -18,12 +18,11 @@ main {
   flex: 1;
 }
 
-
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 40px;
+  padding: 20px 30px;
   border-bottom: 2px solid #53017F;
   position: sticky;
   top: 0;
@@ -31,7 +30,7 @@ main {
 }
 
 .navbar .logo {
-  font-size: 2rem;
+  font-size: 30px;
   font-weight: bold;
   font-family: 'Segoe UI', cursive;
   background: linear-gradient(90deg, #53017F, #893ECB);
@@ -208,25 +207,4 @@ main {
 .footer p {
   font-size: 0.9rem;
   margin: 0;
-}
-
-@media (max-width: 1500px) {
-  .navbar-expand-lg .navbar-collapse {
-    display: none !important;
-  }
-
-  .navbar-expand-lg .navbar-toggler {
-    display: block !important;
-  }
-}
-
-@media (min-width: 1501px) {
-  .navbar-expand-lg .navbar-collapse {
-    display: flex !important;
-    align-items: center;
-  }
-
-  .navbar-expand-lg .navbar-toggler {
-    display: none !important;
-  }
 }

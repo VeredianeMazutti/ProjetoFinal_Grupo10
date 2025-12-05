@@ -11,7 +11,7 @@ require_once __DIR__ . "/verifica_acesso.php";
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/2.3.4/css/dataTables.bootstrap5.min.css">
-    <link rel="stylesheet" href="CSS/baseAdministracao.css">
+    <link rel="stylesheet" href="CSS/baseAdministracao.css?v=<?php echo time(); ?>">
     <link rel="shortcut icon" href="images/logoInnovamind.png" type="image/x-icon">
     <title>FAQ</title>
 </head>
@@ -52,7 +52,7 @@ require_once __DIR__ . "/verifica_acesso.php";
                     $lista = $faq->listar();
 
                     foreach ($lista as $f):
-                    ?>
+                        ?>
                         <tr>
                             <td class="text-center"><?= $f->idFaq ?></td>
 
@@ -106,6 +106,20 @@ require_once __DIR__ . "/verifica_acesso.php";
     <script src="https://cdn.datatables.net/responsive/3.0.2/js/dataTables.responsive.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/3.0.2/js/responsive.bootstrap5.min.js"></script>
     <script src="JS/paginacao.js"></script>
+
+
+    <!-- VLibras -->
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
 
 </body>
 

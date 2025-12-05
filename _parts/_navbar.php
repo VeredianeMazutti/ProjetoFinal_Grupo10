@@ -20,8 +20,8 @@ $current = basename($_SERVER['PHP_SELF']);
         <div class="collapse navbar-collapse" id="navbarNav">
 
             <ul class="main-nav navbar-nav me-auto mb-2 mb-lg-0">
+                <?php if ($perfil === 'visitante'): ?>
 
-                <?php if ($perfil === 'visitante' || $perfil === 'usuario'): ?>
                     <li class="nav-item">
                         <a class="nav-link <?= ($current == 'index.php') ? 'active' : '' ?>" href="index.php">Home</a>
                     </li>
@@ -37,72 +37,116 @@ $current = basename($_SERVER['PHP_SELF']);
                     </li>
 
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                        <a class="nav-link dropdown-toggle <?= (
+                            $current == 'apoiadores.php' ||
+                            $current == 'sobreInnovamind.php' ||
+                            $current == 'nossaEquipe.php'
+                        ) ? 'active' : '' ?>" href="#" data-bs-toggle="dropdown">
                             Nossa Essência
                         </a>
 
                         <ul class="dropdown-menu">
-                            <li>
-                                <a class="dropdown-item <?= ($current == 'apoiadores.php') ? 'active' : '' ?>"
-                                    href="apoiadores.php">
-                                    Rede Innova
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item <?= ($current == 'sobreInnovamind.php') ? 'active' : '' ?>"
-                                    href="sobreInnovamind.php">
-                                    Conheça a Innovamind
-                                </a>
-                            </li>
-                             <li>
-                                <a class="dropdown-item <?= ($current == 'nossaEquipe.php') ? 'active' : '' ?>"
-                                    href="nossaEquipe.php">
-                                    Conheça nossa equipe
-                                </a>
-                            </li>
+                            <li><a class="dropdown-item <?= ($current == 'apoiadores.php') ? 'active' : '' ?>"
+                                    href="apoiadores.php">Rede Innova</a></li>
+
+                            <li><a class="dropdown-item <?= ($current == 'sobreInnovamind.php') ? 'active' : '' ?>"
+                                    href="sobreInnovamind.php">Conheça a Innovamind</a></li>
+
+                            <li><a class="dropdown-item <?= ($current == 'nossaEquipe.php') ? 'active' : '' ?>"
+                                    href="nossaEquipe.php">Conheça nossa equipe</a></li>
                         </ul>
                     </li>
 
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                        <a class="nav-link dropdown-toggle <?= (
+                            $current == 'editaisInternos.php' ||
+                            $current == 'editaisExternos.php'
+                        ) ? 'active' : '' ?>" href="#" data-bs-toggle="dropdown">
                             Editais
                         </a>
                         <ul class="dropdown-menu">
-                            <li>
-                                <a class="dropdown-item <?= ($current == 'editaisInternos.php') ? 'active' : '' ?>"
-                                    href="editaisInternos.php">
-                                    Editais Internos
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item <?= ($current == 'editaisExternos.php') ? 'active' : '' ?>"
-                                    href="editaisExternos.php">
-                                    Editais Externos
-                                </a>
-                            </li>
+                            <li><a class="dropdown-item <?= ($current == 'editaisInternos.php') ? 'active' : '' ?>"
+                                    href="editaisInternos.php">Editais Internos</a></li>
+
+                            <li><a class="dropdown-item <?= ($current == 'editaisExternos.php') ? 'active' : '' ?>"
+                                    href="editaisExternos.php">Editais Externos</a></li>
                         </ul>
                     </li>
+
+
                 <?php endif; ?>
 
                 <?php if ($perfil === 'usuario'): ?>
+
+                    <li class="nav-item">
+                        <a class="nav-link <?= ($current == 'index.php') ? 'active' : '' ?>" href="index.php">Home</a>
+                    </li>
+
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
-                            Minha Jornada
+                        <a class="nav-link dropdown-toggle <?= (
+                            $current == 'projetos.php' ||
+                            $current == 'cadastrarProjeto.php' ||
+                            $current == 'meusProjetos.php' ||
+                            $current == 'impactos.php' ||
+                            $current == 'educaCoop.php'
+                        ) ? 'active' : '' ?>" href="#" data-bs-toggle="dropdown">
+                            Projetos
                         </a>
+
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item <?= ($current == 'cadProjeto.php') ? 'active' : '' ?>"
+                            <li><a class="dropdown-item <?= ($current == 'projetos.php') ? 'active' : '' ?>"
+                                    href="projetos.php">Explorar Projetos</a></li>
+                            <li><a class="dropdown-item <?= ($current == 'cadastrarProjeto.php') ? 'active' : '' ?>"
                                     href="cadProjeto.php">Cadastrar Projeto</a></li>
                             <li><a class="dropdown-item <?= ($current == 'meusProjetos.php') ? 'active' : '' ?>"
                                     href="meusProjetos.php">Meus Projetos</a></li>
+                            <li><a class="dropdown-item <?= ($current == 'impactos.php') ? 'active' : '' ?>"
+                                    href="impactos.php">Impacto da Comunidade</a></li>
+                            <li><a class="dropdown-item <?= ($current == 'educaCoop.php') ? 'active' : '' ?>"
+                                    href="educaCoop.php">EducaCoop</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle <?= (
+                            $current == 'apoiadores.php' ||
+                            $current == 'sobreInnovamind.php' ||
+                            $current == 'nossaEquipe.php'
+                        ) ? 'active' : '' ?>" href="#" data-bs-toggle="dropdown">
+                            Nossa Essência
+                        </a>
+
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item <?= ($current == 'apoiadores.php') ? 'active' : '' ?>"
+                                    href="apoiadores.php">Rede Innova</a></li>
+                            <li><a class="dropdown-item <?= ($current == 'sobreInnovamind.php') ? 'active' : '' ?>"
+                                    href="sobreInnovamind.php">Conheça a Innovamind</a></li>
+                            <li><a class="dropdown-item <?= ($current == 'nossaEquipe.php') ? 'active' : '' ?>"
+                                    href="nossaEquipe.php">Conheça nossa equipe</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle <?= (
+                            $current == 'editaisInternos.php' ||
+                            $current == 'editaisExternos.php' ||
+                            $current == 'minhasInscricoes.php'
+                        ) ? 'active' : '' ?>" href="#" data-bs-toggle="dropdown">
+                            Editais
+                        </a>
+
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item <?= ($current == 'editaisInternos.php') ? 'active' : '' ?>"
+                                    href="editaisInternos.php">Editais Internos</a></li>
+                            <li><a class="dropdown-item <?= ($current == 'editaisExternos.php') ? 'active' : '' ?>"
+                                    href="editaisExternos.php">Editais Externos</a></li>
                             <li><a class="dropdown-item <?= ($current == 'minhasInscricoes.php') ? 'active' : '' ?>"
                                     href="minhasInscricoes.php">Minhas Inscrições</a></li>
                         </ul>
-                    <li class="nav-item">
-                        <a class="nav-link <?= ($current == 'educaCoop.php') ? 'active' : '' ?>"
-                            href="educaCoop.php">EducaCoop</a>
                     </li>
-                    </li>
+
                 <?php endif; ?>
+
 
                 <?php if ($perfil === 'admin'): ?>
 
@@ -178,7 +222,6 @@ $current = basename($_SERVER['PHP_SELF']);
 
             </ul>
 
-            <!-- AÇÕES DO USUÁRIO / LOGIN -->
             <div class="nav-actions">
                 <?php if ($perfil === 'visitante'): ?>
 
@@ -187,7 +230,6 @@ $current = basename($_SERVER['PHP_SELF']);
                 <?php else: ?>
 
                     <?php
-                    // FOTO DO USUÁRIO
                     $foto = $_SESSION['fotoUsuario'] ?? null;
 
                     if (!$foto && isset($_SESSION['idUsuario'])) {
@@ -214,13 +256,28 @@ $current = basename($_SERVER['PHP_SELF']);
                         </a>
 
                         <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item text-danger" href="logout.php">Sair</a></li>
+
+                            <li>
+                                <a class="dropdown-item" href="editarPerfil.php">
+                                    Editar Perfil
+                                </a>
+                            </li>
+
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+
+                            <li>
+                                <a class="dropdown-item text-danger" href="logout.php">
+                                    Sair
+                                </a>
+                            </li>
+
                         </ul>
                     </div>
 
                 <?php endif; ?>
             </div>
-
         </div>
     </div>
 </nav>

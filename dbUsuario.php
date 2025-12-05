@@ -125,6 +125,16 @@ elseif (filter_has_var(INPUT_POST, "btnGravar")):
     // -------------------------
     else:
         if ($Usuario->update("id", $id)) {
+
+
+            //Recarrega o usuário atualizado
+            $u = $Usuario->findById($id);
+
+            // Atualiza sessão
+            $_SESSION["nomeUsuario"] = $u->nomeExibicao ?? $u->nomeCompleto;
+            $_SESSION["perfil"] = $u->perfil;
+            $_SESSION["foto"] = $u->foto;
+
             echo "<script>
                 alert('Cadastro alterado com sucesso.');
                 window.location.href='listaUsuarios.php';

@@ -6,18 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="CSS/baseSite.css">
+    <link rel="stylesheet" href="CSS/baseAdministracao.css?v=<?php echo time(); ?>">
     <link rel="shortcut icon" href="images/logoInnovamind.png" type="image/x-icon">
     <title>Login</title>
 </head>
 
 <body>
 
-<?php if (isset($_GET['expirou']) && $_GET['expirou'] == 1): ?>
-    <div class="alert alert-warning text-center">
-        Sua sessão expirou por inatividade. Faça login novamente.
-    </div>
-<?php endif; ?>
+    <?php if (isset($_GET['expirou']) && $_GET['expirou'] == 1): ?>
+        <div class="alert alert-warning text-center">
+            Sua sessão expirou por inatividade. Faça login novamente.
+        </div>
+    <?php endif; ?>
 
 
     <navbar>
@@ -27,7 +27,7 @@
     <main class="d-flex align-items-center justify-content-center my-4">
         <div class="login-card">
             <section class="login-ilustracao text-center p-4">
-                <img src="Images/login.png" alt="Ideia" class="login-img mb-4">
+                <img src="images/login.png" alt="Ideia" class="login-img mb-4">
                 <div class="login-frase-box">
                     <blockquote class="login-frase">
                         “A vida está cheia de desafios que, se aproveitados de forma criativa, transformam-se em
@@ -58,10 +58,9 @@
                         <button type="submit" class="btn-login" name="btnLogar">Entrar</button>
                     </div>
                 </form>
-                <p class="text-center mt-3">Não tem cadastro? <a href="cadUsuario.php" class="link-criar">Clique
-                        aqui</a></p>
-                <p class="text-center mt-3">
-                    <a href="redefinir_senha.php" class="link-criar">Esqueci minha senha</a>
+                <p class=" mt-3">Não tem cadastro? <a href="cadUsuario.php" class="link-criar">Criar conta</a></p>
+                <p class="">Esqueceu a senha?
+                    <a href="redefinir_senha.php" class="link-criar">Recuperar senha</a>
                 </p>
         </div>
         </div>
@@ -70,6 +69,7 @@
         <?php require_once "_parts/_footer.php"; ?>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="JS/formTheme.js"></script>
 
     <!-- VLibras -->
     <div vw class="enabled">

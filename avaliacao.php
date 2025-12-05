@@ -23,7 +23,7 @@ $Trilha->setTitulo($trilha->titulo);
 $Trilha->setAutorTrilha($trilha->autorTrilha);
 $Trilha->setPontuacaoMinima($trilha->pontuacaoMinima);
 $Trilha->setPerguntasTrilha($trilha->perguntasTrilha);
-$Trilha->setTituloAvaliacao($trilha->tituloAvaliacao);
+
 
 
 $perguntas = json_decode($trilha->perguntasTrilha ?? '[]', true);
@@ -60,7 +60,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
-    <link rel="stylesheet" href="CSS/baseSite.css">
+    <link rel="stylesheet" href="CSS/baseSite.css?v=<?php echo time(); ?>">
     <link rel="shortcut icon" href="images/logoInnovamind.png" type="image/x-icon">
     <title>Avaliação da Trilha</title>
 </head>
@@ -73,7 +73,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     </nav>
 
     <main class="container py-4">
-        <h3 class="mb-3 text-center"><?= htmlspecialchars($trilha->tituloAvaliacao) ?></h3>
+        <h3 class="mb-3 text-center"><?= htmlspecialchars($trilha->titulo) ?></h3>
         <p class="text-center"><strong>Pontuação mínima:</strong> <?= htmlspecialchars($trilha->pontuacaoMinima) ?>%</p>
 
         <?php if (empty($perguntas)): ?>

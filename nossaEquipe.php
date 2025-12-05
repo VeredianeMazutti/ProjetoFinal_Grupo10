@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
-    <link rel="stylesheet" href="CSS/baseSite.css">
+    <link rel="stylesheet" href="CSS/baseSite.css?v=<?php echo time(); ?>">
     <link rel="shortcut icon" href="images/logoInnovamind.png" type="image/x-icon">
     <title>Conheça a InnovaMind</title>
 </head>
@@ -32,13 +32,13 @@
 
             <div class="integrantes">
                 <img src="images/verediane.png" alt="Verediane Mazutti Filomeno">
-                <a href="http://lattes.cnpq.br/4240636442955710" target="_blank">Verediane Mazutti Filomeno</a>
+                <a href="https://www.linkedin.com/in/verediane-mazutti-filomeno-38a15935a/" target="_blank">Verediane Mazutti Filomeno</a>
                 <p>Técnica em Informática | Desenvolvedora Web</p>
                 <a href="mailto:verediane.m.f@gmail.com">verediane.m.f@gmail.com</a>
             </div>
 
             <div class="integrantes">
-                <img src="Images/devid.png" alt="Devid Sobrenome">
+                <img src="images/devid.png" alt="Deivid da Silva Souza">
                 <a href="https://www.linkedin.com/in/deivid-da-silva-84862a200/" target="_blank">Deivid da Silva
                     Souza</a>
                 <p>Desenvolvedor Power BI | Dashboards e Visual Analytics</p>
@@ -46,8 +46,8 @@
             </div>
 
             <div class="integrantes">
-                <img src="Images/Integrantes/Italo.png" alt="Italo Sobrenome">
-                <a href="https://www.linkedin.com/in/italo-perfil" target="_blank">Ítalo Jaruzo Moraes</a>
+                <img src="images/default-user.png" alt="Italo Jaruzo Moraes">
+                <a href="https://www.linkedin.com/in/italo-jaruzo-9a4971346/" target="_blank">Ítalo Jaruzo Moraes</a>
                 <p>Analista de Qualidade | Desenvolvedor</p>
                 <a href="mailto:italo@email.com">itajaruzo@gmail.com </a>
             </div>
