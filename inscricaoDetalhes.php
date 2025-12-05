@@ -46,34 +46,40 @@ if (!$Inscricao) {
 
         <div>
 
-                <h5 class="subtitulo-inscricao mb-3">Informações Gerais</h5>
+            <h5 class="subtitulo-inscricao mb-3">Informações Gerais</h5>
 
-                <p><strong>Código da Inscrição:</strong> <?= $Inscricao->idInscricao ?></p>
-                <p><strong>Código do Edital:</strong> <?= $Inscricao->idEditalInterno ?></p>
-                <p><strong>Data da Inscrição:</strong> <?= date("d/m/Y H:i", strtotime($Inscricao->dataInscricao)) ?></p>
+            <p><strong>Código da Inscrição:</strong> <?= $Inscricao->idInscricao ?></p>
+            <p><strong>Código do Edital:</strong> <?= $Inscricao->idEditalInterno ?></p>
+            <p><strong>Data da Inscrição:</strong> <?= date("d/m/Y H:i", strtotime($Inscricao->dataInscricao)) ?></p>
 
-                <hr>
+            <hr>
 
-                <h5 class="subtitulo-inscricao mb-3">Dados do Responsável</h5>
+            <h5 class="subtitulo-inscricao mb-3">Dados do Responsável</h5>
 
-                <p><strong>Responsável:</strong> <?= htmlspecialchars($Inscricao->responsavel) ?></p>
-                <p><strong>Email:</strong> <?= htmlspecialchars($Inscricao->email) ?></p>
-                <p><strong>Telefone:</strong> <?= htmlspecialchars($Inscricao->telefone) ?></p>
-                <p><strong>Instituição:</strong> <?= htmlspecialchars($Inscricao->instituicao) ?></p>
+            <p><strong>Responsável:</strong> <?= htmlspecialchars($Inscricao->responsavel) ?></p>
+            <p><strong>Email:</strong> <?= htmlspecialchars($Inscricao->email) ?></p>
+            <p><strong>Telefone:</strong> <?= htmlspecialchars($Inscricao->telefone) ?></p>
+            <p><strong>Instituição:</strong> <?= htmlspecialchars($Inscricao->instituicao) ?></p>
 
-                <hr>
+            <hr>
 
-                <h5 class="subtitulo-inscricao mb-3">Informações do Projeto</h5>
-                <p><strong>Título:</strong><br><?= nl2br(htmlspecialchars($Inscricao->titulo)) ?></p>
-                <p><strong>Resumo:</strong><br><?= nl2br(htmlspecialchars($Inscricao->resumo)) ?></p>
-                <p><strong>Objetivo:</strong><br><?= nl2br(htmlspecialchars($Inscricao->objetivo)) ?></p>
-                <p><strong>Relato:</strong><br><?= nl2br(htmlspecialchars($Inscricao->relato)) ?></p>
+            <h5 class="subtitulo-inscricao mb-3">Informações do Projeto</h5>
+            <p><strong>Título:</strong><br><?= nl2br(htmlspecialchars($Inscricao->titulo)) ?></p>
+            <p><strong>Resumo:</strong><br><?= nl2br(htmlspecialchars($Inscricao->resumo)) ?></p>
+            <p><strong>Objetivo:</strong><br><?= nl2br(htmlspecialchars($Inscricao->objetivo)) ?></p>
+            <p><strong>Relato:</strong><br><?= nl2br(htmlspecialchars($Inscricao->relato)) ?></p>
 
         </div>
-
-        <a href="adminInscricoes.php" class="btn btn-geral mt-4">
+        <?php
+        $perfil = $_SESSION['perfil'] ?? 'usuario';
+        $voltar = ($perfil === 'admin')
+            ? 'listaInscricoes.php'
+            : 'minhasInscricoes.php';
+        ?>
+        <a href="<?= $voltar ?>" class="btn btn-geral mt-4">
             Voltar
         </a>
+
 
     </main>
 

@@ -50,6 +50,18 @@ if (!$projetoData || count($projetoData) == 0) {
 
 $p = $projetoData[0];
 
+// Captura de onde o usuário veio
+$from = $_GET['from'] ?? null;
+
+if ($from === 'home') {
+    $destinoVoltar = 'index.php';
+} elseif ($from === 'projetos') {
+    $destinoVoltar = 'Projetos.php';
+} else {
+    $destinoVoltar = 'Projetos.php'; 
+}
+
+
 $contadores = $Projeto->getContadoresById($id);
 $visualizacoes = $contadores->visualizacoes ?? 0;
 $curtidas = $contadores->curtidas ?? 0;
@@ -215,16 +227,58 @@ if (empty($fotos)) {
                 </div>
             <?php endif; ?>
 
-            <div class="my-4 text-center">
-                <a href="Projetos.php" class="btn-projetoDetalhes">Voltar para Projetos</a>
-            </div>
+            <div class="d-flex justify-content-center gap-3 my-4 botoes-projeto">
 
+                <button class="btn-projetoDetalhes" data-bs-toggle="modal" data-bs-target="#modalContribuir">
+                    <i class="bi bi-people-fill me-1"></i> Quero Contribuir
+                </button>
+
+                <a href="<?= $destinoVoltar ?>" class="btn-voltarProjeto">
+                    Voltar
+                </a>
+            </div>
         </div>
     </main>
 
     <footer class="mt-5">
         <?php require_once "_parts/_footer.php"; ?>
     </footer>
+
+    <div class="modal fade" id="modalContribuir" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-contribuir modal-content">
+
+                <div class="modal-header">
+                    <h5 class="modal-title">Como contribuir com este projeto?</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+
+                <div class="modal-body">
+                    <p>Para contribuir com este projeto, entre em contato diretamente com o responsável:</p>
+
+                    <div class="modal-contact-box">
+                        <i class="bi bi-envelope-fill"></i>
+                        <strong><?= htmlspecialchars($p->emailProjeto); ?></strong>
+                    </div>
+
+                    <p class="mt-3">
+                        Você pode colaborar enviando sugestões, ajuda técnica, recursos ou qualquer forma de apoio.
+                    </p>
+
+                    <p class="text-aviso small fst-italic mt-3">
+                        *A Innovamind não intermedia, fiscaliza ou garante contatos, parcerias ou negociações realizadas
+                        fora da plataforma.
+                        Qualquer acordo, apoio ou comunicação é de responsabilidade exclusiva das partes envolvidas.
+                    </p>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn-voltarProjeto" data-bs-dismiss="modal">Fechar</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
     <script src="JS/curtidas.js"></script>

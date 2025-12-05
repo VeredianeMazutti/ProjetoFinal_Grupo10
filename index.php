@@ -151,7 +151,7 @@
                                         <?= htmlspecialchars($proj->breveDescricao) ?>
                                     </p>
 
-                                    <a href="projetoDetalhes.php?id=<?= $idProj ?>" class="btn-projeto">
+                                    <a href="projetoDetalhes.php?id=<?= $idProj ?>&from=home" class="btn-projeto">
                                         Saiba mais e Colabore
                                     </a>
 

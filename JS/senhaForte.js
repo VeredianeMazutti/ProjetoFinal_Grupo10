@@ -1,6 +1,13 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const senhaInput = document.getElementById("senha");
-    const confirmarInput = document.getElementById("confirmar");
+
+    const senhaInput =
+        document.getElementById("senha") ||
+        document.getElementById("nova_senha");
+
+    const confirmarInput =
+        document.getElementById("confirmar") ||
+        document.getElementById("confirmar_senha");
+
     const salvarBtn = document.getElementById("btnSalvar");
     const toggleSenhaBtn = document.getElementById("toggleSenha");
     const toggleConfirmarBtn = document.getElementById("toggleConfirmar");
@@ -32,7 +39,6 @@ document.addEventListener("DOMContentLoaded", () => {
         ];
         const naoEhComum = !senhasComuns.includes(senha.toLowerCase());
 
-
         atualizarRequisito(requisitos.tamanho, temTamanho);
         atualizarRequisito(requisitos.maiuscula, temMaiuscula);
         atualizarRequisito(requisitos.minuscula, temMinuscula);
@@ -40,8 +46,6 @@ document.addEventListener("DOMContentLoaded", () => {
         atualizarRequisito(requisitos.especial, temEspecial);
         atualizarRequisito(requisitos.comum, naoEhComum);
 
-
-        // Calcula a força
         const nivel = [
             temTamanho, temMaiuscula, temMinuscula,
             temNumero, temEspecial, naoEhComum
@@ -102,6 +106,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     senhaInput.addEventListener("input", verificarSenha);
     confirmarInput.addEventListener("input", verificarConfirmacao);
-    toggleSenhaBtn.addEventListener("click", () => alternarVisibilidade(senhaInput, toggleSenhaBtn));
-    toggleConfirmarBtn.addEventListener("click", () => alternarVisibilidade(confirmarInput, toggleConfirmarBtn));
+
+    if (toggleSenhaBtn)
+        toggleSenhaBtn.addEventListener("click", () => alternarVisibilidade(senhaInput, toggleSenhaBtn));
+
+    if (toggleConfirmarBtn)
+        toggleConfirmarBtn.addEventListener("click", () => alternarVisibilidade(confirmarInput, toggleConfirmarBtn));
 });

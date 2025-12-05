@@ -7,7 +7,7 @@ class InscricaoEdital extends CRUD
 
     private $idInscricao;
     private $idEditalInterno;
-
+    private $fk_usuario;
     private $responsavel;
     private $email;
     private $telefone;
@@ -36,6 +36,16 @@ class InscricaoEdital extends CRUD
     public function getIdEditalInterno()
     {
         return $this->idEditalInterno;
+    }
+
+    public function setFkUsuario($fk_usuario)
+    {
+        $this->fk_usuario = $fk_usuario;
+    }
+
+    public function getFkUsuario()
+    {
+        return $this->fk_usuario;
     }
 
     public function setResponsavel($responsavel)
@@ -131,11 +141,11 @@ class InscricaoEdital extends CRUD
     public function add()
     {
         $sql = "INSERT INTO $this->table (
-                idEditalInterno,
+                idEditalInterno, fk_usuario,
                 responsavel, email, telefone, instituicao,
                 titulo, resumo, objetivo, relato, status
             ) VALUES (
-                :idEditalInterno,
+                :idEditalInterno, :fk_usuario,
                 :responsavel, :email, :telefone, :instituicao,
                 :titulo, :resumo, :objetivo, :relato, :status
             )";
@@ -143,6 +153,7 @@ class InscricaoEdital extends CRUD
         $stmt = $this->db->prepare($sql);
 
         $stmt->bindValue(":idEditalInterno", $this->idEditalInterno);
+        $stmt->bindValue(":fk_usuario", $this->fk_usuario);
         $stmt->bindValue(":responsavel", $this->responsavel);
         $stmt->bindValue(":email", $this->email);
         $stmt->bindValue(":telefone", $this->telefone);
@@ -159,21 +170,23 @@ class InscricaoEdital extends CRUD
     public function update(string $campo, int $id)
     {
         $sql = "UPDATE $this->table SET 
-                    idEditalInterno = :idEditalInterno,
-                    responsavel = :responsavel,
-                    email = :email,
-                    telefone = :telefone,
-                    instituicao = :instituicao,
-                    titulo = :titulo,
-                    resumo = :resumo,
-                    objetivo = :objetivo,
-                    relato = :relato,
-                    status = :status
-                WHERE $campo = :id";
+                idEditalInterno = :idEditalInterno,
+                fk_usuario = :fk_usuario,
+                responsavel = :responsavel,
+                email = :email,
+                telefone = :telefone,
+                instituicao = :instituicao,
+                titulo = :titulo,
+                resumo = :resumo,
+                objetivo = :objetivo,
+                relato = :relato,
+                status = :status
+            WHERE $campo = :id";
 
         $stmt = $this->db->prepare($sql);
 
         $stmt->bindValue(":idEditalInterno", $this->idEditalInterno);
+        $stmt->bindValue(":fk_usuario", $this->fk_usuario);
         $stmt->bindValue(":responsavel", $this->responsavel);
         $stmt->bindValue(":email", $this->email);
         $stmt->bindValue(":telefone", $this->telefone);
@@ -187,6 +200,7 @@ class InscricaoEdital extends CRUD
 
         return $stmt->execute();
     }
+
 
     public function updateStatus(int $idInscricao, string $novoStatus): bool
     {

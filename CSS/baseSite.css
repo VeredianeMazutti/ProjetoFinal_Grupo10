@@ -284,6 +284,8 @@
     overflow: visible;
     text-overflow: unset;
     display: block;
+    word-break: break-word;
+    overflow-wrap: break-word;
 }
 
 .btn-projeto {
@@ -576,12 +578,15 @@
     text-decoration: none;
     border-radius: 12px;
     transition: all 0.3s ease;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
 }
 
 .btn-projetoDetalhes:hover {
     background: linear-gradient(90deg, #72429d, #bb81d3, #9f6ace);
     transform: scale(1.04);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45) !important;
 }
 
 .titulo-projeto-detalhes,
@@ -1124,71 +1129,66 @@ h1.titulo-impacto {
 }
 
 .estrutura-panel {
-    max-width: 1250px;
-}
-
-.estrutura-card {
-    background: linear-gradient(180deg, rgba(18, 8, 31, 0.9) 0%, rgba(11, 6, 20, 0.85) 100%);
-    border: 1px solid rgba(176, 107, 255, 0.07);
-    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.55);
-    padding: 28px;
-    border-radius: 20px;
+    max-width: 1100px;
+    margin: 0 auto;
 }
 
 .estrutura-titulo {
-    font-family: "Segoe UI";
-    font-size: 27px;
-    color: #d7c9ff;
+    color: #c8a6ff;
+    font-size: 2.4rem;
     font-weight: 700;
-    font-size: 2rem;
+    letter-spacing: 1px;
+}
+
+.estrutura-row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.estrutura-col {
+    display: flex;
 }
 
 .estrutura-col-inner {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+    background: #140b24;
+    border-radius: 16px;
+    padding: 25px;
+    border: 1px solid #3b2360;
+    transition: transform .2s ease, box-shadow .2s ease;
+
     height: 100%;
+    flex: 1;
 }
 
-.estrutura-icon-wrap {
-    width: 56px;
-    height: 56px;
-    border-radius: 12px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(176, 107, 255, 0.08);
-    box-shadow: 0 6px 18px rgba(176, 107, 255, 0.06);
-    margin-bottom: 6px;
+.estrutura-col-inner:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(90, 0, 160, 0.3);
 }
 
 .estrutura-subtitulo {
-    font-size: 1.25rem;
-    color: #e8dcff;
-    margin: 0 0 6px 0;
-    font-weight: 700;
+    color: #d4b2ff;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 12px;
 }
 
 .estrutura-texto {
-    color: #d8d2e8;
     line-height: 1.6;
-    margin: 0;
-    font-size: 0.98rem;
-    text-align: justify;
+    color: #d8d4e2;
+    font-size: 1.05rem;
 }
 
 .estrutura-lista {
-    padding-left: 1.05rem;
+    padding-left: 20px;
     margin: 0;
-    color: #e6dff6;
-    line-height: 1.7;
-    font-size: 0.98rem;
+    color: #e8e4f5;
 }
 
-.estrutura-card .estrutura-col-inner:hover .estrutura-icon-wrap {
-    transform: translateY(-4px);
-    transition: transform 0.25s ease;
+.estrutura-lista li {
+    margin-bottom: 8px;
+    padding-left: 4px;
 }
+
 
 .faq-container {
     width: 90%;
@@ -1364,7 +1364,7 @@ h1.titulo-impacto {
 
 /*EditalInterno*/
 .edital-container {
-      max-width: 1400px !important;
+    max-width: 1400px !important;
     background-color: #251435;
     padding: 50px 70px;
     border-radius: 20px;
@@ -1424,14 +1424,214 @@ h1.titulo-impacto {
     background: #a372ff;
 }
 
-.subtitulo-editalinterno{
+.subtitulo-editalinterno {
     color: #9a00c5;
     font-size: 22px;
-     font-weight: 550;
+    font-weight: 550;
 }
 
+/*ModalProjeto*/
 
+.modal-contribuir {
+    background: #1b1223 !important;
+    color: #ffffff !important;
+    border-radius: 16px;
+    padding: 5px 10px;
+    border: 1px solid #5a2e84;
+    box-shadow: 0 0 25px rgba(146, 69, 220, 0.5);
+}
 
+.modal-contribuir .modal-header {
+    border-bottom: 1px solid #2d1a3f;
+}
+
+.modal-contribuir .modal-title {
+    font-family: "Segoe UI", sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.modal-contribuir .modal-body,
+.modal-contribuir .modal-body p,
+.modal-contribuir .modal-footer,
+.modal-contribuir .modal-footer button,
+.modal-contribuir .modal-contact-box,
+.modal-contribuir .modal-contact-box strong {
+    font-family: "Segoe UI", sans-serif;
+    font-size: 16px;
+}
+
+.text-aviso {
+    font-family: "Segoe UI", sans-serif;
+    font-size: 16px;
+    color: #d08ae9;
+}
+
+.modal-contribuir .modal-footer {
+    border-top: 1px solid #2d1a3f;
+}
+
+.modal-contribuir .btn-close-white {
+    filter: invert(1);
+}
+
+.modal-contact-box {
+    background: #2a1b3c;
+    border-radius: 10px;
+    padding: 12px 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid #4b2f6c;
+}
+
+.modal-contact-box i {
+    color: #c78bff;
+    font-size: 1.4rem;
+}
+
+.btn-voltarProjeto {
+    background: #4a4359;
+    color: #e0d7f6;
+    font-weight: 600;
+    padding: 12px 32px;
+    font-size: 17px;
+    border-radius: 12px;
+    border: none;
+    transition: all 0.25s ease-in-out;
+    text-decoration: none !important;
+    display: inline-block;
+}
+
+.btn-voltarProjeto:hover {
+    background: #5a5270;
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+
+/*Paginação*/
+
+.pagination {
+    gap: 0;
+}
+
+.pagination .page-item .page-link {
+    background-color: #ffffff;
+    color: #6a0dad;
+    border: 2px solid #6a0dad;
+    border-radius: 0;
+    margin: 0;
+    font-weight: 600;
+    transition: 0.2s ease-in-out;
+}
+
+.pagination .page-item:first-child .page-link {
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+}
+
+.pagination .page-item:last-child .page-link {
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
+
+.pagination .page-link:hover {
+    background-color: #f3e6ff;
+    color: #6a0dad;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: #6a0dad;
+    color: #ffffff;
+    border-color: #6a0dad;
+}
+
+.pagination .page-item.disabled .page-link {
+    background-color: #e6e6e6;
+    color: #9e9e9e;
+    border-color: #c9c9c9;
+}
+
+/*NossaEquipe*/
+
+h1.titulo-equipe {
+    font-family: "Stack Sans Notch", sans-serif;
+    font-size: 57px;
+    font-weight: 900px;
+    color: #fff;
+    font-weight: bold;
+}
+
+h1.titulo-equipe .roxo {
+    color: #b86bff;
+}
+
+.container-equipe {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 35px;
+    padding: 10px 60px;
+}
+
+.integrantes {
+    background: #0f0a15;
+    border: 1px solid rgba(184, 107, 255, 0.3);
+    box-shadow: 0 0 20px rgba(184, 107, 255, 0.2);
+    border-radius: 20px;
+    padding: 30px 20px;
+    text-align: center;
+    transition: 0.3s ease;
+}
+
+.integrantes:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 0 30px rgba(184, 107, 255, 0.4);
+}
+
+.integrantes img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid #b86bff;
+    margin-bottom: 15px;
+    background: #1a0f27;
+}
+
+.integrantes a:first-of-type {
+    font-family: "Segoe UI";
+    font-size: 18px;
+    display: block;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #b86bff;
+    text-decoration: none;
+    margin-bottom: 8px;
+}
+
+.integrantes a:first-of-type:hover {
+    text-decoration: underline;
+}
+
+.integrantes p {
+    font-family: "Segoe UI";
+    font-size: 16px;
+    margin: 5px 0 12px;
+    font-size: 1rem;
+    color: #ccc;
+}
+
+.integrantes a:last-of-type {
+    color: #fff;
+    font-size: 0.95rem;
+    text-decoration: none;
+}
+
+.integrantes a:last-of-type:hover {
+    color: #b86bff;
+    text-decoration: underline;
+}
 
 /*Index*/
 @media (max-width: 768px) {
@@ -1937,5 +2137,59 @@ nav img {
 
     .edital-wrapper {
         width: 95%;
+    }
+}
+
+/*Botão-ProjetoDetalhes*/
+@media (max-width: 768px) {
+    .botoes-projeto {
+        flex-direction: column !important;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .botoes-projeto .btn-projetoDetalhes,
+    .botoes-projeto .btn-voltarProjeto {
+        width: 85%;
+        padding: 14px 0;
+        text-align: center;
+    }
+}
+
+@media (min-width: 769px) {
+    .botoes-projeto {
+        flex-direction: row !important;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .botoes-projeto .btn-projetoDetalhes,
+    .botoes-projeto .btn-voltarProjeto {
+        min-width: 260px;
+        padding: 14px 40px;
+        text-align: center;
+    }
+}
+
+/*NossaEquipe*/
+
+@media (max-width: 600px) {
+    h1.titulo-equipe {
+        font-size: 2.3rem;
+    }
+
+    .integrantes img {
+        width: 130px;
+        height: 130px;
+    }
+
+    .container-equipe {
+        padding: 10px 20px;
+    }
+}
+
+@media (max-width: 960px) {
+    .container-equipe {
+        grid-template-columns: 1fr;
     }
 }

@@ -36,11 +36,6 @@ $current = basename($_SERVER['PHP_SELF']);
                             href="impactos.php">Impactos</a>
                     </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link <?= ($current == 'educaCoop.php') ? 'active' : '' ?>"
-                            href="educaCoop.php">EducaCoop</a>
-                    </li>
-
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
                             Nossa Essência
@@ -57,6 +52,12 @@ $current = basename($_SERVER['PHP_SELF']);
                                 <a class="dropdown-item <?= ($current == 'sobreInnovamind.php') ? 'active' : '' ?>"
                                     href="sobreInnovamind.php">
                                     Conheça a Innovamind
+                                </a>
+                            </li>
+                             <li>
+                                <a class="dropdown-item <?= ($current == 'nossaEquipe.php') ? 'active' : '' ?>"
+                                    href="nossaEquipe.php">
+                                    Conheça nossa equipe
                                 </a>
                             </li>
                         </ul>
@@ -96,6 +97,10 @@ $current = basename($_SERVER['PHP_SELF']);
                             <li><a class="dropdown-item <?= ($current == 'minhasInscricoes.php') ? 'active' : '' ?>"
                                     href="minhasInscricoes.php">Minhas Inscrições</a></li>
                         </ul>
+                    <li class="nav-item">
+                        <a class="nav-link <?= ($current == 'educaCoop.php') ? 'active' : '' ?>"
+                            href="educaCoop.php">EducaCoop</a>
+                    </li>
                     </li>
                 <?php endif; ?>
 

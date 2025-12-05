@@ -1,19 +1,26 @@
 <?php
-// Inicia sessão apenas se ainda não foi iniciada
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-// Se não estiver logado, redireciona para o login
+$tempoExpiracao = 1800;
+
+if (isset($_SESSION['ultimaAtividade']) && (time() - $_SESSION['ultimaAtividade']) > $tempoExpiracao) {
+    session_unset();
+    session_destroy();
+    header("Location: login.php?expirou=1");
+    exit;
+}
+
+$_SESSION['ultimaAtividade'] = time();
+
 if (!isset($_SESSION['idUsuario'])) {
     header("Location: login.php");
     exit;
 }
 
-// Página atual
 $pagina = basename($_SERVER['PHP_SELF']);
 
-// Regras de acesso
 $regras = [
     "listaUsuarios.php"      => ["admin"],
     "cadProjeto.php"         => ["admin", "usuario"],
@@ -30,7 +37,6 @@ $regras = [
     "meusProjetos.php" => ["usuario"],
     "dashboard.php"    => ["admin", "usuario"],
 ];
-
 
 // Validação
 if (isset($regras[$pagina]) && !in_array($_SESSION['perfil'], $regras[$pagina])) {

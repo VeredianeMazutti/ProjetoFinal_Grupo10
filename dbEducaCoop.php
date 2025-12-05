@@ -27,7 +27,7 @@ if (filter_has_var(INPUT_POST, "btnSalvar")):
         $novoId = $Trilha->add();
 
         if ($novoId) {
-            echo "<script>alert('Trilha cadastrada com sucesso!') window.location.href='listaFaq.php';</script>";
+            echo "<script>alert('Trilha cadastrada com sucesso!'); window.location.href='listaEducaCoop.php';</script>";
         } else {
             echo "<script>alert('Erro ao cadastrar trilha.'); window.open(document.referrer,'_self');</script>";
         }

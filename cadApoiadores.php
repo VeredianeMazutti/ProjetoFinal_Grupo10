@@ -49,36 +49,41 @@
 
             <div class="col-12">
                 <label for="nome" class="form-label">Nome do Apoiador</label>
-                <input type="text" class="form-control" name="nome" id="nome" placeholder="Digite o nome do apoiador"  value="<?= $ap->nome ?? "" ?>" required>
+                <input type="text" class="form-control" name="nome" id="nome" placeholder="Digite o nome do apoiador"
+                    value="<?= $ap->nome ?? "" ?>" required>
             </div>
 
             <div class="col-12">
                 <label for="descricao" class="form-label">Descrição / Biografia</label>
-                <input type="text" class="form-control" name="descricao" id="descricao" placeholder="Digite a descrição/biografia do apoiador" 
-                    value="<?= $ap->descricao ?? "" ?>" required maxlength="500">
+                <input type="text" class="form-control" name="descricao" id="descricao"
+                    placeholder="Digite a descrição/biografia do apoiador" value="<?= $ap->descricao ?? "" ?>" required
+                    maxlength="500">
             </div>
 
             <div class="col-12">
                 <label class="form-label" for="imagem">Foto / Logo</label>
-                <input type="file" class="form-control" name="imagem" accept="image/*">
-                <?php if ($ap && $ap->imagem): ?>
-                    <p class="mt-2">Imagem atual: <img src="uploads/parceiros/<?= $ap->imagem ?>" width="120"></p>
-                <?php endif; ?>
+                <input type="file" class="form-control" name="imagem" id="imagem" accept="image/*">
+                <img id="previewImagem"
+                    src="<?= $ap && $ap->imagem ? 'uploads/parceiros/' . $ap->imagem : 'images/default.png' ?>"
+                    width="140" class="mt-2">
             </div>
 
             <div class="col-md-4">
                 <label class="form-label">Website</label>
-                <input type="url" class="form-control" name="site" placeholder="Adicione o link do site do apoiador"  value="<?= $ap->site ?? "" ?>">
+                <input type="url" class="form-control" name="site" placeholder="Adicione o link do site do apoiador"
+                    value="<?= $ap->site ?? "" ?>">
             </div>
 
             <div class="col-md-4">
                 <label class="form-label">Instagram</label>
-                <input type="url" class="form-control" name="instagram" placeholder="Adicione o link do Instagram do apoiador" value="<?= $ap->instagram ?? "" ?>">
+                <input type="url" class="form-control" name="instagram"
+                    placeholder="Adicione o link do Instagram do apoiador" value="<?= $ap->instagram ?? "" ?>">
             </div>
 
             <div class="col-md-4">
                 <label class="form-label">LinkedIn</label>
-                <input type="url" class="form-control" name="linkedin" placeholder="Adicione o Linkedin do apoiador" value="<?= $ap->linkedin ?? "" ?>">
+                <input type="url" class="form-control" name="linkedin" placeholder="Adicione o Linkedin do apoiador"
+                    value="<?= $ap->linkedin ?? "" ?>">
             </div>
 
             <div class="col-12 mt-4">
@@ -96,6 +101,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
     <script src="JS/formTheme.js"></script>
+    <script src="JS/foto.js"></script>
 
     <!-- VLibras -->
     <div vw class="enabled">

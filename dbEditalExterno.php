@@ -19,7 +19,7 @@ if (filter_has_var(INPUT_POST, "btnGravar")):
         if ($EditalExterno->add()) {
             echo "<script>
                 alert('Cadastro de edital realizado com sucesso.');
-                window.location.href='editarExterno.php';
+                window.location.href='listaEditaisExternos.php';
             </script>";
         } else {
             echo "<script>
