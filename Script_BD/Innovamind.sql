@@ -228,11 +228,10 @@ CREATE TABLE editaisexternos (
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
 
 CREATE TABLE RecuperacaoSenha (
-    idRecuperacaoSenha INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    idUsuarioFK INT(11) NOT NULL,
+    idRecuperacaoSenha INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    idUsuarioFK INT UNSIGNED NOT NULL,
     tokenRecuperacaoSenha VARCHAR(200) NOT NULL UNIQUE,
     expiraRecuperacaoSenha DATETIME NOT NULL,
     criadoRecuperacaoSenha DATETIME DEFAULT CURRENT_TIMESTAMP(),
-    KEY idUsuarioFK (idUsuarioFK),
-    CONSTRAINT recuperacao_senha_usuario FOREIGN KEY (idUsuarioFK) REFERENCES Usuario(idUsuario) ON DELETE CASCADE
-);
+    CONSTRAINT recuperacao_senha_usuario FOREIGN KEY (idUsuarioFK) REFERENCES usuario(id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
