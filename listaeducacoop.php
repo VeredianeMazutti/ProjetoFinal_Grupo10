@@ -62,7 +62,6 @@
 
                             <td class="text-center">
                                 <div class="d-flex gap-1 justify-content-center">
-
                                     <form action="cadEducaCoop.php" method="get" class="d-flex">
                                         <input type="hidden" name="id" value="<?= $trilha->id_trilha ?>">
                                         <button name="btnEditar" class="btn btn-primary btn-sm" type="submit" title="Editar"
@@ -88,7 +87,6 @@
 
                                 </div>
                             </td>
-
                         </tr>
                     <?php endforeach; ?>
 
