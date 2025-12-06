@@ -56,7 +56,7 @@ $from = $_GET['from'] ?? null;
 if ($from === 'home') {
     $destinoVoltar = 'index.php';
 } elseif ($from === 'projetos') {
-    $destinoVoltar = 'Projetos.php';
+    $destinoVoltar = 'projetos.php';
 } else {
     $destinoVoltar = 'projetos.php';
 }
