@@ -182,7 +182,7 @@
                                 aria-label="Fechar"></button>
                         </div>
                         <div class="modal-body lgpd-modal-body">
-                            <?php include "politica.php"; ?>
+                            <?php include "Politica.php"; ?>
                         </div>
                         <div class="modal-footer lgpd-modal-footer">
                             <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Fechar</button>

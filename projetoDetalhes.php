@@ -58,7 +58,7 @@ if ($from === 'home') {
 } elseif ($from === 'projetos') {
     $destinoVoltar = 'Projetos.php';
 } else {
-    $destinoVoltar = 'Projetos.php';
+    $destinoVoltar = 'projetos.php';
 }
 
 
