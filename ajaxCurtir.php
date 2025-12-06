@@ -11,7 +11,7 @@ $Projeto = new Projeto();
 // Gera hash do visitante caso ainda não exista
 if (!isset($_SESSION['idUsuario']) && !isset($_COOKIE['visitanteHash'])) {
     $hash = 'visitante_' . bin2hex(random_bytes(8));
-    setcookie('visitanteHash', $hash, time() + (10*365*24*60*60), "/");
+    setcookie('visitanteHash', $hash, time() + (10 * 365 * 24 * 60 * 60), "/");
     $_COOKIE['visitanteHash'] = $hash;
 }
 
@@ -19,9 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['idProjeto'])) {
     $idProjeto = intval($_POST['idProjeto']);
     $curtido = false;
 
-    // -----------------------------------------------
-    // USUÁRIO LOGADO
-    // -----------------------------------------------
+    /*Usuario*/
     if (isset($_SESSION['idUsuario'])) {
         $idUsuario = intval($_SESSION['idUsuario']);
 
@@ -35,10 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['idProjeto'])) {
 
         $curtidas = $Projeto->contarCurtidas($idProjeto);
 
-
-    // -----------------------------------------------
-    // VISITANTE
-    // -----------------------------------------------
+        /*Visitante*/
     } else {
         $visitanteHash = $_COOKIE['visitanteHash'];
 
