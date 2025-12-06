@@ -60,30 +60,35 @@
                             <td class="text-center"><?= $trilha->nivel ?></td>
                             <td class="text-center"><?= $trilha->duracao ?></td>
 
-                            <td class="d-flex gap-1 justify-content-center">
+                            <td class="text-center">
+                                <div class="d-flex gap-1 justify-content-center">
 
-                                <form action="cadEducaCoop.php" method="get" class="d-flex">
-                                    <input type="hidden" name="id" value="<?= $trilha->id_trilha ?>">
-                                    <button name="btnEditar" class="btn btn-primary btn-sm" type="submit" title="Editar"
-                                        onclick="return confirm('Deseja editar esta trilha?');">
-                                        <i class="bi bi-pencil-square"></i>
-                                    </button>
-                                </form>
+                                    <form action="cadEducaCoop.php" method="get" class="d-flex">
+                                        <input type="hidden" name="id" value="<?= $trilha->id_trilha ?>">
+                                        <button name="btnEditar" class="btn btn-primary btn-sm" type="submit" title="Editar"
+                                            onclick="return confirm('Deseja editar esta trilha?');">
+                                            <i class="bi bi-pencil-square"></i>
+                                        </button>
+                                    </form>
 
-                                <form action="dbEducaCoop.php" method="post" class="d-flex">
-                                    <input type="hidden" name="id_trilha" value="<?= $trilha->id_trilha ?>">
-                                    <button name="btnDeletar" class="btn btn-danger btn-sm" type="submit" title="Excluir"
-                                        onclick="return confirm('Tem certeza que deseja excluir esta trilha?');">
-                                        <i class="bi bi-trash"></i>
-                                    </button>
-                                </form>
+                                    <form action="dbEducaCoop.php" method="post" class="d-flex">
+                                        <input type="hidden" name="id_trilha" value="<?= $trilha->id_trilha ?>">
+                                        <button name="btnDeletar" class="btn btn-danger btn-sm" type="submit"
+                                            title="Excluir"
+                                            onclick="return confirm('Tem certeza que deseja excluir esta trilha?');">
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+                                    </form>
 
-                                <a href="cadAvaliacao.php?id_trilha=<?= $trilha->id_trilha ?>"
-                                    class="btn btn-warning btn-sm" title="Editar Avaliação">
-                                    <i class="bi bi-check2-square"></i>
-                                </a>
+                                    <a href="cadAvaliacao.php?id_trilha=<?= $trilha->id_trilha ?>"
+                                        class="btn btn-warning btn-sm d-flex align-items-center justify-content-center"
+                                        title="Editar Avaliação">
+                                        <i class="bi bi-check2-square"></i>
+                                    </a>
 
+                                </div>
                             </td>
+
                         </tr>
                     <?php endforeach; ?>
 
