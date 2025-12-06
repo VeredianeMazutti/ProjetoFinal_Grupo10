@@ -22,13 +22,9 @@ class Usuario extends CRUD
     private $email;
     private $senha;
     private $perfil;
-
-    // 🔵 NOVO – CAMPOS DE LGPD
     private $aceitouTermos;
     private $aceitouPolitica;
     private $dataAceite;
-
-    // ---------------- GETTERS E SETTERS --------------------
 
     public function setId($id)
     {
